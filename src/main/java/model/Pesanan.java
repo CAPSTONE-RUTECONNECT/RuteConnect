@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author HP
  */
-public class Pesanan {
+public abstract class Pesanan {
     public static final String MENUNGGU = "Menunggu";
     public static final String DITERIMA = "Diterima";
     public static final String DIPROSES = "Diproses";
@@ -36,17 +36,7 @@ public class Pesanan {
     private Integer driverId;
     private int layananId;
     private int transaksiId;
-    private String jenisPesanan;
     private String metodePembayaran;
-    
-    //Tabel transportasi
-    private int jumlahPenumpang;
-    private String statusPenjemputan;
-    
-    //Tabel dokumen
-    private String namaPenerima;
-    private String noTeleponPenerima;
-    private String detailDokumen;
     
     //Hasil JOIN
     private String namaLayanan;
@@ -57,12 +47,11 @@ public class Pesanan {
         
     }
     
+    // Diisi oleh subclass: Transportasi atau Dokumen.
+    public abstract String getJenisPesanan();
+    
     public boolean bisaDibatalkan() {
         return MENUNGGU.equals(statusPesanan) || DITERIMA.equals(statusPesanan) || DIPROSES.equals(statusPesanan);
-    }
-    
-    public boolean isDokumen() {
-        return JENIS_DOKUMEN.equals(jenisPesanan);
     }
     
     public int getPesananId() {
@@ -107,21 +96,6 @@ public class Pesanan {
     public int getTransaksiId() {
         return transaksiId;
     }
-    public int getJumlahPenumpang() {
-        return jumlahPenumpang;
-    }
-    public String getStatusPenjemputan() {
-        return statusPenjemputan;
-    }
-    public String getNamaPenerima() {
-        return namaPenerima;
-    }
-    public String getNoTeleponPenerima() {
-        return noTeleponPenerima;
-    }
-    public String getDetailDokumen() {
-        return detailDokumen;
-    }
     public String getNamaLayanan() {
         return namaLayanan;
     }
@@ -130,9 +104,6 @@ public class Pesanan {
     }
     public String getNamaDriver() {
         return namaDriver;
-    }
-    public String getJenisPesanan() {
-        return jenisPesanan;
     }
     public String getMetodePembayaran() {
         return metodePembayaran;
@@ -179,21 +150,6 @@ public class Pesanan {
     public void setTransaksiId(int transaksiId) {
         this.transaksiId = transaksiId;
     }
-    public void setJumlahPenumpang(int jumlahPenumpang) {
-        this.jumlahPenumpang = jumlahPenumpang;
-    }
-    public void setStatusPenjemputan(String statusPenjemputan) {
-        this.statusPenjemputan = statusPenjemputan;
-    }
-    public void setNamaPenerima(String namaPenerima) {
-        this.namaPenerima = namaPenerima;
-    }
-    public void setNoTeleponPenerima(String noTeleponPenerima) {
-        this.noTeleponPenerima = noTeleponPenerima;
-    }
-    public void setDetailDokumen(String detailDokumen) {
-        this.detailDokumen = detailDokumen;
-    }
     public void setNamaLayanan(String namaLayanan) {
         this.namaLayanan = namaLayanan;
     }
@@ -203,10 +159,8 @@ public class Pesanan {
     public void setNamaDriver(String namaDriver) {
         this.namaDriver = namaDriver;
     }
-    public void setJenisPesanan(String jenisPesanan) {
-        this.jenisPesanan = jenisPesanan;
-    }
     public void setMetodePembayaran(String metodePembayaran) {
         this.metodePembayaran = metodePembayaran;
     }
+
 }
