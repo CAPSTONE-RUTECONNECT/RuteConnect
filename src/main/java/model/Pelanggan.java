@@ -16,6 +16,11 @@ public class Pelanggan extends User {
     
     }
     
+    @Override
+    public String getJenisUser() {
+        return "Pelanggan";
+    }
+    
     public Pelanggan(int userId, String nama, String noTelepon, String email, String password, String role, String alamatFavorit, double saldoWallet) {
         super(userId, nama, noTelepon, email, password, role);
         this.alamatFavorit = alamatFavorit;
@@ -29,9 +34,15 @@ public class Pelanggan extends User {
         return saldoWallet;
     }
     public void setAlamatFavorit(String alamatFavorit) {
-        this.alamatFavorit = alamatFavorit;
+        if (alamatFavorit == null || alamatFavorit.trim().length() < 5) {
+            throw new IllegalArgumentException("Alamat favorit minimal 5 karakter dan tidak boleh kosong");
+        }
+        this.alamatFavorit = alamatFavorit.trim();
     }
     public void setSaldoWallet(double saldoWallet) {
+        if (Double.isNaN(saldoWallet) || Double.isInfinite(saldoWallet) || saldoWallet < 0) {
+            throw new IllegalArgumentException("Saldo wallet tidak boleh negatif");
+        }
         this.saldoWallet = saldoWallet;
     }
 }

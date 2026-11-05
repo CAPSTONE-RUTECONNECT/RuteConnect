@@ -15,9 +15,6 @@ public class Maps extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Maps.class.getName());
     private PetaServer peta;
 
-    /**
-     * Creates new form Maps
-     */
     public Maps() {
         initComponents();
         getContentPane().setPreferredSize(new java.awt.Dimension(390, 844));

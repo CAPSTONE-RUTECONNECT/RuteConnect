@@ -29,10 +29,17 @@ public class Transportasi extends Pesanan {
         return statusPenjemputan;
     }
     public void setJumlahPenumpang(int jumlahPenumpang) {
+        if (jumlahPenumpang < 1 || jumlahPenumpang > 8) {
+            throw new IllegalArgumentException("Jumlah penumpang harus antara 1 sampai 8");
+        }
         this.jumlahPenumpang = jumlahPenumpang;
     }
     public void setStatusPenjemputan(String statusPenjemputan) {
-        this.statusPenjemputan = statusPenjemputan;
+        if (statusPenjemputan == null
+                || !(statusPenjemputan.equalsIgnoreCase("menunggu")
+                || statusPenjemputan.equalsIgnoreCase("sudah dijemput"))) {
+            throw new IllegalArgumentException("Status penjemputan harus menunggu, dalam perjalanan, atau sudah dijemput");
+        }
+        this.statusPenjemputan = statusPenjemputan.toLowerCase();
     }
-
 }
