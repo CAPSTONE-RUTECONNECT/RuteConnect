@@ -16,6 +16,11 @@ public class Admin extends User {
         
     }
     
+    @Override
+    public String getJenisUser() {
+        return "Admin";
+    }
+    
     public Admin(int userId, String nama, String noTelepon, String email, String password, String role, String tingkatAkses, String bagianDivisi) {
         super(userId, nama, noTelepon, email, password, role);
         this.tingkatAkses = tingkatAkses;
@@ -29,9 +34,15 @@ public class Admin extends User {
         return bagianDivisi;
     }
     public void setTingkatAkses(String tingkatAkses) {
-        this.tingkatAkses = tingkatAkses;
+        if (tingkatAkses == null || !tingkatAkses.trim().matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Tingkat akses hanya boleh huruf dan spasi");
+        }
+        this.tingkatAkses = tingkatAkses.trim();
     }
     public void setBagianDivisi(String bagianDivisi) {
-        this.bagianDivisi = bagianDivisi;
+        if (bagianDivisi == null || !bagianDivisi.trim().matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Bagian divisi hanya boleh huruf dan spasi");
+        }
+        this.bagianDivisi = bagianDivisi.trim();
     }
 }

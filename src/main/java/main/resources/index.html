@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    
+    <title>RuteConnect Maps</title>
+    
+    <!-- Library Leaflet -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .panel {
+            position: absolute;
+            top: 15px;
+            left: 60px;
+            z-index: 1000;
+            width: 260px;
+            padding: 18px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .title {
+            color: #12345a;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 7px;
+            background: #12345a;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        button:hover {
+            background: #1c4d7d;
+        }
+
+        .secondary {
+            background: #64748b;
+        }
+
+        #status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 7px;
+            background: #eef3f8;
+            font-size: 12px;
+            color: #12345a;
+            line-height: 1.5;
+        }
+
+        .info {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Panel Informasi -->
+    <div class="panel">
+
+        <div class="title">RuteConnect</div>
+
+        <div class="subtitle">
+            Sistem Pemesanan Transportasi Digital
+        </div>
+
+        <button onclick="setMode('pickup')">
+            + Pilih Lokasi Jemput
+        </button>
+
+        <button onclick="setMode('destination')">
+            + Pilih Lokasi Tujuan
+        </button>
+
+        <button class="secondary" onclick="resetMap()">
+            Reset Lokasi
+        </button>
+
+        <div id="status">
+            Silakan pilih lokasi penjemputan.
+        </div>
+
+        <div class="info">
+            Klik tombol lokasi, lalu klik titik
+            yang diinginkan pada peta.
+        </div>
+
+    </div>
+
+    <!-- Area Peta -->
+    <div id="map"></div>
+
+    <!-- Library Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+    <script>
+        // 1. MEMBUAT PETA
+        var map = L.map('map').setView(
+            [-0.5022, 117.1537], 13
+        );
+
+        // OpenStreetMap
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap'
+            }
+        ).addTo(map);
+
+        // 2. VARIABEL LOKASI
+        var mode = 'pickup';
+
+        var pickup = null;
+        var destination = null;
+
+        var pickupMarker = null;
+        var destinationMarker = null;
+        var routeLine = null;
+        var pickupName = null;
+        var destinationName = null;
+        
+        // Mengubah koordinat menjadi nama tempat (Nominatim OpenStreetMap)
+        async function namaTempat(lat, lng) {
+            var cadangan = lat.toFixed(5) + ', ' + lng.toFixed(5);
+            try {
+                var r = await fetch(
+                    'https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&accept-language=id' +
+                    '&lat=' + lat + '&lon=' + lng
+                );
+                var d = await r.json();
+                var a = d.address || {};
+
+                var bagian = [
+                    d.name,
+                    a.road || a.pedestrian || a.neighbourhood,
+                    a.suburb || a.village || a.city_district || a.city
+                ].filter(function (x, i, arr) {
+                    return x && arr.indexOf(x) === i;     // buang kosong & duplikat
+                });
+
+                var nama = bagian.length ? bagian.join(', ') : (d.display_name || cadangan);
+                return nama.replace(/\|/g, ' ');
+            } catch (e) {
+                return cadangan;                          // kalau gagal, pakai koordinat
+            }
+        }
+
+        // 3. MEMILIH MODE LOKASI
+        function setMode(selectedMode) {
+
+            mode = selectedMode;
+
+            if (mode === 'pickup') {
+
+                document.getElementById('status').innerText =
+                    'Silakan klik peta untuk menentukan lokasi jemput.';
+
+            } else {
+
+                document.getElementById('status').innerText =
+                    'Silakan klik peta untuk menentukan lokasi tujuan.';
+
+            }
+        }
+
+        // 4. KLIK PETA
+        map.on('click', function(e) {
+
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            if (mode === 'pickup') {
+
+                pickup = [lat, lng];
+                pickupName = namaTempat(lat, lng);
+
+                if (pickupMarker) {
+                    map.removeLayer(pickupMarker);
+                }
+
+                pickupMarker = L.marker(pickup)
+                    .addTo(map)
+                    .bindPopup('Lokasi Penjemputan')
+                    .openPopup();
+
+            } else {
+
+                destination = [lat, lng];
+                destinationName = namaTempat(lat, lng);
+
+                if (destinationMarker) {
+                    map.removeLayer(destinationMarker);
+                }
+
+                destinationMarker = L.marker(destination)
+                    .addTo(map)
+                    .bindPopup('Lokasi Tujuan')
+                    .openPopup();
+
+            }
+
+            updateStatus();
+
+            if (pickup && destination) {
+                getRoute();
+            }
+
+        });
+
+        // 5. INFORMASI LOKASI
+        function updateStatus() {
+
+            if (pickup && destination) {
+
+                document.getElementById('status').innerText =
+                    'Lokasi jemput dan tujuan berhasil dipilih. Mencari rute...';
+
+            } else if (pickup) {
+
+                document.getElementById('status').innerText =
+                    'Lokasi jemput berhasil dipilih. Silakan tentukan tujuan.';
+
+            } else if (destination) {
+
+                document.getElementById('status').innerText =
+                    'Lokasi tujuan berhasil dipilih. Silakan tentukan lokasi jemput.';
+
+            }
+
+        }
+
+        // 6. MENCARI RUTE PERJALANAN 
+async function getRoute() {
+
+    document.getElementById('status').innerText =
+        'Sedang mencari rute perjalanan...';
+
+    if (routeLine) {
+        map.removeLayer(routeLine);
+    }
+
+    var url =
+        'https://router.project-osrm.org/route/v1/driving/' +
+        pickup[1] + ',' + pickup[0] + ';' +
+        destination[1] + ',' + destination[0] +
+        '?overview=full&geometries=geojson';
+
+    try {
+
+        var response = await fetch(url);
+        var data = await response.json();
+
+        if (data.code !== 'Ok') {
+            throw new Error('Rute tidak ditemukan');
+        }
+
+        // Mengambil koordinat rute
+        var coordinates =
+            data.routes[0].geometry.coordinates;
+
+        var latlngs = coordinates.map(function(point) {
+            return [point[1], point[0]];
+        });
+
+        // Menampilkan garis rute
+        routeLine = L.polyline(latlngs, {
+            color: '#12345a',
+            weight: 5
+        }).addTo(map);
+
+        map.fitBounds(routeLine.getBounds(), {
+            padding: [40, 40]
+        });
+
+        // Menghitung jarak perjalanan
+        var distance =
+            data.routes[0].distance / 1000;
+
+        // Asumsi kecepatan rata-rata kendaraan
+        var averageSpeed = 25;
+
+        // Menghitung estimasi waktu
+        var travelTime =
+            Math.ceil((distance / averageSpeed) * 60);
+
+        // Buffer tambahan 3 menit
+        var bufferTime = 3;
+        var estimatedTime = travelTime + bufferTime;
+        
+        // kirim hasil ke aplikasi Swing
+        var namaJemput = await pickupName;
+        var namaTujuan = await destinationName;
+
+        // Menampilkan informasi perjalanan
+        document.getElementById('status').innerText =
+            'Rute berhasil ditemukan!\n' +
+            'Jarak: ' + distance.toFixed(2) + ' km\n' +
+            'Estimasi waktu: ' + estimatedTime + ' menit';
+            fetch('/hasil', {
+            method: 'POST',
+            body: pickup[0] + '|' + pickup[1] + '|' +
+                  destination[0] + '|' + destination[1] + '|' +
+                  distance.toFixed(2) + '|' + estimatedTime + '|' +
+                  namaJemput + '|' + namaTujuan
+        });
+
+    } catch (error) {
+
+        document.getElementById('status').innerText =
+            'Gagal mendapatkan rute. Silakan coba lagi.';
+
+        console.error(error);
+
+    }
+}
+
+        // 7. RESET PETA
+        function resetMap() {
+
+            if (pickupMarker) {
+                map.removeLayer(pickupMarker);
+            }
+
+            if (destinationMarker) {
+                map.removeLayer(destinationMarker);
+            }
+
+            if (routeLine) {
+                map.removeLayer(routeLine);
+            }
+
+            pickup = null;
+            pickupName = null;
+            destination = null;
+            destinationName = null;
+            pickupMarker = null;
+            destinationMarker = null;
+            routeLine = null;
+
+            mode = 'pickup';
+
+            document.getElementById('status').innerText =
+                'Silakan pilih lokasi penjemputan.';
+
+            map.setView([-0.5022, 117.1537], 13);
+
+        }
+    </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ package model;
  *
  * @author HP
  */
-public class User {
+public abstract class User {
     private int userId;
     private String nama;
     private String noTelepon;
@@ -19,6 +19,8 @@ public class User {
     public User(){
         
     }
+    
+    public abstract String getJenisUser();
     
     public User(int userId, String nama, String noTelepon, String email, String password, String role) {
         this.userId = userId;
@@ -51,18 +53,33 @@ public class User {
         this.userId = userId;
     }
     public void setNama(String nama) {
-        this.nama = nama;
+        if (nama == null || !nama.matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Nama hanya boleh huruf dan spasi");
+        }
+        this.nama = nama.trim();
     }
     public void setNoTelepon(String noTelepon) {
+        if (noTelepon == null || !noTelepon.matches("\\d{1,13}")) {
+            throw new IllegalArgumentException("No telepon hanya angka, maksimal 13 digit");
+        }
         this.noTelepon = noTelepon;
     }
     public void setEmail(String email) {
+        if (email == null || !email.matches("^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$")) {
+            throw new IllegalArgumentException("Format email tidak valid");
+        }
         this.email = email;
     }
     public void setPassword(String password) {
+        if (password == null || !password.matches("^(?=.*[A-Za-z])(?=.*\\d).+$")) {
+            throw new IllegalArgumentException("Password harus mengandung huruf dan angka");
+        }
         this.password = password;
     }
     public void setRole(String role) {
-        this.role = role;
+        if (role == null || !(role.equalsIgnoreCase("pelanggan") || role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("driver"))) {
+            throw new IllegalArgumentException("Role harus pelanggan, admin, atau driver");
+        }
+        this.role = role.toLowerCase();
     }
 }
