@@ -30,7 +30,7 @@ public class PesanTransportasiForm extends javax.swing.JFrame {
         jScrollPane1.setWheelScrollingEnabled(true);
         
         // Agar jButton2 (peta) tidak merebut focus scroll wheel
-        btnMap.addMouseWheelListener(e -> {
+        jButton2.addMouseWheelListener(e -> {
             // Meneruskan event scroll dari peta langsung ke JScrollPane utama
             jScrollPane1.dispatchEvent(e);
         });
@@ -62,7 +62,7 @@ public class PesanTransportasiForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnMap = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -106,7 +106,7 @@ public class PesanTransportasiForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(14, 165, 233));
         jPanel1.setAlignmentY(0.1F);
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 844));
+        jPanel1.setPreferredSize(new java.awt.Dimension(390, 844));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(2, 132, 199));
@@ -156,10 +156,9 @@ public class PesanTransportasiForm extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
-        btnMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Screenshot 2026-11-05 084140.png"))); // NOI18N
-        btnMap.addActionListener(this::btnMapActionPerformed);
-        jPanel3.add(btnMap);
-        btnMap.setBounds(30, 30, 330, 170);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Screenshot 2026-11-05 084140.png"))); // NOI18N
+        jPanel3.add(jButton2);
+        jButton2.setBounds(30, 30, 330, 170);
 
         jPanel4.setBackground(new java.awt.Color(242, 243, 255));
         jPanel4.setLayout(null);
@@ -352,11 +351,6 @@ public class PesanTransportasiForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnMapActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -383,8 +377,8 @@ public class PesanTransportasiForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMap;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
