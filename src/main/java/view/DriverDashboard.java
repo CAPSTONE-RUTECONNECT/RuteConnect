@@ -44,6 +44,15 @@ public class DriverDashboard extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        waktuDokumen = new javax.swing.JTextField();
+        jenisPesanan = new javax.swing.JTextField();
+        alamatPesanan = new javax.swing.JTextField();
+        Harga = new javax.swing.JTextField();
+        totalRute = new javax.swing.JTextField();
+        jarakJemputKM = new javax.swing.JTextField();
+        jarakKM2 = new javax.swing.JTextField();
         panelHeader = new javax.swing.JPanel();
         panelRuteConnect = new javax.swing.JLabel();
         panelLogo = new javax.swing.JLabel();
@@ -51,32 +60,32 @@ public class DriverDashboard extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        labelNamaDriver = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        labelPlat = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        buttonOnline = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        buttonStatus = new javax.swing.JButton();
+        labelStatus = new javax.swing.JLabel();
         buttonRuteRide = new javax.swing.JButton();
         buttonRuteCar = new javax.swing.JButton();
         buttonKirimDokumen = new javax.swing.JButton();
+        labelMerkKendaraan = new javax.swing.JLabel();
         panelContent = new javax.swing.JPanel();
         panelKirimDokumen = new javax.swing.JPanel();
-        waktuDokumen = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        pesananMasukDokumen = new javax.swing.JTextField();
-        jenisPesanan = new javax.swing.JTextField();
-        alamatPesanan = new javax.swing.JTextField();
-        Harga = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jarakJemput = new javax.swing.JTextField();
-        jarakJemputKM = new javax.swing.JTextField();
-        totalRute = new javax.swing.JTextField();
-        jarakKM2 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        labelJarakJemputDokumen = new javax.swing.JLabel();
+        labelTotalRuteDokumen = new javax.swing.JLabel();
         tolakPesanan = new javax.swing.JToggleButton();
         terimaPesanan = new javax.swing.JToggleButton();
+        jLabel10 = new javax.swing.JLabel();
+        labelWaktuDokumen = new javax.swing.JLabel();
+        labelKirimDokumen = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         panelRuteRide = new javax.swing.JPanel();
         pesananMasukRuteRide = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -177,6 +186,53 @@ public class DriverDashboard extends javax.swing.JFrame {
 
         jLabel9.setText("jLabel9");
 
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setText("Honda Vario");
+        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+
+        jTextField2.setBackground(new java.awt.Color(242, 243, 255));
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(16, 185, 129));
+        jTextField2.setText("Status: ON (Siap Antar)");
+        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+
+        waktuDokumen.setBackground(new java.awt.Color(51, 102, 160));
+        waktuDokumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        waktuDokumen.setForeground(new java.awt.Color(255, 255, 255));
+        waktuDokumen.setText("28s");
+        waktuDokumen.addActionListener(this::waktuDokumenActionPerformed);
+
+        jenisPesanan.setBackground(new java.awt.Color(14, 165, 233));
+        jenisPesanan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jenisPesanan.setForeground(new java.awt.Color(255, 255, 255));
+        jenisPesanan.setText("Kirim Dokumen");
+
+        alamatPesanan.setBackground(new java.awt.Color(14, 165, 233));
+        alamatPesanan.setForeground(new java.awt.Color(255, 255, 255));
+        alamatPesanan.setText("Kantor PLN Samarinda");
+
+        Harga.setBackground(new java.awt.Color(14, 165, 233));
+        Harga.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Harga.setForeground(new java.awt.Color(255, 204, 0));
+        Harga.setText("Rp. 35.000");
+
+        totalRute.setBackground(new java.awt.Color(51, 102, 160));
+        totalRute.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        totalRute.setForeground(new java.awt.Color(255, 255, 255));
+        totalRute.setText("Total Rute");
+
+        jarakJemputKM.setBackground(new java.awt.Color(51, 102, 160));
+        jarakJemputKM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jarakJemputKM.setForeground(new java.awt.Color(255, 255, 255));
+        jarakJemputKM.setText("1.2 km (4 mnt)");
+
+        jarakKM2.setBackground(new java.awt.Color(51, 102, 160));
+        jarakKM2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jarakKM2.setForeground(new java.awt.Color(255, 255, 255));
+        jarakKM2.setText("4.8 km (16 mnt)");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelHeader.setBackground(new java.awt.Color(14, 165, 233));
@@ -199,21 +255,21 @@ public class DriverDashboard extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow.png"))); // NOI18N
 
-        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Abdul Qodir");
+        labelNamaDriver.setBackground(new java.awt.Color(0, 0, 0));
+        labelNamaDriver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelNamaDriver.setForeground(new java.awt.Color(0, 0, 0));
+        labelNamaDriver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNamaDriver.setText("Abdul Qodir");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/CENTANG BIRU.png"))); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(242, 243, 255));
 
-        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("KT 1234 AB");
+        labelPlat.setBackground(new java.awt.Color(0, 0, 0));
+        labelPlat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelPlat.setForeground(new java.awt.Color(0, 0, 0));
+        labelPlat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPlat.setText("KT 1234 AB");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -221,46 +277,38 @@ public class DriverDashboard extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addComponent(labelPlat)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12))
+                .addComponent(labelPlat))
         );
-
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Honda Vario");
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         jPanel8.setBackground(new java.awt.Color(242, 243, 255));
         jPanel8.setDoubleBuffered(false);
 
-        buttonOnline.setBackground(new java.awt.Color(16, 185, 129));
-        buttonOnline.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonOnline.setForeground(new java.awt.Color(255, 255, 255));
-        buttonOnline.setText("Online");
-        buttonOnline.addActionListener(this::buttonOnlineActionPerformed);
+        buttonStatus.setBackground(new java.awt.Color(16, 185, 129));
+        buttonStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonStatus.setForeground(new java.awt.Color(255, 255, 255));
+        buttonStatus.setText("Online");
+        buttonStatus.addActionListener(this::buttonStatusActionPerformed);
 
-        jTextField2.setBackground(new java.awt.Color(242, 243, 255));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(16, 185, 129));
-        jTextField2.setText("Status: ON (Siap Antar)");
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        labelStatus.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelStatus.setForeground(new java.awt.Color(4, 120, 87));
+        labelStatus.setText("Status: On (Siap Antar)");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(buttonOnline, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(labelStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
         jPanel8Layout.setVerticalGroup(
@@ -268,8 +316,8 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOnline, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelStatus))
                 .addGap(26, 26, 26))
         );
 
@@ -282,11 +330,16 @@ public class DriverDashboard extends javax.swing.JFrame {
         buttonRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buttonRuteCar.setForeground(new java.awt.Color(0, 0, 0));
         buttonRuteCar.setText("RuteCar");
+        buttonRuteCar.addActionListener(this::buttonRuteCarActionPerformed);
 
         buttonKirimDokumen.setBackground(new java.awt.Color(242, 243, 255));
         buttonKirimDokumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buttonKirimDokumen.setForeground(new java.awt.Color(0, 0, 0));
         buttonKirimDokumen.setText("Kirim Dokumen");
+
+        labelMerkKendaraan.setBackground(new java.awt.Color(255, 255, 255));
+        labelMerkKendaraan.setForeground(new java.awt.Color(0, 0, 0));
+        labelMerkKendaraan.setText("Honda Vario");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -298,12 +351,12 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelNamaDriver, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(labelMerkKendaraan)
+                        .addGap(53, 53, 53)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(176, 176, 176))
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -311,11 +364,11 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(buttonRuteRide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonKirimDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(21, 21, 21)
+                        .addComponent(buttonKirimDokumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -326,13 +379,13 @@ public class DriverDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
+                            .addComponent(labelNamaDriver)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelMerkKendaraan))))
+                .addGap(14, 14, 14)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -346,54 +399,25 @@ public class DriverDashboard extends javax.swing.JFrame {
 
         panelKirimDokumen.setBackground(new java.awt.Color(14, 165, 233));
 
-        waktuDokumen.setBackground(new java.awt.Color(51, 102, 160));
-        waktuDokumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        waktuDokumen.setForeground(new java.awt.Color(255, 255, 255));
-        waktuDokumen.setText("28s");
-        waktuDokumen.addActionListener(this::waktuDokumenActionPerformed);
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(3).png"))); // NOI18N
-
-        pesananMasukDokumen.setBackground(new java.awt.Color(51, 102, 160));
-        pesananMasukDokumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        pesananMasukDokumen.setForeground(new java.awt.Color(255, 255, 255));
-        pesananMasukDokumen.setText("Pesanan Masuk Kilat!");
-
-        jenisPesanan.setBackground(new java.awt.Color(14, 165, 233));
-        jenisPesanan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jenisPesanan.setForeground(new java.awt.Color(255, 255, 255));
-        jenisPesanan.setText("Kirim Dokumen");
-
-        alamatPesanan.setBackground(new java.awt.Color(14, 165, 233));
-        alamatPesanan.setForeground(new java.awt.Color(255, 255, 255));
-        alamatPesanan.setText("Kantor PLN Samarinda");
-
-        Harga.setBackground(new java.awt.Color(14, 165, 233));
-        Harga.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Harga.setForeground(new java.awt.Color(255, 204, 0));
-        Harga.setText("Rp. 35.000");
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 160));
 
-        jarakJemput.setBackground(new java.awt.Color(51, 102, 160));
-        jarakJemput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jarakJemput.setForeground(new java.awt.Color(255, 255, 255));
-        jarakJemput.setText("Jarak Jemput");
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Jarak Jemput");
 
-        jarakJemputKM.setBackground(new java.awt.Color(51, 102, 160));
-        jarakJemputKM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jarakJemputKM.setForeground(new java.awt.Color(255, 255, 255));
-        jarakJemputKM.setText("1.2 km (4 mnt)");
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Total Rute");
 
-        totalRute.setBackground(new java.awt.Color(51, 102, 160));
-        totalRute.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        totalRute.setForeground(new java.awt.Color(255, 255, 255));
-        totalRute.setText("Total Rute");
+        labelJarakJemputDokumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelJarakJemputDokumen.setForeground(new java.awt.Color(255, 255, 255));
+        labelJarakJemputDokumen.setText("6.3 km (20 mnt)");
 
-        jarakKM2.setBackground(new java.awt.Color(51, 102, 160));
-        jarakKM2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jarakKM2.setForeground(new java.awt.Color(255, 255, 255));
-        jarakKM2.setText("4.8 km (16 mnt)");
+        labelTotalRuteDokumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTotalRuteDokumen.setForeground(new java.awt.Color(255, 255, 255));
+        labelTotalRuteDokumen.setText("10.2 km (29 mnt)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -402,31 +426,31 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jarakJemput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel15))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jarakJemputKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(39, 39, 39)
+                        .addComponent(labelJarakJemputDokumen)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(totalRute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))
+                        .addComponent(jLabel16)
+                        .addGap(69, 69, 69))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jarakKM2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
+                        .addComponent(labelTotalRuteDokumen)
+                        .addGap(43, 43, 43))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jarakJemput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalRute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jarakJemputKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jarakKM2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelJarakJemputDokumen)
+                    .addComponent(labelTotalRuteDokumen))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -440,69 +464,77 @@ public class DriverDashboard extends javax.swing.JFrame {
         terimaPesanan.setForeground(new java.awt.Color(255, 255, 255));
         terimaPesanan.setText("Terima Pesanan");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Pesanan Dokumen");
+
+        labelWaktuDokumen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelWaktuDokumen.setForeground(new java.awt.Color(255, 255, 255));
+        labelWaktuDokumen.setText("28s");
+
+        labelKirimDokumen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelKirimDokumen.setForeground(new java.awt.Color(255, 255, 255));
+        labelKirimDokumen.setText("Kirim Dokumen");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Kantor PLN Samarinda");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(252, 211, 77));
+        jLabel12.setText("Rp. 30.000");
+
         javax.swing.GroupLayout panelKirimDokumenLayout = new javax.swing.GroupLayout(panelKirimDokumen);
         panelKirimDokumen.setLayout(panelKirimDokumenLayout);
         panelKirimDokumenLayout.setHorizontalGroup(
             panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alamatPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jenisPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(waktuDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(14, 14, 14))
             .addGroup(panelKirimDokumenLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(tolakPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(terimaPesanan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(pesananMasukDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(223, Short.MAX_VALUE)))
+            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
+                        .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7))
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelWaktuDokumen)
+                        .addGap(36, 36, 36))
+                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
+                        .addComponent(labelKirimDokumen)
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel12)))
+                .addGap(14, 14, 14))
         );
         panelKirimDokumenLayout.setVerticalGroup(
             panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7))
-                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(waktuDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jenisPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alamatPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelWaktuDokumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelKirimDokumen)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addGap(17, 17, 17)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tolakPesanan, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(terimaPesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(pesananMasukDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(283, Short.MAX_VALUE)))
         );
 
         panelRuteRide.setBackground(new java.awt.Color(14, 165, 233));
@@ -906,7 +938,7 @@ public class DriverDashboard extends javax.swing.JFrame {
                                 .addComponent(panelRuteRide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(36, 36, 36)
                 .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -926,7 +958,7 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addComponent(panelRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panelOrderBerjalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/tanda tanya + notif.png"))); // NOI18N
@@ -945,9 +977,7 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 412, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -988,9 +1018,9 @@ public class DriverDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void buttonOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOnlineActionPerformed
+    private void buttonStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonOnlineActionPerformed
+    }//GEN-LAST:event_buttonStatusActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -1011,6 +1041,10 @@ public class DriverDashboard extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void buttonRuteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRuteCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRuteCarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1047,16 +1081,19 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField alamatRuteCar;
     private javax.swing.JButton buttonKirimDokumen;
     private javax.swing.JButton buttonMaps;
-    private javax.swing.JButton buttonOnline;
     private javax.swing.JButton buttonRuteCar;
     private javax.swing.JButton buttonRuteRide;
+    private javax.swing.JButton buttonStatus;
     private javax.swing.JTextField hargaRuteCar;
     private javax.swing.JTextField hargaRuteRide;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1085,7 +1122,6 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JTextField jarakJemput;
     private javax.swing.JTextField jarakJemputKM;
     private javax.swing.JTextField jarakJemputKMRuteCar;
     private javax.swing.JTextField jarakJemputKMRuteRide;
@@ -1097,6 +1133,14 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jenisOrder;
     private javax.swing.JTextField jenisPesanan;
     private javax.swing.JTextField jenisPesananRuteRide;
+    private javax.swing.JLabel labelJarakJemputDokumen;
+    private javax.swing.JLabel labelKirimDokumen;
+    private javax.swing.JLabel labelMerkKendaraan;
+    private javax.swing.JLabel labelNamaDriver;
+    private javax.swing.JLabel labelPlat;
+    private javax.swing.JLabel labelStatus;
+    private javax.swing.JLabel labelTotalRuteDokumen;
+    private javax.swing.JLabel labelWaktuDokumen;
     private javax.swing.JTextField orderID;
     private javax.swing.JPanel panelContent;
     private javax.swing.JPanel panelHeader;
@@ -1107,7 +1151,6 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuteCar;
     private javax.swing.JLabel panelRuteConnect;
     private javax.swing.JPanel panelRuteRide;
-    private javax.swing.JTextField pesananMasukDokumen;
     private javax.swing.JTextField pesananMasukRuteCar;
     private javax.swing.JTextField pesananMasukRuteRide;
     private javax.swing.JTextField pesananRuteCar;

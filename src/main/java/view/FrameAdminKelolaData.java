@@ -53,9 +53,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        panelTambahData = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         panelUbahTerpilih = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -73,16 +70,13 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         panelDataDriver = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         panelUbahTerpilih1 = new javax.swing.JPanel();
         jTextField8 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        labelIDEntitas = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,37 +308,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        panelTambahData.setBackground(new java.awt.Color(14, 165, 233));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(6).png"))); // NOI18N
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Tambah Data Baru");
-
-        javax.swing.GroupLayout panelTambahDataLayout = new javax.swing.GroupLayout(panelTambahData);
-        panelTambahData.setLayout(panelTambahDataLayout);
-        panelTambahDataLayout.setHorizontalGroup(
-            panelTambahDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTambahDataLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelTambahDataLayout.setVerticalGroup(
-            panelTambahDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTambahDataLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelTambahDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelTambahDataLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         panelUbahTerpilih.setBackground(new java.awt.Color(242, 243, 255));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Update Pensil.png"))); // NOI18N
@@ -461,9 +424,7 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelTambahData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(193, 193, 193)
                 .addComponent(panelUbahTerpilih, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(panelHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -488,7 +449,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(panelHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelTambahData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelUbahTerpilih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -535,9 +495,10 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Data Driver MOTOR.png"))); // NOI18N
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Data Driver");
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Data Driver");
 
         javax.swing.GroupLayout panelDataDriverLayout = new javax.swing.GroupLayout(panelDataDriver);
         panelDataDriver.setLayout(panelDataDriverLayout);
@@ -547,8 +508,8 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel27)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDataDriverLayout.setVerticalGroup(
             panelDataDriverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +519,7 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
                     .addGroup(panelDataDriverLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -598,24 +559,25 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
-
-        labelIDEntitas.setBackground(new java.awt.Color(255, 255, 255));
-        labelIDEntitas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        labelIDEntitas.setForeground(new java.awt.Color(0, 0, 0));
-        labelIDEntitas.setText("ID");
-
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Nama");
-
-        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel28.setText("Kontak / No.Telp");
-
-        jLabel29.setText("Status");
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nama", "Role", "Kontak/No.Telp", "Status", "Terdaftar"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -623,28 +585,15 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
-                .addGap(18, 18, 18)
-                .addComponent(labelIDEntitas)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel19)
-                .addGap(92, 92, 92)
-                .addComponent(jLabel28)
-                .addGap(109, 109, 109)
-                .addComponent(jLabel29)
-                .addContainerGap(484, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelIDEntitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(334, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
         );
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 980, 360));
@@ -673,10 +622,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRefreshActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -704,7 +649,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonRefresh;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -715,8 +659,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -725,9 +667,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -743,9 +682,10 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JLabel labelIDEntitas;
     private javax.swing.JPanel panelDashboard;
     private javax.swing.JPanel panelDataCustomer1;
     private javax.swing.JPanel panelDataDriver;
@@ -754,7 +694,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JPanel panelDataPesanan1;
     private javax.swing.JPanel panelHapus;
     private javax.swing.JPanel panelKelolaData;
-    private javax.swing.JPanel panelTambahData;
     private javax.swing.JPanel panelUbahTerpilih;
     private javax.swing.JPanel panelUbahTerpilih1;
     private javax.swing.JLabel textDashboard;
