@@ -515,24 +515,24 @@ public class TopUpForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
+    }                                           
 
-    private void passwordCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordCheckBoxActionPerformed
+    private void passwordCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
         if (passwordCheckBox.isSelected()) {
             txtPassword.setEchoChar((char) 0);
         } else {
             txtPassword.setEchoChar('\u2022'); 
         }
-    }//GEN-LAST:event_passwordCheckBoxActionPerformed
+    }                                                
 
-    private void txtNominalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNominalActionPerformed
+    private void txtNominalActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNominalActionPerformed
+    }                                          
 
-    private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTopUpActionPerformed
+    private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         try {
             // 1. Validasi pilihan metode pembayaran (salah satu RadioButton harus dipilih)
@@ -577,7 +577,7 @@ public class TopUpForm extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnTopUpActionPerformed
+    }                                        
 
     /**
      * @param args the command line arguments
