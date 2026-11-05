@@ -93,7 +93,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(14, 165, 233));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Pesanan Saya");
@@ -141,7 +141,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 429, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,22 +151,22 @@ public class StatusRiwayat extends javax.swing.JFrame {
         jLabel3.setText("Progras Pengiriman");
 
         jButton4.setBackground(new java.awt.Color(226, 231, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow (2).png"))); // NOI18N
 
         jLabel4.setText("Pesanan Diterima");
 
         jLabel5.setText("Kurir Menuju Lokasi Jemput");
 
         jButton5.setBackground(new java.awt.Color(226, 231, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (2).png"))); // NOI18N
 
         jLabel6.setText("Dalam Pengantaran Ke Penerima");
 
         jButton6.setBackground(new java.awt.Color(226, 231, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (3).png"))); // NOI18N
 
         jButton7.setBackground(new java.awt.Color(226, 231, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (4).png"))); // NOI18N
 
         jLabel7.setText("Dokumen Diterima  Selesai");
 
@@ -221,7 +221,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
         );
 
         jButton8.setBackground(new java.awt.Color(226, 231, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (6).png"))); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(62, 72, 80));
@@ -269,7 +269,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel20.setText("Menara Mandiri LT. Gatot Subroto");
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
+        jButton1.setBackground(new java.awt.Color(14, 165, 233));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Batalkan Pesanan");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -279,7 +279,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
         jLabel21.setText("Aktivitas Terakhir");
 
         jButton9.setBackground(new java.awt.Color(226, 231, 255));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (5).png"))); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(62, 72, 80));
@@ -345,7 +345,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
         );
 
         jButton10.setBackground(new java.awt.Color(226, 231, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (5).png"))); // NOI18N
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(62, 72, 80));

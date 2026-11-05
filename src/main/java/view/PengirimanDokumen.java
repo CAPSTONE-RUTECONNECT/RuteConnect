@@ -98,9 +98,10 @@ public class PengirimanDokumen extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(14, 165, 233));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pengiriman Dokumen");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -145,7 +146,8 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         jLabel7.setText("Ahmad Fauzi ( 0812-3456-7890)");
 
         jButton7.setBackground(new java.awt.Color(226, 231, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon.png"))); // NOI18N
+        jButton7.addActionListener(this::jButton7ActionPerformed);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -173,7 +175,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         jLabel29.setText("Kantor Notaris Indah, Menteng");
 
         jButton11.setBackground(new java.awt.Color(226, 231, 255));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -229,13 +231,13 @@ public class PengirimanDokumen extends javax.swing.JFrame {
                     .addContainerGap(86, Short.MAX_VALUE)))
         );
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
+        jButton1.setBackground(new java.awt.Color(14, 165, 233));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Kontrak Kerja");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton10.setBackground(new java.awt.Color(226, 231, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (7).png"))); // NOI18N
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(62, 72, 80));
@@ -296,7 +298,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         jLabel30.setText("Ibu Ratna Dewi ( 0812-3456-7890)");
 
         jButton12.setBackground(new java.awt.Color(226, 231, 255));
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -324,7 +326,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         jLabel31.setText("Gedung Bursa Efek Jakarta Tower 2");
 
         jButton13.setBackground(new java.awt.Color(226, 231, 255));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -335,7 +337,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
                 .addComponent(jButton13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel31)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,17 +380,17 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel33.setText("Tingkat Kecepatan");
 
-        jButton2.setBackground(new java.awt.Color(51, 102, 255));
+        jButton2.setBackground(new java.awt.Color(14, 165, 233));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Surat Berharga / AKT");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
-        jButton4.setBackground(new java.awt.Color(51, 102, 255));
+        jButton4.setBackground(new java.awt.Color(14, 165, 233));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Ijazah Resmi");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jButton5.setBackground(new java.awt.Color(51, 102, 255));
+        jButton5.setBackground(new java.awt.Color(14, 165, 233));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Lainnya");
         jButton5.addActionListener(this::jButton5ActionPerformed);
@@ -397,7 +399,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         jLabel34.setText("Kategori Berkas");
 
         jButton14.setBackground(new java.awt.Color(226, 231, 255));
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (9).png"))); // NOI18N
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(62, 72, 80));
@@ -452,7 +454,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
         );
 
         jButton15.setBackground(new java.awt.Color(226, 231, 255));
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Input.png"))); // NOI18N
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(62, 72, 80));
@@ -506,7 +508,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton6.setBackground(new java.awt.Color(51, 102, 255));
+        jButton6.setBackground(new java.awt.Color(14, 165, 233));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Lainnya");
         jButton6.addActionListener(this::jButton6ActionPerformed);
@@ -634,6 +636,10 @@ public class PengirimanDokumen extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

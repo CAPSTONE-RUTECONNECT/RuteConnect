@@ -93,7 +93,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
         setTitle("Pembayaran");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(14, 165, 233));
         jPanel1.setPreferredSize(new java.awt.Dimension(390, 844));
 
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container.png"))); // NOI18N
@@ -102,7 +102,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
         logout.addActionListener(this::logoutActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 101, 145));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pembayaran");
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
@@ -122,7 +122,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 257, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +138,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
         panelTopUp.setPreferredSize(new java.awt.Dimension(176, 120));
 
         jButton2.setBackground(new java.awt.Color(226, 231, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow (1).png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(62, 72, 80));
@@ -321,7 +321,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
         );
 
         jButton4.setBackground(new java.awt.Color(226, 231, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(2).png"))); // NOI18N
 
         jLabel16.setForeground(new java.awt.Color(62, 72, 80));
         jLabel16.setText("Tunai / Cash");
@@ -355,7 +355,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
+        jButton1.setBackground(new java.awt.Color(14, 165, 233));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Bayar & Pesan Sekarang");
 
@@ -410,18 +410,21 @@ public class StatusPembayaran extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(logout))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelTopUp, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(panelTopUp, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(290, 290, 290)
+                                    .addComponent(logout))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
