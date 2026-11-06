@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<img src=""C:\Users\Lenovo\Documents\RuteConnect_ Digital Transport and Delivery.png"" width="100%" alt="RuteConnect Banner"/>
+<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/Dokumentasi/second/RuteConnect_%20Journey%20and%20Delivery%20Network.png" width="100%" alt="RuteConnect Banner"/>
 
 <br/>
 
@@ -105,7 +105,7 @@ Sistem ini dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Jav
 
 <div align="center">
 
-<img src="docs/images/route-illustration.png" width="90%" alt="Ilustrasi Konsep RuteConnect"/>
+<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/Dokumentasi/second/RuteConnect_%20Digital%20Transport%20and%20Delivery.png" width="90%" alt="Ilustrasi Konsep RuteConnect"/>
 
 <em>Ilustrasi konsep perjalanan dan pengiriman pada RuteConnect.</em>
 
