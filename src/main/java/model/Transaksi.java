@@ -20,6 +20,7 @@ public class Transaksi {
     // Metode pembayaran
     public static final String CASH = "Cash";
     public static final String E_WALLET = "E-Wallet";
+    // RutePay = saldo_wallet milik pelanggan
     public static final String SALDO = "Saldo";
 
     private int transaksiId;

@@ -17,6 +17,7 @@ public class DriverDashboard extends javax.swing.JFrame {
      */
     public DriverDashboard() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

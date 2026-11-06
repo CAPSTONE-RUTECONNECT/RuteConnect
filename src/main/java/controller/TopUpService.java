@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service;
+package controller;
 import java.sql.*;
 import java.math.BigDecimal;
 
@@ -26,9 +26,8 @@ public class TopUpService {
             if (nominal.compareTo(BigDecimal.ZERO) <= 0) {
                 return false;
             }
-            
-            // Langsung panggil method prosesTopUp yang sudah ada di bawahnya
-            return prosesTopUp(util.Session.userId, nominal);
+
+            return prosesTopUp(Session.userId, nominal);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

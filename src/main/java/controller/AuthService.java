@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package util;
+package controller;
 
+import util.Validator;
 import java.sql.*;
 import config.Koneksi;
 
@@ -28,7 +29,7 @@ public class AuthService {
                 PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, email.trim());
             ps.setString(2, password);
-            
+
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Session.userId = rs.getInt("user_id");
@@ -56,7 +57,7 @@ public class AuthService {
             c.setAutoCommit(false);
             try {
                 try (PreparedStatement cek = c.prepareStatement(
-                "SELECT 1 FROM user WHERE email = ?")) {
+                        "SELECT 1 FROM user WHERE email = ?")) {
                     cek.setString(1, email.trim());
                     if (cek.executeQuery().next()) {
                         c.rollback();
@@ -64,15 +65,15 @@ public class AuthService {
                     }
                 }
                 int newId;
-                try (PreparedStatement mx = c.prepareStatement (
-                "SELECT IFNULL(MAX(user_id), 0) + 1 FROM user FOR UPDATE");
+                try (PreparedStatement mx = c.prepareStatement(
+                        "SELECT IFNULL(MAX(user_id), 0) + 1 FROM user FOR UPDATE");
                         ResultSet rs = mx.executeQuery()) {
                     rs.next();
                     newId = rs.getInt(1);
                 }
                 try (PreparedStatement ins = c.prepareStatement(
-                "INSERT INTO user(user_id, nama, no_telepon, email, password, role)"
-                + "VALUES (?, ?, ?, ?, ?, 'Pelanggan')")) {
+                        "INSERT INTO user(user_id, nama, no_telepon, email, password, role)"
+                        + "VALUES (?, ?, ?, ?, ?, 'Pelanggan')")) {
                     ins.setInt(1, newId);
                     ins.setString(2, nama.trim());
                     ins.setString(3, telp.trim());
@@ -81,7 +82,7 @@ public class AuthService {
                     ins.executeUpdate();
                 }
                 try (PreparedStatement pel = c.prepareStatement(
-                "INSERT INTO pelanggan(user_id, saldo_wallet) VALUES (?, 0)")) {
+                        "INSERT INTO pelanggan(user_id, saldo_wallet) VALUES (?, 0)")) {
                     pel.setInt(1, newId);
                     pel.executeUpdate();
                 }

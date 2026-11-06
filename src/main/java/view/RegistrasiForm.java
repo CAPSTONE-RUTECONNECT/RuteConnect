@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-import util.AuthService;
+import controller.AuthService;
 import javax.swing.JOptionPane;
 
 /**

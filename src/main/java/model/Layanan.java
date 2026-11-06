@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import util.JarakHelper;
 
 /**
  *
@@ -30,11 +29,6 @@ public class Layanan {
     
     public double hitungTarif(double jarakKm) {
         return tarifPerKm * jarakKm;
-    }
-    
-    public double hitungTarif(String lokasiJemput, String lokasiTujuan) {
-        double km = JarakHelper.hitungKm(lokasiJemput, lokasiTujuan);
-        return km < 0 ? -1 : hitungTarif(km);
     }
     
     public int getLayananId() {
@@ -72,22 +66,12 @@ public class Layanan {
         }
         this.jenisKendaraan = jenisKendaraan.toLowerCase();
     }
-    public void setKelasLayanan(String kelasLayanan) {
-        if (kelasLayanan == null
-                || !(kelasLayanan.equalsIgnoreCase("ekonomi")
-                || kelasLayanan.equalsIgnoreCase("reguler")
-                || kelasLayanan.equalsIgnoreCase("premium"))) {
-            throw new IllegalArgumentException("Kelas layanan harus ekonomi, reguler, atau premium");
-        }
-        this.kelasLayanan = kelasLayanan.toLowerCase();
-    }
     public void setTarifPerKm(double tarifPerKm) {
         if (Double.isNaN(tarifPerKm) || Double.isInfinite(tarifPerKm) || tarifPerKm <= 0) {
             throw new IllegalArgumentException("Tarif per km harus lebih dari 0");
         }
         this.tarifPerKm = tarifPerKm;
     }
-    
     @Override
     public String toString() {
         return namaLayanan;

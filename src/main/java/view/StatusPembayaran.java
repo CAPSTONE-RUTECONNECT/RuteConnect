@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,37 +11,89 @@ import javax.swing.JOptionPane;
 public class StatusPembayaran extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(StatusPembayaran.class.getName());
+    private double totalPembayaran;
+    
+    public StatusPembayaran() {
+        this(0);
+    }
 
     /**
      * Creates new form MenuPelangganForm
      */
-    public StatusPembayaran() {
+    public StatusPembayaran(double totalPembayaran) {
+        this.totalPembayaran = totalPembayaran;
         initComponents();
         setLocationRelativeTo(null);
-        
-     
-        util.Session.refreshSaldo();
-        
-        
-        
-       
-        panelTopUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelTopUp.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        lblTotalPembayaran.setText(
+            "Rp " + String.format("%,.0f", totalPembayaran).replace(',', '.')
+        );
+
+        controller.Session.refreshSaldo();
+        lblSisaSaldo.setText(
+            "Sisa Saldo: " + controller.Fmt.rupiah(controller.Session.saldo)
+        );
+
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+
+    javax.swing.ButtonGroup metodeGroup = new javax.swing.ButtonGroup();
+    metodeGroup.add(radioBtnRutePay);
+    metodeGroup.add(radioBtnEwallet);
+    metodeGroup.add(radioBtnCash);
+
+    setupPaymentPanel(panelRutePay, radioBtnRutePay);
+    setupPaymentPanel(panelEwallet, radioBtnEwallet);
+    setupPaymentPanel(panelCash, radioBtnCash);
+}
+
+    // Fungsi bantuan interaksi panel pembayaran (hover & click)
+    private void setupPaymentPanel(javax.swing.JPanel panel, javax.swing.JRadioButton radioButton) {
+        java.awt.Color normalColor = new java.awt.Color(242, 243, 255);
+        java.awt.Color hoverColor = new java.awt.Color(230, 238, 255);  // Biru muda lembut saat di-hover
+        java.awt.Color selectColor = new java.awt.Color(210, 225, 255); // Biru terang saat dipilih
+
+        panel.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelTopUp.setBackground(new java.awt.Color(240, 245, 255));
+                if (!radioButton.isSelected()) {
+                    panel.setBackground(hoverColor);
+                }
             }
+
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelTopUp.setBackground(java.awt.Color.WHITE);
+                if (!radioButton.isSelected()) {
+                    panel.setBackground(normalColor);
+                }
             }
+
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                java.awt.EventQueue.invokeLater(() -> new TopUpForm().setVisible(true));
-                dispose();
+                radioButton.setSelected(true);
+                updatePaymentSelection();
             }
         });
-        
+
+        // Kalau radio button-nya diklik langsung
+        radioButton.addActionListener(e -> updatePaymentSelection());
+    }
+
+    // Fungsi untuk mereset warna dan menyamakan panel yang aktif
+    private void updatePaymentSelection() {
+        java.awt.Color normalColor = new java.awt.Color(242, 243, 255);
+        java.awt.Color selectColor = new java.awt.Color(210, 225, 255);
+
+        panelRutePay.setBackground(normalColor);
+        panelEwallet.setBackground(normalColor);
+        panelCash.setBackground(normalColor);
+
+        if (radioBtnRutePay.isSelected()) {
+            panelRutePay.setBackground(selectColor);
+        } else if (radioBtnEwallet.isSelected()) {
+            panelEwallet.setBackground(selectColor);
+        } else if (radioBtnCash.isSelected()) {
+            panelCash.setBackground(selectColor);
+        }
     }
 
     /**
@@ -54,12 +105,8 @@ public class StatusPembayaran extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        logout = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         panelTopUp = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -70,402 +117,324 @@ public class StatusPembayaran extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        panelRutePay = new javax.swing.JPanel();
+        radioBtnRutePay = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        lblSisaSaldo = new javax.swing.JLabel();
+        panelEwallet = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        radioBtnEwallet = new javax.swing.JRadioButton();
+        panelCash = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        radioBtnCash = new javax.swing.JRadioButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        jLabel29 = new javax.swing.JLabel();
+        passwordCheckBox = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        lblTotalPembayaran = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pembayaran");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setResizable(false);
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollPane1.setHorizontalScrollBar(null);
 
         jPanel1.setBackground(new java.awt.Color(14, 165, 233));
-        jPanel1.setPreferredSize(new java.awt.Dimension(390, 844));
-
-        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container.png"))); // NOI18N
-        logout.setText("Keluar");
-        logout.setFocusPainted(false);
-        logout.addActionListener(this::logoutActionPerformed);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pembayaran");
-
-        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Total Pembayaran");
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Rp.38.000");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 257, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.setMaximumSize(new java.awt.Dimension(390, 1100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(390, 900));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelTopUp.setBackground(new java.awt.Color(255, 255, 255));
-        panelTopUp.setPreferredSize(new java.awt.Dimension(176, 120));
+        panelTopUp.setPreferredSize(new java.awt.Dimension(390, 1100));
+        panelTopUp.setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(242, 243, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(398, 234));
+        jPanel3.setLayout(null);
 
         jButton2.setBackground(new java.awt.Color(226, 231, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow (1).png"))); // NOI18N
+        jPanel3.add(jButton2);
+        jButton2.setBounds(20, 10, 38, 38);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(62, 72, 80));
         jLabel3.setText("RuteRide/Kilat");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(70, 10, 125, 20);
 
         jLabel4.setForeground(new java.awt.Color(62, 72, 80));
         jLabel4.setText("Dokumen & Penumpang Cepat");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(70, 30, 175, 20);
 
         panelDokumen.setBackground(new java.awt.Color(255, 255, 255));
+        panelDokumen.setLayout(null);
 
         jLabel5.setForeground(new java.awt.Color(62, 72, 80));
         jLabel5.setText("Jemput");
+        panelDokumen.add(jLabel5);
+        jLabel5.setBounds(30, 10, 175, 16);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(62, 72, 80));
         jLabel6.setText("Stasiun MRT Bundaran HI");
+        panelDokumen.add(jLabel6);
+        jLabel6.setBounds(30, 20, 175, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(62, 72, 80));
         jLabel7.setText("Dokumen & Penumpang Cepat");
+        panelDokumen.add(jLabel7);
+        jLabel7.setBounds(30, 60, 175, 30);
 
         jLabel8.setForeground(new java.awt.Color(62, 72, 80));
         jLabel8.setText("Tujuan");
+        panelDokumen.add(jLabel8);
+        jLabel8.setBounds(30, 50, 175, 16);
 
-        javax.swing.GroupLayout panelDokumenLayout = new javax.swing.GroupLayout(panelDokumen);
-        panelDokumen.setLayout(panelDokumenLayout);
-        panelDokumenLayout.setHorizontalGroup(
-            panelDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDokumenLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(panelDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(177, Short.MAX_VALUE))
-        );
-        panelDokumenLayout.setVerticalGroup(
-            panelDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDokumenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(12, 12, 12))
-        );
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(4).png"))); // NOI18N
+        panelDokumen.add(jLabel23);
+        jLabel23.setBounds(10, 20, 40, 50);
+
+        jPanel3.add(panelDokumen);
+        panelDokumen.setBounds(20, 60, 310, 100);
 
         jLabel9.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel9.setText("Estimasi Sampai");
+        jLabel9.setText("Estimasi Sampai:");
+        jPanel3.add(jLabel9);
+        jLabel9.setBounds(20, 170, 120, 16);
 
-        jLabel12.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel12.setText("18 - 22 Menit ( 4.2 Km )");
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 97, 148));
+        jLabel12.setText("18 - 22 Menit (4.2 Km)");
+        jPanel3.add(jLabel12);
+        jLabel12.setBounds(202, 170, 130, 16);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12))
-                        .addComponent(panelDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(panelDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addContainerGap())
-        );
+        panelTopUp.add(jPanel3);
+        jPanel3.setBounds(22, 19, 340, 204);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(62, 72, 80));
         jLabel11.setText("Pilih Metode Pembayaran");
+        panelTopUp.add(jLabel11);
+        jLabel11.setBounds(20, 240, 200, 20);
 
-        jLabel10.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel10.setForeground(new java.awt.Color(0, 97, 148));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Bebas Biaya Admin");
+        panelTopUp.add(jLabel10);
+        jLabel10.setBounds(261, 244, 110, 16);
 
-        jButton3.setBackground(new java.awt.Color(226, 231, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(4).png"))); // NOI18N
+        panelRutePay.setBackground(new java.awt.Color(242, 243, 255));
+        panelRutePay.setLayout(null);
 
-        jLabel13.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel13.setText("Dompet Digital ( E-Wallet )");
+        radioBtnRutePay.addActionListener(this::radioBtnRutePayActionPerformed);
+        panelRutePay.add(radioBtnRutePay);
+        radioBtnRutePay.setBounds(310, 20, 19, 20);
 
-        jLabel14.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel14.setText("GoPay, OVO, ShopeePay, DANA");
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/RutePay Icon Kecil.png"))); // NOI18N
+        panelRutePay.add(jLabel13);
+        jLabel13.setBounds(10, 10, 50, 50);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
-        );
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("RutePay");
+        panelRutePay.add(jLabel14);
+        jLabel14.setBounds(70, 10, 100, 20);
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel18.setText("Verifikasi Kata Sandi");
+        lblSisaSaldo.setForeground(new java.awt.Color(63, 72, 80));
+        lblSisaSaldo.setText("Sisa Saldo: Rp");
+        panelRutePay.add(lblSisaSaldo);
+        lblSisaSaldo.setBounds(70, 30, 220, 16);
 
-        jLabel19.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel19.setText("Masukan kata sandi login RuteConnect anda untuk memvalidasi ");
+        panelTopUp.add(panelRutePay);
+        panelRutePay.setBounds(20, 270, 350, 60);
 
-        jLabel20.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel20.setText("otorisasi pembayaran pesanan ini");
+        panelEwallet.setBackground(new java.awt.Color(242, 243, 255));
+        panelEwallet.setLayout(null);
 
-        txtEmail.addActionListener(this::txtEmailActionPerformed);
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow_1.png"))); // NOI18N
+        panelEwallet.add(jLabel17);
+        jLabel17.setBounds(0, 0, 70, 60);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtEmail))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Dompet Digital (E-Wallet)");
+        panelEwallet.add(jLabel18);
+        jLabel18.setBounds(70, 10, 200, 20);
 
-        jButton4.setBackground(new java.awt.Color(226, 231, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(2).png"))); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(63, 72, 80));
+        jLabel19.setText("GoPay, OVO, ShopeePay, DANA");
+        panelEwallet.add(jLabel19);
+        jLabel19.setBounds(70, 30, 200, 16);
 
-        jLabel16.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel16.setText("Tunai / Cash");
+        radioBtnEwallet.addActionListener(this::radioBtnEwalletActionPerformed);
+        panelEwallet.add(radioBtnEwallet);
+        radioBtnEwallet.setBounds(310, 20, 20, 20);
 
-        jLabel17.setForeground(new java.awt.Color(62, 72, 80));
-        jLabel17.setText("Bayar,Langsung Saat Sampai Tujuan");
+        panelTopUp.add(panelEwallet);
+        panelEwallet.setBounds(20, 340, 350, 60);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelCash.setBackground(new java.awt.Color(242, 243, 255));
+        panelCash.setLayout(null);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(10).png"))); // NOI18N
+        panelCash.add(jLabel20);
+        jLabel20.setBounds(0, 0, 70, 60);
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setText("Tunai / Cash");
+        panelCash.add(jLabel25);
+        jLabel25.setBounds(70, 10, 100, 16);
+
+        jLabel26.setForeground(new java.awt.Color(63, 72, 80));
+        jLabel26.setText("Bayar langsung saat sampai tujuan");
+        panelCash.add(jLabel26);
+        jLabel26.setBounds(70, 30, 200, 16);
+
+        radioBtnCash.addActionListener(this::radioBtnCashActionPerformed);
+        panelCash.add(radioBtnCash);
+        radioBtnCash.setBounds(310, 20, 19, 20);
+
+        panelTopUp.add(panelCash);
+        panelCash.setBounds(20, 410, 350, 60);
+
+        jPanel6.setBackground(new java.awt.Color(242, 243, 255));
+        jPanel6.setLayout(null);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(11).png"))); // NOI18N
+        jLabel27.setText("Verifikasi Kata Sandi Akun");
+        jPanel6.add(jLabel27);
+        jLabel27.setBounds(20, 20, 230, 20);
+
+        jLabel28.setForeground(new java.awt.Color(63, 72, 80));
+        jLabel28.setText("<html>Masukkan kata sandi login RuteConnect Anda untuk<br>memvalidasi otorisasi pembayaran pesanan ini.</html>");
+        jPanel6.add(jLabel28);
+        jLabel28.setBounds(20, 40, 300, 40);
+
+        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel6.add(txtPassword);
+        txtPassword.setBounds(60, 100, 260, 40);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(5).png"))); // NOI18N
+        jPanel6.add(jLabel29);
+        jLabel29.setBounds(0, 90, 350, 60);
+
+        passwordCheckBox.setForeground(new java.awt.Color(148, 163, 184));
+        passwordCheckBox.setText("Tampilkan Password");
+        passwordCheckBox.addActionListener(this::passwordCheckBoxActionPerformed);
+        jPanel6.add(passwordCheckBox);
+        passwordCheckBox.setBounds(30, 150, 220, 20);
+
+        panelTopUp.add(jPanel6);
+        jPanel6.setBounds(20, 500, 350, 190);
 
         jButton1.setBackground(new java.awt.Color(14, 165, 233));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Bayar & Pesan Sekarang");
+        jButton1.setText("Bayar & Pesan Sekarang →");
+        panelTopUp.add(jButton1);
+        jButton1.setBounds(19, 700, 350, 50);
 
-        javax.swing.GroupLayout panelTopUpLayout = new javax.swing.GroupLayout(panelTopUp);
-        panelTopUp.setLayout(panelTopUpLayout);
-        panelTopUpLayout.setHorizontalGroup(
-            panelTopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTopUpLayout.createSequentialGroup()
-                .addGroup(panelTopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTopUpLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelTopUpLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelTopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(panelTopUpLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTopUpLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelTopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(20, 20, 20))
-        );
-        panelTopUpLayout.setVerticalGroup(
-            panelTopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTopUpLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelTopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
+        jPanel1.add(panelTopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 131, 390, 1100));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelTopUp, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(290, 290, 290)
-                                    .addComponent(logout))
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logout)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTopUp, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel7.setBackground(new java.awt.Color(2, 132, 199));
+        jPanel7.setLayout(null);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, -1));
+        jButton5.setBackground(new java.awt.Color(60, 175, 229));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(1).png"))); // NOI18N
+        jButton5.setBorder(null);
+        jPanel7.add(jButton5);
+        jButton5.setBounds(10, 10, 30, 30);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect logo kecil.png"))); // NOI18N
+        jPanel7.add(jLabel1);
+        jLabel1.setBounds(50, 10, 40, 30);
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Pembayaran");
+        jPanel7.add(jLabel21);
+        jLabel21.setBounds(90, 10, 120, 30);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (6).png"))); // NOI18N
+        jPanel7.add(jLabel22);
+        jLabel22.setBounds(320, 0, 50, 50);
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 50));
+
+        lblTotalPembayaran.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTotalPembayaran.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalPembayaran.setText("Rp 38.000");
+        jPanel1.add(lblTotalPembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 190, -1));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Total Pembayaran");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 56, 125, 30));
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Overlay+Shadow+OverlayBlur.png"))); // NOI18N
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 80, -1));
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+    private void radioBtnRutePayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnRutePayActionPerformed
         // TODO add your handling code here:
-        int pilihan = JOptionPane.showConfirmDialog(
-            this,
-            "Apakah Anda yakin ingin keluar?",
-            "Konfirmasi Logout",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE
-        );
+    }//GEN-LAST:event_radioBtnRutePayActionPerformed
 
-        if (pilihan == JOptionPane.YES_OPTION) {
-            util.AuthService.logout();
-            java.awt.EventQueue.invokeLater(() -> new view.FrameMenu().setVisible(true));
-            this.dispose();
+    private void passwordCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if (passwordCheckBox.isSelected()) {
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('\u2022'); 
         }
-    }//GEN-LAST:event_logoutActionPerformed
+    }//GEN-LAST:event_passwordCheckBoxActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+    private void radioBtnEwalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnEwalletActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
+    }//GEN-LAST:event_radioBtnEwalletActionPerformed
+
+    private void radioBtnCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnCashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBtnCashActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,21 +464,27 @@ public class StatusPembayaran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -518,14 +493,21 @@ public class StatusPembayaran extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JButton logout;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSisaSaldo;
+    private javax.swing.JLabel lblTotalPembayaran;
+    private javax.swing.JPanel panelCash;
     private javax.swing.JPanel panelDokumen;
+    private javax.swing.JPanel panelEwallet;
+    private javax.swing.JPanel panelRutePay;
     private javax.swing.JPanel panelTopUp;
-    private javax.swing.JTextField txtEmail;
+    private javax.swing.JCheckBox passwordCheckBox;
+    private javax.swing.JRadioButton radioBtnCash;
+    private javax.swing.JRadioButton radioBtnEwallet;
+    private javax.swing.JRadioButton radioBtnRutePay;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

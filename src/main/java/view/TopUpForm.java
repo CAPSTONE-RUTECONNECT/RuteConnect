@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-import service.TopUpService;
+import controller.TopUpService;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,6 @@ public class TopUpForm extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(390, 1230));
         getContentPane().removeAll();
         
-        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane(jPanel1);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16); // Biar smooth scroll-nya
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
@@ -35,15 +34,15 @@ public class TopUpForm extends javax.swing.JFrame {
         revalidate();
         repaint();
         
-        util.Session.refreshSaldo();
-        lblSaldo.setText(util.Fmt.rupiah(util.Session.saldo));
+        controller.Session.refreshSaldo();
+        lblSaldo.setText(controller.Fmt.rupiah(controller.Session.saldo));
         
         javax.swing.ButtonGroup metodeGroup = new javax.swing.ButtonGroup();
-        metodeGroup.add(radioBtnQris);
+        metodeGroup.add(radioBtnEwallet);
         metodeGroup.add(radioBtnBank);
         metodeGroup.add(radioBtnMinimarket);
         
-        setupPaymentPanel(panelQris, radioBtnQris);
+        setupPaymentPanel(panelEwallet, radioBtnEwallet);
         setupPaymentPanel(panelBank, radioBtnBank);
         setupPaymentPanel(panelMinimarket, radioBtnMinimarket);
         
@@ -90,7 +89,7 @@ public class TopUpForm extends javax.swing.JFrame {
         java.awt.Color normalColor = new java.awt.Color(242, 243, 255);
         java.awt.Color selectColor = new java.awt.Color(210, 225, 255);
 
-        panelQris.setBackground(normalColor);
+        panelEwallet.setBackground(normalColor);
         panelBank.setBackground(normalColor);
         panelMinimarket.setBackground(normalColor);
 
@@ -171,6 +170,7 @@ public class TopUpForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -201,11 +201,11 @@ public class TopUpForm extends javax.swing.JFrame {
         txtNominal = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        panelQris = new javax.swing.JPanel();
+        panelEwallet = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        radioBtnQris = new javax.swing.JRadioButton();
+        radioBtnEwallet = new javax.swing.JRadioButton();
         panelBank = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -222,14 +222,13 @@ public class TopUpForm extends javax.swing.JFrame {
         passwordCheckBox = new javax.swing.JCheckBox();
         jLabel25 = new javax.swing.JLabel();
         btnTopUp = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Top Up");
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(14, 165, 233));
-        jPanel1.setPreferredSize(new java.awt.Dimension(390, 844));
+        jPanel1.setPreferredSize(new java.awt.Dimension(390, 1230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -397,29 +396,29 @@ public class TopUpForm extends javax.swing.JFrame {
         jPanel3.add(jLabel13);
         jLabel13.setBounds(30, 460, 170, 20);
 
-        panelQris.setBackground(new java.awt.Color(242, 243, 255));
-        panelQris.setLayout(null);
+        panelEwallet.setBackground(new java.awt.Color(242, 243, 255));
+        panelEwallet.setLayout(null);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("QRIS Instan");
-        panelQris.add(jLabel16);
-        jLabel16.setBounds(60, 10, 150, 20);
+        jLabel16.setText("Dompet Digital (E-Wallet)");
+        panelEwallet.add(jLabel16);
+        jLabel16.setBounds(60, 10, 200, 20);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(5).png"))); // NOI18N
-        panelQris.add(jLabel14);
-        jLabel14.setBounds(10, 10, 50, 40);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow_1.png"))); // NOI18N
+        panelEwallet.add(jLabel14);
+        jLabel14.setBounds(10, 10, 50, 44);
 
         jLabel15.setForeground(new java.awt.Color(63, 72, 80));
         jLabel15.setText("BCA, Mandiri, GoPay, ShopeePay, OVO");
-        panelQris.add(jLabel15);
+        panelEwallet.add(jLabel15);
         jLabel15.setBounds(60, 30, 220, 16);
-        panelQris.add(radioBtnQris);
-        radioBtnQris.setBounds(300, 20, 20, 20);
+        panelEwallet.add(radioBtnEwallet);
+        radioBtnEwallet.setBounds(300, 20, 20, 20);
 
-        jPanel3.add(panelQris);
-        panelQris.setBounds(30, 500, 330, 60);
+        jPanel3.add(panelEwallet);
+        panelEwallet.setBounds(30, 500, 330, 60);
 
         panelBank.setBackground(new java.awt.Color(242, 243, 255));
         panelBank.setLayout(null);
@@ -506,10 +505,8 @@ public class TopUpForm extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 390, 1030));
 
-        getContentPane().add(jPanel1);
+        jScrollPane1.setViewportView(jPanel1);
 
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(12, 1400));
         getContentPane().add(jScrollPane1);
 
         pack();
@@ -536,7 +533,7 @@ public class TopUpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // 1. Validasi pilihan metode pembayaran (salah satu RadioButton harus dipilih)
-            if (!radioBtnQris.isSelected() && !radioBtnBank.isSelected() && !radioBtnMinimarket.isSelected()) {
+            if (!radioBtnEwallet.isSelected() && !radioBtnBank.isSelected() && !radioBtnMinimarket.isSelected()) {
                 JOptionPane.showMessageDialog(this, "Silakan pilih salah satu metode pembayaran terlebih dahulu!", "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -556,7 +553,7 @@ public class TopUpForm extends javax.swing.JFrame {
 
             // 3. Verifikasi password user yang sedang login menggunakan UserDao
             dao.UserDao userDao = new dao.UserDao();
-            boolean passwordValid = userDao.cekPassword(util.Session.userId, passwordInput);
+            boolean passwordValid = userDao.cekPassword(controller.Session.userId, passwordInput);
             if (!passwordValid) {
                 JOptionPane.showMessageDialog(this, "Password salah! Periksa kembali password Anda.", "Verifikasi Gagal", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -636,7 +633,7 @@ public class TopUpForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollBar jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl100;
     private javax.swing.JLabel lbl20;
     private javax.swing.JLabel lbl200;
@@ -649,12 +646,12 @@ public class TopUpForm extends javax.swing.JFrame {
     private javax.swing.JPanel panel50;
     private javax.swing.JPanel panel500;
     private javax.swing.JPanel panelBank;
+    private javax.swing.JPanel panelEwallet;
     private javax.swing.JPanel panelMinimarket;
-    private javax.swing.JPanel panelQris;
     private javax.swing.JCheckBox passwordCheckBox;
     private javax.swing.JRadioButton radioBtnBank;
+    private javax.swing.JRadioButton radioBtnEwallet;
     private javax.swing.JRadioButton radioBtnMinimarket;
-    private javax.swing.JRadioButton radioBtnQris;
     private javax.swing.JTextField txtNominal;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables

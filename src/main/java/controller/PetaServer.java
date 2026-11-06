@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package util;
+package controller;
 import com.sun.net.httpserver.HttpServer;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import javax.swing.SwingUtilities;
 
@@ -19,18 +20,27 @@ import javax.swing.SwingUtilities;
  */
 public class PetaServer {
     // Data yang dikirim peta setelah rute ketemu.
+    // Data yang dikirim peta setelah rute ketemu.
     public record Hasil(double jemputLat, double jemputLng,
                         double tujuanLat, double tujuanLng,
                         double km, int menit,
                         String namaJemput, String namaTujuan) {}
-
+    
     private static final int PORT = 8765;
+    public static final double BATAS_KM = 100.0; // jarak maksimal jemput ke tujuan
     private HttpServer server;
     private final Consumer<Hasil> onHasil;
+    private final Runnable onReset;
+    private final AtomicInteger versiReset = new AtomicInteger();
 
-    // onHasil dipanggil di thread Swing, jadi aman dipakai untuk mengisi komponen GUI.
     public PetaServer(Consumer<Hasil> onHasil) {
+        this(onHasil, null);
+    }
+
+    // onReset dipanggil di thread Swing saat tombol Reset di browser ditekan
+    public PetaServer(Consumer<Hasil> onHasil, Runnable onReset) {
         this.onHasil = onHasil;
+        this.onReset = onReset;
     }
 
     public void mulai() throws IOException {
@@ -64,6 +74,10 @@ public class PetaServer {
                         Double.parseDouble(p[2]), Double.parseDouble(p[3]),
                         Double.parseDouble(p[4]), Integer.parseInt(p[5].trim()),
                         p[6], p[7]);
+                    if (h.km() > BATAS_KM) {          // lebih dari 100 km -> tolak
+                        ex.sendResponseHeaders(400, -1);
+                        return;
+                    }
                     SwingUtilities.invokeLater(() -> onHasil.accept(h));
                 }
                 ex.sendResponseHeaders(200, -1);
@@ -73,10 +87,37 @@ public class PetaServer {
                 ex.close();
             }
         });
-        
+        // browser menekan tombol "Reset Lokasi" -> kosongkan tampilan di Swing
+        server.createContext("/reset", ex -> {
+            try {
+                if (onReset != null) {
+                    SwingUtilities.invokeLater(onReset);
+                }
+                ex.sendResponseHeaders(200, -1);
+            } finally {
+                ex.close();
+            }
+        });
+        // browser menanyakan nomor versi reset; kalau berubah, berarti Swing minta reset
+        server.createContext("/versi", ex -> {
+            try {
+                byte[] data = String.valueOf(versiReset.get()).getBytes(StandardCharsets.UTF_8);
+                ex.getResponseHeaders().set("Content-Type", "text/plain; charset=UTF-8");
+                ex.getResponseHeaders().set("Cache-Control", "no-store");
+                ex.sendResponseHeaders(200, data.length);
+                ex.getResponseBody().write(data);
+            } finally {
+                ex.close();
+            }
+        });
         server.start();
     }
-
+    
+    // dipanggil dari Swing: minta peta di browser ikut direset
+    public void resetPeta() {
+        versiReset.incrementAndGet();
+    }
+    
     public void bukaDiBrowser() throws Exception {
         Desktop.getDesktop().browse(URI.create("http://localhost:" + PORT + "/"));
     }

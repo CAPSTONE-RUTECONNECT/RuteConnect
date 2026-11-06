@@ -123,6 +123,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div class="info">
             Klik tombol lokasi, lalu klik titik
             yang diinginkan pada peta.
+            Jarak maksimal jemput - tujuan: 100 km.
         </div>
 
     </div>
@@ -150,6 +151,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         // 2. VARIABEL LOKASI
         var mode = 'pickup';
+        // Batas maksimal jarak lokasi jemput ke lokasi tujuan (km)
+        var MAX_KM = 100;
 
         var pickup = null;
         var destination = null;
@@ -209,6 +212,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
             var lat = e.latlng.lat;
             var lng = e.latlng.lng;
+            
+            // Cek awal: jarak garis lurus ke titik yang lain tidak boleh > MAX_KM
+            var titikLain = (mode === 'pickup') ? destination : pickup;
+            if (titikLain && map.distance(titikLain, [lat, lng]) / 1000 > MAX_KM) {
+                document.getElementById('status').innerText =
+                    'Jarak lokasi jemput dan tujuan maksimal ' + MAX_KM +
+                    ' km. Silakan pilih titik lain yang lebih dekat.';
+                return;
+            }
 
             if (mode === 'pickup') {
 
@@ -243,7 +255,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             updateStatus();
 
             if (pickup && destination) {
-                getRoute();
+                getRoute(mode);
             }
 
         });
@@ -271,7 +283,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         }
 
         // 6. MENCARI RUTE PERJALANAN 
-async function getRoute() {
+async function getRoute(modeKlik) {
 
     document.getElementById('status').innerText =
         'Sedang mencari rute perjalanan...';
@@ -296,6 +308,11 @@ async function getRoute() {
         }
 
         // Mengambil koordinat rute
+        var jarakRute = data.routes[0].distance / 1000;
+        if (jarakRute > MAX_KM) {
+            batalkanTitik(modeKlik, jarakRute);
+            return;
+        }
         var coordinates =
             data.routes[0].geometry.coordinates;
 
@@ -354,9 +371,29 @@ async function getRoute() {
 
     }
 }
+// Membatalkan titik yang terakhir dipilih karena jarak melebihi batas
+        function batalkanTitik(jenis, jarak) {
 
+            if (jenis === 'pickup') {
+                if (pickupMarker) map.removeLayer(pickupMarker);
+                pickup = null;
+                pickupName = null;
+                pickupMarker = null;
+            } else {
+                if (destinationMarker) map.removeLayer(destinationMarker);
+                destination = null;
+                destinationName = null;
+                destinationMarker = null;
+            }
+
+            document.getElementById('status').innerText =
+                'Jarak rute ' + jarak.toFixed(1) + ' km melebihi batas maksimal ' +
+                MAX_KM + ' km. Silakan pilih ulang lokasi ' +
+                (jenis === 'pickup' ? 'jemput' : 'tujuan') + '.';
+        }
         // 7. RESET PETA
-        function resetMap() {
+        // Membersihkan peta di browser saja (tidak memberi tahu aplikasi Swing)
+        function resetLokal() {
 
             if (pickupMarker) {
                 map.removeLayer(pickupMarker);
@@ -386,6 +423,29 @@ async function getRoute() {
             map.setView([-0.5022, 117.1537], 13);
 
         }
+
+        // Dipanggil tombol "Reset Lokasi": reset peta + kabari aplikasi Swing
+        function resetMap() {
+            resetLokal();
+            fetch('/reset', { method: 'POST' }).catch(function () {});
+        }
+
+        // 8. SINKRON DENGAN APLIKASI SWING
+        // Tiap 1 detik tanya nomor versi reset. Kalau berubah, berarti
+        // tombol Reset di aplikasi Swing ditekan -> reset peta ini juga.
+        var versiReset = null;
+        setInterval(async function () {
+            try {
+                var r = await fetch('/versi', { cache: 'no-store' });
+                var v = parseInt(await r.text(), 10);
+                if (versiReset === null) {
+                    versiReset = v;          // pembacaan pertama = patokan
+                } else if (v !== versiReset) {
+                    versiReset = v;
+                    resetLokal();
+                }
+            } catch (e) { }
+        }, 1000);
     </script>
 </body>
 </html>

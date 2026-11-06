@@ -19,15 +19,7 @@ public class StatusRiwayat extends javax.swing.JFrame {
     public StatusRiwayat() {
         initComponents();
         setLocationRelativeTo(null);
-        
-     
-        util.Session.refreshSaldo();
-        
-        
-        
-       
-      
-        
+        controller.Session.refreshSaldo();
     }
 
     /**

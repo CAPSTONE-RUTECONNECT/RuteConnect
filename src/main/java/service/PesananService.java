@@ -18,7 +18,7 @@ public class PesananService {
     private final DriverDao driverDao = new DriverDao();
     
     private static boolean isWallet(String metode) {
-        return Transaksi.E_WALLET.equalsIgnoreCase(metode) || Transaksi.SALDO.equalsIgnoreCase(metode);
+        return Transaksi.SALDO.equalsIgnoreCase(metode);
     }
     public Hasil buatPesanan(Pesanan p, String metode) {
         final boolean wallet = isWallet(metode);

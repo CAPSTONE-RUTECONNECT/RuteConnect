@@ -19,15 +19,7 @@ public class PengirimanDokumen extends javax.swing.JFrame {
     public PengirimanDokumen() {
         initComponents();
         setLocationRelativeTo(null);
-        
-     
-        util.Session.refreshSaldo();
-        
-        
-        
-       
-      
-        
+        controller.Session.refreshSaldo();
     }
 
     /**
