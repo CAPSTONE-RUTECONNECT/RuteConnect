@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<img src="docs/images/ruteconnect-banner.png" width="100%" alt="RuteConnect Banner"/>
+<img src=""C:\Users\Lenovo\Documents\RuteConnect_ Digital Transport and Delivery.png"" width="100%" alt="RuteConnect Banner"/>
 
 <br/>
 
