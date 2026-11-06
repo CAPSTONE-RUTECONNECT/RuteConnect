@@ -202,6 +202,11 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
 
         panelDataPesanan1.setBackground(new java.awt.Color(14, 165, 233));
         panelDataPesanan1.setForeground(new java.awt.Color(14, 165, 233));
+        panelDataPesanan1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDataPesanan1MouseClicked(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Data Pesanan.png"))); // NOI18N
         jLabel5.setText("jLabel4");
@@ -209,6 +214,11 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Data Pesanan");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDataPesanan1Layout = new javax.swing.GroupLayout(panelDataPesanan1);
         panelDataPesanan1.setLayout(panelDataPesanan1Layout);
@@ -250,7 +260,45 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(10, 0, 60, 80);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 720));
+        panelDataPesanan2.setBackground(new java.awt.Color(14, 165, 233));
+        panelDataPesanan2.setForeground(new java.awt.Color(14, 165, 233));
+
+        jLabel29.setBackground(new java.awt.Color(14, 165, 233));
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Laporan");
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Laporan Putih.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelDataPesanan2Layout = new javax.swing.GroupLayout(panelDataPesanan2);
+        panelDataPesanan2.setLayout(panelDataPesanan2Layout);
+        panelDataPesanan2Layout.setHorizontalGroup(
+            panelDataPesanan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDataPesanan2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel31)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel29)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        panelDataPesanan2Layout.setVerticalGroup(
+            panelDataPesanan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDataPesanan2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDataPesanan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(panelDataPesanan2);
+        panelDataPesanan2.setBounds(0, 400, 240, 60);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect.png"))); // NOI18N
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 100, 100);
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 850));
 
         jPanel5.setBackground(new java.awt.Color(14, 165, 233));
 
@@ -566,7 +614,9 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
