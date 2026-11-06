@@ -53,6 +53,13 @@ public class DriverDashboard extends javax.swing.JFrame {
         totalRute = new javax.swing.JTextField();
         jarakJemputKM = new javax.swing.JTextField();
         jarakKM2 = new javax.swing.JTextField();
+        pesananMasukRuteRide = new javax.swing.JTextField();
+        waktuRuteRide = new javax.swing.JTextField();
+        hargaRuteRide = new javax.swing.JTextField();
+        jarakJemputRuteRide = new javax.swing.JTextField();
+        totalRuteRuteRide = new javax.swing.JTextField();
+        jenisPesananRuteRide = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         panelRuteConnect = new javax.swing.JLabel();
         panelLogo = new javax.swing.JLabel();
@@ -81,39 +88,37 @@ public class DriverDashboard extends javax.swing.JFrame {
         labelTotalRuteDokumen = new javax.swing.JLabel();
         tolakPesanan = new javax.swing.JToggleButton();
         terimaPesanan = new javax.swing.JToggleButton();
-        jLabel10 = new javax.swing.JLabel();
+        labelDokumenMasuk = new javax.swing.JLabel();
         labelWaktuDokumen = new javax.swing.JLabel();
         labelKirimDokumen = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        labelAlamatDokumen = new javax.swing.JLabel();
+        labelHargaDokumen = new javax.swing.JLabel();
         panelRuteRide = new javax.swing.JPanel();
-        pesananMasukRuteRide = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        waktuRuteRide = new javax.swing.JTextField();
-        jenisPesananRuteRide = new javax.swing.JTextField();
-        alamatRudeRide = new javax.swing.JTextField();
-        hargaRuteRide = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
-        jarakJemputRuteRide = new javax.swing.JTextField();
-        jarakJemputKMRuteRide = new javax.swing.JTextField();
-        totalRuteRuteRide = new javax.swing.JTextField();
-        jarakKMRuteRide = new javax.swing.JTextField();
-        TolakRuteRide = new javax.swing.JButton();
-        TerimaRuteRide = new javax.swing.JButton();
+        labelJarakJemputRuteRide = new javax.swing.JLabel();
+        labelTotalRuteRuteRide = new javax.swing.JLabel();
+        labelJarakJemputKMRuteRide = new javax.swing.JLabel();
+        labelTotalRuteKMRuteRide = new javax.swing.JLabel();
+        buttonTolakRuteRide = new javax.swing.JButton();
+        buttonTerimaRuteRide = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        labelHargaRuteConnect = new javax.swing.JLabel();
+        labelAlamatRuteRide = new javax.swing.JLabel();
+        labelPesananRuteRide = new javax.swing.JLabel();
         panelRuteCar = new javax.swing.JPanel();
-        pesananMasukRuteCar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         waktuRuteCar = new javax.swing.JTextField();
-        pesananRuteCar = new javax.swing.JTextField();
-        alamatRuteCar = new javax.swing.JTextField();
-        jPanel13 = new javax.swing.JPanel();
-        jarakJemputRuteCar = new javax.swing.JTextField();
-        jarakJemputKMRuteCar = new javax.swing.JTextField();
-        totalRuteRuteCar4 = new javax.swing.JTextField();
-        jarakKMRuteCar = new javax.swing.JTextField();
         tolakRuteCar = new javax.swing.JButton();
         terimaRuteCar = new javax.swing.JButton();
-        hargaRuteCar = new javax.swing.JTextField();
+        labelhargaRuteCar = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        labelJarakJemputRuteCar = new javax.swing.JLabel();
+        labelJarakJemputRuteCarKM = new javax.swing.JLabel();
+        labelPemesananRuteCar = new javax.swing.JLabel();
+        alamatRuteCar = new javax.swing.JLabel();
         panelOrderBerjalan = new javax.swing.JPanel();
         orderID = new javax.swing.JTextField();
         jenisOrder = new javax.swing.JTextField();
@@ -123,16 +128,7 @@ public class DriverDashboard extends javax.swing.JFrame {
         textStatusJemput = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -233,6 +229,50 @@ public class DriverDashboard extends javax.swing.JFrame {
         jarakKM2.setForeground(new java.awt.Color(255, 255, 255));
         jarakKM2.setText("4.8 km (16 mnt)");
 
+        pesananMasukRuteRide.setBackground(new java.awt.Color(51, 102, 160));
+        pesananMasukRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pesananMasukRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        pesananMasukRuteRide.setText("Pesanan Masuk RuteRide!");
+
+        waktuRuteRide.setBackground(new java.awt.Color(51, 102, 160));
+        waktuRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        waktuRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        waktuRuteRide.setText("28s");
+        waktuRuteRide.addActionListener(this::waktuRuteRideActionPerformed);
+
+        hargaRuteRide.setBackground(new java.awt.Color(14, 165, 233));
+        hargaRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        hargaRuteRide.setForeground(new java.awt.Color(255, 204, 0));
+        hargaRuteRide.setText("Rp. 25.000");
+        hargaRuteRide.addActionListener(this::hargaRuteRideActionPerformed);
+
+        jarakJemputRuteRide.setBackground(new java.awt.Color(51, 102, 160));
+        jarakJemputRuteRide.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jarakJemputRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        jarakJemputRuteRide.setText("Jarak Jemput");
+
+        totalRuteRuteRide.setBackground(new java.awt.Color(51, 102, 160));
+        totalRuteRuteRide.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        totalRuteRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        totalRuteRuteRide.setText("Total Rute");
+
+        jenisPesananRuteRide.setBackground(new java.awt.Color(14, 165, 233));
+        jenisPesananRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jenisPesananRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        jenisPesananRuteRide.setText("Pesanan RuteRide");
+        jenisPesananRuteRide.addActionListener(this::jenisPesananRuteRideActionPerformed);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelHeader.setBackground(new java.awt.Color(14, 165, 233));
@@ -307,7 +347,7 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(labelStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(buttonStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -361,14 +401,14 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addGap(176, 176, 176))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(buttonRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
-                        .addComponent(buttonKirimDokumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(buttonKirimDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -426,32 +466,32 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel15))
+                        .addGap(40, 40, 40)
+                        .addComponent(labelJarakJemputDokumen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(labelJarakJemputDokumen)))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel15)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(labelTotalRuteDokumen)
-                        .addGap(43, 43, 43))))
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(78, 78, 78))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16))
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelJarakJemputDokumen)
-                    .addComponent(labelTotalRuteDokumen))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(labelTotalRuteDokumen)
+                    .addComponent(labelJarakJemputDokumen))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         tolakPesanan.setBackground(new java.awt.Color(51, 102, 160));
@@ -464,9 +504,9 @@ public class DriverDashboard extends javax.swing.JFrame {
         terimaPesanan.setForeground(new java.awt.Color(255, 255, 255));
         terimaPesanan.setText("Terima Pesanan");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Pesanan Dokumen");
+        labelDokumenMasuk.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelDokumenMasuk.setForeground(new java.awt.Color(255, 255, 255));
+        labelDokumenMasuk.setText("Pesanan Dokumen Masuk!");
 
         labelWaktuDokumen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelWaktuDokumen.setForeground(new java.awt.Color(255, 255, 255));
@@ -476,43 +516,44 @@ public class DriverDashboard extends javax.swing.JFrame {
         labelKirimDokumen.setForeground(new java.awt.Color(255, 255, 255));
         labelKirimDokumen.setText("Kirim Dokumen");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Kantor PLN Samarinda");
+        labelAlamatDokumen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAlamatDokumen.setForeground(new java.awt.Color(255, 255, 255));
+        labelAlamatDokumen.setText("Kantor PLN Samarinda");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(252, 211, 77));
-        jLabel12.setText("Rp. 30.000");
+        labelHargaDokumen.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        labelHargaDokumen.setForeground(new java.awt.Color(252, 211, 77));
+        labelHargaDokumen.setText("Rp. 30.000");
 
         javax.swing.GroupLayout panelKirimDokumenLayout = new javax.swing.GroupLayout(panelKirimDokumen);
         panelKirimDokumen.setLayout(panelKirimDokumenLayout);
         panelKirimDokumenLayout.setHorizontalGroup(
             panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(tolakPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(terimaPesanan)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7))
-                            .addComponent(jLabel11))
+                        .addComponent(labelDokumenMasuk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelWaktuDokumen)
-                        .addGap(36, 36, 36))
+                        .addGap(50, 50, 50))
                     .addGroup(panelKirimDokumenLayout.createSequentialGroup()
-                        .addComponent(labelKirimDokumen)
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel12)))
-                .addGap(14, 14, 14))
+                        .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelAlamatDokumen)
+                            .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelKirimDokumenLayout.createSequentialGroup()
+                                    .addComponent(labelKirimDokumen)
+                                    .addGap(112, 112, 112)
+                                    .addComponent(labelHargaDokumen))))
+                        .addContainerGap(22, Short.MAX_VALUE))))
+            .addGroup(panelKirimDokumenLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(tolakPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(terimaPesanan)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelKirimDokumenLayout.setVerticalGroup(
             panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,74 +561,44 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelDokumenMasuk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelWaktuDokumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelKirimDokumen)
-                    .addComponent(jLabel12))
+                    .addComponent(labelHargaDokumen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(17, 17, 17)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAlamatDokumen)
                 .addGap(18, 18, 18)
-                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tolakPesanan, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(terimaPesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelKirimDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tolakPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(terimaPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         panelRuteRide.setBackground(new java.awt.Color(14, 165, 233));
 
-        pesananMasukRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        pesananMasukRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        pesananMasukRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        pesananMasukRuteRide.setText("Pesanan Masuk RuteRide!");
-
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(3).png"))); // NOI18N
-
-        waktuRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        waktuRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        waktuRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        waktuRuteRide.setText("28s");
-        waktuRuteRide.addActionListener(this::waktuRuteRideActionPerformed);
-
-        jenisPesananRuteRide.setBackground(new java.awt.Color(14, 165, 233));
-        jenisPesananRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jenisPesananRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        jenisPesananRuteRide.setText("Pesanan RuteRide");
-
-        alamatRudeRide.setBackground(new java.awt.Color(14, 165, 233));
-        alamatRudeRide.setForeground(new java.awt.Color(255, 255, 255));
-        alamatRudeRide.setText("BigMall Samarinda");
-
-        hargaRuteRide.setBackground(new java.awt.Color(14, 165, 233));
-        hargaRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        hargaRuteRide.setForeground(new java.awt.Color(255, 204, 0));
-        hargaRuteRide.setText("Rp. 25.000");
-        hargaRuteRide.addActionListener(this::hargaRuteRideActionPerformed);
 
         jPanel12.setBackground(new java.awt.Color(51, 102, 160));
 
-        jarakJemputRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        jarakJemputRuteRide.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jarakJemputRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        jarakJemputRuteRide.setText("Jarak Jemput");
+        labelJarakJemputRuteRide.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelJarakJemputRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        labelJarakJemputRuteRide.setText("Jarak Jemput");
 
-        jarakJemputKMRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        jarakJemputKMRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jarakJemputKMRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        jarakJemputKMRuteRide.setText("2.4 km (8 mnt)");
+        labelTotalRuteRuteRide.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTotalRuteRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        labelTotalRuteRuteRide.setText("Total Rute");
 
-        totalRuteRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        totalRuteRuteRide.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        totalRuteRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        totalRuteRuteRide.setText("Total Rute");
+        labelJarakJemputKMRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelJarakJemputKMRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        labelJarakJemputKMRuteRide.setText("13.48 km (36 mnt)");
 
-        jarakKMRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        jarakKMRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jarakKMRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        jarakKMRuteRide.setText("3.11 (10 mnt)");
+        labelTotalRuteKMRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTotalRuteKMRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        labelTotalRuteKMRuteRide.setText("4.3 km (12 mnt)");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -596,43 +607,66 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jarakJemputRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(labelJarakJemputRuteRide))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jarakJemputKMRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
+                        .addComponent(labelJarakJemputKMRuteRide)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(totalRuteRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))
+                        .addComponent(labelTotalRuteRuteRide)
+                        .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jarakKMRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
+                        .addComponent(labelTotalRuteKMRuteRide)
+                        .addGap(53, 53, 53))))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jarakJemputRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalRuteRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(labelJarakJemputRuteRide))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelTotalRuteRuteRide)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jarakJemputKMRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jarakKMRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelJarakJemputKMRuteRide)
+                    .addComponent(labelTotalRuteKMRuteRide))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        TolakRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        TolakRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        TolakRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        TolakRuteRide.setText("Tolak");
+        buttonTolakRuteRide.setBackground(new java.awt.Color(51, 102, 160));
+        buttonTolakRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonTolakRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        buttonTolakRuteRide.setText("Tolak");
 
-        TerimaRuteRide.setBackground(new java.awt.Color(51, 102, 160));
-        TerimaRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        TerimaRuteRide.setForeground(new java.awt.Color(255, 255, 255));
-        TerimaRuteRide.setText("Terima Pesanan");
+        buttonTerimaRuteRide.setBackground(new java.awt.Color(51, 102, 160));
+        buttonTerimaRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonTerimaRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        buttonTerimaRuteRide.setText("Terima Pesanan");
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Pesanan RuteRide Masuk!");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("28s");
+
+        labelHargaRuteConnect.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        labelHargaRuteConnect.setForeground(new java.awt.Color(252, 211, 77));
+        labelHargaRuteConnect.setText("Rp. 45.000");
+
+        labelAlamatRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAlamatRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        labelAlamatRuteRide.setText("BigMall Samarinda");
+
+        labelPesananRuteRide.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelPesananRuteRide.setForeground(new java.awt.Color(255, 255, 255));
+        labelPesananRuteRide.setText("Pesanan RuteRide");
 
         javax.swing.GroupLayout panelRuteRideLayout = new javax.swing.GroupLayout(panelRuteRide);
         panelRuteRide.setLayout(panelRuteRideLayout);
@@ -641,66 +675,60 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(panelRuteRideLayout.createSequentialGroup()
                 .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRuteRideLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelRuteRideLayout.createSequentialGroup()
-                                .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pesananMasukRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jenisPesananRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(alamatRudeRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(39, 39, 39)
-                                .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelRuteRideLayout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(waktuRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(hargaRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(panelRuteRideLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(TolakRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonTolakRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(TerimaRuteRide)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonTerimaRuteRide))
+                    .addGroup(panelRuteRideLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelAlamatRuteRide)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuteRideLayout.createSequentialGroup()
+                        .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRuteRideLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(labelPesananRuteRide)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuteRideLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)))
+                        .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRuteRideLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel20))
+                            .addComponent(labelHargaRuteConnect))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         panelRuteRideLayout.setVerticalGroup(
             panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRuteRideLayout.createSequentialGroup()
                 .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRuteRideLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13)
-                            .addGroup(panelRuteRideLayout.createSequentialGroup()
-                                .addComponent(pesananMasukRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel20))
                     .addGroup(panelRuteRideLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(waktuRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRuteRideLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jenisPesananRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alamatRudeRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRuteRideLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(hargaRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel17)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TolakRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TerimaRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelHargaRuteConnect)
+                    .addComponent(labelPesananRuteRide))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelAlamatRuteRide)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(panelRuteRideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonTolakRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonTerimaRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
         panelRuteCar.setBackground(new java.awt.Color(14, 165, 233));
-
-        pesananMasukRuteCar.setBackground(new java.awt.Color(51, 102, 160));
-        pesananMasukRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        pesananMasukRuteCar.setForeground(new java.awt.Color(255, 255, 255));
-        pesananMasukRuteCar.setText("Pesanan Masuk RuteCar!");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(3).png"))); // NOI18N
 
@@ -708,72 +736,6 @@ public class DriverDashboard extends javax.swing.JFrame {
         waktuRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         waktuRuteCar.setForeground(new java.awt.Color(255, 255, 255));
         waktuRuteCar.setText("28s");
-
-        pesananRuteCar.setBackground(new java.awt.Color(14, 165, 233));
-        pesananRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        pesananRuteCar.setForeground(new java.awt.Color(255, 255, 255));
-        pesananRuteCar.setText("Pesanan RuteCar");
-
-        alamatRuteCar.setBackground(new java.awt.Color(14, 165, 233));
-        alamatRuteCar.setForeground(new java.awt.Color(255, 255, 255));
-        alamatRuteCar.setText("Fakultas Teknik Unmul");
-
-        jPanel13.setBackground(new java.awt.Color(51, 102, 160));
-
-        jarakJemputRuteCar.setBackground(new java.awt.Color(51, 102, 160));
-        jarakJemputRuteCar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jarakJemputRuteCar.setForeground(new java.awt.Color(255, 255, 255));
-        jarakJemputRuteCar.setText("Jarak Jemput");
-
-        jarakJemputKMRuteCar.setBackground(new java.awt.Color(51, 102, 160));
-        jarakJemputKMRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jarakJemputKMRuteCar.setForeground(new java.awt.Color(255, 255, 255));
-        jarakJemputKMRuteCar.setText("0.4 km (1 mnt)");
-
-        totalRuteRuteCar4.setBackground(new java.awt.Color(51, 102, 160));
-        totalRuteRuteCar4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        totalRuteRuteCar4.setForeground(new java.awt.Color(255, 255, 255));
-        totalRuteRuteCar4.setText("Total Rute");
-
-        jarakKMRuteCar.setBackground(new java.awt.Color(51, 102, 160));
-        jarakKMRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jarakKMRuteCar.setForeground(new java.awt.Color(255, 255, 255));
-        jarakKMRuteCar.setText("9.11 (28 mnt)");
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jarakJemputRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jarakJemputKMRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addComponent(totalRuteRuteCar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addComponent(jarakKMRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jarakJemputRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalRuteRuteCar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jarakJemputKMRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jarakKMRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
 
         tolakRuteCar.setBackground(new java.awt.Color(51, 102, 160));
         tolakRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -785,44 +747,84 @@ public class DriverDashboard extends javax.swing.JFrame {
         terimaRuteCar.setForeground(new java.awt.Color(255, 255, 255));
         terimaRuteCar.setText("Terima Pesanan");
 
-        hargaRuteCar.setBackground(new java.awt.Color(14, 165, 233));
-        hargaRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        hargaRuteCar.setForeground(new java.awt.Color(255, 204, 0));
-        hargaRuteCar.setText("Rp. 40.000");
+        labelhargaRuteCar.setBackground(new java.awt.Color(14, 165, 233));
+        labelhargaRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        labelhargaRuteCar.setForeground(new java.awt.Color(255, 204, 0));
+        labelhargaRuteCar.setText("Rp. 40.000");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Pesanan RuteCar Masuk!");
+
+        jPanel10.setBackground(new java.awt.Color(51, 102, 160));
+
+        labelJarakJemputRuteCar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelJarakJemputRuteCar.setForeground(new java.awt.Color(255, 255, 255));
+        labelJarakJemputRuteCar.setText("Jarak Jemput");
+
+        labelJarakJemputRuteCarKM.setText("4.5 km (12 mnt)");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelJarakJemputRuteCarKM)
+                    .addComponent(labelJarakJemputRuteCar))
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(labelJarakJemputRuteCar)
+                .addGap(18, 18, 18)
+                .addComponent(labelJarakJemputRuteCarKM)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        labelPemesananRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelPemesananRuteCar.setForeground(new java.awt.Color(255, 255, 255));
+        labelPemesananRuteCar.setText("Pesanan RuteCar");
+
+        alamatRuteCar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        alamatRuteCar.setForeground(new java.awt.Color(255, 255, 255));
+        alamatRuteCar.setText("Fakultas Teknik Unmul");
 
         javax.swing.GroupLayout panelRuteCarLayout = new javax.swing.GroupLayout(panelRuteCar);
         panelRuteCar.setLayout(panelRuteCarLayout);
         panelRuteCarLayout.setHorizontalGroup(
             panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRuteCarLayout.createSequentialGroup()
-                .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRuteCarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelRuteCarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuteCarLayout.createSequentialGroup()
+                .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRuteCarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRuteCarLayout.createSequentialGroup()
-                                .addComponent(alamatRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(242, 242, 242))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRuteCarLayout.createSequentialGroup()
                                 .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pesananMasukRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pesananRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(44, 44, 44)
+                                    .addComponent(jLabel10)
+                                    .addComponent(labelPemesananRuteCar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hargaRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(panelRuteCarLayout.createSequentialGroup()
                                         .addComponent(jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(waktuRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addContainerGap())
-            .addGroup(panelRuteCarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tolakRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(terimaRuteCar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(waktuRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelhargaRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32))
+                            .addGroup(panelRuteCarLayout.createSequentialGroup()
+                                .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(alamatRuteCar)
+                                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(panelRuteCarLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(tolakRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(terimaRuteCar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(43, 43, 43))
         );
         panelRuteCarLayout.setVerticalGroup(
@@ -830,25 +832,26 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(panelRuteCarLayout.createSequentialGroup()
                 .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRuteCarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(pesananMasukRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel10))
                     .addGroup(panelRuteCarLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addContainerGap()
+                        .addComponent(jLabel14))
+                    .addGroup(panelRuteCarLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(waktuRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pesananRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hargaRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(alamatRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPemesananRuteCar)
+                    .addComponent(labelhargaRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addComponent(alamatRuteCar)
+                .addGap(21, 21, 21)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addGroup(panelRuteCarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(terimaRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tolakRuteCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tolakRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -897,10 +900,14 @@ public class DriverDashboard extends javax.swing.JFrame {
             .addGroup(panelOrderBerjalanLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(panelOrderBerjalanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textStatusJemput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textAlamatOrderBerjalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonMaps))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelOrderBerjalanLayout.createSequentialGroup()
+                        .addGroup(panelOrderBerjalanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textStatusJemput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonMaps))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelOrderBerjalanLayout.createSequentialGroup()
+                        .addComponent(textAlamatOrderBerjalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelOrderBerjalanLayout.setVerticalGroup(
             panelOrderBerjalanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -917,48 +924,53 @@ public class DriverDashboard extends javax.swing.JFrame {
                 .addComponent(textAlamatOrderBerjalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(textStatusJemput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(540, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelOrderBerjalan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(panelRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panelKirimDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(85, 85, 85)))
+                        .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelOrderBerjalan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(panelRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(panelKirimDokumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(panelRuteRide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(36, 36, 36)
-                .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelKirimDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
+                        .addGap(851, 851, 851)
                         .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelKirimDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelRuteRide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(panelRuteCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelOrderBerjalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/tanda tanya + notif.png"))); // NOI18N
@@ -976,8 +988,10 @@ public class DriverDashboard extends javax.swing.JFrame {
                     .addComponent(panelMitraPengemudi))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelHeaderLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1003,8 +1017,8 @@ public class DriverDashboard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1046,6 +1060,10 @@ public class DriverDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRuteCarActionPerformed
 
+    private void jenisPesananRuteRideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisPesananRuteRideActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jenisPesananRuteRideActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1073,28 +1091,26 @@ public class DriverDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Harga;
-    private javax.swing.JButton TerimaRuteRide;
-    private javax.swing.JButton TolakRuteRide;
     private javax.swing.JTextField alamatPesanan;
     private javax.swing.JTextField alamatPesanan1;
-    private javax.swing.JTextField alamatRudeRide;
-    private javax.swing.JTextField alamatRuteCar;
+    private javax.swing.JLabel alamatRuteCar;
     private javax.swing.JButton buttonKirimDokumen;
     private javax.swing.JButton buttonMaps;
     private javax.swing.JButton buttonRuteCar;
     private javax.swing.JButton buttonRuteRide;
     private javax.swing.JButton buttonStatus;
-    private javax.swing.JTextField hargaRuteCar;
+    private javax.swing.JButton buttonTerimaRuteRide;
+    private javax.swing.JButton buttonTolakRuteRide;
     private javax.swing.JTextField hargaRuteRide;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1103,8 +1119,8 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1112,6 +1128,7 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1123,24 +1140,33 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField jarakJemputKM;
-    private javax.swing.JTextField jarakJemputKMRuteCar;
-    private javax.swing.JTextField jarakJemputKMRuteRide;
-    private javax.swing.JTextField jarakJemputRuteCar;
     private javax.swing.JTextField jarakJemputRuteRide;
     private javax.swing.JTextField jarakKM2;
-    private javax.swing.JTextField jarakKMRuteCar;
-    private javax.swing.JTextField jarakKMRuteRide;
     private javax.swing.JTextField jenisOrder;
     private javax.swing.JTextField jenisPesanan;
     private javax.swing.JTextField jenisPesananRuteRide;
+    private javax.swing.JLabel labelAlamatDokumen;
+    private javax.swing.JLabel labelAlamatRuteRide;
+    private javax.swing.JLabel labelDokumenMasuk;
+    private javax.swing.JLabel labelHargaDokumen;
+    private javax.swing.JLabel labelHargaRuteConnect;
     private javax.swing.JLabel labelJarakJemputDokumen;
+    private javax.swing.JLabel labelJarakJemputKMRuteRide;
+    private javax.swing.JLabel labelJarakJemputRuteCar;
+    private javax.swing.JLabel labelJarakJemputRuteCarKM;
+    private javax.swing.JLabel labelJarakJemputRuteRide;
     private javax.swing.JLabel labelKirimDokumen;
     private javax.swing.JLabel labelMerkKendaraan;
     private javax.swing.JLabel labelNamaDriver;
+    private javax.swing.JLabel labelPemesananRuteCar;
+    private javax.swing.JLabel labelPesananRuteRide;
     private javax.swing.JLabel labelPlat;
     private javax.swing.JLabel labelStatus;
     private javax.swing.JLabel labelTotalRuteDokumen;
+    private javax.swing.JLabel labelTotalRuteKMRuteRide;
+    private javax.swing.JLabel labelTotalRuteRuteRide;
     private javax.swing.JLabel labelWaktuDokumen;
+    private javax.swing.JTextField labelhargaRuteCar;
     private javax.swing.JTextField orderID;
     private javax.swing.JPanel panelContent;
     private javax.swing.JPanel panelHeader;
@@ -1151,9 +1177,7 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuteCar;
     private javax.swing.JLabel panelRuteConnect;
     private javax.swing.JPanel panelRuteRide;
-    private javax.swing.JTextField pesananMasukRuteCar;
     private javax.swing.JTextField pesananMasukRuteRide;
-    private javax.swing.JTextField pesananRuteCar;
     private javax.swing.JToggleButton terimaPesanan;
     private javax.swing.JButton terimaRuteCar;
     private javax.swing.JTextField textAlamatOrderBerjalan;
@@ -1161,7 +1185,6 @@ public class DriverDashboard extends javax.swing.JFrame {
     private javax.swing.JToggleButton tolakPesanan;
     private javax.swing.JButton tolakRuteCar;
     private javax.swing.JTextField totalRute;
-    private javax.swing.JTextField totalRuteRuteCar4;
     private javax.swing.JTextField totalRuteRuteRide;
     private javax.swing.JTextField waktuDokumen;
     private javax.swing.JTextField waktuRuteCar;

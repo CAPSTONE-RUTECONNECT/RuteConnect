@@ -29,7 +29,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -46,6 +45,10 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        panelDataPesanan2 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -83,9 +86,6 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(242, 243, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jPanel2.setBackground(new java.awt.Color(14, 165, 233));
         jPanel2.setLayout(null);
 
@@ -106,6 +106,11 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(14, 165, 233));
         jLabel13.setText("Kelola Pesanan");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelKelolaDataLayout = new javax.swing.GroupLayout(panelKelolaData);
         panelKelolaData.setLayout(panelKelolaDataLayout);
@@ -194,6 +199,11 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
 
         panelDataPesanan1.setBackground(new java.awt.Color(14, 165, 233));
         panelDataPesanan1.setForeground(new java.awt.Color(14, 165, 233));
+        panelDataPesanan1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDataPesanan1MouseClicked(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Data Pesanan.png"))); // NOI18N
         jLabel5.setText("jLabel4");
@@ -201,6 +211,11 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Data Pesanan");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDataPesanan1Layout = new javax.swing.GroupLayout(panelDataPesanan1);
         panelDataPesanan1.setLayout(panelDataPesanan1Layout);
@@ -238,7 +253,45 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         jPanel2.add(jLabel25);
         jLabel25.setBounds(100, 60, 110, 25);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 720));
+        panelDataPesanan2.setBackground(new java.awt.Color(14, 165, 233));
+        panelDataPesanan2.setForeground(new java.awt.Color(14, 165, 233));
+
+        jLabel29.setBackground(new java.awt.Color(14, 165, 233));
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Laporan");
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Laporan Putih.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelDataPesanan2Layout = new javax.swing.GroupLayout(panelDataPesanan2);
+        panelDataPesanan2.setLayout(panelDataPesanan2Layout);
+        panelDataPesanan2Layout.setHorizontalGroup(
+            panelDataPesanan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDataPesanan2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel31)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel29)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        panelDataPesanan2Layout.setVerticalGroup(
+            panelDataPesanan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDataPesanan2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDataPesanan2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(panelDataPesanan2);
+        panelDataPesanan2.setBounds(0, 400, 240, 60);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect.png"))); // NOI18N
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 100, 100);
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 850));
 
         jPanel5.setBackground(new java.awt.Color(14, 165, 233));
 
@@ -590,29 +643,23 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 980, 360));
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 980, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
         );
 
         pack();
@@ -621,6 +668,18 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRefreshActionPerformed
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void panelDataPesanan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDataPesanan1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelDataPesanan1MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -667,7 +726,9 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -692,6 +753,7 @@ public class FrameAdminKelolaData extends javax.swing.JFrame {
     private javax.swing.JPanel panelDataLayanandanTarif;
     private javax.swing.JPanel panelDataPesanan;
     private javax.swing.JPanel panelDataPesanan1;
+    private javax.swing.JPanel panelDataPesanan2;
     private javax.swing.JPanel panelHapus;
     private javax.swing.JPanel panelKelolaData;
     private javax.swing.JPanel panelUbahTerpilih;
