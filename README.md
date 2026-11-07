@@ -653,76 +653,84 @@ Interface `CrudDao<T>` berfungsi sebagai kontrak yang menetapkan operasi pengelo
 
 ## 🖥️ 8. Cara Penggunaan Program
 
-Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampilan antarmuka yang tersedia.
+Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampilan antarmuka dan fitur yang tersedia.
 
 ### A. Tampilan Awal Aplikasi
 
-Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
+Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna masuk dan mengakses fitur yang tersedia.
 
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="masukkin disini" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20202959.png" width="100%" alt="Tampilan Awal RuteConnect"/>
     </td>
   </tr>
 </table>
 
 ### B. Login Pengguna
 
-Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
+Pengguna memasukkan email dan password yang telah terdaftar untuk masuk ke dalam aplikasi dan mengakses fitur sesuai dengan hak akses masing-masing.
 
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.jpeg" width="100%" alt="Halaman Login Pengguna"/>
     </td>
   </tr>
 </table>
 
 ### C. Dashboard Pelanggan
 
-Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
+Dashboard Pelanggan merupakan halaman utama yang digunakan pelanggan untuk mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.1.jpeg" width="100%" alt="Dashboard Pelanggan"/>
     </td>
   </tr>
 </table>
 
 ### D. Halaman Pemesanan
 
-Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
+Halaman pemesanan digunakan pelanggan untuk memilih jenis layanan yang dibutuhkan, yaitu transportasi atau pengiriman dokumen. Pelanggan kemudian mengisi informasi yang diperlukan sesuai dengan layanan yang dipilih untuk membuat pesanan.
 
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.2.jpeg" width="100%" alt="Halaman Pemesanan Transportasi"/>
+    </td>
+  </tr>
+</table>
+
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.3.jpeg" width="100%" alt="Halaman Pengiriman Dokumen"/>
     </td>
   </tr>
 </table>
 
 ### E. Dashboard Driver
 
-Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
+Dashboard Driver merupakan halaman yang digunakan oleh mitra pengemudi untuk melihat pesanan yang tersedia, memeriksa detail pesanan, menerima atau menolak pesanan, serta memperbarui status pengerjaan.
 
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.5.jpeg" width="100%" alt="Dashboard Driver"/>
     </td>
   </tr>
 </table>
 
 ### F. Dashboard Admin
 
-Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
+Dashboard Admin merupakan halaman pengelolaan sistem yang memberikan akses kepada admin untuk mengelola data pengguna, layanan, dan pesanan, serta memantau informasi transaksi dalam sistem.
 
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.24.6.jpeg" width="100%" alt="Dashboard Admin"/>
     </td>
   </tr>
 </table>
@@ -737,10 +745,10 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 
 | No. | Nama | NIM | Peran |
 |:---:|---|:---:|---|
-| 1 | [Siti Nursinta] | [2509116087] | Project Leader |
-| 2 | [Daffa Rizqi Fadhillah] | [2509116068] | Database Design |
-| 3 | [Nabila Salma Putri] | [2509116065] | Back-End Developer |
-| 4 | [Selvi Bella Dwi Anita] | [2509116053] | System Development |
+| 1 | Siti Nursinta | 2509116087 | Project Leader |
+| 2 | Daffa Rizqi Fadhillah | 2509116068 | Database Design |
+| 3 | Nabila Salma Putri | 2509116065 | Back-End Developer |
+| 4 | Selvi Bella Dwi Anita | 2509116053 | Minor Contribution |
 
 </div>
 
