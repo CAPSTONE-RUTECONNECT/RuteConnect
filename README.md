@@ -333,12 +333,14 @@ Aktor utama dalam aplikasi RuteConnect terdiri atas:
 - **Driver:** menerima serta mengelola pesanan.
 - **Admin:** mengelola data pengguna, layanan, pesanan, dan transaksi.
 
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/diagram%20PA(1)-Page-5.drawio(1).png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/diagram%20PA(1)-Page-5.drawio(1).png?raw=true" width="85%" alt="Use Case Diagram RuteConnect">
+
+<br>
+<strong>Use Case Diagram RuteConnect</strong>
+
+</div>
 
 ### C. Entity Relationship Diagram (ERD)
 
@@ -357,19 +359,24 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 9. Transaksi
 10. Top_Up
 
+<div align="center">
+
+<table>
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.jpeg" width="75%" alt="Struktur Package">
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.jpeg?raw=true" width="100%" alt="ERD Logical">
+      <br><strong>ERD Logical</strong>
+      <br><sub>Gambaran entitas, atribut, dan hubungan antar-entitas dalam database.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.%20(1).jpeg?raw=true" width="100%" alt="ERD Relational">
+      <br><strong>ERD Relational</strong>
+      <br><sub>Representasi struktur tabel database beserta primary key dan foreign key.</sub>
     </td>
   </tr>
 </table>
 
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.%20(1).jpeg" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
+</div>
 
 ---
 
