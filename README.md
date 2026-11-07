@@ -246,29 +246,38 @@ Perancangan sistem dilakukan sebagai dasar dalam proses pengembangan RuteConnect
 
 Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikasi, melakukan login, memilih layanan, hingga proses pemesanan dan transaksi.
 
-<div align="center">
-
-<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png" width="90%" alt="Flowchart RuteConnect"/>
-
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 <em>Gambar 1. Flowchart Sistem RuteConnect</em>
 
-</div>
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
-<div align="center">
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Menu%20Customer.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
-<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png" width="90%" alt="Flowchart RuteConnect"/>
-
-<em>Gambar 1. Flowchart Sistem RuteConnect</em>
-
-</div>
-
-<div align="center">
-
-<img src="docs/flowchart/flowchart-ruteconnect.png" width="90%" alt="Flowchart RuteConnect"/>
-
-<em>Gambar 1. Flowchart Sistem RuteConnect</em>
-
-</div>
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### B. Use Case Diagram
 
