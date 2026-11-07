@@ -790,7 +790,7 @@ Dashboard Admin merupakan halaman pengelolaan sistem yang memberikan akses kepad
 
 ## 👥 9. Kontributor
 
-Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesaian tugas mata kuliah **Pemrograman Berorientasi Objek (PBO)**.
+Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesaian tugas praktikum **Pemrograman Berorientasi Objek (PBO)**.
 
 <div align="center">
 
