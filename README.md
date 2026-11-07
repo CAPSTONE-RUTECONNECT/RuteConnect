@@ -793,26 +793,26 @@ Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti
     <td align="center" width="50%">
       <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.1.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 2"/>
       <br/>
-      <sub>Dokumentasi Konsultasi 2</sub>
+      <sub>Dokumentasi Konsultasi 2 SBD</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
       <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.4.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 3"/>
       <br/>
-      <sub>Dokumentasi Konsultasi 3</sub>
+      <sub>Dokumentasi Konsultasi 2 SBD</sub>
     </td>
     <td align="center" width="50%">
       <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.3.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 4"/>
       <br/>
-      <sub>Dokumentasi Konsultasi 4</sub>
+      <sub>Dokumentasi Konsultasi 2 PBO</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
       <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.2.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 5"/>
       <br/>
-      <sub>Dokumentasi Konsultasi 5</sub>
+      <sub>Dokumentasi Konsultasi 2 PBO</sub>
     </td>
     <td width="50%"></td>
   </tr>
