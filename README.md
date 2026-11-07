@@ -136,6 +136,7 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 
 ---
 
+
 # 🛠️ 4. Tech Stack
 
 RuteConnect dikembangkan dengan memanfaatkan berbagai teknologi dan tools pendukung untuk membangun aplikasi desktop, mengelola database, serta membantu proses pengembangan sistem.
@@ -165,9 +166,9 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 ## B. Development Environment & AI Tools
 
-<div align="center">
-
 ### CORE TECHNOLOGIES
+
+<div align="center">
 
 <img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" alt="Java, MySQL, Maven" height="90"/>
 
@@ -175,9 +176,11 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <strong>Java 21</strong> &nbsp; • &nbsp; <strong>MySQL</strong> &nbsp; • &nbsp; <strong>Maven</strong>
 
-<br/><br/>
+</div>
 
 ### DEVELOPMENT ENVIRONMENT
+
+<div align="center">
 
 <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="58" alt="Laragon"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -187,7 +190,7 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <strong>Laragon</strong> &nbsp; • &nbsp; <strong>Apache NetBeans</strong>
 
-<br/><br/>
+</div>
 
 ### AI DEVELOPMENT ASSISTANTS
 
@@ -215,12 +218,13 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <strong>GOJEK</strong> &nbsp;&nbsp; • &nbsp;&nbsp; <strong>GRAB</strong>
 
+<br/>
+
 <sub>Transportation & Delivery Platform References</sub>
 
 </div>
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
-
 
 ## D. Referensi Pengembangan README
 
@@ -233,7 +237,6 @@ Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan do
 - [Awesome README](https://github.com/matiassingers/awesome-readme) – Referensi README proyek yang menarik dan informatif.
 
 ---
-
 
 # 🏗️ 5. Perancangan Sistem
 
