@@ -21,6 +21,9 @@ public class PesananService {
         return Transaksi.SALDO.equalsIgnoreCase(metode);
     }
     public Hasil buatPesanan(Pesanan p, String metode) {
+        if (pesananDao.adaPesananBerlangsung(p.getPelangganId()))
+            return Hasil.gagal("Masih ada pesanan yang sedang berlangsung.");
+
         final boolean wallet = isWallet(metode);
         final double total = p.getTotalBiaya();
         if (wallet && pelangganDao.getSaldo(p.getPelangganId()) < total)

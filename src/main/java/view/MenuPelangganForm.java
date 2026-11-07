@@ -37,6 +37,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
             }
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (!bolehPesan()) return;
                 java.awt.EventQueue.invokeLater(() -> new Maps().setVisible(true));
                 dispose();
             }
@@ -53,6 +54,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
             }
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (!bolehPesan()) return;
                 java.awt.EventQueue.invokeLater(() -> new PengirimanDokumenForm().setVisible(true));
                 dispose();
             }
@@ -92,7 +94,19 @@ public class MenuPelangganForm extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    // Cek dulu sebelum membuka form pesan. Return false kalau masih ada pesanan berlangsung.
+    private boolean bolehPesan() {
+        if (new dao.PesananDao().adaPesananBerlangsung(controller.Session.userId)) {
+            JOptionPane.showMessageDialog(this,
+                    "Kamu masih punya pesanan yang sedang berlangsung.\n"
+                    + "Selesaikan atau batalkan dulu lewat menu Status & Riwayat.",
+                    "Tidak bisa memesan", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

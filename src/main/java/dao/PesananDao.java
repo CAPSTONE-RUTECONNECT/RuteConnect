@@ -200,6 +200,13 @@ public class PesananDao extends BaseDao<Pesanan> {
     public int hitungSemuaPesanan() {
         return (int) scalar("SELECT COUNT(*) FROM pesanan");
     }
+    
+    // true kalau pelanggan masih punya pesanan yang belum selesai/dibatalkan
+    public boolean adaPesananBerlangsung(int pelangganId) {
+        return scalar("SELECT COUNT(*) FROM pesanan WHERE pelanggan_id = ? "
+                + "AND status_pesanan IN ('Menunggu','Diterima','Diproses','Dalam Perjalanan')",
+                pelangganId) > 0;
+    }
 
     // baris: {id, pelanggan, driver, layanan, total biaya, rute, status}
     // kategori: "Semua Layanan", "RuteRide", "RuteCar", "Dokumen"
