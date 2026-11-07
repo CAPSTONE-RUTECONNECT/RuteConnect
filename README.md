@@ -253,7 +253,6 @@ Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikas
     </td>
   </tr>
 </table>
-<em>Gambar 1. Flowchart Sistem RuteConnect</em>
 
 <table border="1" bordercolor="black">
   <tr>
@@ -274,6 +273,85 @@ Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikas
 <table border="1" bordercolor="black">
   <tr>
     <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Transportasi.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pengiriman%20Dokumen.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pembayaran.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="http://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Top%20Up.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Status%20%26%20Riwayat.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Driver.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Admin%20-%20Menu%20Admin.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Kelola%20Data.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Pesanan.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Transaksi.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Laporan.drawio.png" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
       <img src="" width="75%" alt="Struktur Package">
     </td>
   </tr>
@@ -289,13 +367,12 @@ Aktor utama dalam aplikasi RuteConnect terdiri atas:
 - **Driver:** menerima serta mengelola pesanan.
 - **Admin:** mengelola data pengguna, layanan, pesanan, dan transaksi.
 
-<div align="center">
-
-<img src="docs/diagram/use-case-ruteconnect.png" width="90%" alt="Use Case RuteConnect"/>
-
-<em>Gambar 2. Use Case Diagram RuteConnect</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### C. Entity Relationship Diagram (ERD)
 
@@ -314,13 +391,19 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 9. Transaksi
 10. Top_Up
 
-<div align="center">
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
-<img src="docs/diagram/erd-ruteconnect.png" width="100%" alt="ERD RuteConnect"/>
-
-<em>Gambar 3. Entity Relationship Diagram RuteConnect</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -329,6 +412,13 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 Struktur folder dan package dibuat untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya. Pemisahan ini bertujuan agar kode program lebih terorganisasi, mudah dipahami, dan lebih mudah dikembangkan.
 
 #### Struktur Proyek
+
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ```text
 RuteConnect/
