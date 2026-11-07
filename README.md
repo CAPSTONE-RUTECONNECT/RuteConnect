@@ -1,34 +1,28 @@
 
-<!-- ============================================================ -->
-<!--                    ROUTECONNECT README                       -->
-<!-- ============================================================ -->
+<!-- ===================================================== -->
+<!--                    RUTECONNECT                        -->
+<!-- ===================================================== -->
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Journey%20and%20Delivery%20Network.png"
-     width="100%"
-     alt="RuteConnect - Journey and Delivery Network"/>
+<img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Journey%20and%20Delivery%20Network.png" width="100%" alt="RuteConnect Banner"/>
 
 <br/>
 
-<p>
-  <strong>INTEGRATED TRANSPORTATION & DOCUMENT DELIVERY SYSTEM</strong>
-</p>
+<h1>RUTECONNECT</h1>
 
-<p>
-  <em>Connecting People, Delivering Possibilities.</em>
-</p>
+<strong>INTEGRATED TRANSPORTATION & DOCUMENT DELIVERY SYSTEM</strong>
+
+<p><em>Connecting People, Delivering Possibilities.</em></p>
+
+<img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
+<img src="https://img.shields.io/badge/Java%20Swing-GUI-123B68?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Maven-Build%20Tool-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
 
 <br/>
 
-<img src="https://img.shields.io/badge/JAVA-21-0B1F3A?style=for-the-badge&logo=openjdk&logoColor=white"/>
-<img src="https://img.shields.io/badge/INTERFACE-JAVA%20SWING-164B78?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/DATABASE-MYSQL-087EAC?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/BUILD-MAVEN-183A5A?style=for-the-badge&logo=apachemaven&logoColor=white"/>
-
-<br/><br/>
-
-**A Smarter Way to Move and Deliver.**
+**Universitas Mulawarman | Program Studi Sistem Informasi | 2026**
 
 </div>
 
@@ -36,42 +30,40 @@
 
 # 📑 DAFTAR ISI
 
+| No. | Bagian | Deskripsi |
+|:---:|---|---|
+| 01 | [Nama Program](#-1-nama-program) | Identitas aplikasi |
+| 02 | [Deskripsi Singkat](#-2-deskripsi-singkat) | Gambaran umum sistem |
+| 03 | [Fitur Utama Program](#-3-fitur-utama-program) | Fitur berdasarkan pengguna |
+| 04 | [Tech Stack](#️-4-tech-stack) | Teknologi dan tools pendukung |
+| 05 | [Perancangan Sistem](#️-5-perancangan-sistem) | Flowchart, Use Case, dan ERD |
+| 06 | [Struktur Folder/Package](#-6-struktur-folderpackage) | Organisasi kode program |
+| 07 | [Penerapan 4 Pilar OOP](#-7-penerapan-4-pilar-oop) | Konsep OOP dalam aplikasi |
+| 08 | [Cara Penggunaan Program](#️-8-cara-penggunaan-program) | Panduan dan dokumentasi GUI |
+| 09 | [Kontributor](#-9-kontributor) | Tim pengembang |
+
+---
+
+# 🚀 1. Nama Program
+
+## RuteConnect
+
+**RuteConnect: Sistem Informasi Terintegrasi Pemesanan Transportasi Daring dan Pengiriman Dokumen Berbasis Digital**
+
+RuteConnect merupakan aplikasi desktop yang mengintegrasikan layanan pemesanan transportasi daring dan pengiriman dokumen dalam satu platform digital.
+
+Nama RuteConnect berasal dari gabungan kata *Rute* dan *Connect*. Nama ini menggambarkan tujuan aplikasi untuk menghubungkan pengguna dengan layanan transportasi dan pengiriman melalui sistem yang praktis dan terintegrasi.
+
 <div align="center">
 
-| NO. | BAGIAN | NO. | BAGIAN |
-|:---:|---|:---:|---|
-| 01 | [Nama Program](#-01-nama-program) | 06 | [Struktur Folder/Package](#-06-struktur-folderpackage) |
-| 02 | [Deskripsi Singkat](#-02-deskripsi-singkat) | 07 | [Penerapan 4 Pilar OOP](#-07-penerapan-4-pilar-oop) |
-| 03 | [Fitur Utama Program](#-03-fitur-utama-program) | 08 | [Cara Penggunaan Program](#-08-cara-penggunaan-program) |
-| 04 | [Tech Stack](#-04-tech-stack) | 09 | [Kontributor](#-09-kontributor) |
-| 05 | [Perancangan Sistem](#-05-perancangan-sistem) | | |
+<img src="https://img.shields.io/badge/ROUTE-Connected%20Services-0B1F3A?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/DELIVERY-Smart%20Solution-164B78?style=for-the-badge"/>
 
 </div>
 
 ---
 
-# 🚀 01. NAMA PROGRAM
-
-<div align="center">
-
-# RuteConnect
-
-### Sistem Informasi Terintegrasi Pemesanan Transportasi Daring dan Pengiriman Dokumen Berbasis Digital
-
-<img src="https://img.shields.io/badge/TRANSPORTATION-Connected%20Journey-0B1F3A?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/DOCUMENT%20DELIVERY-Smart%20Delivery-164B78?style=for-the-badge"/>
-
-</div>
-
-**RuteConnect** merupakan aplikasi desktop yang mengintegrasikan layanan pemesanan transportasi daring dan pengiriman dokumen dalam satu platform digital.
-
-Nama RuteConnect berasal dari gabungan kata *Rute* dan *Connect*. Nama ini merepresentasikan tujuan aplikasi untuk menghubungkan pengguna dengan layanan perjalanan dan pengiriman secara lebih praktis melalui satu sistem yang terintegrasi.
-
-> **Our Vision:** Menghadirkan kemudahan dalam menghubungkan perjalanan dan pengiriman melalui satu platform digital.
-
----
-
-# 📖 02. DESKRIPSI SINGKAT
+# 📖 2. Deskripsi Singkat
 
 RuteConnect adalah aplikasi sistem informasi berbasis desktop yang dikembangkan untuk memberikan kemudahan dalam melakukan pemesanan layanan transportasi daring dan pengiriman dokumen secara digital.
 
@@ -79,68 +71,33 @@ Aplikasi ini mengintegrasikan dua kebutuhan layanan dalam satu platform, sehingg
 
 RuteConnect memiliki tiga jenis hak akses pengguna, yaitu **Pelanggan, Driver, dan Admin**. Setiap pengguna memiliki akses dan tanggung jawab yang berbeda sesuai dengan perannya di dalam sistem.
 
-Sistem ini dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Swing serta database MySQL untuk menyimpan dan mengelola data aplikasi.
+Sistem dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Swing serta database MySQL untuk menyimpan dan mengelola data aplikasi.
 
-## 🗺️ Gambaran Konsep RuteConnect
+### 🎯 Tujuan Pengembangan
+
+- Mengintegrasikan layanan transportasi dan pengiriman dokumen dalam satu aplikasi.
+- Mempermudah proses pemesanan dan pengelolaan layanan secara digital.
+- Menyediakan informasi status pesanan secara terstruktur.
+- Membantu pengelolaan data pelanggan, driver, layanan, dan transaksi.
+- Menerapkan konsep Object-Oriented Programming dalam pengembangan aplikasi.
+
+### 🗺️ Gambaran Konsep RuteConnect
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Digital%20Transport%20and%20Delivery.png"
-     width="95%"
-     alt="RuteConnect Digital Transport and Delivery"/>
+<img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Digital%20Transport%20and%20Delivery.png" width="90%" alt="Ilustrasi Konsep RuteConnect"/>
 
-<sub><em>Gambaran konsep layanan perjalanan dan pengiriman dokumen RuteConnect.</em></sub>
+<em>Ilustrasi konsep perjalanan dan pengiriman pada RuteConnect.</em>
 
 </div>
 
-## ✨ Tujuan Pengembangan
-
-| No. | Tujuan |
-|:---:|---|
-| 01 | Mengintegrasikan layanan transportasi dan pengiriman dokumen dalam satu aplikasi. |
-| 02 | Mempermudah proses pemesanan dan pengelolaan layanan secara digital. |
-| 03 | Menyediakan informasi status pesanan secara terstruktur. |
-| 04 | Membantu pengelolaan data pelanggan, driver, layanan, dan transaksi. |
-| 05 | Menerapkan konsep Object-Oriented Programming dalam pengembangan aplikasi. |
-
-## 👤 Pengguna Sistem
-
-<table>
-<tr>
-<td width="33%" align="center">
-
-### 👤
-**PELANGGAN**
-
-<sub>Pengguna layanan yang melakukan pemesanan transportasi maupun pengiriman dokumen.</sub>
-
-</td>
-<td width="33%" align="center">
-
-### 🛵
-**DRIVER**
-
-<sub>Pengguna yang menerima dan menjalankan pesanan dari pelanggan.</sub>
-
-</td>
-<td width="33%" align="center">
-
-### ⚙️
-**ADMIN**
-
-<sub>Pengguna yang bertanggung jawab mengelola data dan aktivitas sistem.</sub>
-
-</td>
-</tr>
-</table>
-
 ---
 
-# ⚙️ 03. FITUR UTAMA PROGRAM
+# ⚙️ 3. Fitur Utama Program
 
-RuteConnect menyediakan sejumlah fitur yang disesuaikan dengan hak akses masing-masing pengguna. Setiap fitur dirancang untuk mendukung proses pemesanan, pengelolaan, dan pemantauan layanan.
+RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setiap fitur dirancang untuk mendukung proses layanan dan pengelolaan data dalam aplikasi.
 
-## 👤 A. Pelanggan
+## A. Pelanggan
 
 | Fitur | Deskripsi |
 |---|---|
@@ -150,11 +107,11 @@ RuteConnect menyediakan sejumlah fitur yang disesuaikan dengan hak akses masing-
 | Pengiriman Dokumen | Melakukan pemesanan layanan pengiriman dokumen. |
 | Pembatalan Pesanan | Membatalkan pesanan sesuai ketentuan sistem. |
 | Status Pesanan | Melihat perkembangan status pesanan. |
-| Riwayat Pesanan | Melihat daftar transaksi pemesanan sebelumnya. |
+| Riwayat Pesanan | Melihat daftar pemesanan sebelumnya. |
 | Dompet Digital | Melihat dan melakukan pengisian saldo. |
 | Riwayat Transaksi | Melihat catatan transaksi dan top up. |
 
-## 🛵 B. Driver
+## B. Driver
 
 | Fitur | Deskripsi |
 |---|---|
@@ -166,7 +123,7 @@ RuteConnect menyediakan sejumlah fitur yang disesuaikan dengan hak akses masing-
 | Pembaruan Status | Memperbarui status pengerjaan pesanan. |
 | Riwayat Pesanan | Melihat pesanan yang pernah ditangani. |
 
-## ⚙️ C. Admin
+## C. Admin
 
 | Fitur | Deskripsi |
 |---|---|
@@ -179,61 +136,88 @@ RuteConnect menyediakan sejumlah fitur yang disesuaikan dengan hak akses masing-
 
 ---
 
-# 🛠️ 04. TECH STACK
+# 🛠️ 4. Tech Stack
 
-RuteConnect dikembangkan dengan memanfaatkan beberapa teknologi yang saling mendukung dalam proses pembuatan antarmuka, pengolahan logika program, serta pengelolaan basis data.
+RuteConnect dikembangkan dengan memanfaatkan beberapa teknologi yang mendukung proses pembuatan antarmuka, pengolahan data, pengelolaan database, serta pengembangan aplikasi.
 
-## 💻 Teknologi yang Digunakan
+## A. Teknologi Utama
 
-| Teknologi | Kategori | Kegunaan |
-|---|---|---|
-| Java 21 | Bahasa Pemrograman | Membangun logika dan proses aplikasi. |
-| Java Swing | GUI Framework | Membuat antarmuka aplikasi desktop. |
-| MySQL | Database | Menyimpan dan mengelola data aplikasi. |
-| JDBC | Database Connectivity | Menghubungkan aplikasi Java dengan MySQL. |
-| Maven | Build Tool | Mengelola dependency dan proses build proyek. |
-| NetBeans IDE | Development Environment | Lingkungan pengembangan aplikasi Java. |
+| Teknologi | Kegunaan |
+|---|---|
+| Java 21 | Bahasa pemrograman utama untuk membangun logika aplikasi. |
+| Java Swing | Membuat antarmuka aplikasi desktop. |
+| MySQL | Menyimpan dan mengelola data aplikasi. |
+| JDBC | Menghubungkan aplikasi Java dengan database MySQL. |
+| Maven | Mengelola dependency dan proses build proyek. |
+| NetBeans IDE | Lingkungan pengembangan aplikasi Java. |
 
-## 🔗 Technology Ecosystem
+## B. Logo Teknologi dan Tools Pendukung
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=java,mysql,maven,netbeans,git,github"
-     alt="RuteConnect Technology Stack"/>
+### DEVELOPMENT TOOLS
+
+<img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
+&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/mysql/4479A1" height="48" alt="MySQL"/>
+&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Anthropic Claude"/>
+&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/openai/412991" height="48" alt="OpenAI ChatGPT"/>
+
+<br/>
+
+<sub>Laragon • MySQL • Claude • ChatGPT</sub>
 
 <br/><br/>
 
-<sub>Technologies used in the development of RuteConnect.</sub>
+### SERVICE PLATFORM REFERENCES
+
+<img src="https://cdn.simpleicons.org/gojek/00AA13" height="48" alt="Gojek"/>
+&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/grab/00B14F" height="48" alt="Grab"/>
+
+<br/>
+
+<sub>Gojek • Grab</sub>
 
 </div>
 
+> Logo Gojek dan Grab ditampilkan sebagai referensi platform layanan transportasi dan pengiriman yang menjadi inspirasi konsep aplikasi, bukan sebagai teknologi yang digunakan untuk membangun program.
+
+## C. Referensi Pengembangan README
+
+Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan dokumentasi README:
+
+- [Readme.so](https://readme.so/) – Membantu menyusun struktur README.
+- [Shields.io](https://shields.io/) – Membuat badge teknologi dan informasi proyek.
+- [Simple Icons](https://simpleicons.org/) – Menyediakan ikon berbagai brand dan teknologi.
+- [Capsule Render](https://capsule-render.vercel.app/) – Membuat banner GitHub README.
+- [Awesome README](https://github.com/matiassingers/awesome-readme) – Referensi README proyek yang menarik dan informatif.
+
 ---
 
-# 🏗️ 05. PERANCANGAN SISTEM
+# 🏗️ 5. Perancangan Sistem
 
-Perancangan sistem merupakan tahapan yang dilakukan untuk menggambarkan alur kerja, interaksi pengguna, serta struktur data yang digunakan dalam aplikasi RuteConnect.
-
-Perancangan ini terdiri atas tiga komponen utama, yaitu Flowchart, Use Case Diagram, dan Entity Relationship Diagram (ERD).
+Perancangan sistem dilakukan sebagai dasar dalam proses pengembangan RuteConnect. Tahapan ini bertujuan untuk menggambarkan alur kerja, interaksi pengguna, serta hubungan antar-data yang digunakan dalam aplikasi.
 
 ## A. Flowchart
 
-Flowchart menggambarkan urutan proses dan alur kerja aplikasi RuteConnect, mulai dari pengguna membuka aplikasi, melakukan autentikasi, memilih layanan, hingga proses pemesanan.
+Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikasi, melakukan login, memilih layanan, hingga proses pemesanan dan transaksi.
 
 <div align="center">
 
-<img src="docs/flowchart/flowchart-ruteconnect.png"
-     width="95%"
-     alt="Flowchart RuteConnect"/>
+<img src="docs/flowchart/flowchart-ruteconnect.png" width="90%" alt="Flowchart RuteConnect"/>
 
-**Gambar 1. Flowchart Sistem RuteConnect**
+<em>Gambar 1. Flowchart Sistem RuteConnect</em>
 
 </div>
 
 ## B. Use Case Diagram
 
-Use Case Diagram menggambarkan hubungan antara aktor dengan fungsi-fungsi yang tersedia di dalam sistem.
+Use Case Diagram menggambarkan hubungan antara aktor dengan fitur yang tersedia dalam sistem.
 
-Terdapat tiga aktor utama dalam aplikasi:
+Aktor utama dalam aplikasi RuteConnect terdiri atas:
 
 - **Pelanggan:** melakukan pemesanan transportasi dan pengiriman dokumen.
 - **Driver:** menerima serta mengelola pesanan.
@@ -241,50 +225,44 @@ Terdapat tiga aktor utama dalam aplikasi:
 
 <div align="center">
 
-<img src="docs/diagram/use-case-ruteconnect.png"
-     width="95%"
-     alt="Use Case Diagram RuteConnect"/>
+<img src="docs/diagram/use-case-ruteconnect.png" width="90%" alt="Use Case RuteConnect"/>
 
-**Gambar 2. Use Case Diagram RuteConnect**
+<em>Gambar 2. Use Case Diagram RuteConnect</em>
 
 </div>
 
 ## C. Entity Relationship Diagram (ERD)
 
-Entity Relationship Diagram digunakan untuk menggambarkan struktur basis data dan hubungan antar-entitas yang mendukung proses pengelolaan data aplikasi.
+Entity Relationship Diagram (ERD) digunakan untuk menggambarkan struktur database serta hubungan antar-entitas yang mendukung proses pengelolaan data aplikasi.
 
 Entitas utama dalam perancangan database RuteConnect meliputi:
 
-| No. | Entitas | Keterangan |
-|:---:|---|---|
-| 01 | User | Data umum pengguna sistem. |
-| 02 | Pelanggan | Data pengguna layanan sebagai pelanggan. |
-| 03 | Driver | Data pengguna layanan sebagai driver. |
-| 04 | Admin | Data administrator sistem. |
-| 05 | Layanan | Informasi jenis layanan. |
-| 06 | Pesanan | Data pemesanan layanan. |
-| 07 | Transportasi | Data layanan transportasi. |
-| 08 | Dokumen | Data layanan pengiriman dokumen. |
-| 09 | Transaksi | Data transaksi pengguna. |
-| 10 | Top_Up | Data pengisian saldo. |
+1. User
+2. Pelanggan
+3. Driver
+4. Admin
+5. Layanan
+6. Pesanan
+7. Transportasi
+8. Dokumen
+9. Transaksi
+10. Top_Up
 
 <div align="center">
 
-<img src="docs/diagram/erd-ruteconnect.png"
-     width="100%"
-     alt="Entity Relationship Diagram RuteConnect"/>
+<img src="docs/diagram/erd-ruteconnect.png" width="100%" alt="ERD RuteConnect"/>
 
-**Gambar 3. Entity Relationship Diagram RuteConnect**
+<em>Gambar 3. Entity Relationship Diagram RuteConnect</em>
 
 </div>
 
 ---
 
-# 📂 06. STRUKTUR FOLDER/PACKAGE
+# 📂 6. Struktur Folder/Package
 
-Struktur folder dan package digunakan untuk mengelompokkan komponen aplikasi berdasarkan fungsi dan tanggung jawabnya. Pengorganisasian ini membantu menjaga keteraturan kode program serta mempermudah proses pemeliharaan dan pengembangan aplikasi.
+Struktur folder dan package dibuat untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya. Pemisahan ini bertujuan agar kode program lebih terorganisasi, mudah dipahami, dan lebih mudah dikembangkan.
 
-## 📁 Struktur Proyek
+### Struktur Proyek
 
 ```text
 RuteConnect/
@@ -305,6 +283,7 @@ RuteConnect/
 │           └── images/
 │
 ├── docs/
+│   ├── images/
 │   ├── flowchart/
 │   ├── diagram/
 │   └── screenshots/
@@ -313,9 +292,9 @@ RuteConnect/
 └── README.md
 ```
 
-## 📌 Penjelasan Package
+### Penjelasan Package
 
-| Package | Tanggung Jawab |
+| Package | Fungsi |
 |---|---|
 | `config` | Mengatur konfigurasi koneksi database. |
 | `model` | Menyimpan class yang merepresentasikan objek dan data sistem. |
@@ -324,23 +303,21 @@ RuteConnect/
 | `view` | Menampilkan antarmuka pengguna menggunakan Java Swing. |
 | `resources` | Menyimpan aset pendukung seperti gambar dan ikon. |
 
-> Struktur di atas merupakan gambaran pengorganisasian proyek. Sesuaikan nama package, class, dan folder dengan struktur aktual pada proyek NetBeans.
+> Struktur di atas merupakan contoh susunan package. Sesuaikan nama folder, package, dan file dengan struktur proyek RuteConnect yang sebenarnya.
 
 ---
 
-# 🧩 07. PENERAPAN 4 PILAR OOP
+# 🧩 7. Penerapan 4 Pilar OOP
 
-RuteConnect dikembangkan dengan menerapkan konsep **Object-Oriented Programming (OOP)**. OOP merupakan pendekatan pemrograman yang mengorganisasikan program ke dalam objek yang memiliki atribut dan perilaku.
+Pengembangan RuteConnect menerapkan konsep Object-Oriented Programming (OOP) yang terdiri atas empat pilar utama, yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction.
 
-Terdapat empat pilar utama OOP yang menjadi dasar dalam pengembangan sistem, yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction.
-
-## 01. Encapsulation — Enkapsulasi
+## 1. Encapsulation (Enkapsulasi)
 
 Encapsulation merupakan konsep membungkus data dan metode dalam sebuah class serta membatasi akses langsung terhadap atribut tertentu.
 
-Dalam RuteConnect, konsep ini dapat diterapkan pada class pengguna dan data pesanan dengan menggunakan access modifier `private`.
+Dalam RuteConnect, konsep ini dapat diterapkan pada class seperti `User`, `Pelanggan`, `Driver`, dan `Pesanan` dengan menggunakan access modifier `private`.
 
-**Contoh kode:**
+**Contoh penerapan:**
 
 ```java
 public class User {
@@ -359,15 +336,17 @@ public class User {
 }
 ```
 
-**Penerapan:** Atribut dibuat `private` agar tidak dapat diakses secara langsung dari luar class. Pengaksesan dan perubahan data dilakukan melalui method getter dan setter.
+**Penjelasan:**
 
-## 02. Inheritance — Pewarisan
+Atribut dibuat `private` agar tidak dapat diakses secara langsung dari luar class. Pengaksesan dan perubahan data dilakukan melalui method getter dan setter.
+
+## 2. Inheritance (Pewarisan)
 
 Inheritance merupakan konsep pewarisan atribut dan method dari satu class kepada class lainnya.
 
 Dalam RuteConnect, class `Pelanggan`, `Driver`, dan `Admin` dapat mewarisi atribut serta method umum dari class induk `User`.
 
-**Contoh kode:**
+**Contoh penerapan:**
 
 ```java
 public class Pelanggan extends User {
@@ -379,13 +358,15 @@ public class Pelanggan extends User {
 }
 ```
 
-**Penerapan:** Class `Pelanggan` dapat menggunakan atribut dan method yang diwariskan dari class `User`, sehingga kode menjadi lebih terstruktur dan mengurangi pengulangan.
+**Penjelasan:**
 
-## 03. Polymorphism — Polimorfisme
+Class `Pelanggan` mewarisi atribut dan method yang dimiliki oleh class `User`, sehingga tidak perlu mendefinisikan kembali seluruh atribut umum pengguna.
+
+## 3. Polymorphism (Polimorfisme)
 
 Polymorphism merupakan konsep yang memungkinkan satu method memiliki perilaku berbeda berdasarkan objek yang menggunakannya.
 
-**Contoh kode:**
+**Contoh penerapan:**
 
 ```java
 public class User {
@@ -413,13 +394,15 @@ public class Driver extends User {
 }
 ```
 
-**Penerapan:** Method `tampilkanDashboard()` memiliki nama yang sama, tetapi menghasilkan perilaku berbeda sesuai dengan jenis objek yang menjalankannya.
+**Penjelasan:**
 
-## 04. Abstraction — Abstraksi
+Method `tampilkanDashboard()` memiliki nama yang sama, tetapi menghasilkan perilaku berbeda sesuai dengan jenis objek yang menjalankannya.
+
+## 4. Abstraction (Abstraksi)
 
 Abstraction merupakan konsep menyembunyikan detail implementasi dan hanya menampilkan fungsi utama yang diperlukan.
 
-**Contoh kode:**
+**Contoh penerapan:**
 
 ```java
 public abstract class Layanan {
@@ -440,135 +423,130 @@ public class Transportasi extends Layanan {
 }
 ```
 
-**Penerapan:** Class `Layanan` menjadi class abstrak yang mendefinisikan method `prosesPesanan()`. Class turunannya kemudian memberikan implementasi sesuai dengan jenis layanan.
+**Penjelasan:**
 
-> **Catatan:** Contoh kode pada bagian ini merupakan ilustrasi konsep. Pastikan contoh akhir disesuaikan dengan implementasi class dan method yang benar-benar terdapat dalam source code RuteConnect.
+Class `Layanan` menjadi class abstrak yang mendefinisikan method `prosesPesanan()`. Class turunannya kemudian memberikan implementasi sesuai dengan jenis layanan.
+
+> Contoh kode di atas merupakan ilustrasi penerapan konsep OOP. Sesuaikan dengan implementasi sebenarnya pada source code RuteConnect agar penjelasan sesuai dengan program yang dikembangkan.
 
 ---
 
-# 🖥️ 08. CARA PENGGUNAAN PROGRAM
+# 🖥️ 8. Cara Penggunaan Program
 
-Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect melalui antarmuka pengguna atau Graphical User Interface (GUI).
+Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampilan antarmuka yang tersedia.
 
-Setiap tampilan berikut digunakan untuk memperlihatkan bagaimana pengguna berinteraksi dengan fitur yang tersedia di dalam sistem.
+## A. Tampilan Awal Aplikasi
 
-## A. Halaman Awal
-
-Halaman awal merupakan tampilan pertama yang muncul ketika aplikasi RuteConnect dijalankan. Halaman ini menjadi pintu masuk pengguna sebelum mengakses layanan yang tersedia.
+Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
 
 <div align="center">
 
-<img src="docs/screenshots/01-halaman-awal.png"
-     width="90%"
-     alt="Halaman Awal RuteConnect"/>
+<img src="docs/screenshots/01-halaman-awal.png" width="85%" alt="Halaman Awal RuteConnect"/>
 
-**Gambar 4. Halaman Awal RuteConnect**
+<em>Gambar 4. Halaman Awal RuteConnect</em>
 
 </div>
 
-## B. Halaman Login
+## B. Login Pengguna
 
-Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses sistem sesuai dengan hak akses masing-masing.
+Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
 
 <div align="center">
 
-<img src="docs/screenshots/02-halaman-login.png"
-     width="90%"
-     alt="Halaman Login RuteConnect"/>
+<img src="docs/screenshots/02-halaman-login.png" width="85%" alt="Halaman Login"/>
 
-**Gambar 5. Halaman Login RuteConnect**
+<em>Gambar 5. Halaman Login</em>
 
 </div>
 
 ## C. Dashboard Pelanggan
 
-Dashboard pelanggan menyediakan akses terhadap layanan transportasi, pengiriman dokumen, informasi akun, serta aktivitas pemesanan.
+Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
 <div align="center">
 
-<img src="docs/screenshots/03-dashboard-pelanggan.png"
-     width="90%"
-     alt="Dashboard Pelanggan RuteConnect"/>
+<img src="docs/screenshots/03-dashboard-pelanggan.png" width="85%" alt="Dashboard Pelanggan"/>
 
-**Gambar 6. Dashboard Pelanggan**
+<em>Gambar 6. Dashboard Pelanggan</em>
 
 </div>
 
 ## D. Halaman Pemesanan
 
-Halaman pemesanan digunakan pelanggan untuk memilih jenis layanan dan mengisi informasi yang diperlukan dalam proses pembuatan pesanan.
+Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
 
 <div align="center">
 
-<img src="docs/screenshots/04-halaman-pemesanan.png"
-     width="90%"
-     alt="Halaman Pemesanan RuteConnect"/>
+<img src="docs/screenshots/04-halaman-pemesanan.png" width="85%" alt="Halaman Pemesanan"/>
 
-**Gambar 7. Halaman Pemesanan**
+<em>Gambar 7. Halaman Pemesanan</em>
 
 </div>
 
 ## E. Dashboard Driver
 
-Dashboard driver digunakan untuk melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
+Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
 
 <div align="center">
 
-<img src="docs/screenshots/05-dashboard-driver.png"
-     width="90%"
-     alt="Dashboard Driver RuteConnect"/>
+<img src="docs/screenshots/05-dashboard-driver.png" width="85%" alt="Dashboard Driver"/>
 
-**Gambar 8. Dashboard Driver**
+<em>Gambar 8. Dashboard Driver</em>
 
 </div>
 
 ## F. Dashboard Admin
 
-Dashboard admin menyediakan akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi yang terdapat di dalam sistem.
+Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
 
 <div align="center">
 
-<img src="docs/screenshots/06-dashboard-admin.png"
-     width="90%"
-     alt="Dashboard Admin RuteConnect"/>
+<img src="docs/screenshots/06-dashboard-admin.png" width="85%" alt="Dashboard Admin"/>
 
-**Gambar 9. Dashboard Admin**
+<em>Gambar 9. Dashboard Admin</em>
 
 </div>
 
 ---
 
-# 👥 09. KONTRIBUTOR
+# 👥 9. Kontributor
 
-RuteConnect merupakan hasil pengembangan kolaboratif oleh mahasiswa Program Studi Sistem Informasi, Universitas Mulawarman, sebagai bagian dari penyelesaian proyek mata kuliah Pemrograman Berorientasi Objek (PBO).
-
-## Meet Our Team
-
-| No. | Nama | NIM | Peran |
-|:---:|---|---|---|
-| 01 | [Nama Anggota 1] | [NIM] | Project Leader |
-| 02 | [Nama Anggota 2] | [NIM] | System Development |
-| 03 | [Nama Anggota 3] | [NIM] | System Development |
-| 04 | [Nama Anggota 4] | [NIM] | System Development |
-| 05 | [Nama Anggota 5] | [NIM] | System Development |
+Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesaian tugas mata kuliah **Pemrograman Berorientasi Objek (PBO)**.
 
 <div align="center">
 
+| No. | Nama | NIM | Peran |
+|:---:|---|---|---|
+| 1 | [Nama Anggota 1] | [NIM] | Project Leader |
+| 2 | [Nama Anggota 2] | [NIM] | System Development |
+| 3 | [Nama Anggota 3] | [NIM] | System Development |
+| 4 | [Nama Anggota 4] | [NIM] | System Development |
+| 5 | [Nama Anggota 5] | [NIM] | System Development |
+
 <br/>
 
-<img src="https://img.shields.io/badge/UNIVERSITAS-MULAWARMAN-0B1F3A?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/PROGRAM%20STUDI-SISTEM%20INFORMASI-164B78?style=for-the-badge"/>
+**PROGRAM STUDI SISTEM INFORMASI**  
+**FAKULTAS TEKNIK**  
+**UNIVERSITAS MULAWARMAN**
+
+2026
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/RUTECONNECT-Connecting%20People-0B1F3A?style=for-the-badge"/>
+
+<h2>RUTECONNECT</h2>
+
+<strong>Connecting People, Delivering Possibilities.</strong>
+
+<em>One Platform, Connected Routes, Better Services.</em>
 
 <br/><br/>
 
-**RUTECONNECT**
-
-*Connecting People, Delivering Possibilities.*
-
-<sub>One Platform. Connected Routes. Better Services.</sub>
-
-<br/><br/>
-
-<sub>Developed by Group 27 · Information Systems · Universitas Mulawarman · 2026</sub>
+<sub>Developed with Java | Sistem Informasi | Universitas Mulawarman © 2026</sub>
 
 </div>
