@@ -200,7 +200,7 @@ Berbagai teknologi dan tools digunakan untuk mendukung proses pengembangan aplik
     <td align="center" valign="middle" width="33%">
       <img src="https://skillicons.dev/icons?i=github,chrome&theme=light" height="48" alt="GitHub and Google Chrome"/>
       &nbsp;
-      <img src="https://cdn.simpleicons.org/microsoftword/2B579A" height="42" alt="Microsoft Word"/>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/word/word-original.svg" height="42" alt="Microsoft Word"/>
       <br/><br/>
       <strong>GitHub • Google Chrome</strong>
       <br/>
@@ -210,6 +210,53 @@ Berbagai teknologi dan tools digunakan untuk mendukung proses pengembangan aplik
 </table>
 
 </div>
+
+### C. README Design Resources
+
+Beberapa layanan berbasis web dimanfaatkan untuk membantu membuat tampilan README GitHub lebih menarik, informatif, dan terstruktur.
+
+<div align="center">
+
+<table>
+  <tr>
+    <th>CAPSULE RENDER</th>
+    <th>SKILL ICONS</th>
+    <th>SHIELDS.IO</th>
+    <th>SIMPLE ICONS</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/vercel/000000" height="42" alt="Capsule Render"/>
+      <br/><br/>
+      <strong>Banner README</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://skillicons.dev/icons?i=github&theme=light" height="42" alt="Skill Icons"/>
+      <br/><br/>
+      <strong>Technology Icons</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/shieldsdotio/000000" height="42" alt="Shields.io"/>
+      <br/><br/>
+      <strong>Badges</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/simpleicons/111111" height="42" alt="Simple Icons"/>
+      <br/><br/>
+      <strong>Brand Icons</strong>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<sub>
+Design Resources:
+<a href="https://github.com/kyechan99/capsule-render">Capsule Render</a> •
+<a href="https://skillicons.dev/">Skill Icons</a> •
+<a href="https://shields.io/">Shields.io</a> •
+<a href="https://simpleicons.org/">Simple Icons</a>
+</sub>
 
 ### C. README Design Resources
 
