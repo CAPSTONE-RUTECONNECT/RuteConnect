@@ -248,6 +248,22 @@ Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikas
 
 <div align="center">
 
+<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png" width="90%" alt="Flowchart RuteConnect"/>
+
+<em>Gambar 1. Flowchart Sistem RuteConnect</em>
+
+</div>
+
+<div align="center">
+
+<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png" width="90%" alt="Flowchart RuteConnect"/>
+
+<em>Gambar 1. Flowchart Sistem RuteConnect</em>
+
+</div>
+
+<div align="center">
+
 <img src="docs/flowchart/flowchart-ruteconnect.png" width="90%" alt="Flowchart RuteConnect"/>
 
 <em>Gambar 1. Flowchart Sistem RuteConnect</em>
