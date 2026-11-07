@@ -737,11 +737,10 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 
 | No. | Nama | NIM | Peran |
 |:---:|---|:---:|---|
-| 1 | [Nama Anggota 1] | [NIM] | Project Leader |
-| 2 | [Nama Anggota 2] | [NIM] | Database Design |
-| 3 | [Nama Anggota 3] | [NIM] | Back-End Developer |
-| 4 | [Nama Anggota 4] | [NIM] | System Development |
-| 5 | [Nama Anggota 5] | [NIM] | System Development |
+| 1 | [Siti Nursinta] | [2509116087] | Project Leader |
+| 2 | [Daffa Rizqi Fadhillah] | [2509116068] | Database Design |
+| 3 | [Nabila Salma Putri] | [2509116065] | Back-End Developer |
+| 4 | [Selvi Bella Dwi Anita] | [2509116053] | System Development |
 
 </div>
 
