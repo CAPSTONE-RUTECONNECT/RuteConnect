@@ -60,4 +60,7 @@ public class DriverDao extends BaseDao<Driver> {
     public boolean updateStatus(int userId, String statusAktif) {
         return exec("UPDATE driver SET status_aktif = ? WHERE user_id = ?", statusAktif, userId);
     }
+    public int hitungAktif() {
+        return (int) scalar("SELECT COUNT(*) FROM driver WHERE status_aktif = 'Aktif'");
+    }
 }

@@ -27,6 +27,9 @@ public class FrameAdmin extends javax.swing.JFrame {
     
     private UserController userController = new UserController();
     private TarifController tarifController = new TarifController();
+    private String kategoriPesanan = "Semua Layanan";
+    private final dao.PesananDao pesananDao = new dao.PesananDao();
+    private final dao.TransaksiDao transaksiDao = new dao.TransaksiDao();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameAdmin.class.getName());
 
     /**
@@ -40,8 +43,8 @@ public class FrameAdmin extends javax.swing.JFrame {
         
         cardSub.removeAll();
         cardSub.setLayout(new java.awt.CardLayout());
-        cardSub.add(cardUser,  "cardUser");
-        cardSub.add(cardTarif, "cardTarif");
+        cardSub.add(cardUser, "cardUser");
+        cardSub.add(cardTarif, "cardTarif"); // Pastikan ini terdaftar
         cardSub.setBounds(6, 250, 1040, 380);
 
         javax.swing.ButtonGroup bg = new javax.swing.ButtonGroup();
@@ -78,6 +81,126 @@ public class FrameAdmin extends javax.swing.JFrame {
 
         loadUserData();
         
+        jTable1.setModel(new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"ID Pesanan", "Pelanggan", "Driver", "Layanan", "Metode Pembayaran", "Rute Lintasan", "Status"}) {
+            @Override public boolean isCellEditable(int r, int c) { return false; }
+        });
+        loadDashboard();
+        
+        // Inisialisasi event listener untuk Tarif
+        jComboBox2.addActionListener(e -> loadTarifData());
+        buttonRefreshTarif.addActionListener(e -> loadTarifData());
+        btnHapusTarif.addActionListener(e -> hapusTarifTerpilih());
+        btnTambahTarif.addActionListener(e -> tambahTarifBaru());
+        btnUpdateTarif.addActionListener(e -> updateTarifTerpilih());
+        txtSearchTarif.addActionListener(e -> loadTarifData());
+
+        loadTarifData();
+        loadUserData();
+        
+        jTable4.setModel(new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"ID Pesanan", "Pelanggan", "Driver", "Layanan", "Total Biaya", "Rute Lintasan", "Status"}) {
+            @Override public boolean isCellEditable(int r, int c) { return false; }
+        });
+        loadPesananData();
+        
+        // tabel transaksi (admin), tidak bisa diedit
+        jTable5.setModel(new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"ID Transaksi", "Tanggal", "Pelanggan", "Jenis", "Metode Pembayaran", "Jumlah", "Status"}) {
+            @Override public boolean isCellEditable(int r, int c) { return false; }
+        });
+        loadTransaksiData();
+        
+    }
+    
+    private void loadDashboard() {
+        dao.PesananDao pd = new dao.PesananDao();
+        lblTotalPesanan.setText(String.valueOf(pd.hitungPesananHariIni()));
+        lblTotalPendapatan.setText(controller.Fmt.rupiah(pd.totalPendapatan()));
+        lblDriverAktif.setText(String.valueOf(new dao.DriverDao().hitungAktif()));
+
+        DefaultTableModel m = (DefaultTableModel) jTable1.getModel();
+        m.setRowCount(0);
+        for (Object[] r : pd.ringkasanDashboard()) m.addRow(r);
+    }
+    
+    private void loadPesananData() {
+        // kartu ringkasan
+        lblPesananMasuk.setText(String.valueOf(pesananDao.hitungSemuaPesanan()));
+        lblDalamPerjalanan.setText(String.valueOf(pesananDao.hitungByStatus("Dalam Perjalanan")));
+        lblDibatalkan.setText(String.valueOf(pesananDao.hitungByStatus("Dibatalkan")));
+
+        // tabel
+        DefaultTableModel m = (DefaultTableModel) jTable4.getModel();
+        m.setRowCount(0);
+        String status = String.valueOf(jComboBox3.getSelectedItem());
+        for (Object[] r : pesananDao.cariPesananAdmin(txtCariPesanan.getText(), kategoriPesanan, status)) {
+            m.addRow(r);
+        }
+    }
+    
+    private void loadTransaksiData() {
+        // kartu ringkasan
+        lblTransaksiBerhasil.setText(controller.Fmt.rupiah(transaksiDao.totalBerhasil()));
+        lblPenerimaanEwallet.setText(controller.Fmt.rupiah(transaksiDao.totalByMetode("E-Wallet")));
+        lblPenerimaanTunai.setText(controller.Fmt.rupiah(transaksiDao.totalByMetode("Cash")));
+
+        // tabel
+        DefaultTableModel m = (DefaultTableModel) jTable5.getModel();
+        m.setRowCount(0);
+        for (Object[] r : transaksiDao.ringkasanTransaksi()) m.addRow(r);
+    }
+
+        private void setKategoriPesanan(String kategori) {
+            kategoriPesanan = kategori;
+            loadPesananData();
+        }
+    
+    private void loadTarifData() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+            model.setRowCount(0);
+            // Ambil data dari TarifController dan masukkan ke model tabel
+            List<Object[]> listTarif = tarifController.cariLayanan(txtSearchTarif.getText(), (String) jComboBox2.getSelectedItem());
+            for (Object[] row : listTarif) {
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal memuat data tarif: " + e.getMessage());
+        }
+    }
+
+    private void tambahTarifBaru() {
+        // Logika membuka form/dialog tambah tarif
+        // Contoh: new DialogTambahTarif(this, true).setVisible(true);
+        // loadTarifData(); // Refresh tabel setelah tambah
+    }
+
+    private void updateTarifTerpilih() {
+        int selectedRow = jTable3.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data tarif yang ingin diubah terlebih dahulu!");
+            return;
+        }
+        // Logika update data berdasarkan ID baris yang dipilih
+    }
+
+    private void hapusTarifTerpilih() {
+        int selectedRow = jTable3.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data tarif yang ingin dihapus terlebih dahulu!");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Panggil controller untuk hapus berdasarkan ID
+            // misal: tarifController.hapus(...);
+            loadTarifData();
+        }
     }
 
     /**
@@ -113,13 +236,13 @@ public class FrameAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblTotalPesanan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblTotalPendapatan = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblDriverAktif = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -161,41 +284,38 @@ public class FrameAdmin extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        lblPesananMasuk = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        lblDalamPerjalanan = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        lblDibatalkan = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSemuaLayanan = new javax.swing.JButton();
+        btnRuteRide = new javax.swing.JButton();
+        btnRuteCar = new javax.swing.JButton();
+        btnDokumen = new javax.swing.JButton();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel27 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCariPesanan = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
+        btnRefreshPesanan = new javax.swing.JButton();
         cardTransaksi = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        lblTransaksiBerhasil = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        lblPenerimaanEwallet = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
+        lblPenerimaanTunai = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -206,22 +326,24 @@ public class FrameAdmin extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        lblPesananBerhasil = new javax.swing.JLabel();
+        comboBoxTahun = new javax.swing.JComboBox<>();
+        comboBoxBulan = new javax.swing.JComboBox<>();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        txtCariLaporanBulan = new javax.swing.JTextField();
+        comboBoxStatus = new javax.swing.JComboBox<>();
+        comboBoxMetode = new javax.swing.JComboBox<>();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
+        btnRefreshLaporanBulan = new javax.swing.JButton();
+        btnPdf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Admin");
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -458,11 +580,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel4.add(jLabel6);
         jLabel6.setBounds(10, 0, 190, 50);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("0");
-        jPanel4.add(jLabel9);
-        jLabel9.setBounds(10, 60, 200, 50);
+        lblTotalPesanan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTotalPesanan.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotalPesanan.setText("0");
+        jPanel4.add(lblTotalPesanan);
+        lblTotalPesanan.setBounds(10, 60, 200, 50);
 
         cardDashboard.add(jPanel4);
         jPanel4.setBounds(6, 200, 210, 150);
@@ -477,11 +599,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel5.add(jLabel7);
         jLabel7.setBounds(10, 0, 190, 50);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Rp 0");
-        jPanel5.add(jLabel11);
-        jLabel11.setBounds(10, 60, 200, 50);
+        lblTotalPendapatan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTotalPendapatan.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotalPendapatan.setText("Rp 0");
+        jPanel5.add(lblTotalPendapatan);
+        lblTotalPendapatan.setBounds(10, 60, 200, 50);
 
         cardDashboard.add(jPanel5);
         jPanel5.setBounds(240, 200, 210, 150);
@@ -495,11 +617,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel6.add(jLabel8);
         jLabel8.setBounds(10, 0, 200, 50);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("0");
-        jPanel6.add(jLabel12);
-        jLabel12.setBounds(10, 60, 200, 50);
+        lblDriverAktif.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblDriverAktif.setForeground(new java.awt.Color(0, 0, 0));
+        lblDriverAktif.setText("0");
+        jPanel6.add(lblDriverAktif);
+        lblDriverAktif.setBounds(10, 60, 200, 50);
 
         cardDashboard.add(jPanel6);
         jPanel6.setBounds(470, 200, 210, 150);
@@ -824,11 +946,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel13.add(jLabel21);
         jLabel21.setBounds(10, 0, 190, 50);
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("0");
-        jPanel13.add(jLabel22);
-        jLabel22.setBounds(10, 60, 200, 50);
+        lblPesananMasuk.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPesananMasuk.setForeground(new java.awt.Color(0, 0, 0));
+        lblPesananMasuk.setText("0");
+        jPanel13.add(lblPesananMasuk);
+        lblPesananMasuk.setBounds(10, 60, 200, 50);
 
         cardPesanan.add(jPanel13);
         jPanel13.setBounds(6, 200, 210, 150);
@@ -843,32 +965,14 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel14.add(jLabel23);
         jLabel23.setBounds(10, 0, 190, 50);
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel24.setText("0");
-        jPanel14.add(jLabel24);
-        jLabel24.setBounds(10, 60, 200, 50);
+        lblDalamPerjalanan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblDalamPerjalanan.setForeground(new java.awt.Color(0, 0, 0));
+        lblDalamPerjalanan.setText("0");
+        jPanel14.add(lblDalamPerjalanan);
+        lblDalamPerjalanan.setBounds(10, 60, 200, 50);
 
         cardPesanan.add(jPanel14);
         jPanel14.setBounds(240, 200, 210, 150);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setLayout(null);
-
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/centang biru kotak.png"))); // NOI18N
-        jLabel25.setText("Driver Aktif");
-        jPanel15.add(jLabel25);
-        jLabel25.setBounds(10, 0, 200, 50);
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel26.setText("0");
-        jPanel15.add(jLabel26);
-        jLabel26.setBounds(10, 60, 200, 50);
-
-        cardPesanan.add(jPanel15);
-        jPanel15.setBounds(470, 200, 210, 150);
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setLayout(null);
@@ -879,41 +983,45 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel17.add(jLabel28);
         jLabel28.setBounds(10, 0, 198, 49);
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel29.setText("0");
-        jPanel17.add(jLabel29);
-        jLabel29.setBounds(10, 60, 200, 52);
+        lblDibatalkan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblDibatalkan.setForeground(new java.awt.Color(0, 0, 0));
+        lblDibatalkan.setText("0");
+        jPanel17.add(lblDibatalkan);
+        lblDibatalkan.setBounds(10, 60, 200, 52);
 
         cardPesanan.add(jPanel17);
-        jPanel17.setBounds(700, 200, 210, 150);
+        jPanel17.setBounds(470, 200, 210, 150);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(242, 243, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Semua Layanan");
-        jPanel16.add(jButton1);
-        jButton1.setBounds(10, 10, 130, 40);
+        btnSemuaLayanan.setBackground(new java.awt.Color(242, 243, 255));
+        btnSemuaLayanan.setForeground(new java.awt.Color(0, 0, 0));
+        btnSemuaLayanan.setText("Semua Layanan");
+        btnSemuaLayanan.addActionListener(this::btnSemuaLayananActionPerformed);
+        jPanel16.add(btnSemuaLayanan);
+        btnSemuaLayanan.setBounds(10, 10, 130, 40);
 
-        jButton2.setBackground(new java.awt.Color(242, 243, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("RuteRide");
-        jPanel16.add(jButton2);
-        jButton2.setBounds(150, 10, 130, 40);
+        btnRuteRide.setBackground(new java.awt.Color(242, 243, 255));
+        btnRuteRide.setForeground(new java.awt.Color(0, 0, 0));
+        btnRuteRide.setText("RuteRide");
+        btnRuteRide.addActionListener(this::btnRuteRideActionPerformed);
+        jPanel16.add(btnRuteRide);
+        btnRuteRide.setBounds(150, 10, 130, 40);
 
-        jButton3.setBackground(new java.awt.Color(242, 243, 255));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("RuteCar");
-        jPanel16.add(jButton3);
-        jButton3.setBounds(290, 10, 130, 40);
+        btnRuteCar.setBackground(new java.awt.Color(242, 243, 255));
+        btnRuteCar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRuteCar.setText("RuteCar");
+        btnRuteCar.addActionListener(this::btnRuteCarActionPerformed);
+        jPanel16.add(btnRuteCar);
+        btnRuteCar.setBounds(290, 10, 130, 40);
 
-        jButton4.setBackground(new java.awt.Color(242, 243, 255));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Dokumen");
-        jPanel16.add(jButton4);
-        jButton4.setBounds(430, 10, 140, 40);
+        btnDokumen.setBackground(new java.awt.Color(242, 243, 255));
+        btnDokumen.setForeground(new java.awt.Color(0, 0, 0));
+        btnDokumen.setText("Dokumen");
+        btnDokumen.addActionListener(this::btnDokumenActionPerformed);
+        jPanel16.add(btnDokumen);
+        btnDokumen.setBounds(430, 10, 140, 40);
 
         jPanel23.setLayout(new java.awt.BorderLayout());
 
@@ -942,22 +1050,25 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel16.add(jLabel27);
         jLabel27.setBounds(650, 10, 30, 40);
 
-        jTextField1.setBackground(new java.awt.Color(242, 243, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel16.add(jTextField1);
-        jTextField1.setBounds(690, 10, 220, 40);
+        txtCariPesanan.setBackground(new java.awt.Color(242, 243, 255));
+        txtCariPesanan.setForeground(new java.awt.Color(0, 0, 0));
+        txtCariPesanan.addActionListener(this::txtCariPesananActionPerformed);
+        jPanel16.add(txtCariPesanan);
+        txtCariPesanan.setBounds(690, 10, 220, 40);
 
         jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox3.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Status", "Menunggu", "Dalam Perjalanan", "Selesai", "Batal" }));
+        jComboBox3.addActionListener(this::jComboBox3ActionPerformed);
         jPanel16.add(jComboBox3);
         jComboBox3.setBounds(910, 20, 130, 26);
 
-        jButton5.setBackground(new java.awt.Color(242, 243, 255));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(13).png"))); // NOI18N
-        jPanel16.add(jButton5);
-        jButton5.setBounds(580, 10, 40, 40);
+        btnRefreshPesanan.setBackground(new java.awt.Color(242, 243, 255));
+        btnRefreshPesanan.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefreshPesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(13).png"))); // NOI18N
+        btnRefreshPesanan.addActionListener(this::btnRefreshPesananActionPerformed);
+        jPanel16.add(btnRefreshPesanan);
+        btnRefreshPesanan.setBounds(580, 10, 40, 40);
 
         cardPesanan.add(jPanel16);
         jPanel16.setBounds(6, 370, 1060, 490);
@@ -1014,11 +1125,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel19.add(jLabel32);
         jLabel32.setBounds(10, 0, 190, 50);
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel33.setText("Rp");
-        jPanel19.add(jLabel33);
-        jLabel33.setBounds(10, 60, 200, 50);
+        lblTransaksiBerhasil.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTransaksiBerhasil.setForeground(new java.awt.Color(0, 0, 0));
+        lblTransaksiBerhasil.setText("Rp");
+        jPanel19.add(lblTransaksiBerhasil);
+        lblTransaksiBerhasil.setBounds(10, 60, 200, 50);
 
         cardTransaksi.add(jPanel19);
         jPanel19.setBounds(6, 200, 210, 150);
@@ -1033,11 +1144,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel20.add(jLabel34);
         jLabel34.setBounds(10, 0, 190, 50);
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel35.setText("Rp");
-        jPanel20.add(jLabel35);
-        jLabel35.setBounds(10, 60, 200, 50);
+        lblPenerimaanEwallet.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPenerimaanEwallet.setForeground(new java.awt.Color(0, 0, 0));
+        lblPenerimaanEwallet.setText("Rp");
+        jPanel20.add(lblPenerimaanEwallet);
+        lblPenerimaanEwallet.setBounds(10, 60, 200, 50);
 
         cardTransaksi.add(jPanel20);
         jPanel20.setBounds(240, 200, 210, 150);
@@ -1051,11 +1162,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel21.add(jLabel36);
         jLabel36.setBounds(10, 0, 200, 50);
 
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel37.setText("Rp");
-        jPanel21.add(jLabel37);
-        jLabel37.setBounds(10, 60, 200, 50);
+        lblPenerimaanTunai.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPenerimaanTunai.setForeground(new java.awt.Color(0, 0, 0));
+        lblPenerimaanTunai.setText("Rp");
+        jPanel21.add(lblPenerimaanTunai);
+        lblPenerimaanTunai.setBounds(10, 60, 200, 50);
 
         cardTransaksi.add(jPanel21);
         jPanel21.setBounds(470, 200, 210, 150);
@@ -1142,26 +1253,26 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel25.add(jLabel41);
         jLabel41.setBounds(10, 0, 190, 50);
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel42.setText("0");
-        jPanel25.add(jLabel42);
-        jLabel42.setBounds(10, 60, 200, 50);
+        lblPesananBerhasil.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPesananBerhasil.setForeground(new java.awt.Color(0, 0, 0));
+        lblPesananBerhasil.setText("0");
+        jPanel25.add(lblPesananBerhasil);
+        lblPesananBerhasil.setBounds(10, 60, 200, 50);
 
         cardLaporan.add(jPanel25);
         jPanel25.setBounds(6, 200, 210, 150);
 
-        jComboBox4.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox4.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2025", "2026" }));
-        cardLaporan.add(jComboBox4);
-        jComboBox4.setBounds(250, 240, 76, 26);
+        comboBoxTahun.setBackground(new java.awt.Color(255, 255, 255));
+        comboBoxTahun.setForeground(new java.awt.Color(0, 0, 0));
+        comboBoxTahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2025", "2026" }));
+        cardLaporan.add(comboBoxTahun);
+        comboBoxTahun.setBounds(250, 240, 76, 26);
 
-        jComboBox5.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox5.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        cardLaporan.add(jComboBox5);
-        jComboBox5.setBounds(350, 240, 76, 26);
+        comboBoxBulan.setBackground(new java.awt.Color(255, 255, 255));
+        comboBoxBulan.setForeground(new java.awt.Color(0, 0, 0));
+        comboBoxBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cardLaporan.add(comboBoxBulan);
+        comboBoxBulan.setBounds(350, 240, 76, 26);
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
@@ -1183,23 +1294,23 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel26.add(jLabel45);
         jLabel45.setBounds(10, 0, 30, 40);
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(242, 243, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel26.add(jTextField2);
-        jTextField2.setBounds(50, 10, 180, 30);
+        txtCariLaporanBulan.setEditable(false);
+        txtCariLaporanBulan.setBackground(new java.awt.Color(242, 243, 255));
+        txtCariLaporanBulan.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel26.add(txtCariLaporanBulan);
+        txtCariLaporanBulan.setBounds(50, 10, 180, 30);
 
-        jComboBox6.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox6.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Status", "Berhasil", "Gagal" }));
-        jPanel26.add(jComboBox6);
-        jComboBox6.setBounds(250, 10, 130, 26);
+        comboBoxStatus.setBackground(new java.awt.Color(255, 255, 255));
+        comboBoxStatus.setForeground(new java.awt.Color(0, 0, 0));
+        comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Status", "Berhasil", "Gagal" }));
+        jPanel26.add(comboBoxStatus);
+        comboBoxStatus.setBounds(250, 10, 130, 26);
 
-        jComboBox7.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox7.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Metode", "E-Wallet", "Cash" }));
-        jPanel26.add(jComboBox7);
-        jComboBox7.setBounds(400, 10, 130, 26);
+        comboBoxMetode.setBackground(new java.awt.Color(255, 255, 255));
+        comboBoxMetode.setForeground(new java.awt.Color(0, 0, 0));
+        comboBoxMetode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Metode", "E-Wallet", "Cash" }));
+        jPanel26.add(comboBoxMetode);
+        comboBoxMetode.setBounds(400, 10, 130, 26);
 
         jPanel27.setLayout(new java.awt.BorderLayout());
 
@@ -1223,10 +1334,17 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel26.add(jPanel27);
         jPanel27.setBounds(10, 60, 1030, 420);
 
-        jButton6.setBackground(new java.awt.Color(242, 243, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(13).png"))); // NOI18N
-        jPanel26.add(jButton6);
-        jButton6.setBounds(550, 10, 40, 40);
+        btnRefreshLaporanBulan.setBackground(new java.awt.Color(242, 243, 255));
+        btnRefreshLaporanBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(13).png"))); // NOI18N
+        jPanel26.add(btnRefreshLaporanBulan);
+        btnRefreshLaporanBulan.setBounds(550, 10, 40, 40);
+
+        btnPdf.setBackground(new java.awt.Color(14, 165, 233));
+        btnPdf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPdf.setForeground(new java.awt.Color(255, 255, 255));
+        btnPdf.setText("Download PDF");
+        jPanel26.add(btnPdf);
+        btnPdf.setBounds(890, 10, 150, 40);
 
         cardLaporan.add(jPanel26);
         jPanel26.setBounds(0, 370, 1050, 490);
@@ -1288,10 +1406,10 @@ public class FrameAdmin extends javax.swing.JFrame {
         java.awt.CardLayout cl = (java.awt.CardLayout) cardPanelUtama.getLayout();
         
         switch (aktif) {
-        case 0 -> cl.show(cardPanelUtama, "dashboard");
-        case 1 -> cl.show(cardPanelUtama, "kelola");
-        case 2 -> cl.show(cardPanelUtama, "pesanan");
-        case 3 -> cl.show(cardPanelUtama, "transaksi");
+        case 0 -> { cl.show(cardPanelUtama, "dashboard"); loadDashboard(); }
+        case 1 -> { cl.show(cardPanelUtama, "kelola"); loadUserData(); loadTarifData(); }
+        case 2 -> { cl.show(cardPanelUtama, "pesanan"); loadPesananData(); }
+        case 3 -> { cl.show(cardPanelUtama, "transaksi"); loadTransaksiData(); }
         case 4 -> cl.show(cardPanelUtama, "laporan");
         default -> {} // Opsional: untuk mengantisipasi angka di luar 0-4
         }
@@ -1327,19 +1445,6 @@ public class FrameAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this,
                     "Gagal menghapus (mungkin user ini punya pesanan/transaksi):\n" + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    private void loadTarifData() {
-        try {
-            String jenis = String.valueOf(jComboBox2.getSelectedItem());
-            List<Object[]> data = tarifController.cariLayanan(txtSearchTarif.getText(), jenis);
-            DefaultTableModel m = (DefaultTableModel) jTable3.getModel();
-            m.setRowCount(0);
-            for (Object[] r : data) m.addRow(r);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Gagal memuat tarif:\n" + ex.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -1404,6 +1509,10 @@ public class FrameAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         java.awt.CardLayout cl = (java.awt.CardLayout) cardSub.getLayout();
         cl.show(cardSub, "cardTarif");
+
+        // Pastikan tombol sinkron
+        btnTarif.setSelected(true);
+        btnUser.setSelected(false);
     }//GEN-LAST:event_btnTarifActionPerformed
 
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
@@ -1442,6 +1551,10 @@ public class FrameAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         java.awt.CardLayout cl = (java.awt.CardLayout) cardSub.getLayout();
         cl.show(cardSub, "cardUser");
+
+        // Pastikan tombol sinkron
+        btnUser.setSelected(true);
+        btnTarif.setSelected(false);
     }//GEN-LAST:event_btnUserActionPerformed
 
     private void btnTambahUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahUserActionPerformed
@@ -1523,6 +1636,41 @@ public class FrameAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnSemuaLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemuaLayananActionPerformed
+        // TODO add your handling code here:
+        setKategoriPesanan("Semua Layanan");
+    }//GEN-LAST:event_btnSemuaLayananActionPerformed
+
+    private void btnRuteRideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuteRideActionPerformed
+        // TODO add your handling code here:
+        setKategoriPesanan("RuteRide");
+    }//GEN-LAST:event_btnRuteRideActionPerformed
+
+    private void btnRuteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuteCarActionPerformed
+        // TODO add your handling code here:
+        setKategoriPesanan("RuteCar");
+    }//GEN-LAST:event_btnRuteCarActionPerformed
+
+    private void btnDokumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokumenActionPerformed
+        // TODO add your handling code here:
+        setKategoriPesanan("Dokumen");
+    }//GEN-LAST:event_btnDokumenActionPerformed
+
+    private void btnRefreshPesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPesananActionPerformed
+        // TODO add your handling code here:
+        loadPesananData();
+    }//GEN-LAST:event_btnRefreshPesananActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+        loadPesananData();
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void txtCariPesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariPesananActionPerformed
+        // TODO add your handling code here:
+        loadPesananData();
+    }//GEN-LAST:event_txtCariPesananActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1549,9 +1697,16 @@ public class FrameAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDokumen;
     private javax.swing.JButton btnHapusTarif;
     private javax.swing.JButton btnHapusUser;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnPdf;
+    private javax.swing.JButton btnRefreshLaporanBulan;
+    private javax.swing.JButton btnRefreshPesanan;
+    private javax.swing.JButton btnRuteCar;
+    private javax.swing.JButton btnRuteRide;
+    private javax.swing.JButton btnSemuaLayanan;
     private javax.swing.JButton btnTambahTarif;
     private javax.swing.JButton btnTambahUser;
     private javax.swing.JToggleButton btnTarif;
@@ -1569,23 +1724,15 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel cardTarif;
     private javax.swing.JPanel cardTransaksi;
     private javax.swing.JPanel cardUser;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> comboBoxBulan;
+    private javax.swing.JComboBox<String> comboBoxMetode;
+    private javax.swing.JComboBox<String> comboBoxStatus;
+    private javax.swing.JComboBox<String> comboBoxTahun;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1596,29 +1743,20 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -1626,14 +1764,12 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
@@ -1666,18 +1802,28 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblDalamPerjalanan;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblDibatalkan;
+    private javax.swing.JLabel lblDriverAktif;
     private javax.swing.JLabel lblKelola;
     private javax.swing.JLabel lblLaporan;
+    private javax.swing.JLabel lblPenerimaanEwallet;
+    private javax.swing.JLabel lblPenerimaanTunai;
+    private javax.swing.JLabel lblPesananBerhasil;
+    private javax.swing.JLabel lblPesananMasuk;
+    private javax.swing.JLabel lblTotalPendapatan;
+    private javax.swing.JLabel lblTotalPesanan;
     private javax.swing.JLabel lblTransaksi;
+    private javax.swing.JLabel lblTransaksiBerhasil;
     private javax.swing.JPanel panelDashboard;
     private javax.swing.JPanel panelData;
     private javax.swing.JPanel panelKelolaData;
     private javax.swing.JPanel panelLaporan;
     private javax.swing.JPanel panelTransaksi;
+    private javax.swing.JTextField txtCariLaporanBulan;
+    private javax.swing.JTextField txtCariPesanan;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearchTarif;
     // End of variables declaration//GEN-END:variables

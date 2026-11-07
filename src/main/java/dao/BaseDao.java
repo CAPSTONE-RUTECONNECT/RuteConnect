@@ -53,6 +53,17 @@ public abstract class BaseDao<T> implements CrudDao<T> {
             return -1;
         }
     }
+    protected double scalar(String sql, Object... params) {
+        try (PreparedStatement ps = conn().prepareStatement(sql)) {
+            bind(ps, params);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getDouble(1) : 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
     private void bind(PreparedStatement ps, Object... params) throws SQLException {
         for (int i = 0; i < params.length; i++) ps.setObject(i + 1, params[i]);
     }

@@ -68,4 +68,43 @@ public class TransaksiDao extends BaseDao<Transaksi> {
     public List<Transaksi> findByBulan(int tahun, int bulan) {
         return query("SELECT * FROM transaksi WHERE YEAR(waktu_transaksi) = ? AND MONTH(waktu_transaksi) = ? ORDER BY transaksi_id", tahun, bulan);
     }
+    // total semua transaksi yang berhasil
+    public double totalBerhasil() {
+        return scalar("SELECT IFNULL(SUM(jumlah_transaksi), 0) FROM transaksi WHERE status_transaksi = 'Berhasil'");
+    }
+
+    // total transaksi berhasil per metode: "E-Wallet", "Cash", atau "Saldo"
+    public double totalByMetode(String metode) {
+        return scalar("SELECT IFNULL(SUM(jumlah_transaksi), 0) FROM transaksi "
+                    + "WHERE status_transaksi = 'Berhasil' AND metode_pembayaran = ?", metode);
+    }
+
+    // baris: {id transaksi, tanggal, pelanggan, jenis, metode, jumlah, status}
+    public List<Object[]> ringkasanTransaksi() {
+        List<Object[]> hasil = new java.util.ArrayList<>();
+        String sql = "SELECT t.transaksi_id, t.waktu_transaksi, u.nama, t.jenis_transaksi, "
+                   + "t.metode_pembayaran, t.jumlah_transaksi, t.status_transaksi "
+                   + "FROM transaksi t JOIN user u ON t.user_id = u.user_id "
+                   + "ORDER BY t.transaksi_id DESC";
+        try (java.sql.PreparedStatement ps = conn().prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                String metode = rs.getString(5);
+                if ("Saldo".equalsIgnoreCase(metode)) metode = "RutePay";
+                else if ("Cash".equalsIgnoreCase(metode)) metode = "Tunai";
+                hasil.add(new Object[]{
+                    "#" + rs.getInt(1),
+                    rs.getDate(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    metode != null ? metode : "-",
+                    controller.Fmt.rupiah(rs.getDouble(6)),
+                    rs.getString(7)
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hasil;
+    }
 }

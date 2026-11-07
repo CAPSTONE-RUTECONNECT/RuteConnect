@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -147,5 +148,120 @@ public class PesananDao extends BaseDao<Pesanan> {
  
     public boolean batalkan(int id, String alasan) {
         return exec("UPDATE pesanan SET status_pesanan = 'Dibatalkan', alasan_batal = ? WHERE pesanan_id = ?", alasan, id);
+    }
+    
+    public int hitungPesananHariIni() {
+        return (int) scalar("SELECT COUNT(*) FROM pesanan WHERE waktu_pesanan = CURDATE()");
+    }
+
+    // pendapatan = total biaya pesanan yang sudah Selesai
+    public double totalPendapatan() {
+        return scalar("SELECT IFNULL(SUM(total_biaya), 0) FROM pesanan WHERE status_pesanan = 'Selesai'");
+    }
+
+    // baris: {id, pelanggan, driver, layanan, metode, rute, status}
+    public List<Object[]> ringkasanDashboard() {
+        List<Object[]> hasil = new java.util.ArrayList<>();
+        String sql = "SELECT p.pesanan_id, up.nama, ud.nama, l.nama_layanan, t.metode_pembayaran, "
+                   + "p.lokasi_jemput, p.lokasi_tujuan, p.status_pesanan "
+                   + "FROM pesanan p "
+                   + "JOIN layanan l ON p.layanan_id = l.layanan_id "
+                   + "JOIN user up ON p.pelanggan_id = up.user_id "
+                   + "LEFT JOIN user ud ON p.driver_id = ud.user_id "
+                   + "LEFT JOIN transaksi t ON t.pesanan_id = p.pesanan_id "
+                   + "AND t.jenis_transaksi = 'Pembayaran Pesanan' "
+                   + "ORDER BY p.pesanan_id DESC";
+        try (PreparedStatement ps = conn().prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                String metode = rs.getString(5);
+                if ("Saldo".equalsIgnoreCase(metode)) metode = "RutePay";
+                else if ("Cash".equalsIgnoreCase(metode)) metode = "Tunai";
+                hasil.add(new Object[]{
+                    "#" + rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3) != null ? rs.getString(3) : "-",
+                    rs.getString(4),
+                    metode != null ? metode : "-",
+                    rs.getString(6) + " → " + rs.getString(7),
+                    rs.getString(8)
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hasil;
+    }
+    public int hitungByStatus(String status) {
+        return (int) scalar("SELECT COUNT(*) FROM pesanan WHERE status_pesanan = ?", status);
+    }
+
+    // total semua pesanan masuk
+    public int hitungSemuaPesanan() {
+        return (int) scalar("SELECT COUNT(*) FROM pesanan");
+    }
+
+    // baris: {id, pelanggan, driver, layanan, total biaya, rute, status}
+    // kategori: "Semua Layanan", "RuteRide", "RuteCar", "Dokumen"
+    // status: "Semua Status", "Menunggu", "Dalam Perjalanan", "Selesai", "Batal"
+    public List<Object[]> cariPesananAdmin(String keyword, String kategori, String status) {
+        List<Object[]> hasil = new java.util.ArrayList<>();
+        String kw = (keyword == null ? "" : keyword.trim());
+        String like = "%" + kw + "%";
+
+        StringBuilder sql = new StringBuilder(
+            "SELECT p.pesanan_id, up.nama, ud.nama, l.nama_layanan, p.total_biaya, "
+            + "p.lokasi_jemput, p.lokasi_tujuan, p.status_pesanan "
+            + "FROM pesanan p "
+            + "JOIN layanan l ON p.layanan_id = l.layanan_id "
+            + "JOIN user up ON p.pelanggan_id = up.user_id "
+            + "LEFT JOIN user ud ON p.driver_id = ud.user_id "
+            + "WHERE (CAST(p.pesanan_id AS CHAR) = ? OR up.nama LIKE ? OR ud.nama LIKE ? "
+            + "OR l.nama_layanan LIKE ? OR p.lokasi_jemput LIKE ? OR p.lokasi_tujuan LIKE ?) ");
+
+        // filter kategori layanan
+        switch (kategori) {
+            case "RuteRide" -> sql.append("AND p.jenis_pesanan = 'Transportasi' AND l.jenis_kendaraan = 'Motor' ");
+            case "RuteCar"  -> sql.append("AND p.jenis_pesanan = 'Transportasi' AND l.jenis_kendaraan = 'Mobil' ");
+            case "Dokumen"  -> sql.append("AND p.jenis_pesanan = 'Dokumen' ");
+            default -> {}
+        }
+
+        // filter status
+        boolean pakaiStatus = true;
+        switch (status) {
+            case "Menunggu"          -> sql.append("AND p.status_pesanan = 'Menunggu' ");
+            case "Dalam Perjalanan"  -> sql.append("AND p.status_pesanan = 'Dalam Perjalanan' ");
+            case "Selesai"           -> sql.append("AND p.status_pesanan = 'Selesai' ");
+            case "Batal"             -> sql.append("AND p.status_pesanan = 'Dibatalkan' ");
+            default -> pakaiStatus = false;
+        }
+
+        sql.append("ORDER BY p.pesanan_id DESC");
+
+        try (PreparedStatement ps = conn().prepareStatement(sql.toString())) {
+            ps.setString(1, kw);
+            ps.setString(2, like);
+            ps.setString(3, like);
+            ps.setString(4, like);
+            ps.setString(5, like);
+            ps.setString(6, like);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    hasil.add(new Object[]{
+                        "#" + rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3) != null ? rs.getString(3) : "-",
+                        rs.getString(4),
+                        controller.Fmt.rupiah(rs.getDouble(5)),
+                        rs.getString(6) + " → " + rs.getString(7),
+                        rs.getString(8)
+                    });
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hasil;
     }
 }
