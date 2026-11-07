@@ -170,9 +170,9 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 | Maven | Mengelola dependency dan proses build proyek. |
 | NetBeans IDE | Lingkungan pengembangan aplikasi. |
 
-### B. Development Environment & AI Tools
+### B. Development Environment & Supporting Tools
 
-Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan database, serta membantu penyelesaian permasalahan selama pengerjaan proyek.
+Berbagai teknologi dan tools digunakan untuk mendukung proses pengembangan aplikasi, pengelolaan database, pengujian program, serta penyusunan dokumentasi proyek RuteConnect.
 
 <div align="center">
 
@@ -180,36 +180,87 @@ Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan databas
   <tr>
     <th>CORE TECHNOLOGIES</th>
     <th>DEVELOPMENT ENVIRONMENT</th>
-    <th>AI DEVELOPMENT ASSISTANTS</th>
+    <th>SUPPORTING TOOLS</th>
   </tr>
   <tr>
-    <td align="center" valign="middle">
-      <img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" height="65" alt="Java, MySQL, Maven"/>
+    <td align="center" valign="middle" width="33%">
+      <img src="https://skillicons.dev/icons?i=java,mysql,maven,html&theme=light" height="55" alt="Java, MySQL, Maven, HTML"/>
       <br/><br/>
-      <strong>Java 21 • MySQL • Maven</strong>
+      <strong>Java 21 • MySQL</strong>
+      <br/>
+      <strong>Maven • HTML</strong>
     </td>
-    <td align="center" valign="middle">
-      <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
+    <td align="center" valign="middle" width="33%">
+      <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="42" alt="Laragon"/>
       &nbsp;
-      <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="48" alt="Apache NetBeans"/>
+      <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="42" alt="Apache NetBeans"/>
       <br/><br/>
-      <strong>Laragon • NetBeans</strong>
+      <strong>Laragon • Apache NetBeans</strong>
     </td>
-    <td align="center" valign="middle">
-      <img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Claude"/>
+    <td align="center" valign="middle" width="33%">
+      <img src="https://cdn.simpleicons.org/github/181717" height="42" alt="GitHub"/>
       &nbsp;
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg" height="48" alt="ChatGPT"/>
+      <img src="https://cdn.simpleicons.org/googlechrome/4285F4" height="42" alt="Google Chrome"/>
       &nbsp;
-      <img src="https://cdn.simpleicons.org/googlegemini/8E75B2" height="48" alt="Gemini AI"/>
+      <img src="https://img.icons8.com/color/96/microsoft-word-2019--v2.png" height="42" alt="Microsoft Word"/>
       <br/><br/>
-      <strong>Claude • ChatGPT • Gemini AI</strong>
+      <strong>GitHub • Google Chrome</strong>
+      <br/>
+      <strong>Microsoft Word</strong>
     </td>
   </tr>
 </table>
 
 </div>
 
-### C. Service Platform References
+### C. README Design Resources
+
+Beberapa layanan berbasis web dimanfaatkan untuk membantu membuat tampilan README GitHub lebih menarik, informatif, dan terstruktur.
+
+<div align="center">
+
+<table>
+  <tr>
+    <th>CAPSULE RENDER</th>
+    <th>SKILL ICONS</th>
+    <th>SHIELDS.IO</th>
+    <th>SIMPLE ICONS</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/vercel/000000" height="42" alt="Capsule Render"/>
+      <br/><br/>
+      <strong>Banner README</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://skillicons.dev/icons?i=github&theme=light" height="42" alt="Skill Icons"/>
+      <br/><br/>
+      <strong>Technology Icons</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/shieldsdotio/000000" height="42" alt="Shields.io"/>
+      <br/><br/>
+      <strong>Badges</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/simpleicons/111111" height="42" alt="Simple Icons"/>
+      <br/><br/>
+      <strong>Brand Icons</strong>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<sub>
+Design Resources:
+<a href="https://github.com/kyechan99/capsule-render">Capsule Render</a> •
+<a href="https://skillicons.dev/">Skill Icons</a> •
+<a href="https://shields.io/">Shields.io</a> •
+<a href="https://simpleicons.org/">Simple Icons</a>
+</sub>
+
+### D. Service Platform References
 
 <div align="center">
 
@@ -234,7 +285,7 @@ Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan databas
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude, ChatGPT, dan Gemini AI merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
-### D. Referensi Pengembangan README
+### E. Referensi Pengembangan README
 
 Beberapa sumber yang digunakan sebagai referensi untuk membantu penyusunan tampilan dan dokumentasi README:
 
@@ -653,76 +704,84 @@ Interface `CrudDao<T>` berfungsi sebagai kontrak yang menetapkan operasi pengelo
 
 ## 🖥️ 8. Cara Penggunaan Program
 
-Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampilan antarmuka yang tersedia.
+Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampilan antarmuka dan fitur yang tersedia.
 
 ### A. Tampilan Awal Aplikasi
 
-Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
+Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna masuk dan mengakses fitur yang tersedia.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="masukkin disini" width="100%">
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20202959.png" width="100%" alt="Tampilan Awal RuteConnect" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
 
 ### B. Login Pengguna
 
-Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
+Pengguna memasukkan email dan password yang telah terdaftar untuk masuk ke dalam aplikasi dan mengakses fitur sesuai dengan hak akses masing-masing.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="" width="100%">
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.jpeg" width="100%" alt="Halaman Login Pengguna" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
 
 ### C. Dashboard Pelanggan
 
-Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
+Dashboard Pelanggan merupakan halaman utama yang digunakan pelanggan untuk mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="" width="100%">
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.1.jpeg" width="100%" alt="Dashboard Pelanggan" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
 
 ### D. Halaman Pemesanan
 
-Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
+Halaman pemesanan digunakan pelanggan untuk memilih jenis layanan yang dibutuhkan, yaitu transportasi atau pengiriman dokumen. Pelanggan kemudian mengisi informasi yang diperlukan sesuai dengan layanan yang dipilih untuk membuat pesanan.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="" width="100%">
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.2.jpeg" width="100%" alt="Halaman Pemesanan Transportasi" style="display: block; margin: auto;"/>
+    </td>
+  </tr>
+</table>
+
+<table border="1" bordercolor="black" align="center">
+  <tr>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.3.jpeg" width="100%" alt="Halaman Pengiriman Dokumen" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
 
 ### E. Dashboard Driver
 
-Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
+Dashboard Driver merupakan halaman yang digunakan oleh mitra pengemudi untuk melihat pesanan yang tersedia, memeriksa detail pesanan, menerima atau menolak pesanan, serta memperbarui status pengerjaan.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="" width="100%">
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.5.jpeg" width="100%" alt="Dashboard Driver" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
 
 ### F. Dashboard Admin
 
-Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
+Dashboard Admin merupakan halaman pengelolaan sistem yang memberikan akses kepada admin untuk mengelola data pengguna, layanan, dan pesanan, serta memantau informasi transaksi dalam sistem.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="" width="100%">
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.24.6.jpeg" width="100%" alt="Dashboard Admin" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
@@ -731,16 +790,16 @@ Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta info
 
 ## 👥 9. Kontributor
 
-Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesaian tugas mata kuliah **Pemrograman Berorientasi Objek (PBO)**.
+Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesaian tugas praktikum **Pemrograman Berorientasi Objek (PBO)**.
 
 <div align="center">
 
 | No. | Nama | NIM | Peran |
 |:---:|---|:---:|---|
-| 1 | [Siti Nursinta] | [2509116087] | Project Leader |
-| 2 | [Daffa Rizqi Fadhillah] | [2509116068] | Database Design |
-| 3 | [Nabila Salma Putri] | [2509116065] | Back-End Developer |
-| 4 | [Selvi Bella Dwi Anita] | [2509116053] | System Development |
+| 1 | Siti Nursinta | 2509116087 | Project Leader |
+| 2 | Daffa Rizqi Fadhillah | 2509116068 | Database Design |
+| 3 | Nabila Salma Putri | 2509116065 | Back-End Developer |
+| 4 | Selvi Bella Dwi Anita | 2509116053 | Minor Contribution |
 
 </div>
 
