@@ -1,28 +1,30 @@
-
 <!-- ===================================================== -->
 <!--                    RUTECONNECT                        -->
 <!-- ===================================================== -->
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Journey%20and%20Delivery%20Network.png" width="100%" alt="RuteConnect Banner"/>
+  <!-- HEADER BANNER -->
+  <img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Journey%20and%20Delivery%20Network.png"
+       width="100%"
+       alt="RuteConnect Banner"/>
 
-<br/>
+  <br/>
 
-<h1>RUTECONNECT</h1>
+  <h1>RUTECONNECT</h1>
 
-<strong>INTEGRATED TRANSPORTATION & DOCUMENT DELIVERY SYSTEM</strong>
+  <strong>INTEGRATED TRANSPORTATION & DOCUMENT DELIVERY SYSTEM</strong>
 
-<p><em>Connecting People, Delivering Possibilities.</em></p>
+  <p><em>Connecting People, Delivering Possibilities.</em></p>
 
-<img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-<img src="https://img.shields.io/badge/Java%20Swing-GUI-123B68?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/Maven-Build%20Tool-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java%20Swing-GUI-123B68?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Maven-Build%20Tool-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" />
 
-<br/>
+  <br/><br/>
 
-**Universitas Mulawarman | Program Studi Sistem Informasi | 2026**
+  **Universitas Mulawarman | Program Studi Sistem Informasi | 2026**
 
 </div>
 
@@ -41,6 +43,7 @@
 | 07 | [Penerapan 4 Pilar OOP](#-7-penerapan-4-pilar-oop) | Konsep OOP dalam aplikasi |
 | 08 | [Cara Penggunaan Program](#️-8-cara-penggunaan-program) | Panduan dan dokumentasi GUI |
 | 09 | [Kontributor](#-9-kontributor) | Tim pengembang |
+| 10 | [Dokumentasi Konsultasi](#-10-dokumentasi-konsultasi) | Dokumentasi proses konsultasi |
 
 ---
 
@@ -56,8 +59,8 @@ Nama RuteConnect berasal dari gabungan kata *Rute* dan *Connect*. Nama ini mengg
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/ROUTE-Connected%20Services-0B1F3A?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/DELIVERY-Smart%20Solution-164B78?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/ROUTE-Connected%20Services-0B1F3A?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/DELIVERY-Smart%20Solution-164B78?style=for-the-badge"/>
 
 </div>
 
@@ -73,7 +76,7 @@ RuteConnect memiliki tiga jenis hak akses pengguna, yaitu **Pelanggan, Driver, d
 
 Sistem dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Swing serta database MySQL untuk menyimpan dan mengelola data aplikasi.
 
-#### 🎯 Tujuan Pengembangan
+### 🎯 Tujuan Pengembangan
 
 - Mengintegrasikan layanan transportasi dan pengiriman dokumen dalam satu aplikasi.
 - Mempermudah proses pemesanan dan pengelolaan layanan secara digital.
@@ -81,13 +84,17 @@ Sistem dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Sw
 - Membantu pengelolaan data pelanggan, driver, layanan, dan transaksi.
 - Menerapkan konsep Object-Oriented Programming dalam pengembangan aplikasi.
 
-#### 🗺️ Gambaran Konsep RuteConnect
+### 🗺️ Gambaran Konsep RuteConnect
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Digital%20Transport%20and%20Delivery.png" width="90%" alt="Ilustrasi Konsep RuteConnect"/>
+  <img src="https://raw.githubusercontent.com/Sitinursinta04/PRAKTIKUM_PBO/main/Dokumentasi/second/RuteConnect_%20Digital%20Transport%20and%20Delivery.png"
+       width="90%"
+       alt="Ilustrasi Konsep RuteConnect"/>
 
-<em>Ilustrasi konsep perjalanan dan pengiriman pada RuteConnect.</em>
+  <br/>
+
+  <em>Ilustrasi konsep perjalanan dan pengiriman pada RuteConnect.</em>
 
 </div>
 
@@ -136,7 +143,6 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 
 ---
 
-
 ## 🛠️ 4. Tech Stack
 
 RuteConnect dikembangkan dengan memanfaatkan berbagai teknologi dan tools pendukung untuk membangun aplikasi desktop, mengelola database, serta membantu proses pengembangan sistem.
@@ -147,11 +153,11 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/Java_21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-<img src="https://img.shields.io/badge/Java_Swing-123B68?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/JDBC-0B1F3A?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java_21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java_Swing-123B68?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JDBC-0B1F3A?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
 
 </div>
 
@@ -166,43 +172,40 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 ### B. Development Environment & AI Tools
 
-#### CORE TECHNOLOGIES
+Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan database, serta membantu penyelesaian permasalahan selama pengerjaan proyek.
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" alt="Java, MySQL, Maven" height="90"/>
-
-<br/>
-
-<strong>Java 21</strong> &nbsp; • &nbsp; <strong>MySQL</strong> &nbsp; • &nbsp; <strong>Maven</strong>
-
-</div>
-
-#### DEVELOPMENT ENVIRONMENT
-
-<div align="center">
-
-<img src="https://cdn.simpleicons.org/laragon/0E8A70" height="58" alt="Laragon"/>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="58" alt="Apache NetBeans"/>
-
-<br/>
-
-<strong>Laragon</strong> &nbsp; • &nbsp; <strong>Apache NetBeans</strong>
-
-</div>
-
-#### AI DEVELOPMENT ASSISTANTS
-
-<div align="center">
-
-<img src="https://cdn.simpleicons.org/anthropic/D97757" height="58" alt="Claude"/>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg" height="58" alt="ChatGPT"/>
-
-<br/>
-
-<strong>Claude</strong> &nbsp; • &nbsp; <strong>ChatGPT</strong>
+<table>
+  <tr>
+    <th>CORE TECHNOLOGIES</th>
+    <th>DEVELOPMENT ENVIRONMENT</th>
+    <th>AI DEVELOPMENT ASSISTANTS</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" height="65" alt="Java, MySQL, Maven"/>
+      <br/><br/>
+      <strong>Java 21 • MySQL • Maven</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
+      &nbsp;
+      <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="48" alt="Apache NetBeans"/>
+      <br/><br/>
+      <strong>Laragon • NetBeans</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Claude"/>
+      &nbsp;
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg" height="48" alt="ChatGPT"/>
+      &nbsp;
+      <img src="https://cdn.simpleicons.org/googlegemini/8E75B2" height="48" alt="Gemini AI"/>
+      <br/><br/>
+      <strong>Claude • ChatGPT • Gemini AI</strong>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -210,25 +213,30 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <div align="center">
 
-<img src="https://cdn.simpleicons.org/gojek/00AA13" height="65" alt="Gojek"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/grab/00B14F" height="65" alt="Grab"/>
-
-<br/>
-
-<strong>GOJEK</strong> &nbsp;&nbsp; • &nbsp;&nbsp; <strong>GRAB</strong>
-
-<br/>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://cdn.simpleicons.org/gojek/00AA13" height="65" alt="Gojek"/>
+      <br/><br/>
+      <strong>GOJEK</strong>
+    </td>
+    <td align="center" width="50%">
+      <img src="https://cdn.simpleicons.org/grab/00B14F" height="65" alt="Grab"/>
+      <br/><br/>
+      <strong>GRAB</strong>
+    </td>
+  </tr>
+</table>
 
 <sub>Transportation & Delivery Platform References</sub>
 
 </div>
 
-> **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
+> **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude, ChatGPT, dan Gemini AI merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
 ### D. Referensi Pengembangan README
 
-Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan dokumentasi README:
+Beberapa sumber yang digunakan sebagai referensi untuk membantu penyusunan tampilan dan dokumentasi README:
 
 - [Readme.so](https://readme.so/) – Membantu menyusun struktur README.
 - [Shields.io](https://shields.io/) – Membuat badge teknologi dan informasi proyek.
@@ -251,72 +259,86 @@ Flowchart menggambarkan alur proses aplikasi RuteConnect, mulai dari pengguna me
 <table>
   <tr>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png?raw=true" width="100%" alt="Flowchart Login">
-      <br><sub>Flowchart Login</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png?raw=true" width="100%" alt="Flowchart Login"/>
+      <br/>
+      <sub>Flowchart Login</sub>
     </td>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png?raw=true" width="100%" alt="Flowchart Registrasi">
-      <br><sub>Flowchart Registrasi</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Menu%20Customer.drawio.png?raw=true" width="100%" alt="Flowchart Menu Customer">
-      <br><sub>Flowchart Menu Customer</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Transportasi.drawio.png?raw=true" width="100%" alt="Flowchart Customer Transportasi">
-      <br><sub>Flowchart Customer – Transportasi</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png?raw=true" width="100%" alt="Flowchart Registrasi"/>
+      <br/>
+      <sub>Flowchart Registrasi</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pengiriman%20Dokumen.drawio.png?raw=true" width="100%" alt="Flowchart Pengiriman Dokumen">
-      <br><sub>Flowchart Customer – Pengiriman Dokumen</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Menu%20Customer.drawio.png?raw=true" width="100%" alt="Flowchart Menu Customer"/>
+      <br/>
+      <sub>Flowchart Menu Customer</sub>
     </td>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pembayaran.drawio.png?raw=true" width="100%" alt="Flowchart Pembayaran">
-      <br><sub>Flowchart Customer – Pembayaran</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Top%20Up.drawio.png?raw=true" width="100%" alt="Flowchart Top Up">
-      <br><sub>Flowchart Customer – Top Up</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Status%20%26%20Riwayat.drawio.png?raw=true" width="100%" alt="Flowchart Status dan Riwayat">
-      <br><sub>Flowchart Customer – Status & Riwayat</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Transportasi.drawio.png?raw=true" width="100%" alt="Flowchart Customer Transportasi"/>
+      <br/>
+      <sub>Flowchart Customer – Transportasi</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Driver.drawio.png?raw=true" width="100%" alt="Flowchart Driver">
-      <br><sub>Flowchart Driver</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pengiriman%20Dokumen.drawio.png?raw=true" width="100%" alt="Flowchart Pengiriman Dokumen"/>
+      <br/>
+      <sub>Flowchart Customer – Pengiriman Dokumen</sub>
     </td>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Admin%20-%20Menu%20Admin.drawio.png?raw=true" width="100%" alt="Flowchart Menu Admin">
-      <br><sub>Flowchart Admin – Menu Admin</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Kelola%20Data.drawio.png?raw=true" width="100%" alt="Flowchart Kelola Data">
-      <br><sub>Flowchart Admin – Kelola Data</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Pesanan.drawio.png?raw=true" width="100%" alt="Flowchart Data Pesanan">
-      <br><sub>Flowchart Admin – Data Pesanan</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pembayaran.drawio.png?raw=true" width="100%" alt="Flowchart Pembayaran"/>
+      <br/>
+      <sub>Flowchart Customer – Pembayaran</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Transaksi.drawio.png?raw=true" width="100%" alt="Flowchart Data Transaksi">
-      <br><sub>Flowchart Admin – Data Transaksi</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Top%20Up.drawio.png?raw=true" width="100%" alt="Flowchart Top Up"/>
+      <br/>
+      <sub>Flowchart Customer – Top Up</sub>
     </td>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Laporan.drawio.png?raw=true" width="100%" alt="Flowchart Laporan">
-      <br><sub>Flowchart Admin – Laporan</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Status%20%26%20Riwayat.drawio.png?raw=true" width="100%" alt="Flowchart Status dan Riwayat"/>
+      <br/>
+      <sub>Flowchart Customer – Status & Riwayat</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Driver.drawio.png?raw=true" width="100%" alt="Flowchart Driver"/>
+      <br/>
+      <sub>Flowchart Driver</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Admin%20-%20Menu%20Admin.drawio.png?raw=true" width="100%" alt="Flowchart Menu Admin"/>
+      <br/>
+      <sub>Flowchart Admin – Menu Admin</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Kelola%20Data.drawio.png?raw=true" width="100%" alt="Flowchart Kelola Data"/>
+      <br/>
+      <sub>Flowchart Admin – Kelola Data</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Pesanan.drawio.png?raw=true" width="100%" alt="Flowchart Data Pesanan"/>
+      <br/>
+      <sub>Flowchart Admin – Data Pesanan</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Transaksi.drawio.png?raw=true" width="100%" alt="Flowchart Data Transaksi"/>
+      <br/>
+      <sub>Flowchart Admin – Data Transaksi</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Laporan.drawio.png?raw=true" width="100%" alt="Flowchart Laporan"/>
+      <br/>
+      <sub>Flowchart Admin – Laporan</sub>
     </td>
   </tr>
 </table>
@@ -335,10 +357,13 @@ Aktor utama dalam aplikasi RuteConnect terdiri atas:
 
 <div align="center">
 
-<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/diagram%20PA(1)-Page-5.drawio(1).png?raw=true" width="85%" alt="Use Case Diagram RuteConnect">
+  <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/diagram%20PA(1)-Page-5.drawio(1).png?raw=true"
+       width="85%"
+       alt="Use Case Diagram RuteConnect"/>
 
-<br>
-<strong>Use Case Diagram RuteConnect</strong>
+  <br/>
+
+  <strong>Use Case Diagram RuteConnect</strong>
 
 </div>
 
@@ -364,14 +389,18 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 <table>
   <tr>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.jpeg?raw=true" width="100%" alt="ERD Logical">
-      <br><strong>ERD Logical</strong>
-      <br><sub>Gambaran entitas, atribut, dan hubungan antar-entitas dalam database.</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.jpeg?raw=true" width="100%" alt="ERD Logical"/>
+      <br/>
+      <strong>ERD Logical</strong>
+      <br/>
+      <sub>Gambaran entitas, atribut, dan hubungan antar-entitas dalam database.</sub>
     </td>
     <td width="50%" align="center">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.%20(1).jpeg?raw=true" width="100%" alt="ERD Relational">
-      <br><strong>ERD Relational</strong>
-      <br><sub>Representasi struktur tabel database beserta primary key dan foreign key.</sub>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.%20(1).jpeg?raw=true" width="100%" alt="ERD Relational"/>
+      <br/>
+      <strong>ERD Relational</strong>
+      <br/>
+      <sub>Representasi struktur tabel database beserta primary key dan foreign key.</sub>
     </td>
   </tr>
 </table>
@@ -382,84 +411,82 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 
 ## 📂 6. Struktur Folder/Package
 
-Struktur folder dan package dibuat untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya. Pemisahan ini bertujuan agar kode program lebih terorganisasi, mudah dipahami, dan lebih mudah dikembangkan.
+Struktur proyek RuteConnect disusun menggunakan beberapa package yang memiliki tanggung jawab berbeda. Pemisahan ini membantu menjaga keteraturan kode serta memudahkan proses pengembangan dan pemeliharaan aplikasi.
 
-#### Struktur Proyek
+### A. Struktur Proyek
 
+Struktur proyek RuteConnect disusun ke dalam beberapa package berdasarkan fungsi dan tanggung jawab masing-masing untuk menjaga keteraturan kode serta memudahkan proses pengembangan aplikasi.
+
+<div align="center">
+
+<table>
   <tr>
-    <td>
-      <img src="" width="75%" alt="Struktur Package">
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20204304.png?raw=true" width="100%" alt="Struktur Proyek RuteConnect 1"/>
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20204359.png?raw=true" width="100%" alt="Struktur Proyek RuteConnect 2"/>
     </td>
   </tr>
 </table>
 
-```text
-RuteConnect/
-│
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── ruteconnect/
-│       │           ├── config/
-│       │           ├── model/
-│       │           ├── dao/
-│       │           ├── service/
-│       │           ├── view/
-│       │           └── Main.java
-│       │
-│       └── resources/
-│           └── images/
-│
-├── docs/
-│   ├── images/
-│   ├── flowchart/
-│   ├── diagram/
-│   └── screenshots/
-│
-├── pom.xml
-└── README.md
-```
+<sub>Struktur package dan file proyek RuteConnect pada Apache NetBeans.</sub>
 
-#### Penjelasan Package
+</div>
+
+### B. Penjelasan Package
+
+Setiap package memiliki fungsi tersendiri untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya.
 
 | Package | Fungsi |
 |---|---|
-| `config` | Mengatur konfigurasi koneksi database. |
-| `model` | Menyimpan class yang merepresentasikan objek dan data sistem. |
-| `dao` | Menangani operasi pengambilan, penyimpanan, perubahan, dan penghapusan data. |
-| `service` | Menangani logika proses bisnis aplikasi. |
-| `view` | Menampilkan antarmuka pengguna menggunakan Java Swing. |
-| `resources` | Menyimpan aset pendukung seperti gambar dan ikon. |
-
-> Struktur di atas merupakan contoh susunan package. Sesuaikan nama folder, package, dan file dengan struktur proyek RuteConnect yang sebenarnya.
+| `config` | Mengatur konfigurasi serta koneksi aplikasi dengan database MySQL. |
+| `controller` | Mengelola proses pengendalian aplikasi, seperti autentikasi, sesi pengguna, pengaturan tarif, dan pengelolaan data pengguna. |
+| `dao` | Menangani interaksi antara aplikasi dan database melalui operasi CRUD (*Create, Read, Update, Delete*). |
+| `main` | Menyimpan class utama sebagai titik awal untuk menjalankan aplikasi serta aset pendukung seperti gambar dan halaman HTML. |
+| `model` | Mendefinisikan class yang merepresentasikan objek dan struktur data dalam sistem, seperti User, Pelanggan, Driver, Pesanan, dan Transaksi. |
+| `service` | Menangani logika bisnis aplikasi, seperti pengelolaan pesanan, saldo, transaksi, dan pembuatan laporan. |
+| `util` | Menyediakan berbagai fungsi bantuan dan utilitas yang digunakan oleh komponen aplikasi. |
+| `view` | Mengelola tampilan antarmuka aplikasi menggunakan Java Swing, termasuk form, dashboard, dan halaman layanan. |
 
 ---
 
 ## 🧩 7. Penerapan 4 Pilar OOP
 
-Pengembangan RuteConnect menerapkan konsep Object-Oriented Programming (OOP) yang terdiri atas empat pilar utama, yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction.
+RuteConnect dikembangkan menggunakan konsep *Object-Oriented Programming* (OOP) yang menerapkan empat pilar utama, yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction. Penerapan konsep tersebut dapat ditemukan pada berbagai class dalam package `model` dan `dao`.
 
 ### 1. Encapsulation (Enkapsulasi)
 
-Encapsulation merupakan konsep membungkus data dan metode dalam sebuah class serta membatasi akses langsung terhadap atribut tertentu.
+Encapsulation merupakan konsep membungkus data dan method dalam sebuah class serta membatasi akses langsung terhadap atribut tertentu.
 
-Dalam RuteConnect, konsep ini dapat diterapkan pada class seperti `User`, `Pelanggan`, `Driver`, dan `Pesanan` dengan menggunakan access modifier `private`.
+Pada RuteConnect, konsep ini diterapkan melalui penggunaan access modifier `private` pada atribut class `User`. Akses dan perubahan data dilakukan melalui method getter dan setter yang disediakan.
 
-**Contoh penerapan:**
+**Contoh penerapan pada class User:**
 
 ```java
-public class User {
-    private String idUser;
+public abstract class User {
+    private int userId;
     private String nama;
+    private String noTelepon;
     private String email;
     private String password;
+    private String role;
 
     public String getNama() {
         return nama;
     }
 
     public void setNama(String nama) {
+        if (nama == null || !nama.matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Nama hanya boleh huruf dan spasi");
+        }
+        nama = nama.trim();
+        if (nama.length() < 3) {
+            throw new IllegalArgumentException("Nama minimal 3 karakter");
+        }
+        if (nama.length() > 100) {
+            throw new IllegalArgumentException("Nama maksimal 100 karakter");
+        }
         this.nama = nama;
     }
 }
@@ -467,96 +494,160 @@ public class User {
 
 **Penjelasan:**
 
-Atribut dibuat `private` agar tidak dapat diakses secara langsung dari luar class. Pengaksesan dan perubahan data dilakukan melalui method getter dan setter.
+Atribut pada class `User` menggunakan access modifier `private` sehingga tidak dapat diakses secara langsung dari luar class. Pengambilan data dilakukan melalui getter, sedangkan perubahan data dilakukan melalui setter. Setter `setNama()` juga menerapkan validasi untuk memastikan nama hanya berisi huruf dan spasi serta memenuhi batas panjang yang ditentukan.
 
 ### 2. Inheritance (Pewarisan)
 
-Inheritance merupakan konsep pewarisan atribut dan method dari satu class kepada class lainnya.
+Inheritance merupakan konsep pewarisan atribut dan method dari class induk (*parent class*) kepada class turunannya (*child class*).
 
-Dalam RuteConnect, class `Pelanggan`, `Driver`, dan `Admin` dapat mewarisi atribut serta method umum dari class induk `User`.
+Pada RuteConnect, konsep ini diterapkan melalui class `User` yang diwariskan kepada `Pelanggan`, `Driver`, dan `Admin`. Selain itu, class `Pesanan` diwariskan kepada `Transportasi` dan `Dokumen`.
 
-**Contoh penerapan:**
+**Contoh penerapan pada class Pelanggan:**
 
 ```java
 public class Pelanggan extends User {
-    private String alamat;
 
-    public String getAlamat() {
-        return alamat;
+    private String alamatFavorit;
+    private double saldoWallet;
+
+    @Override
+    public String getJenisUser() {
+        return "Pelanggan";
     }
 }
 ```
 
 **Penjelasan:**
 
-Class `Pelanggan` mewarisi atribut dan method yang dimiliki oleh class `User`, sehingga tidak perlu mendefinisikan kembali seluruh atribut umum pengguna.
+Class `Pelanggan` menggunakan keyword `extends` untuk mewarisi atribut dan method dari class `User`. Dengan demikian, informasi umum pengguna dapat digunakan kembali tanpa harus didefinisikan ulang. Class `Pelanggan` juga memiliki atribut tambahan, yaitu `alamatFavorit` dan `saldoWallet`, sesuai dengan kebutuhan pengguna layanan.
 
 ### 3. Polymorphism (Polimorfisme)
 
-Polymorphism merupakan konsep yang memungkinkan satu method memiliki perilaku berbeda berdasarkan objek yang menggunakannya.
+Polymorphism merupakan konsep yang memungkinkan method dengan nama yang sama memiliki implementasi atau perilaku berbeda berdasarkan class yang menggunakannya.
+
+Pada RuteConnect, konsep ini diterapkan melalui *method overriding* pada method `getJenisUser()` yang didefinisikan dalam class `User` dan diimplementasikan kembali oleh class `Pelanggan`, `Driver`, serta `Admin`.
 
 **Contoh penerapan:**
 
 ```java
-public class User {
-    public void tampilkanDashboard() {
-        System.out.println("Dashboard Pengguna");
-    }
+// Class Pelanggan
+@Override
+public String getJenisUser() {
+    return "Pelanggan";
 }
 ```
 
 ```java
-public class Pelanggan extends User {
-    @Override
-    public void tampilkanDashboard() {
-        System.out.println("Dashboard Pelanggan");
-    }
+// Class Driver
+@Override
+public String getJenisUser() {
+    return "Driver";
 }
 ```
 
 ```java
-public class Driver extends User {
-    @Override
-    public void tampilkanDashboard() {
-        System.out.println("Dashboard Driver");
-    }
+// Class Admin
+@Override
+public String getJenisUser() {
+    return "Admin";
 }
 ```
 
 **Penjelasan:**
 
-Method `tampilkanDashboard()` memiliki nama yang sama, tetapi menghasilkan perilaku berbeda sesuai dengan jenis objek yang menjalankannya.
+Ketiga class turunan memiliki method `getJenisUser()` dengan nama dan tipe pengembalian yang sama, tetapi menghasilkan nilai berbeda sesuai dengan jenis pengguna. Hal ini menunjukkan penerapan polymorphism melalui mekanisme *method overriding*.
 
 ### 4. Abstraction (Abstraksi)
 
-Abstraction merupakan konsep menyembunyikan detail implementasi dan hanya menampilkan fungsi utama yang diperlukan.
+Abstraction merupakan konsep menyederhanakan kompleksitas sistem dengan menampilkan fungsi utama yang perlu dimiliki suatu class tanpa mengharuskan seluruh detail implementasinya ditampilkan.
 
-**Contoh penerapan:**
+Pada RuteConnect, konsep ini diterapkan melalui penggunaan abstract class `User` dan `Pesanan`. Kedua class tersebut memiliki abstract method yang wajib diimplementasikan oleh class turunannya.
+
+**Contoh penerapan pada class User:**
 
 ```java
-public abstract class Layanan {
-    public abstract void prosesPesanan();
+public abstract class User {
 
-    public void tampilkanInformasi() {
-        System.out.println("Layanan RuteConnect");
-    }
+    public abstract String getJenisUser();
+
+}
+```
+
+Class `User` kemudian diwariskan oleh `Pelanggan`, `Driver`, dan `Admin` yang masing-masing memberikan implementasi terhadap method `getJenisUser()`.
+
+**Contoh penerapan pada class Pesanan:**
+
+```java
+public abstract class Pesanan {
+
+    public abstract String getJenisPesanan();
+
+}
+```
+
+Class `Pesanan` memiliki dua class turunan, yaitu `Transportasi` dan `Dokumen`.
+
+```java
+// Class Transportasi
+@Override
+public String getJenisPesanan() {
+    return JENIS_TRANSPORTASI;
 }
 ```
 
 ```java
-public class Transportasi extends Layanan {
-    @Override
-    public void prosesPesanan() {
-        System.out.println("Memproses pesanan transportasi");
-    }
+// Class Dokumen
+@Override
+public String getJenisPesanan() {
+    return JENIS_DOKUMEN;
 }
 ```
 
 **Penjelasan:**
 
-Class `Layanan` menjadi class abstrak yang mendefinisikan method `prosesPesanan()`. Class turunannya kemudian memberikan implementasi sesuai dengan jenis layanan.
+Class `User` dan `Pesanan` merupakan abstract class yang tidak digunakan untuk membuat objek secara langsung. Keduanya menyediakan struktur dasar dan method abstrak yang harus diimplementasikan oleh class turunannya. Dengan demikian, setiap jenis pengguna dan pesanan dapat memiliki implementasi sesuai dengan kebutuhan masing-masing.
 
-> Contoh kode di atas merupakan ilustrasi penerapan konsep OOP. Sesuaikan dengan implementasi sebenarnya pada source code RuteConnect agar penjelasan sesuai dengan program yang dikembangkan.
+### Penerapan Interface pada DAO
+
+Selain menerapkan empat pilar OOP, RuteConnect juga menggunakan *interface* untuk mendefinisikan standar operasi pengelolaan data pada lapisan DAO (*Data Access Object*).
+
+Salah satu penerapannya terdapat pada interface `CrudDao<T>` yang mendefinisikan operasi dasar CRUD (*Create, Read, Update, Delete*).
+
+**Contoh penerapan pada interface CrudDao:**
+
+```java
+public interface CrudDao<T> {
+
+    boolean insert(T obj);
+
+    boolean update(T obj);
+
+    boolean delete(int id);
+
+    T findById(int id);
+
+    List<T> findAll();
+
+}
+```
+
+Interface tersebut kemudian diimplementasikan oleh abstract class `BaseDao<T>`.
+
+```java
+public abstract class BaseDao<T> implements CrudDao<T> {
+
+    protected Connection conn() {
+        return Koneksi.getConnection();
+    }
+
+    protected abstract T mapRow(ResultSet rs) throws SQLException;
+
+}
+```
+
+**Penjelasan:**
+
+Interface `CrudDao<T>` berfungsi sebagai kontrak yang menetapkan operasi pengelolaan data yang harus tersedia. Sementara itu, abstract class `BaseDao<T>` mengimplementasikan interface tersebut dan menyediakan fungsi dasar untuk berinteraksi dengan database. Class DAO lainnya kemudian dapat mengembangkan fungsi tersebut sesuai dengan kebutuhan masing-masing entitas.
 
 ---
 
@@ -568,9 +659,10 @@ Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampi
 
 Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
 
+<table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="masukkin disini" width="100%">
     </td>
   </tr>
 </table>
@@ -579,9 +671,10 @@ Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama 
 
 Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
 
+<table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="" width="100%">
     </td>
   </tr>
 </table>
@@ -590,9 +683,10 @@ Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitu
 
 Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
+<table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="" width="100%">
     </td>
   </tr>
 </table>
@@ -601,9 +695,10 @@ Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat i
 
 Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
 
+<table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="" width="100%">
     </td>
   </tr>
 </table>
@@ -612,9 +707,10 @@ Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk memb
 
 Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
 
+<table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="" width="100%">
     </td>
   </tr>
 </table>
@@ -623,9 +719,10 @@ Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta mene
 
 Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
 
+<table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="" width="100%">
     </td>
   </tr>
 </table>
@@ -639,23 +736,15 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 <div align="center">
 
 | No. | Nama | NIM | Peran |
-|:---:|---|---|---|
-| 1 | [Nama Anggota 1] | [NIM] | Project Leader |
-| 2 | [Nama Anggota 2] | [NIM] | System Development |
-| 3 | [Nama Anggota 3] | [NIM] | System Development |
-| 4 | [Nama Anggota 4] | [NIM] | System Development |
-| 5 | [Nama Anggota 5] | [NIM] | System Development |
-
-<br/>
-
+|:---:|---|:---:|---|
+| 1 | [Siti Nursinta] | [2509116087] | Project Leader |
+| 2 | [Daffa Rizqi Fadhillah] | [2509116068] | Database Design |
+| 3 | [Nabila Salma Putri] | [2509116065] | Back-End Developer |
+| 4 | [Selvi Bella Dwi Anita] | [2509116053] | System Development |
 
 </div>
 
 ---
-
-
----
-
 
 ## 📸 10. Dokumentasi Konsultasi
 
@@ -666,23 +755,33 @@ Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 1">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 1"/>
+    <br/>
+    <sub>Dokumentasi Konsultasi 1</sub>
     </td>
     <td align="center" width="50%">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.1.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 2">
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.4.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 3">
-    </td>
-    <td align="center" width="50%">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.3.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 4">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.1.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 2"/>
+      <br/>
+      <sub>Dokumentasi Konsultasi 2 SBD</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.2.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 5">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.4.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 3"/>
+      <br/>
+      <sub>Dokumentasi Konsultasi 2 SBD</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.3.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 4"/>
+      <br/>
+      <sub>Dokumentasi Konsultasi 2 PBO</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.2.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 5"/>
+      <br/>
+      <sub>Dokumentasi Konsultasi 2 PBO</sub>
     </td>
     <td width="50%"></td>
   </tr>
@@ -696,18 +795,24 @@ Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti
 
 ---
 
+<!-- ===================================================== -->
+<!--                       FOOTER                          -->
+<!-- ===================================================== -->
+
 <div align="center">
 
-<img src="https://img.shields.io/badge/RUTECONNECT-Connecting%20People-0B1F3A?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/RUTECONNECT-Connecting%20People-0B1F3A?style=for-the-badge"/>
 
-<h2>RUTECONNECT</h2>
+  <h2>RUTECONNECT</h2>
 
-<strong>Connecting People, Delivering Possibilities.</strong>
+  <strong>Connecting People, Delivering Possibilities.</strong>
 
-<em>One Platform, Connected Routes, Better Services.</em>
+  <br/>
 
-<br/><br/>
+  <em>One Platform, Connected Routes, Better Services.</em>
 
-<sub>Developed with Java | Sistem Informasi | Universitas Mulawarman © 2026</sub>
+  <br/><br/>
+
+  <sub>Developed with Java | Sistem Informasi | Universitas Mulawarman © 2026</sub>
 
 </div>
