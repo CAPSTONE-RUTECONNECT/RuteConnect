@@ -19,25 +19,25 @@ import javax.swing.SwingUtilities;
  * @author HP
  */
 public class PetaServer {
-    // Data yang dikirim peta setelah rute ketemu.
-    // Data yang dikirim peta setelah rute ketemu.
-    public record Hasil(double jemputLat, double jemputLng,
-                        double tujuanLat, double tujuanLng,
-                        double km, int menit,
-                        String namaJemput, String namaTujuan) {}
-    
     private static final int PORT = 8765;
-    public static final double BATAS_KM = 100.0; // jarak maksimal jemput ke tujuan
+    public static final double BATAS_KM = 100.0;
     private HttpServer server;
     private final Consumer<Hasil> onHasil;
     private final Runnable onReset;
     private final AtomicInteger versiReset = new AtomicInteger();
-
+    
+    // Data yang dikirim peta setelah rute ketemu
+    public record Hasil(double jemputLat, double jemputLng,
+        double tujuanLat, double tujuanLng,
+        double km, int menit,
+        String namaJemput, String namaTujuan) {
+        
+    }
+    
     public PetaServer(Consumer<Hasil> onHasil) {
         this(onHasil, null);
     }
-
-    // onReset dipanggil di thread Swing saat tombol Reset di browser ditekan
+    
     public PetaServer(Consumer<Hasil> onHasil, Runnable onReset) {
         this.onHasil = onHasil;
         this.onReset = onReset;
@@ -46,7 +46,6 @@ public class PetaServer {
     public void mulai() throws IOException {
         if (server != null) return;
         server = HttpServer.create(new InetSocketAddress("127.0.0.1", PORT), 0);
-
         // kirim index.html ke browser
         server.createContext("/", ex -> {
             try (InputStream in = PetaServer.class.getResourceAsStream("/main/resources/index.html")) {
@@ -67,14 +66,14 @@ public class PetaServer {
         server.createContext("/hasil", ex -> {
             try {
                 String body = new String(ex.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
-                String[] p = body.split("\\|");   // jemputLat|jemputLng|tujuanLat|tujuanLng|km|menit|namaJemput|namaTujuan
+                String[] p = body.split("\\|");
                 if (p.length == 8) {
                     Hasil h = new Hasil(
                         Double.parseDouble(p[0]), Double.parseDouble(p[1]),
                         Double.parseDouble(p[2]), Double.parseDouble(p[3]),
                         Double.parseDouble(p[4]), Integer.parseInt(p[5].trim()),
                         p[6], p[7]);
-                    if (h.km() > BATAS_KM) {          // lebih dari 100 km -> tolak
+                    if (h.km() > BATAS_KM) {
                         ex.sendResponseHeaders(400, -1);
                         return;
                     }
@@ -87,7 +86,6 @@ public class PetaServer {
                 ex.close();
             }
         });
-        // browser menekan tombol "Reset Lokasi" -> kosongkan tampilan di Swing
         server.createContext("/reset", ex -> {
             try {
                 if (onReset != null) {
@@ -98,7 +96,6 @@ public class PetaServer {
                 ex.close();
             }
         });
-        // browser menanyakan nomor versi reset; kalau berubah, berarti Swing minta reset
         server.createContext("/versi", ex -> {
             try {
                 byte[] data = String.valueOf(versiReset.get()).getBytes(StandardCharsets.UTF_8);
@@ -113,7 +110,6 @@ public class PetaServer {
         server.start();
     }
     
-    // dipanggil dari Swing: minta peta di browser ikut direset
     public void resetPeta() {
         versiReset.incrementAndGet();
     }

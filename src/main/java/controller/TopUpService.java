@@ -26,7 +26,6 @@ public class TopUpService {
             if (nominal.compareTo(BigDecimal.ZERO) <= 0) {
                 return false;
             }
-
             return prosesTopUp(Session.userId, nominal);
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,16 +34,16 @@ public class TopUpService {
     }
     
     public boolean prosesTopUp(int pelangganId, BigDecimal nominal) {
-        if (nominal == null || nominal.compareTo(BigDecimal.ZERO) <= 0) {
+        if (nominal == null
+                || nominal.compareTo(BigDecimal.ZERO) <= 0) {
             return false;
         }
-
         String cariId = "SELECT IFNULL(MAX(transaksi_id), 0) + 1 FROM transaksi FOR UPDATE";
-        String insertTransaksi = "INSERT INTO transaksi (transaksi_id, jenis_transaksi, harga, biaya_lainnya, jumlah_transaksi, " +
-                "metode_pembayaran, status_transaksi, waktu_transaksi, user_id) " +
-                "VALUES (?, 'Top Up', ?, 0.00, ?, 'E-Wallet', 'Berhasil', CURDATE(), ?)";
-        String insertTopUp = "INSERT INTO top_up (transaksi_id, saldo_masuk, saldo_keluar, status_top_up, pelanggan_id) " +
-                "VALUES (?, ?, 0.00, 'Berhasil', ?)";
+        String insertTransaksi = "INSERT INTO transaksi (transaksi_id, jenis_transaksi, harga, biaya_lainnya, jumlah_transaksi, "
+                + "metode_pembayaran, status_transaksi, waktu_transaksi, user_id) "
+                + "VALUES (?, 'Top Up', ?, 0.00, ?, 'E-Wallet', 'Berhasil', CURDATE(), ?)";
+        String insertTopUp = "INSERT INTO top_up (transaksi_id, saldo_masuk, saldo_keluar, status_top_up, pelanggan_id) "
+                + "VALUES (?, ?, 0.00, 'Berhasil', ?)";
         String updatePelanggan = "UPDATE pelanggan SET saldo_wallet = saldo_wallet + ? WHERE user_id = ?";
 
         try {

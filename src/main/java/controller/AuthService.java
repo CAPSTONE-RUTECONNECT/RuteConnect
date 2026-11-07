@@ -25,8 +25,8 @@ public class AuthService {
             return LoginResult.INPUT_KOSONG;
         }
         String sql = "SELECT user_id, nama, email, role FROM user WHERE email = ? AND password = ?";
-        try (Connection c = Koneksi.getConnection();
-                PreparedStatement ps = c.prepareStatement(sql)) {
+        Connection c = Koneksi.getConnection();
+        try (PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, email.trim());
             ps.setString(2, password);
 
@@ -47,17 +47,21 @@ public class AuthService {
     }
     
     public static RegisterResult register(String nama, String email, String noTelepon, String alamat, String password) {
-        // Validasi data kosong termasuk alamat
-        if (nama.isEmpty() || email.isEmpty() || noTelepon.isEmpty() || alamat.isEmpty() || password.isEmpty()) {
+        if (nama.isEmpty()
+                || email.isEmpty()
+                || noTelepon.isEmpty()
+                || alamat.isEmpty()
+                || password.isEmpty()) {
             return RegisterResult.DATA_KOSONG;
         }
-        
-        // Memperbaiki pemanggilan variabel 'noTelepon' agar tidak error cannot find symbol
-        if (!Validator.emailValid(email.trim()) || !Validator.passwordValid(password) || !Validator.teleponValid(noTelepon.trim())) {
+        if (!Validator.emailValid(email.trim())
+                || !Validator.passwordValid(password)
+                || !Validator.teleponValid(noTelepon.trim())) {
             return RegisterResult.FORMAT_SALAH;
         }
         
-        try (Connection c = Koneksi.getConnection()) {
+        Connection c = Koneksi.getConnection();
+        try {
             c.setAutoCommit(false);
             try {
                 // Cek apakah email sudah terdaftar
@@ -84,14 +88,13 @@ public class AuthService {
                         + "VALUES (?, ?, ?, ?, ?, 'Pelanggan')")) {
                     ins.setInt(1, newId);
                     ins.setString(2, nama.trim());
-                    ins.setString(3, noTelepon.trim()); // Diperbaiki dari telp ke noTelepon
+                    ins.setString(3, noTelepon.trim());
                     ins.setString(4, email.trim());
                     ins.setString(5, password);
                     ins.executeUpdate();
                 }
                 
                 // Simpan juga alamat dan saldo ke tabel pelanggan
-                // Sesuaikan nama kolom tabel di database (misal: alamat_favorit atau alamat)
                 try (PreparedStatement pel = c.prepareStatement(
                         "INSERT INTO pelanggan(user_id, alamat_favorit, saldo_wallet) VALUES (?, ?, 0)")) {
                     pel.setInt(1, newId);
@@ -104,13 +107,15 @@ public class AuthService {
             } catch (SQLException e) {
                 c.rollback();
                 throw e;
+            } finally {
+                c.setAutoCommit(true);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return RegisterResult.ERROR;
         }
     }
-        
+    
     public static void logout() {
         Session.clear();
     }

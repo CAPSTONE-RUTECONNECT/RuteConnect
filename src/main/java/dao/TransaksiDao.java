@@ -218,4 +218,9 @@ public class TransaksiDao extends BaseDao<Transaksi> {
         }
         return hasil;
     }
+    
+    public boolean updateStatusTransaksiByPesanan(int pesananId, String statusBaru) {
+        return exec("UPDATE transaksi SET status_transaksi = ? WHERE pesanan_id = ?", statusBaru, pesananId);
+    }
+    
 }

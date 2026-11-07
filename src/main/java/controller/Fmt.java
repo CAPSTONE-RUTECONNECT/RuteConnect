@@ -12,7 +12,6 @@ import java.util.Locale;
  */
 public class Fmt {
     private static final NumberFormat NF = NumberFormat.getInstance(Locale.forLanguageTag("id-ID"));
-    
     public static String rupiah(double v) {
         return "Rp " + NF.format(Math.round(v));
     }

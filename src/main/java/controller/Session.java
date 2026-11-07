@@ -19,13 +19,13 @@ public class Session {
     public static int userId;
     public static String nama, email, role;
     public static double saldo;
-
     public static Pesanan draft;
     public static String asal;
     public static String kembaliKe;
     public static String ringkasanJudul;
     public static String ringkasanSub;
     public static int ringkasanMenit;
+    
     public static final Set<Integer> ditolak = new HashSet<>();
 
     public static void set(User u) {
@@ -60,11 +60,12 @@ public class Session {
     
     public static void refreshSaldo() {
         if (userId <= 0) return;
-
         String sql = "SELECT saldo_wallet FROM pelanggan WHERE user_id = ?";
-        try (java.sql.Connection c = config.Koneksi.getConnection();
-             java.sql.PreparedStatement ps = c.prepareStatement(sql)) {
+        java.sql.Connection c = config.Koneksi.getConnection();
+
+        try (java.sql.PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, userId);
+
             try (java.sql.ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     saldo = rs.getDouble("saldo_wallet");

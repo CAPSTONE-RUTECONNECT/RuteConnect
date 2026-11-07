@@ -222,7 +222,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 txtCariLaporan.getText(),
                 String.valueOf(comboBoxStatus.getSelectedItem()),
                 String.valueOf(comboBoxMetode.getSelectedItem()),
-                0, 0)) {          // ganti 0, 0 menjadi tahun, bulan kalau tabel juga mau ikut filter periode
+                tahun, bulan)) {         // Meneruskan variabel tahun dan bulan (menggantikan 0, 0)
             m.addRow(r);
         }
     }
