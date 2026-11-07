@@ -244,13 +244,82 @@ Perancangan sistem dilakukan sebagai dasar dalam proses pengembangan RuteConnect
 
 ### A. Flowchart
 
-Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikasi, melakukan login, memilih layanan, hingga proses pemesanan dan transaksi.
+Flowchart menggambarkan alur proses aplikasi RuteConnect, mulai dari pengguna membuka aplikasi, melakukan login atau registrasi, memilih layanan, hingga proses pemesanan, pembayaran, dan pengelolaan data oleh admin.
 
 <div align="center">
 
-<img src="docs/flowchart/flowchart-ruteconnect.png" width="90%" alt="Flowchart RuteConnect"/>
-
-<em>Gambar 1. Flowchart Sistem RuteConnect</em>
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png?raw=true" width="100%" alt="Flowchart Login">
+      <br><sub>Flowchart Login</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png?raw=true" width="100%" alt="Flowchart Registrasi">
+      <br><sub>Flowchart Registrasi</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Menu%20Customer.drawio.png?raw=true" width="100%" alt="Flowchart Menu Customer">
+      <br><sub>Flowchart Menu Customer</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Transportasi.drawio.png?raw=true" width="100%" alt="Flowchart Customer Transportasi">
+      <br><sub>Flowchart Customer – Transportasi</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pengiriman%20Dokumen.drawio.png?raw=true" width="100%" alt="Flowchart Pengiriman Dokumen">
+      <br><sub>Flowchart Customer – Pengiriman Dokumen</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pembayaran.drawio.png?raw=true" width="100%" alt="Flowchart Pembayaran">
+      <br><sub>Flowchart Customer – Pembayaran</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Top%20Up.drawio.png?raw=true" width="100%" alt="Flowchart Top Up">
+      <br><sub>Flowchart Customer – Top Up</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Status%20%26%20Riwayat.drawio.png?raw=true" width="100%" alt="Flowchart Status dan Riwayat">
+      <br><sub>Flowchart Customer – Status & Riwayat</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Driver.drawio.png?raw=true" width="100%" alt="Flowchart Driver">
+      <br><sub>Flowchart Driver</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Admin%20-%20Menu%20Admin.drawio.png?raw=true" width="100%" alt="Flowchart Menu Admin">
+      <br><sub>Flowchart Admin – Menu Admin</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Kelola%20Data.drawio.png?raw=true" width="100%" alt="Flowchart Kelola Data">
+      <br><sub>Flowchart Admin – Kelola Data</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Pesanan.drawio.png?raw=true" width="100%" alt="Flowchart Data Pesanan">
+      <br><sub>Flowchart Admin – Data Pesanan</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Transaksi.drawio.png?raw=true" width="100%" alt="Flowchart Data Transaksi">
+      <br><sub>Flowchart Admin – Data Transaksi</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Laporan.drawio.png?raw=true" width="100%" alt="Flowchart Laporan">
+      <br><sub>Flowchart Admin – Laporan</sub>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -266,9 +335,10 @@ Aktor utama dalam aplikasi RuteConnect terdiri atas:
 
 <div align="center">
 
-<img src="docs/diagram/use-case-ruteconnect.png" width="90%" alt="Use Case RuteConnect"/>
+<img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/diagram%20PA(1)-Page-5.drawio(1).png?raw=true" width="85%" alt="Use Case Diagram RuteConnect">
 
-<em>Gambar 2. Use Case Diagram RuteConnect</em>
+<br>
+<strong>Use Case Diagram RuteConnect</strong>
 
 </div>
 
@@ -291,9 +361,20 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 
 <div align="center">
 
-<img src="docs/diagram/erd-ruteconnect.png" width="100%" alt="ERD RuteConnect"/>
-
-<em>Gambar 3. Entity Relationship Diagram RuteConnect</em>
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.jpeg?raw=true" width="100%" alt="ERD Logical">
+      <br><strong>ERD Logical</strong>
+      <br><sub>Gambaran entitas, atribut, dan hubungan antar-entitas dalam database.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.%20(1).jpeg?raw=true" width="100%" alt="ERD Relational">
+      <br><strong>ERD Relational</strong>
+      <br><sub>Representasi struktur tabel database beserta primary key dan foreign key.</sub>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -304,6 +385,13 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 Struktur folder dan package dibuat untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya. Pemisahan ini bertujuan agar kode program lebih terorganisasi, mudah dipahami, dan lebih mudah dikembangkan.
 
 #### Struktur Proyek
+
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ```text
 RuteConnect/
@@ -480,73 +568,67 @@ Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampi
 
 Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
 
-<div align="center">
-
-<img src="docs/screenshots/01-halaman-awal.png" width="85%" alt="Halaman Awal RuteConnect"/>
-
-<em>Gambar 4. Halaman Awal RuteConnect</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### B. Login Pengguna
 
 Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
 
-<div align="center">
-
-<img src="docs/screenshots/02-halaman-login.png" width="85%" alt="Halaman Login"/>
-
-<em>Gambar 5. Halaman Login</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### C. Dashboard Pelanggan
 
 Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
-<div align="center">
-
-<img src="docs/screenshots/03-dashboard-pelanggan.png" width="85%" alt="Dashboard Pelanggan"/>
-
-<em>Gambar 6. Dashboard Pelanggan</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### D. Halaman Pemesanan
 
 Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
 
-<div align="center">
-
-<img src="docs/screenshots/04-halaman-pemesanan.png" width="85%" alt="Halaman Pemesanan"/>
-
-<em>Gambar 7. Halaman Pemesanan</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### E. Dashboard Driver
 
 Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
 
-<div align="center">
-
-<img src="docs/screenshots/05-dashboard-driver.png" width="85%" alt="Dashboard Driver"/>
-
-<em>Gambar 8. Dashboard Driver</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### F. Dashboard Admin
 
 Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
 
-<div align="center">
-
-<img src="docs/screenshots/06-dashboard-admin.png" width="85%" alt="Dashboard Admin"/>
-
-<em>Gambar 9. Dashboard Admin</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -566,11 +648,49 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 
 <br/>
 
-**PROGRAM STUDI SISTEM INFORMASI**  
-**FAKULTAS TEKNIK**  
-**UNIVERSITAS MULAWARMAN**
 
-2026
+</div>
+
+---
+
+
+---
+
+
+## 📸 10. Dokumentasi Konsultasi
+
+Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti pelaksanaan bimbingan, diskusi, dan evaluasi selama proses pengembangan aplikasi.
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 1">
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.1.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 2">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.4.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 3">
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.3.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 4">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.2.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 5">
+    </td>
+    <td width="50%"></td>
+  </tr>
+</table>
+
+<br/>
+
+<em>Dokumentasi kegiatan konsultasi proyek RuteConnect.</em>
 
 </div>
 
