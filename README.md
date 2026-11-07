@@ -174,57 +174,40 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan database, serta membantu penyelesaian permasalahan selama pengerjaan proyek.
 
-#### CORE TECHNOLOGIES
+### B. Development Environment & AI Tools
 
 <div align="center">
 
-  <img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light"
-       alt="Java, MySQL, Maven"
-       height="90"/>
-
-  <br/>
-
-  **Java 21** &nbsp; • &nbsp; **MySQL** &nbsp; • &nbsp; **Maven**
-
-</div>
-
-#### DEVELOPMENT ENVIRONMENT
-
-<div align="center">
-
-  <img src="https://cdn.simpleicons.org/laragon/0E8A70"
-       height="58"
-       alt="Laragon"/>
-
-  &nbsp;&nbsp;&nbsp;
-
-  <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6"
-       height="58"
-       alt="Apache NetBeans"/>
-
-  <br/>
-
-  **Laragon** &nbsp; • &nbsp; **Apache NetBeans**
-
-</div>
-
-#### AI DEVELOPMENT ASSISTANTS
-
-<div align="center">
-
-  <img src="https://cdn.simpleicons.org/anthropic/D97757"
-       height="58"
-       alt="Claude"/>
-
-  &nbsp;&nbsp;&nbsp;
-
-  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg"
-       height="58"
-       alt="ChatGPT"/>
-
-  <br/>
-
-  **Claude** &nbsp; • &nbsp; **ChatGPT**
+<table>
+  <tr>
+    <th>CORE TECHNOLOGIES</th>
+    <th>DEVELOPMENT ENVIRONMENT</th>
+    <th>AI DEVELOPMENT ASSISTANTS</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" height="65" alt="Java, MySQL, Maven"/>
+      <br/><br/>
+      <strong>Java 21 • MySQL • Maven</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
+      &nbsp;
+      <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="48" alt="Apache NetBeans"/>
+      <br/><br/>
+      <strong>Laragon • NetBeans</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Claude"/>
+      &nbsp;
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg" height="48" alt="ChatGPT"/>
+      &nbsp;
+      <img src="https://cdn.simpleicons.org/googlegemini/8E75B2" height="48" alt="Gemini AI"/>
+      <br/><br/>
+      <strong>Claude • ChatGPT • Gemini AI</strong>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -232,27 +215,26 @@ Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan databas
 
 <div align="center">
 
-  <img src="https://cdn.simpleicons.org/gojek/00AA13"
-       height="65"
-       alt="Gojek"/>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://cdn.simpleicons.org/gojek/00AA13" height="65" alt="Gojek"/>
+      <br/><br/>
+      <strong>GOJEK</strong>
+    </td>
+    <td align="center" width="50%">
+      <img src="https://cdn.simpleicons.org/grab/00B14F" height="65" alt="Grab"/>
+      <br/><br/>
+      <strong>GRAB</strong>
+    </td>
+  </tr>
+</table>
 
-  &nbsp;&nbsp;&nbsp;
-
-  <img src="https://cdn.simpleicons.org/grab/00B14F"
-       height="65"
-       alt="Grab"/>
-
-  <br/>
-
-  **GOJEK** &nbsp; • &nbsp; **GRAB**
-
-  <br/>
-
-  <sub>Transportation & Delivery Platform References</sub>
+<sub>Transportation & Delivery Platform References</sub>
 
 </div>
 
-> **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
+> **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude, ChatGPT, dan Gemini AI merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
 ### D. Referensi Pengembangan README
 
