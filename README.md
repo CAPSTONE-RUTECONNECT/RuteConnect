@@ -136,7 +136,6 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 
 ---
 
-
 # 🛠️ 4. Tech Stack
 
 RuteConnect dikembangkan dengan memanfaatkan berbagai teknologi dan tools pendukung untuk membangun aplikasi desktop, mengelola database, serta membantu proses pengembangan sistem.
@@ -164,7 +163,6 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 | Maven | Mengelola dependency dan proses build proyek. |
 | NetBeans IDE | Lingkungan pengembangan aplikasi. |
 
-
 ## B. Development Environment & AI Tools
 
 <div align="center">
@@ -190,7 +188,6 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 <strong>Laragon</strong> &nbsp; • &nbsp; <strong>Apache NetBeans</strong>
 
 <br/><br/>
-
 
 ### AI DEVELOPMENT ASSISTANTS
 
@@ -221,7 +218,6 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 <sub>Transportation & Delivery Platform References</sub>
 
 </div>
-
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
