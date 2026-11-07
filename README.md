@@ -677,46 +677,43 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 
 ---
 
+
 # 📸 10. Dokumentasi Konsultasi
 
 Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti pelaksanaan bimbingan, diskusi, dan evaluasi selama proses pengembangan aplikasi.
 
 <div align="center">
 
+<table>
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.jpeg" width="75%" alt="Struktur Package">
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 1">
     </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.1.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 2">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.4.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 3">
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.3.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 4">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.2.jpeg?raw=true" width="100%" alt="Dokumentasi Konsultasi 5">
+    </td>
+    <td width="50%"></td>
   </tr>
 </table>
 
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.1.jpeg" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
+<br/>
 
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.4.jpeg" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
+<em>Dokumentasi kegiatan konsultasi proyek RuteConnect.</em>
 
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.3.jpeg" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2016.42.39.2.jpeg" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
+</div>
 
 ---
 
