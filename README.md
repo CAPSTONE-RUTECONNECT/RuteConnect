@@ -164,69 +164,61 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 | Maven | Mengelola dependency dan proses build proyek. |
 | NetBeans IDE | Lingkungan pengembangan aplikasi. |
 
-## B. Development Environment & AI Tools
 
-Tools yang mendukung proses pengembangan, pengelolaan database, serta membantu proses pengerjaan proyek.
+## B. Development Environment & AI Tools
 
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="25%">
-<img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
-<br/><strong>Laragon</strong>
-<br/><sub>Local Development</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://cdn.simpleicons.org/apache NetBeans" height="48" alt="NetBeans"/>
-<br/><strong>NetBeans</strong>
-<br/><sub>IDE</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Claude"/>
-<br/><strong>Claude</strong>
-<br/><sub>AI Assistant</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://img.shields.io/badge/AI-OpenAI-412991?style=flat-square&logo=openai&logoColor=white" height="48" alt="ChatGPT"/>
-<br/><strong>ChatGPT</strong>
-<br/><sub>AI Assistant</sub>
-</td>
-</tr>
-</table>
+### CORE TECHNOLOGIES
+
+<img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" alt="Java, MySQL, Maven" height="90"/>
+
+<br/>
+
+<strong>Java 21</strong> &nbsp; • &nbsp; <strong>MySQL</strong> &nbsp; • &nbsp; <strong>Maven</strong>
+
+<br/><br/>
+
+### DEVELOPMENT ENVIRONMENT
+
+<img src="https://cdn.simpleicons.org/laragon/0E8A70" height="58" alt="Laragon"/>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="58" alt="Apache NetBeans"/>
+
+<br/>
+
+<strong>Laragon</strong> &nbsp; • &nbsp; <strong>Apache NetBeans</strong>
+
+<br/><br/>
+
+### AI DEVELOPMENT ASSISTANTS
+
+<img src="https://cdn.simpleicons.org/anthropic/D97757" height="58" alt="Anthropic"/>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/openai/412991" height="58" alt="OpenAI"/>
+
+<br/>
+
+<strong>Claude</strong> &nbsp; • &nbsp; <strong>ChatGPT</strong>
 
 </div>
 
 ## C. Service Platform References
 
-RuteConnect mengadaptasi gambaran konsep layanan transportasi dan pengiriman digital yang juga dikenal pada platform berikut.
-
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="50%">
-<img src="https://cdn.simpleicons.org/gojek/00AA13" height="55" alt="Gojek"/>
-<br/><strong>GOJEK</strong>
-<br/><sub>Transportation & Delivery</sub>
-</td>
-<td align="center" width="50%">
-<img src="https://cdn.simpleicons.org/grab/00B14F" height="55" alt="Grab"/>
-<br/><strong>GRAB</strong>
-<br/><sub>Transportation & Delivery</sub>
-</td>
-</tr>
-</table>
+<img src="https://cdn.simpleicons.org/gojek/00AA13" height="65" alt="Gojek"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://cdn.simpleicons.org/grab/00B14F" height="65" alt="Grab"/>
+
+<br/>
+
+<strong>GOJEK</strong> &nbsp;&nbsp; • &nbsp;&nbsp; <strong>GRAB</strong>
+
+<sub>Transportation & Delivery Platform References</sub>
 
 </div>
 
-<div align="center">
-
-<img src="https://img.shields.io/badge/RUTECONNECT-Integrated%20Digital%20Services-0B1F3A?style=for-the-badge"/>
-
-<sub>One Platform • Connected Routes • Better Services</sub>
-
-</div>
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
