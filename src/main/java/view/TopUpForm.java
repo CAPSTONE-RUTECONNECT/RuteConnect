@@ -23,6 +23,7 @@ public class TopUpForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         jPanel1.setPreferredSize(new java.awt.Dimension(390, 1230));
+        
         getContentPane().removeAll();
         
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16); // Biar smooth scroll-nya
@@ -36,8 +37,8 @@ public class TopUpForm extends javax.swing.JFrame {
         
         controller.Session.refreshSaldo();
         lblSaldo.setText(controller.Fmt.rupiah(controller.Session.saldo));
-        
         javax.swing.ButtonGroup metodeGroup = new javax.swing.ButtonGroup();
+        
         metodeGroup.add(radioBtnEwallet);
         metodeGroup.add(radioBtnBank);
         metodeGroup.add(radioBtnMinimarket);
@@ -45,7 +46,6 @@ public class TopUpForm extends javax.swing.JFrame {
         setupPaymentPanel(panelEwallet, radioBtnEwallet);
         setupPaymentPanel(panelBank, radioBtnBank);
         setupPaymentPanel(panelMinimarket, radioBtnMinimarket);
-        
         setupNominalPanel(panel20, lbl20, "20000");
         setupNominalPanel(panel50, lbl50, "50000");
         setupNominalPanel(panel100, lbl100, "100000");
@@ -55,9 +55,8 @@ public class TopUpForm extends javax.swing.JFrame {
     
     private void setupPaymentPanel(javax.swing.JPanel panel, javax.swing.JRadioButton radioButton) {
         java.awt.Color normalColor = panel.getBackground();
-        java.awt.Color hoverColor = new java.awt.Color(230, 238, 255); // Biru muda lembut saat di-hover
-        java.awt.Color selectColor = new java.awt.Color(210, 225, 255); // Biru terang saat dipilih
-
+        java.awt.Color hoverColor = new java.awt.Color(230, 238, 255);
+        
         panel.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -153,7 +152,6 @@ public class TopUpForm extends javax.swing.JFrame {
     private void resetAllNominalPanels() {
         java.awt.Color normalBg = new java.awt.Color(242, 243, 255);
         java.awt.Color normalFg = new java.awt.Color(0, 0, 0); 
-
         panel20.setBackground(normalBg); lbl20.setForeground(normalFg);
         panel50.setBackground(normalBg); lbl50.setForeground(normalFg);
         panel100.setBackground(normalBg); lbl100.setForeground(normalFg);
@@ -376,7 +374,7 @@ public class TopUpForm extends javax.swing.JFrame {
         panel500.setBounds(30, 300, 330, 50);
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Atau Masukkan Nominal Sendiri (Minimal Rp 2.000.000)");
+        jLabel11.setText("Atau Masukkan Nominal Sendiri (Maksimal Rp 2.000.000)");
         jPanel3.add(jLabel11);
         jLabel11.setBounds(30, 370, 330, 16);
 

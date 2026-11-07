@@ -23,7 +23,6 @@ public class FrameAdmin extends javax.swing.JFrame {
     private static final java.awt.Color PUTIH  = new java.awt.Color(255, 255, 255);
     private javax.swing.JPanel[] menuPanels;
     private javax.swing.JLabel[] menuLabels;
-    
     private UserController userController = new UserController();
     private TarifController tarifController = new TarifController();
     private String kategoriPesanan = "Semua Layanan";
@@ -51,7 +50,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         bg.add(btnTarif);
         btnUser.setSelected(true);
 
-        // tabel user: 6 kolom sesuai cariUser(), tidak bisa diedit
+        // tabel user: 6 kolom sesuai cariUser()
         jTable2.setModel(new DefaultTableModel(
             new Object[][]{},
             new String[]{"ID", "Nama", "Email", "No. Telp", "Status", "Role"}) {
@@ -86,7 +85,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         });
         loadPesananData();
         
-        // tabel transaksi (admin), tidak bisa diedit
+        // tabel transaksi (admin)
         jTable5.setModel(new DefaultTableModel(
             new Object[][]{},
             new String[]{"ID Transaksi", "Tanggal", "Pelanggan", "Jenis", "Metode Pembayaran", "Jumlah", "Status"}) {
@@ -94,16 +93,15 @@ public class FrameAdmin extends javax.swing.JFrame {
         });
         loadTransaksiData();
         
-        // tabel laporan, tidak bisa diedit
+        // tabel laporan
         jTable6.setModel(new DefaultTableModel(
             new Object[][]{},
             new String[]{"Bulan", "ID Pesanan", "Jenis", "Waktu Transaksi", "Pelanggan", "Metode Pembayaran", "Jumlah Transaksi", "Status"}) {
             @Override public boolean isCellEditable(int r, int c) { return false; }
         });
 
-        txtCariLaporan.setEditable(true);   // di kode generated, field ini diset editable(false)
+        txtCariLaporan.setEditable(true);
 
-        // default combo = tahun & bulan sekarang (diset SEBELUM listener dipasang)
         comboBoxTahun.setSelectedItem(String.valueOf(java.time.LocalDate.now().getYear()));
         comboBoxBulan.setSelectedItem(String.valueOf(java.time.LocalDate.now().getMonthValue()));
 
@@ -114,16 +112,11 @@ public class FrameAdmin extends javax.swing.JFrame {
         txtCariLaporan.addActionListener(e -> loadLaporanData());
         btnRefreshLaporan.addActionListener(e -> loadLaporanData());
         loadLaporanData();
-        
-        // ==========================================
-        // PASANG TOOLTIP KE SEMUA TABEL DI SINI
-        // ==========================================
-        // Untuk jTable1, jTable2, jTable4, jTable5, jTable6 (Tabel Biasa)
+
         for (javax.swing.JTable t : new javax.swing.JTable[]{jTable1, jTable2, jTable4, jTable5, jTable6}) {
             aktifkanTooltipSel(t);
         }
 
-        // Khusus jTable3 (Karena ada format Rupiah khusus di kolom ke-4)
         aktifkanTooltipSelTarif(jTable3);
 
         javax.swing.ToolTipManager.sharedInstance().setInitialDelay(300);
@@ -161,11 +154,11 @@ public class FrameAdmin extends javax.swing.JFrame {
             @Override 
             protected void setValue(Object v) {
                 String formatted = v instanceof Number
-                    ? "Rp " + NumberFormat.getInstance(new java.util.Locale("id", "ID")).format(((Number) v).doubleValue())
-                    : String.valueOf(v);
+                        ? "Rp " + NumberFormat.getInstance(new java.util.Locale("id", "ID")).format(((Number) v).doubleValue())
+                        : String.valueOf(v);
                 setText(formatted);
                 setHorizontalAlignment(RIGHT);
-                setToolTipText(buatTooltip(v)); // Tooltip teks panjang tetap aktif di sini
+                setToolTipText(buatTooltip(v));
             }
         });
     }
@@ -222,7 +215,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 txtCariLaporan.getText(),
                 String.valueOf(comboBoxStatus.getSelectedItem()),
                 String.valueOf(comboBoxMetode.getSelectedItem()),
-                tahun, bulan)) {         // Meneruskan variabel tahun dan bulan (menggantikan 0, 0)
+                tahun, bulan)) {
             m.addRow(r);
         }
     }
@@ -243,36 +236,6 @@ public class FrameAdmin extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Gagal memuat data tarif: " + e.getMessage());
-        }
-    }
-
-    private void tambahTarifBaru() {
-        // Logika membuka form/dialog tambah tarif
-        // Contoh: new DialogTambahTarif(this, true).setVisible(true);
-        // loadTarifData(); // Refresh tabel setelah tambah
-    }
-
-    private void updateTarifTerpilih() {
-        int selectedRow = jTable3.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Pilih data tarif yang ingin diubah terlebih dahulu!");
-            return;
-        }
-        // Logika update data berdasarkan ID baris yang dipilih
-    }
-
-    private void hapusTarifTerpilih() {
-        int selectedRow = jTable3.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Pilih data tarif yang ingin dihapus terlebih dahulu!");
-            return;
-        }
-
-        int confirm = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
-        if (confirm == JOptionPane.YES_OPTION) {
-            // Panggil controller untuk hapus berdasarkan ID
-            // misal: tarifController.hapus(...);
-            loadTarifData();
         }
     }
     
@@ -313,12 +276,23 @@ public class FrameAdmin extends javax.swing.JFrame {
         java.awt.CardLayout cl = (java.awt.CardLayout) cardPanelUtama.getLayout();
         
         switch (aktif) {
-        case 0 -> { cl.show(cardPanelUtama, "dashboard"); loadDashboard(); }
-        case 1 -> { cl.show(cardPanelUtama, "kelola"); loadUserData(); loadTarifData(); }
-        case 2 -> { cl.show(cardPanelUtama, "pesanan"); loadPesananData(); }
-        case 3 -> { cl.show(cardPanelUtama, "transaksi"); loadTransaksiData(); }
-        case 4 -> { cl.show(cardPanelUtama, "laporan"); loadLaporanData(); }
-        default -> {} // Opsional: untuk mengantisipasi angka di luar 0-4
+            case 0 -> {
+                cl.show(cardPanelUtama, "dashboard"); loadDashboard();
+            }
+            case 1 -> {
+                cl.show(cardPanelUtama, "kelola"); loadUserData(); loadTarifData();
+            }
+            case 2 -> {
+                cl.show(cardPanelUtama, "pesanan"); loadPesananData(); 
+            }
+            case 3 -> {
+                cl.show(cardPanelUtama, "transaksi"); loadTransaksiData();
+            }
+            case 4 -> {
+                cl.show(cardPanelUtama, "laporan"); loadLaporanData();
+            }
+            default -> {
+            }
         }
     }
     
@@ -356,7 +330,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         }
     }
     
-    // Dialog isian tarif. Mengembalikan {nama, jenis, kelas, tarif} atau null kalau dibatalkan.
+    // Dialog isian tarif.
     private String[] dialogTarif(String judul, String nama, String jenis, String kelas, String tarif) {
         JTextField fNama = new JTextField(nama, 20);
         JComboBox<String> fJenis = new JComboBox<>(new String[]{"Motor", "Mobil"});
@@ -393,8 +367,6 @@ public class FrameAdmin extends javax.swing.JFrame {
     }
     
     // Dialog tambah user (Pelanggan / Driver).
-    // Mengembalikan {role, nama, telp, email, password, ...extra} atau null kalau dibatalkan.
-    // extra Pelanggan = {alamat}; extra Driver = {merk, plat, jenis, "Aktif"}
     private String[] dialogTambahUser() {
         JComboBox<String> fRole = new JComboBox<>(new String[]{"Pelanggan", "Driver"});
         JTextField fNama = new JTextField(20);
@@ -411,32 +383,41 @@ public class FrameAdmin extends javax.swing.JFrame {
         JComboBox<String> fJenis = new JComboBox<>(new String[]{"Motor", "Mobil"});
 
         JPanel umum = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
-        umum.add(new JLabel("Tambah sebagai")); umum.add(fRole);
-        umum.add(new JLabel("Nama"));           umum.add(fNama);
-        umum.add(new JLabel("Email"));          umum.add(fEmail);
-        umum.add(new JLabel("No. Telepon"));    umum.add(fTelp);
-        umum.add(new JLabel("Password"));       umum.add(fPass);
-        umum.add(new JLabel(""));               umum.add(cekLihat);
+        umum.add(new JLabel("Tambah sebagai"));
+        umum.add(fRole);
+        umum.add(new JLabel("Nama"));
+        umum.add(fNama);
+        umum.add(new JLabel("Email"));
+        umum.add(fEmail);
+        umum.add(new JLabel("No. Telepon"));
+        umum.add(fTelp);
+        umum.add(new JLabel("Password"));
+        umum.add(fPass);
+        umum.add(new JLabel(""));
+        umum.add(cekLihat);
 
         JPanel khusus = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
         JPanel p = new JPanel(new java.awt.BorderLayout(0, 8));
         p.add(umum, java.awt.BorderLayout.NORTH);
         p.add(khusus, java.awt.BorderLayout.CENTER);
 
-        // isi bagian bawah sesuai role yang dipilih
         Runnable isiKhusus = () -> {
             khusus.removeAll();
             if ("Pelanggan".equals(fRole.getSelectedItem())) {
-                khusus.add(new JLabel("Alamat Rumah"));    khusus.add(fAlamat);
+                khusus.add(new JLabel("Alamat Rumah"));
+                khusus.add(fAlamat);
             } else {
-                khusus.add(new JLabel("Merk Kendaraan"));  khusus.add(fMerk);
-                khusus.add(new JLabel("No. Plat"));        khusus.add(fPlat);
-                khusus.add(new JLabel("Jenis Kendaraan")); khusus.add(fJenis);
+                khusus.add(new JLabel("Merk Kendaraan"));
+                khusus.add(fMerk);
+                khusus.add(new JLabel("No. Plat"));
+                khusus.add(fPlat);
+                khusus.add(new JLabel("Jenis Kendaraan"));
+                khusus.add(fJenis);
             }
             khusus.revalidate();
             khusus.repaint();
             java.awt.Window w = SwingUtilities.getWindowAncestor(p);
-            if (w != null) w.pack();   // ukuran popup menyesuaikan
+            if (w != null) w.pack();
         };
         fRole.addActionListener(e -> isiKhusus.run());
         isiKhusus.run();

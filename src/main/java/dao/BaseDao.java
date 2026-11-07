@@ -30,10 +30,12 @@ public abstract class BaseDao<T> implements CrudDao<T> {
         }
         return list;
     }
+    
     protected T queryOne(String sql, Object... params) {
         List<T> l = query(sql, params);
         return l.isEmpty() ? null : l.get(0);
     }
+    
     protected boolean exec(String sql, Object... params) {
         try (PreparedStatement ps = conn().prepareStatement(sql)) {
             bind(ps, params);
@@ -43,6 +45,7 @@ public abstract class BaseDao<T> implements CrudDao<T> {
             return false;
         }
     }
+    
     protected int nextId(String tabel, String kolom) {
         String sql = "SELECT IFNULL(MAX(" + kolom + "), 0) + 1 FROM " + tabel;
         try (Statement st = conn().createStatement(); ResultSet rs = st.executeQuery(sql)) {
@@ -53,6 +56,7 @@ public abstract class BaseDao<T> implements CrudDao<T> {
             return -1;
         }
     }
+    
     protected double scalar(String sql, Object... params) {
         try (PreparedStatement ps = conn().prepareStatement(sql)) {
             bind(ps, params);
@@ -64,6 +68,7 @@ public abstract class BaseDao<T> implements CrudDao<T> {
             return 0;
         }
     }
+    
     private void bind(PreparedStatement ps, Object... params) throws SQLException {
         for (int i = 0; i < params.length; i++) ps.setObject(i + 1, params[i]);
     }

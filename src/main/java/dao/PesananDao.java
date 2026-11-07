@@ -17,17 +17,17 @@ import util.Tx;
  * @author HP
  */
 public class PesananDao extends BaseDao<Pesanan> {
-        private static final String SELECT =
-        "SELECT p.*, l.nama_layanan, up.nama AS nama_pelanggan, ud.nama AS nama_driver, "
-        + "t.metode_pembayaran, tr.jumlah_penumpang, tr.status_penjemputan, "
-        + "dk.nama_penerima, dk.no_telepon_penerima, dk.detail_dokumen "
-        + "FROM pesanan p "
-        + "JOIN layanan l ON p.layanan_id = l.layanan_id "
-        + "JOIN user up ON p.pelanggan_id = up.user_id "
-        + "LEFT JOIN user ud ON p.driver_id = ud.user_id "
-        + "LEFT JOIN transaksi t ON p.transaksi_id = t.transaksi_id "
-        + "LEFT JOIN transportasi tr ON tr.pesanan_id = p.pesanan_id "
-        + "LEFT JOIN dokumen dk ON dk.pesanan_id = p.pesanan_id ";
+    private static final String SELECT =
+            "SELECT p.*, l.nama_layanan, up.nama AS nama_pelanggan, ud.nama AS nama_driver, "
+            + "t.metode_pembayaran, tr.jumlah_penumpang, tr.status_penjemputan, "
+            + "dk.nama_penerima, dk.no_telepon_penerima, dk.detail_dokumen "
+            + "FROM pesanan p "
+            + "JOIN layanan l ON p.layanan_id = l.layanan_id "
+            + "JOIN user up ON p.pelanggan_id = up.user_id "
+            + "LEFT JOIN user ud ON p.driver_id = ud.user_id "
+            + "LEFT JOIN transaksi t ON p.transaksi_id = t.transaksi_id "
+            + "LEFT JOIN transportasi tr ON tr.pesanan_id = p.pesanan_id "
+            + "LEFT JOIN dokumen dk ON dk.pesanan_id = p.pesanan_id ";
  
     @Override
     protected Pesanan mapRow(ResultSet rs) throws SQLException {
@@ -112,7 +112,7 @@ public class PesananDao extends BaseDao<Pesanan> {
     public List<Pesanan> findAll() {
         return query(SELECT + "ORDER BY p.pesanan_id DESC");
     }
-    // ---------- query khusus ----------
+    
     public List<Pesanan> findByPelanggan(int pelangganId, String filter) {
         String w = "WHERE p.pelanggan_id = ? ";
         w += switch (filter) {
@@ -123,6 +123,7 @@ public class PesananDao extends BaseDao<Pesanan> {
         };
         return query(SELECT + w + "ORDER BY p.pesanan_id DESC", pelangganId);
     }
+    
     // Pesanan yang masih menunggu driver, sesuai jenis layanan & kendaraan driver. 
     public List<Pesanan> findTersedia(String jenisPesanan, String jenisKendaraan) {
         return query(SELECT + "WHERE p.status_pesanan = 'Menunggu' AND p.driver_id IS NULL "
@@ -132,11 +133,13 @@ public class PesananDao extends BaseDao<Pesanan> {
         String st = aktif ? "('Diterima','Diproses','Dalam Perjalanan')" : "('Selesai','Dibatalkan')";
         return query(SELECT + "WHERE p.driver_id = ? AND p.status_pesanan IN " + st + " ORDER BY p.pesanan_id DESC", driverId);
     }
+    
     //Driver menerima pesanan (hanya berhasil jika belum diambil driver lain).
     public boolean terima(int pesananId, int driverId) {
         return exec("UPDATE pesanan SET status_pesanan='Diterima', driver_id=? "
                 + "WHERE pesanan_id=? AND status_pesanan='Menunggu' AND driver_id IS NULL", driverId, pesananId);
     }
+    
     public boolean updateStatus(int id, String status) {
         boolean ok = exec("UPDATE pesanan SET status_pesanan = ? WHERE pesanan_id = ?", status, id);
         if (ok && Pesanan.DALAM_PERJALANAN.equals(status))
@@ -163,14 +166,15 @@ public class PesananDao extends BaseDao<Pesanan> {
     public List<Object[]> ringkasanDashboard() {
         List<Object[]> hasil = new java.util.ArrayList<>();
         String sql = "SELECT p.pesanan_id, up.nama, ud.nama, l.nama_layanan, t.metode_pembayaran, "
-                   + "p.lokasi_jemput, p.lokasi_tujuan, p.status_pesanan "
-                   + "FROM pesanan p "
-                   + "JOIN layanan l ON p.layanan_id = l.layanan_id "
-                   + "JOIN user up ON p.pelanggan_id = up.user_id "
-                   + "LEFT JOIN user ud ON p.driver_id = ud.user_id "
-                   + "LEFT JOIN transaksi t ON t.pesanan_id = p.pesanan_id "
-                   + "AND t.jenis_transaksi = 'Pembayaran Pesanan' "
-                   + "ORDER BY p.pesanan_id DESC";
+                + "p.lokasi_jemput, p.lokasi_tujuan, p.status_pesanan "
+                + "FROM pesanan p "
+                + "JOIN layanan l ON p.layanan_id = l.layanan_id "
+                + "JOIN user up ON p.pelanggan_id = up.user_id "
+                + "LEFT JOIN user ud ON p.driver_id = ud.user_id "
+                + "LEFT JOIN transaksi t ON t.pesanan_id = p.pesanan_id "
+                + "AND t.jenis_transaksi = 'Pembayaran Pesanan' "
+                + "ORDER BY p.pesanan_id DESC";
+        
         try (PreparedStatement ps = conn().prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -192,6 +196,7 @@ public class PesananDao extends BaseDao<Pesanan> {
         }
         return hasil;
     }
+    
     public int hitungByStatus(String status) {
         return (int) scalar("SELECT COUNT(*) FROM pesanan WHERE status_pesanan = ?", status);
     }
@@ -201,16 +206,12 @@ public class PesananDao extends BaseDao<Pesanan> {
         return (int) scalar("SELECT COUNT(*) FROM pesanan");
     }
     
-    // true kalau pelanggan masih punya pesanan yang belum selesai/dibatalkan
     public boolean adaPesananBerlangsung(int pelangganId) {
         return scalar("SELECT COUNT(*) FROM pesanan WHERE pelanggan_id = ? "
                 + "AND status_pesanan IN ('Menunggu','Diterima','Diproses','Dalam Perjalanan')",
                 pelangganId) > 0;
     }
 
-    // baris: {id, pelanggan, driver, layanan, total biaya, rute, status}
-    // kategori: "Semua Layanan", "RuteRide", "RuteCar", "Dokumen"
-    // status: "Semua Status", "Menunggu", "Dalam Perjalanan", "Selesai", "Batal"
     public List<Object[]> cariPesananAdmin(String keyword, String kategori, String status) {
         List<Object[]> hasil = new java.util.ArrayList<>();
         String kw = (keyword == null ? "" : keyword.trim());
@@ -229,18 +230,18 @@ public class PesananDao extends BaseDao<Pesanan> {
         // filter kategori layanan
         switch (kategori) {
             case "RuteRide" -> sql.append("AND p.jenis_pesanan = 'Transportasi' AND l.jenis_kendaraan = 'Motor' ");
-            case "RuteCar"  -> sql.append("AND p.jenis_pesanan = 'Transportasi' AND l.jenis_kendaraan = 'Mobil' ");
-            case "Dokumen"  -> sql.append("AND p.jenis_pesanan = 'Dokumen' ");
+            case "RuteCar" -> sql.append("AND p.jenis_pesanan = 'Transportasi' AND l.jenis_kendaraan = 'Mobil' ");
+            case "Dokumen" -> sql.append("AND p.jenis_pesanan = 'Dokumen' ");
             default -> {}
         }
 
         // filter status
         boolean pakaiStatus = true;
         switch (status) {
-            case "Menunggu"          -> sql.append("AND p.status_pesanan = 'Menunggu' ");
-            case "Dalam Perjalanan"  -> sql.append("AND p.status_pesanan = 'Dalam Perjalanan' ");
-            case "Selesai"           -> sql.append("AND p.status_pesanan = 'Selesai' ");
-            case "Batal"             -> sql.append("AND p.status_pesanan = 'Dibatalkan' ");
+            case "Menunggu" -> sql.append("AND p.status_pesanan = 'Menunggu' ");
+            case "Dalam Perjalanan" -> sql.append("AND p.status_pesanan = 'Dalam Perjalanan' ");
+            case "Selesai" -> sql.append("AND p.status_pesanan = 'Selesai' ");
+            case "Batal" -> sql.append("AND p.status_pesanan = 'Dibatalkan' ");
             default -> pakaiStatus = false;
         }
 

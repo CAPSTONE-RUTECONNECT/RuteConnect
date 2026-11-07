@@ -16,7 +16,7 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RiwayatStatusPelanggan.class.getName());
     private javax.swing.Timer timer;
     private model.Pesanan pesananAktif;
-    private int tahapAktif = -1;     // dipakai renderer tabel progress
+    private int tahapAktif = -1;
 
     /**
      * Creates new form RiwayatStatusPelanggan
@@ -25,19 +25,16 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-
         rapikanLabel();
         setupTabelProgress();
         setupTabelRiwayat();
-
         CardLayout cl = (CardLayout) cardMain.getLayout();
         btnSedangBerjalan.addActionListener(e -> { cl.show(cardMain, "card2"); muatData(); });
         btnSemuaRiwayat.addActionListener(e -> { cl.show(cardMain, "card3"); muatData(); });
         btnKembali.addActionListener(e -> kembali());
         jButton1.addActionListener(e -> batalkanPesanan());
-
         muatData();
-        timer = new javax.swing.Timer(5000, e -> muatData());   // sinkron dengan update dari driver
+        timer = new javax.swing.Timer(5000, e -> muatData());
         timer.start();
     }
     
@@ -373,7 +370,6 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // ---------- util ----------
     private String esc(String s) {
         return s == null ? "" : s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
     }
@@ -411,7 +407,6 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
         this.dispose();
     }
 
-    // ---------- tabel ----------
     private void setupTabelProgress() {
         DefaultTableModel m = new DefaultTableModel(new Object[]{"", "Tahap", "Status"}, 0) {
             @Override public boolean isCellEditable(int r, int c) { return false; }
@@ -463,8 +458,8 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
                 if (col == 3 && !sel) {
                     String s = String.valueOf(v);
                     l.setForeground(model.Pesanan.SELESAI.equals(s) ? new Color(5, 150, 105)
-                                  : model.Pesanan.DIBATALKAN.equals(s) ? new Color(186, 26, 26)
-                                  : new Color(2, 132, 199));
+                            : model.Pesanan.DIBATALKAN.equals(s) ? new Color(186, 26, 26)
+                                    : new Color(2, 132, 199));
                 } else if (!sel) {
                     l.setForeground(Color.BLACK);
                 }
@@ -473,7 +468,6 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
         });
     }
 
-    // ---------- muat data dari database ----------
     private static boolean isAktif(model.Pesanan p) {
         String s = p.getStatusPesanan();
         return model.Pesanan.MENUNGGU.equals(s) || model.Pesanan.DITERIMA.equals(s)
@@ -485,7 +479,7 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
         if (model.Pesanan.DIPROSES.equals(s)) return 2;
         if (model.Pesanan.DALAM_PERJALANAN.equals(s)) return 3;
         if (model.Pesanan.SELESAI.equals(s)) return 4;
-        return 0; // Menunggu
+        return 0;
     }
 
     private void muatData() {
@@ -494,7 +488,7 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
                 new dao.PesananDao().findByPelanggan(controller.Session.userId, "Semua");
 
         model.Pesanan aktif = null, terakhir = null;
-        for (model.Pesanan p : semua) {            // sudah urut dari yang terbaru
+        for (model.Pesanan p : semua) {
             if (isAktif(p)) {
                 if (aktif == null) aktif = p;
             } else if (terakhir == null) {
@@ -588,13 +582,13 @@ public class RiwayatStatusPelanggan extends javax.swing.JFrame {
         }
     }
 
-    // ---------- pembatalan oleh pelanggan ----------
+    // pembatalan oleh pelanggan
     private void batalkanPesanan() {
         if (pesananAktif == null) {
             JOptionPane.showMessageDialog(this, "Tidak ada pesanan aktif.");
             return;
         }
-        // cek ulang ke database, siapa tahu driver baru saja menjemput
+        // cek ulang ke database
         model.Pesanan terbaru = new dao.PesananDao().findById(pesananAktif.getPesananId());
         if (terbaru == null || !terbaru.bisaDibatalkan()) {
             JOptionPane.showMessageDialog(this,

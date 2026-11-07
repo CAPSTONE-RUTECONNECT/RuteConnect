@@ -20,6 +20,7 @@ public class PesananService {
     private static boolean isWallet(String metode) {
         return Transaksi.SALDO.equalsIgnoreCase(metode);
     }
+    
     public Hasil buatPesanan(Pesanan p, String metode) {
         if (pesananDao.adaPesananBerlangsung(p.getPelangganId()))
             return Hasil.gagal("Masih ada pesanan yang sedang berlangsung.");
@@ -62,9 +63,19 @@ public class PesananService {
 
     private Hasil batalkan(Pesanan p, String alasan) {
         final boolean refund = isWallet(p.getMetodePembayaran());
-        boolean ok = Tx.jalankan(() ->
-            pesananDao.batalkan(p.getPesananId(), alasan)
-            && (!refund || pelangganDao.ubahSaldo(p.getPelangganId(), p.getTotalBiaya())));
+        boolean ok = Tx.jalankan(() -> {
+            // 1. Batalkan pesanan
+            boolean suksesPesanan = pesananDao.batalkan(p.getPesananId(), alasan);
+            
+            // 2. Jika menggunakan wallet, lakukan refund saldo
+            boolean suksesRefund = !refund || pelangganDao.ubahSaldo(p.getPelangganId(), p.getTotalBiaya());
+            
+            // 3. Ubah status transaksi terkait menjadi 'Gagal' agar tidak masuk hitungan laporan sukses Admin
+            boolean suksesTransaksi = transaksiDao.updateStatusTransaksiByPesanan(p.getPesananId(), "Gagal");
+            
+            return suksesPesanan && suksesRefund && suksesTransaksi;
+        });
+        
         if (!ok)
             return Hasil.gagal("Gagal membatalkan pesanan.");
         return Hasil.ok(refund ? "Pesanan dibatalkan. Saldo E-Wallet dikembalikan penuh."

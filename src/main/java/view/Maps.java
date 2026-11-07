@@ -25,7 +25,6 @@ public class Maps extends javax.swing.JFrame {
         jSpinner1.setModel(new javax.swing.SpinnerDateModel());
         javax.swing.JSpinner.DateEditor editor = new javax.swing.JSpinner.DateEditor(jSpinner1, "HH:mm");
         jSpinner1.setEditor(editor);
-        // -----------------------------------------------------
         getContentPane().setPreferredSize(new java.awt.Dimension(390, 844));
         pack();
         setResizable(false);
@@ -51,10 +50,7 @@ public class Maps extends javax.swing.JFrame {
             lblWaktu.setText(h.menit() + " Menit");
             lblStatus.setText("<html>Rute berhasil diterima dari peta.</html>");
             
-            // ===================================================
-            // UPDATE DATA ARMADA MENGGUNAKAN TARIF HELPER
-            // ===================================================
-            double kmPeta = h.km(); // Mengambil jarak dasar (km) dari peta
+            double kmPeta = h.km();
 
             // 1. Motor Comfort
             updateArmadaData(
@@ -100,7 +96,6 @@ public class Maps extends javax.swing.JFrame {
                 lblMobilMenit8, 
                 lblTarifMobil8
             );
-            // ===================================================
 
             munculkanJendela();
         }, () -> {
@@ -155,14 +150,14 @@ public class Maps extends javax.swing.JFrame {
     }
     
     private String namaLayananDb(TarifHelper.Paket p) {
-        switch (p) {
-            case MOTOR_BIASA:   return "RuteBike Regular";
-            case MOTOR_COMFORT: return "RuteBike Comfort";
-            case MOBIL_4_SEAT:  return "RuteCar 4 Penumpang";
-            case MOBIL_6_SEAT:  return "RuteCar Comfort 6 Penumpang"; // label UI: "RuteCar Comfort"
-            case MOBIL_8_SEAT:  return "RuteCar 8 Penumpang";         // label UI: "RuteCar XL"
-            default:            return "";
-        }
+        return switch (p) {
+            case MOTOR_BIASA -> "RuteBike Regular";
+            case MOTOR_COMFORT -> "RuteBike Comfort";
+            case MOBIL_4_SEAT -> "RuteCar 4 Penumpang";
+            case MOBIL_6_SEAT -> "RuteCar Comfort 6 Penumpang";
+            case MOBIL_8_SEAT -> "RuteCar 8 Penumpang";
+            default -> "";
+        };
     }
 
     // Fungsi untuk mereset warna semua panel armada ke normal
@@ -236,11 +231,16 @@ public class Maps extends javax.swing.JFrame {
     }
     
     private TarifHelper.Paket paketTerpilih() {
-        if (selectedArmadaPanel == panelMotorBiasa) return TarifHelper.Paket.MOTOR_BIASA;
-        if (selectedArmadaPanel == panelMotorCom)   return TarifHelper.Paket.MOTOR_COMFORT;
-        if (selectedArmadaPanel == panelMobil4)     return TarifHelper.Paket.MOBIL_4_SEAT;
-        if (selectedArmadaPanel == panelMobil6)     return TarifHelper.Paket.MOBIL_6_SEAT;
-        if (selectedArmadaPanel == panelMobil8)     return TarifHelper.Paket.MOBIL_8_SEAT;
+        if (selectedArmadaPanel == panelMotorBiasa)
+            return TarifHelper.Paket.MOTOR_BIASA;
+        if (selectedArmadaPanel == panelMotorCom)
+            return TarifHelper.Paket.MOTOR_COMFORT;
+        if (selectedArmadaPanel == panelMobil4)
+            return TarifHelper.Paket.MOBIL_4_SEAT;
+        if (selectedArmadaPanel == panelMobil6)
+            return TarifHelper.Paket.MOBIL_6_SEAT;
+        if (selectedArmadaPanel == panelMobil8)
+            return TarifHelper.Paket.MOBIL_8_SEAT;
         return null;
     }
     

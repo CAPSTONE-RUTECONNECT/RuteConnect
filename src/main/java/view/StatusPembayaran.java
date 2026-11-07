@@ -30,30 +30,25 @@ public class StatusPembayaran extends javax.swing.JFrame {
             this.totalPembayaran = controller.Session.draft.getTotalBiaya();
         }
         lblTotalPembayaran.setText(controller.Fmt.rupiah(this.totalPembayaran));
-
         controller.Session.refreshSaldo();
         lblSisaSaldo.setText("Sisa Saldo: " + controller.Fmt.rupiah(controller.Session.saldo));
-
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-
         javax.swing.ButtonGroup metodeGroup = new javax.swing.ButtonGroup();
         metodeGroup.add(radioBtnRutePay);
         metodeGroup.add(radioBtnEwallet);
         metodeGroup.add(radioBtnCash);
-
         setupPaymentPanel(panelRutePay, radioBtnRutePay);
         setupPaymentPanel(panelEwallet, radioBtnEwallet);
         setupPaymentPanel(panelCash, radioBtnCash);
-
-        tampilkanRingkasan();                          // isi jPanel3 dari pesanan
-        jButton5.addActionListener(e -> kembali());    // tombol back
+        tampilkanRingkasan();
+        jButton5.addActionListener(e -> kembali());
 }
 
     // Fungsi bantuan interaksi panel pembayaran (hover & click)
     private void setupPaymentPanel(javax.swing.JPanel panel, javax.swing.JRadioButton radioButton) {
         java.awt.Color normalColor = new java.awt.Color(242, 243, 255);
-        java.awt.Color hoverColor = new java.awt.Color(230, 238, 255);  // Biru muda lembut saat di-hover
-        java.awt.Color selectColor = new java.awt.Color(210, 225, 255); // Biru terang saat dipilih
+        java.awt.Color hoverColor = new java.awt.Color(230, 238, 255);
+        java.awt.Color selectColor = new java.awt.Color(210, 225, 255);
 
         panel.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -150,9 +145,12 @@ public class StatusPembayaran extends javax.swing.JFrame {
 
     // RutePay = saldo wallet (dipotong), E-Wallet & Cash tidak memotong saldo
     private String metodeTerpilih() {
-        if (radioBtnRutePay.isSelected()) return model.Transaksi.SALDO;
-        if (radioBtnEwallet.isSelected()) return model.Transaksi.E_WALLET;
-        if (radioBtnCash.isSelected())    return model.Transaksi.CASH;
+        if (radioBtnRutePay.isSelected())
+            return model.Transaksi.SALDO;
+        if (radioBtnEwallet.isSelected())
+            return model.Transaksi.E_WALLET;
+        if (radioBtnCash.isSelected())
+            return model.Transaksi.CASH;
         return null;
     }
 

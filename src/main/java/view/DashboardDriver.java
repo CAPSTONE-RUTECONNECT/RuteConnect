@@ -34,9 +34,9 @@ public class DashboardDriver extends javax.swing.JFrame {
         model.Pesanan data;   // pesanan yang sedang tampil di card (null = kosong)
 
         Kartu(String jenisPesanan, String jenisKendaraan, String nama, JButton tab,
-              JLabel header, JLabel judul, JLabel harga, JLabel metode, JLabel ket,
-              JLabel kiriJudul, JLabel kananJudul, JLabel kiriNilai, JLabel kananNilai,
-              JButton tolak, JButton terima) {
+                JLabel header, JLabel judul, JLabel harga, JLabel metode, JLabel ket,
+                JLabel kiriJudul, JLabel kananJudul, JLabel kiriNilai, JLabel kananNilai,
+                JButton tolak, JButton terima) {
             this.jenisPesanan = jenisPesanan;
             this.jenisKendaraan = jenisKendaraan;
             this.nama = nama;
@@ -61,9 +61,9 @@ public class DashboardDriver extends javax.swing.JFrame {
         m.setRowCount(3);
         m.setColumnCount(3);
 
-        tblOrder.setRowHeight(44);                       // muat 2 baris teks (judul + keterangan kecil)
-        tblOrder.setTableHeader(null);                   // buang header
-        jScrollPane1.setColumnHeaderView(null);          // header "Title 1/2/3" tidak ikut tampil
+        tblOrder.setRowHeight(44);
+        tblOrder.setTableHeader(null);
+        jScrollPane1.setColumnHeaderView(null);
         tblOrder.setFillsViewportHeight(true);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         tblOrder.setIntercellSpacing(new Dimension(0, 0));
@@ -78,8 +78,8 @@ public class DashboardDriver extends javax.swing.JFrame {
                 l.setHorizontalAlignment(col == 0 ? CENTER : (col == 2 ? RIGHT : LEFT));
                 l.setBackground(row == 1 ? new Color(224, 242, 254) : Color.WHITE);
                 l.setForeground(row == 0 ? new Color(5, 150, 105)
-                              : row == 1 ? new Color(2, 132, 199)
-                              : new Color(100, 116, 139));
+                        : row == 1 ? new Color(2, 132, 199)
+                                : new Color(100, 116, 139));
                 return l;
             }
         });
@@ -97,10 +97,10 @@ public class DashboardDriver extends javax.swing.JFrame {
     
     private void loadOrderBerjalan() {
         String sql = "SELECT p.pesanan_id, p.lokasi_jemput, p.lokasi_tujuan, p.waktu_penjemputan, "
-                   + "p.status_pesanan, d.nama_penerima "
-                   + "FROM pesanan p LEFT JOIN dokumen d ON d.pesanan_id = p.pesanan_id "
-                   + "WHERE p.driver_id = ? AND p.status_pesanan IN ('Diterima','Diproses','Dalam Perjalanan') "
-                   + "ORDER BY p.pesanan_id LIMIT 1";
+                + "p.status_pesanan, d.nama_penerima "
+                + "FROM pesanan p LEFT JOIN dokumen d ON d.pesanan_id = p.pesanan_id "
+                + "WHERE p.driver_id = ? AND p.status_pesanan IN ('Diterima','Diproses','Dalam Perjalanan') "
+                + "ORDER BY p.pesanan_id LIMIT 1";
         DefaultTableModel m = (DefaultTableModel) tblOrder.getModel();
 
         Connection c = Koneksi.getConnection();
@@ -119,24 +119,21 @@ public class DashboardDriver extends javax.swing.JFrame {
                     lblJudul.setText("Order Berjalan #" + pesananAktifId);
 
                     String jam = new SimpleDateFormat("HH:mm 'WIB'")
-                                    .format(rs.getTimestamp("waktu_penjemputan"));
+                            .format(rs.getTimestamp("waktu_penjemputan"));
                     String penerima = rs.getString("nama_penerima");
 
                     m.setValueAt("✔", 0, 0);
                     m.setValueAt("<html><b>Diterima oleh Driver</b><br><small>"
                             + rs.getString("lokasi_jemput") + "</small>", 0, 1);
                     m.setValueAt(jam, 0, 2);
-
                     m.setValueAt("➜", 1, 0);
                     m.setValueAt("<html><b>Antar ke Tujuan</b><br><small>"
                             + (penerima != null ? "Penerima: " + penerima : rs.getString("lokasi_tujuan"))
                             + "</small>", 1, 1);
                     m.setValueAt(rs.getString("status_pesanan"), 1, 2);
-
                     m.setValueAt("●", 2, 0);
                     m.setValueAt("<html><b>Pesanan Selesai</b><br><small>Konfirmasi serah terima</small>", 2, 1);
                     m.setValueAt("", 2, 2);
-
                     btnBatalkan.setEnabled(true);
                     btnSelesai.setEnabled(true);
                 } else {
@@ -145,7 +142,6 @@ public class DashboardDriver extends javax.swing.JFrame {
                     statusAktif = null;
                     btnSelesai.setText("Selesaikan Pesanan");
                     btnSelesai.setSelected(false);
-                    
                     for (int i = 0; i < 3; i++)
                         for (int j = 0; j < 3; j++) m.setValueAt("", i, j);
                     btnBatalkan.setEnabled(false);
@@ -290,12 +286,15 @@ public class DashboardDriver extends javax.swing.JFrame {
         sb.append("Jarak: ").append(Math.round(p.getJarakKm() * 10) / 10.0).append(" Km<br>");
         sb.append("Tarif: ").append(controller.Fmt.rupiah(p.getTotalBiaya()))
           .append(" (").append(tampilMetode(p.getMetodePembayaran())).append(")<br>");
-        if (p instanceof model.Transportasi tr) {
-            sb.append("Penumpang: ").append(tr.getJumlahPenumpang()).append("<br>");
-        } else if (p instanceof model.Dokumen dk) {
-            sb.append("Penerima: ").append(esc(dk.getNamaPenerima())).append(" (")
-              .append(esc(dk.getNoTeleponPenerima())).append(")<br>");
-            sb.append("Dokumen: ").append(esc(dk.getDetailDokumen())).append("<br>");
+        switch (p) {
+            case model.Transportasi tr -> sb.append("Penumpang: ").append(tr.getJumlahPenumpang()).append("<br>");
+            case model.Dokumen dk -> {
+                sb.append("Penerima: ").append(esc(dk.getNamaPenerima())).append(" (")
+                        .append(esc(dk.getNoTeleponPenerima())).append(")<br>");
+                sb.append("Dokumen: ").append(esc(dk.getDetailDokumen())).append("<br>");
+            }
+            default -> {
+            }
         }
         if (p.getCatatan() != null && !p.getCatatan().isEmpty()) {
             sb.append("Catatan: ").append(esc(p.getCatatan())).append("<br>");
@@ -335,8 +334,8 @@ public class DashboardDriver extends javax.swing.JFrame {
         }
 
         String sql = "UPDATE pesanan "
-                   + "SET status_pesanan = ?, alasan_batal = ? "
-                   + "WHERE pesanan_id = ? AND driver_id = ?";
+                + "SET status_pesanan = ?, alasan_batal = ? "
+                + "WHERE pesanan_id = ? AND driver_id = ?";
 
         Connection c = Koneksi.getConnection();
 
@@ -390,9 +389,15 @@ public class DashboardDriver extends javax.swing.JFrame {
         muatPesananMasuk();
         loadOrderBerjalan();
 
-        btnSatu.addActionListener(e -> { cardLayout.show(jPanel6, "card1"); muatPesananMasuk(); });
-        btnDua.addActionListener(e  -> { cardLayout.show(jPanel6, "card2"); muatPesananMasuk(); });
-        btnTiga.addActionListener(e -> { cardLayout.show(jPanel6, "card3"); muatPesananMasuk(); });
+        btnSatu.addActionListener(e -> {
+            cardLayout.show(jPanel6, "card1"); muatPesananMasuk();
+        });
+        btnDua.addActionListener(e  -> {
+            cardLayout.show(jPanel6, "card2"); muatPesananMasuk();
+        });
+        btnTiga.addActionListener(e -> {
+            cardLayout.show(jPanel6, "card3"); muatPesananMasuk();
+        });
 
         // Cek pesanan masuk dan status order berjalan setiap 5 detik
         timerMasuk = new javax.swing.Timer(5000, e -> {
@@ -1220,7 +1225,7 @@ public class DashboardDriver extends javax.swing.JFrame {
         boolean ok = new dao.DriverDao().updateStatus(driverId, mauAktif ? "Aktif" : "Non-Aktif");
         if (!ok) {
             JOptionPane.showMessageDialog(this, "Gagal mengubah status ke database.");
-            tglStatus.setSelected(!mauAktif);   // kembalikan toggle
+            tglStatus.setSelected(!mauAktif);
             return;
         }
 

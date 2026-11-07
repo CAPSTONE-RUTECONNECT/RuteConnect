@@ -193,13 +193,19 @@ public class TambahUserForm extends javax.swing.JFrame {
         
         String[] extra;
         switch (role) {
-            case "Pelanggan" -> extra = new String[] { "Samarinda" }; 
-            case "Driver"    -> extra = new String[] { "Honda", "KT 1234 XX", "Motor", "Aktif" }; 
-            default          -> extra = new String[] { "" };
+            case "Pelanggan" -> extra = new String[] {
+                "Samarinda"
+            }; 
+            case "Driver"    -> extra = new String[] {
+                "Honda", "KT 1234 XX", "Motor", "Aktif"
+            }; 
+            default          -> extra = new String[] {
+                ""
+            };
         }
 
         try {
-            // 5. Simpan ke database lewat controller
+            // Simpan ke database lewat controller
             userController.tambahUser(nama, telp, email, pass, role, extra);
 
             JOptionPane.showMessageDialog(this, "User baru berhasil ditambahkan!");

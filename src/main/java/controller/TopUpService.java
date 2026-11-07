@@ -45,17 +45,15 @@ public class TopUpService {
         String insertTopUp = "INSERT INTO top_up (transaksi_id, saldo_masuk, saldo_keluar, status_top_up, pelanggan_id) "
                 + "VALUES (?, ?, 0.00, 'Berhasil', ?)";
         String updatePelanggan = "UPDATE pelanggan SET saldo_wallet = saldo_wallet + ? WHERE user_id = ?";
-
+        
         try {
             connection.setAutoCommit(false);
-
             int transaksiId;
             try (PreparedStatement ps = connection.prepareStatement(cariId);
-                 ResultSet rs = ps.executeQuery()) {
+                    ResultSet rs = ps.executeQuery()) {
                 rs.next();
                 transaksiId = rs.getInt(1);
             }
-
             try (PreparedStatement stmtT = connection.prepareStatement(insertTransaksi)) {
                 stmtT.setInt(1, transaksiId);
                 stmtT.setBigDecimal(2, nominal);

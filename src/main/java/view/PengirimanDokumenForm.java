@@ -48,11 +48,8 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
             lblJarak.setText("(" + h.km() + " Km)");
             lblWaktu.setText(h.menit() + " Menit");
             lblStatus.setText("<html>Rute berhasil diterima dari peta.</html>");
-            
-            // ===================================================
-            // UPDATE DATA ARMADA MENGGUNAKAN TARIF HELPER
-            // ===================================================
-            double kmPeta = h.km(); // Mengambil jarak dasar (km) dari peta
+
+            double kmPeta = h.km();
  
             updateArmadaData(TarifHelper.PaketDokumen.REGULER,
                 kmPeta,
@@ -126,17 +123,14 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
     }
     
     private void munculkanJendela() {
-        // kalau sedang di-minimize, kembalikan dulu ke ukuran normal
         if ((getExtendedState() & java.awt.Frame.ICONIFIED) != 0) {
             setExtendedState(java.awt.Frame.NORMAL);
         }
-        // trik always-on-top: dipaksa ke depan, lalu dilepas lagi
         setAlwaysOnTop(true);
         toFront();
         
-        // Perbaikan agar JScrollPane tetap bisa digulir setelah pop-up/fokus masuk
         java.awt.EventQueue.invokeLater(() -> {
-            jScrollPane1.getVerticalScrollBar().setValue(0); // Reset posisi scroll ke atas (opsional)
+            jScrollPane1.getVerticalScrollBar().setValue(0);
             jScrollPane1.requestFocusInWindow();
             pnlPesan.revalidate();
             pnlPesan.repaint();
@@ -612,37 +606,25 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         // 8. Menyimpan data pesanan ke draft
         try {
             model.Dokumen d = new model.Dokumen();
-
             d.setLokasiJemput(namaJemput);
             d.setLokasiTujuan(namaTujuan);
             d.setJarakKm(jarakRuteKm);
-
-            java.util.Date waktuPilih =
-                (java.util.Date) jSpinner1.getValue();
-
-            d.setWaktuPenjemputan(
-                new java.sql.Timestamp(waktuPilih.getTime())
-            );
-
+            java.util.Date waktuPilih = (java.util.Date) jSpinner1.getValue();
+            d.setWaktuPenjemputan(new java.sql.Timestamp(waktuPilih.getTime()));
             d.setCatatan("Pengirim: " + txtPengirim.getText().trim());
             d.setTotalBiaya(total);
             d.setPelangganId(controller.Session.userId);
             d.setLayananId(layanan.getLayananId());
             d.setNamaLayanan(layanan.getNamaLayanan());
-
             d.setNamaPenerima(namaPenerima);
             d.setNoTeleponPenerima(noTelp);
             d.setDetailDokumen(txtDetail.getText().trim());
-
             controller.Session.draft = d;
-
+            
             // Data ringkasan untuk halaman pembayaran
             controller.Session.ringkasanJudul = layanan.getNamaLayanan();
-            controller.Session.ringkasanSub =
-                "Pengiriman Dokumen - " + paket.getKelas();
-            controller.Session.ringkasanMenit =
-                TarifHelper.hitungMenit(paket, jarakRuteKm);
-
+            controller.Session.ringkasanSub = "Pengiriman Dokumen - " + paket.getKelas();
+            controller.Session.ringkasanMenit = TarifHelper.hitungMenit(paket, jarakRuteKm);
         } catch (IllegalArgumentException ex) {
             javax.swing.JOptionPane.showMessageDialog(this,
                 ex.getMessage(),

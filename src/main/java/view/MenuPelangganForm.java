@@ -42,6 +42,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
         panelDokumen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelDokumen.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -59,6 +60,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
         panelTopUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelTopUp.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -75,6 +77,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
         panelRiwayat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRiwayat.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -95,7 +98,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
         });
     }
     
-    // Cek dulu sebelum membuka form pesan. Return false kalau masih ada pesanan berlangsung.
+    // Cek dulu sebelum membuka form pesan.
     private boolean bolehPesan() {
         if (new dao.PesananDao().adaPesananBerlangsung(controller.Session.userId)) {
             JOptionPane.showMessageDialog(this,

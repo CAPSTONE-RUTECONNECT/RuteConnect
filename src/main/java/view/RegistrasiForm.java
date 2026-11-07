@@ -356,15 +356,18 @@ public class RegistrasiForm extends javax.swing.JFrame {
                 new FrameMenu().setVisible(true);
                 this.dispose();
             }
-            case DATA_KOSONG -> JOptionPane.showMessageDialog(this,
-                    "Data belum lengkap (Alamat wajib diisi).", "Peringatan", JOptionPane.WARNING_MESSAGE);
-            case FORMAT_SALAH -> JOptionPane.showMessageDialog(this,
-                    "Format email/password/telepon tidak sesuai.\nPassword minimal 8 karakter, huruf + angka.",
-                    "Peringatan", JOptionPane.WARNING_MESSAGE);
-            case EMAIL_TERDAFTAR -> JOptionPane.showMessageDialog(this,
-                    "Email sudah terdaftar.", "Peringatan", JOptionPane.WARNING_MESSAGE);
-            default -> JOptionPane.showMessageDialog(this,
-                    "Terjadi kesalahan pada database.", "Error", JOptionPane.ERROR_MESSAGE);
+            case DATA_KOSONG -> {
+                JOptionPane.showMessageDialog(this, "Data belum lengkap (Alamat wajib diisi).", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+            case FORMAT_SALAH -> { 
+                JOptionPane.showMessageDialog(this, "Format email/password/telepon tidak sesuai.\nPassword minimal 8 karakter, huruf + angka.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+            case EMAIL_TERDAFTAR -> {
+                JOptionPane.showMessageDialog(this, "Email sudah terdaftar.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+            default -> {
+                JOptionPane.showMessageDialog(this, "Terjadi kesalahan pada database.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_registrasiActionPerformed
 

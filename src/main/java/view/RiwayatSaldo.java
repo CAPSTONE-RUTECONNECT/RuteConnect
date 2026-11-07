@@ -21,7 +21,7 @@ public class RiwayatSaldo extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        jLabel5.setText("Riwayat Saldo");   // sebelumnya "Top Up Saldo"
+        jLabel5.setText("Riwayat Saldo");
         controller.Session.refreshSaldo();
         lblSaldo.setText(controller.Fmt.rupiah(controller.Session.saldo));
 
@@ -29,28 +29,23 @@ public class RiwayatSaldo extends javax.swing.JFrame {
         muatRiwayat();
     }
     
-    private JPanel daftar;   // tempat kartu-kartu mutasi
+    private JPanel daftar;
 
     private void siapkanDaftar() {
-        // dua panel template dari designer diganti kartu hasil generate
         jPanel3.remove(panelTambah);
         jPanel3.remove(panelKurang);
-
         daftar = new JPanel();
         daftar.setLayout(new BoxLayout(daftar, BoxLayout.Y_AXIS));
         daftar.setBackground(jPanel3.getBackground());
         daftar.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 10, 10));
-
         JScrollPane sp = new JScrollPane(daftar);
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         sp.getVerticalScrollBar().setUnitIncrement(16);
         sp.getViewport().setBackground(jPanel3.getBackground());
-
-        int tinggi = jPanel1.getHeight() - 295 - 10;   // sisa tinggi jendela
+        int tinggi = jPanel1.getHeight() - 295 - 10;
         if (tinggi < 200) tinggi = 500;
         sp.setBounds(0, 45, 390, tinggi);
-
         jPanel3.add(sp);
         jPanel3.revalidate();
         jPanel3.repaint();
@@ -79,7 +74,7 @@ public class RiwayatSaldo extends javax.swing.JFrame {
         daftar.repaint();
     }
 
-    // Satu kartu mutasi. Gaya (font/warna) disalin dari komponen template di designer.
+    // Satu kartu mutasi.
     private JPanel buatKartu(String judul, String ket, String meta, double jumlah, boolean masuk) {
         JPanel k = new JPanel(null);
         k.setBackground(panelKurang.getBackground());
@@ -88,30 +83,24 @@ public class RiwayatSaldo extends javax.swing.JFrame {
         k.setMinimumSize(ukuran);
         k.setMaximumSize(ukuran);
         k.setAlignmentX(Component.LEFT_ALIGNMENT);
-
         JLabel lJudul = new JLabel(judul);
         lJudul.setFont(lblJenisTransaksi.getFont());
         lJudul.setForeground(lblJenisTransaksi.getForeground());
         lJudul.setBounds(12, 12, 316, 20);
-
         JLabel lKet = new JLabel(potong(ket, 26));
         lKet.setToolTipText(ket);
         lKet.setFont(lblMetodePembayaran.getFont());
         lKet.setForeground(lblMetodePembayaran.getForeground());
         lKet.setBounds(12, 38, 160, 16);
-
         JLabel lMeta = new JLabel(meta);
         lMeta.setFont(lblMetodePembayaran.getFont());
         lMeta.setForeground(lblMetodePembayaran.getForeground());
         lMeta.setBounds(12, 58, 160, 16);
-
         JLabel lJumlah = new JLabel((masuk ? "+ " : "- ") + controller.Fmt.rupiah(jumlah));
         lJumlah.setFont(saldoTambah.getFont());
-        // di designer namanya tertukar: saldoTambah = hijau (+), lblKurang = merah (-)
         lJumlah.setForeground(masuk ? saldoTambah.getForeground() : lblKurang.getForeground());
         lJumlah.setHorizontalAlignment(SwingConstants.RIGHT);
         lJumlah.setBounds(172, 28, 156, 34);
-
         k.add(lJudul);
         k.add(lKet);
         k.add(lMeta);
