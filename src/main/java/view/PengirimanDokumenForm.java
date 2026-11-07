@@ -6,6 +6,7 @@ package view;
 import java.io.IOException;
 import controller.PetaServer;
 import util.TarifHelper;
+import util.Validator;
 
 /**
  *
@@ -22,6 +23,9 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
 
     public PengirimanDokumenForm() {
         initComponents();
+        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
+        javax.swing.JSpinner.DateEditor editor = new javax.swing.JSpinner.DateEditor(jSpinner1, "HH:mm");
+        jSpinner1.setEditor(editor);
         txtPengirim.setText(controller.Session.nama == null ? "" : controller.Session.nama);
         txtPengirim.setEditable(false);
         getContentPane().setPreferredSize(new java.awt.Dimension(390, 844));
@@ -31,7 +35,6 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
         
-        setupArmadaPanel(panelKilat);
         setupArmadaPanel(panelReguler);
         
         // yang terjadi saat peta mengirim hasil rute
@@ -51,13 +54,6 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
             // ===================================================
             double kmPeta = h.km(); // Mengambil jarak dasar (km) dari peta
  
-            updateArmadaData(TarifHelper.PaketDokumen.KILAT,
-                kmPeta,
-                lblKmKilat,
-                lblMenitKilat,
-                lblTarifKilat
-            );
-
             updateArmadaData(TarifHelper.PaketDokumen.REGULER,
                 kmPeta,
                 lblKmReguler,
@@ -124,8 +120,7 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
     // Fungsi untuk mereset warna semua panel armada ke normal
     private void resetAllArmadaPanels() {
         java.awt.Color normalBg = new java.awt.Color(242, 243, 255);
-        
-        panelKilat.setBackground(normalBg);
+
         panelReguler.setBackground(normalBg);
         selectedArmadaPanel = null;
     }
@@ -177,18 +172,12 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
 
     // Method untuk mereset tampilan label armada saat tombol reset ditekan
     private void resetDataArmada() {
-        javax.swing.JLabel[] labelKmList    = {lblKmKilat, lblKmReguler};
-        javax.swing.JLabel[] labelMenitList = {lblMenitKilat, lblMenitReguler};
-        javax.swing.JLabel[] labelTarifList = {lblTarifKilat, lblTarifReguler};
-        for (int i = 0; i < labelKmList.length; i++) {
-            labelKmList[i].setText("0 Km");
-            labelMenitList[i].setText("0 Menit");
-            labelTarifList[i].setText("Rp");
-        }
+        lblKmReguler.setText("0 Km");
+        lblMenitReguler.setText("0 Menit");
+        lblTarifReguler.setText("Rp");
     }
     
     private TarifHelper.PaketDokumen paketTerpilih() {
-        if (selectedArmadaPanel == panelKilat)   return TarifHelper.PaketDokumen.KILAT;
         if (selectedArmadaPanel == panelReguler) return TarifHelper.PaketDokumen.REGULER;
         return null;
     }
@@ -226,16 +215,13 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         lblWaktu = new javax.swing.JLabel();
         lblJarak = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
-        txtTujuan = new javax.swing.JTextField();
+        txtPenerima = new javax.swing.JTextField();
         txtTelpPenerima = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        panelKilat = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        lblTarifKilat = new javax.swing.JLabel();
-        lblMenitKilat = new javax.swing.JLabel();
-        lblKmKilat = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         panelReguler = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -247,6 +233,7 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtDetail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pemesanan Transportasi");
@@ -350,7 +337,7 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Margin(1).png"))); // NOI18N
         jPanel3.add(jLabel18);
-        jLabel18.setBounds(10, 60, 340, 32);
+        jLabel18.setBounds(10, 50, 340, 32);
 
         jLabel38.setForeground(new java.awt.Color(62, 72, 80));
         jLabel38.setText("Estimasi Tiba:");
@@ -377,10 +364,10 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         jPanel3.add(btnReset);
         btnReset.setBounds(10, 330, 120, 33);
 
-        txtTujuan.setBackground(new java.awt.Color(255, 255, 255));
-        txtTujuan.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(txtTujuan);
-        txtTujuan.setBounds(60, 220, 280, 30);
+        txtPenerima.setBackground(new java.awt.Color(255, 255, 255));
+        txtPenerima.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(txtPenerima);
+        txtPenerima.setBounds(60, 220, 280, 30);
 
         txtTelpPenerima.setBackground(new java.awt.Color(255, 255, 255));
         txtTelpPenerima.setForeground(new java.awt.Color(0, 0, 0));
@@ -397,42 +384,21 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         jLabel4.setText("Telp:");
         jPanel3.add(jLabel4);
         jLabel4.setBounds(20, 270, 37, 16);
+        jPanel3.add(jSpinner1);
+        jSpinner1.setBounds(220, 370, 120, 26);
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Nama:");
+        jPanel3.add(jLabel11);
+        jLabel11.setBounds(20, 90, 43, 16);
+
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Pilih Waktu:");
+        jPanel3.add(jLabel10);
+        jLabel10.setBounds(150, 370, 70, 30);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 280, 350, 370);
-
-        panelKilat.setBackground(new java.awt.Color(242, 243, 255));
-        panelKilat.setLayout(null);
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Overlay(9).png"))); // NOI18N
-        panelKilat.add(jLabel26);
-        jLabel26.setBounds(10, 10, 37, 60);
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Instant Kilat");
-        panelKilat.add(jLabel27);
-        jLabel27.setBounds(80, 10, 170, 20);
-
-        lblTarifKilat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblTarifKilat.setForeground(new java.awt.Color(0, 0, 0));
-        lblTarifKilat.setText("Rp 0");
-        panelKilat.add(lblTarifKilat);
-        lblTarifKilat.setBounds(253, 20, 90, 30);
-
-        lblMenitKilat.setForeground(new java.awt.Color(63, 72, 80));
-        lblMenitKilat.setText("0 Menit");
-        panelKilat.add(lblMenitKilat);
-        lblMenitKilat.setBounds(90, 36, 70, 30);
-
-        lblKmKilat.setForeground(new java.awt.Color(63, 72, 80));
-        lblKmKilat.setText("0 Km");
-        panelKilat.add(lblKmKilat);
-        lblKmKilat.setBounds(160, 30, 70, 40);
-
-        jPanel2.add(panelKilat);
-        panelKilat.setBounds(10, 740, 350, 70);
+        jPanel3.setBounds(10, 280, 350, 410);
 
         panelReguler.setBackground(new java.awt.Color(242, 243, 255));
         panelReguler.setLayout(null);
@@ -465,7 +431,7 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         lblKmReguler.setBounds(160, 30, 70, 40);
 
         jPanel2.add(panelReguler);
-        panelReguler.setBounds(10, 820, 350, 70);
+        panelReguler.setBounds(10, 810, 350, 70);
 
         lblStatus.setForeground(new java.awt.Color(0, 0, 0));
         lblStatus.setText("Klik peta untuk memilih lokasi jemput dan tujuan.");
@@ -479,24 +445,28 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
         btnPembayaran.setText("Lanjut Ke Menu Pembayaran →");
         btnPembayaran.addActionListener(this::btnPembayaranActionPerformed);
         jPanel2.add(btnPembayaran);
-        btnPembayaran.setBounds(20, 910, 330, 50);
+        btnPembayaran.setBounds(20, 900, 330, 50);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Detail Dokumen");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(20, 650, 150, 16);
+        jLabel5.setBounds(20, 700, 150, 16);
 
         txtDetail.setBackground(new java.awt.Color(242, 243, 255));
         txtDetail.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txtDetail);
-        txtDetail.setBounds(20, 670, 330, 40);
+        txtDetail.setBounds(50, 720, 290, 50);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Tingkat Kecepatan");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(20, 710, 110, 16);
+        jLabel6.setBounds(20, 780, 110, 16);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(6).png"))); // NOI18N
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(10, 720, 350, 48);
 
         pnlPesan.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 390, 1380));
 
@@ -539,63 +509,155 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
 
     private void btnPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembayaranActionPerformed
         // TODO add your handling code here:
+        // 1. Validasi pemilihan rute
         if (!ruteSudahDipilih) {
             javax.swing.JOptionPane.showMessageDialog(this,
                 "Silakan tentukan titik jemput dan titik tujuan terlebih dahulu!",
-                "Rute Belum Dipilih", javax.swing.JOptionPane.WARNING_MESSAGE);
+                "Rute Belum Dipilih",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
+
+        // 2. Validasi pemilihan layanan
         if (selectedArmadaPanel == null) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Silakan pilih Instant Kilat atau Reguler terlebih dahulu!",
-                "Layanan Belum Dipilih", javax.swing.JOptionPane.WARNING_MESSAGE);
+                "Silakan pilih layanan Reguler terlebih dahulu!",
+                "Layanan Belum Dipilih",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
+
+        // 3. Validasi nama penerima
+        String namaPenerima = txtPenerima.getText().trim();
+
+        if (namaPenerima.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Nama penerima wajib diisi!",
+                "Input Belum Lengkap",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            txtPenerima.requestFocus();
+            return;
+        }
+
+        if (!Validator.namaValid(namaPenerima)) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Nama penerima harus terdiri dari 3-50 karakter dan hanya boleh berisi huruf.",
+                "Nama Penerima Tidak Valid",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            txtPenerima.requestFocus();
+            return;
+        }
+
+        // 4. Validasi nomor telepon penerima
+        String noTelp = txtTelpPenerima.getText().trim();
+
+        if (noTelp.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Nomor telepon penerima wajib diisi!",
+                "Input Belum Lengkap",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            txtTelpPenerima.requestFocus();
+            return;
+        }
+
+        if (!Validator.teleponValid(noTelp)) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Nomor telepon tidak valid!\n"
+                + "Gunakan format 08xxxxxxxxxx (10-15 digit).",
+                "Format Nomor Telepon Salah",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            txtTelpPenerima.requestFocus();
+            return;
+        }
+
+        // 5. Validasi jarak rute
         if (!TarifHelper.dalamBatas(jarakRuteKm)) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Jarak di luar batas layanan (maks " + (int) TarifHelper.BATAS_KM + " km).");
+                "Jarak di luar batas layanan (maks "
+                + (int) TarifHelper.BATAS_KM + " km).",
+                "Jarak Tidak Valid",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
+        // 6. Mengambil paket dan menghitung total biaya
         TarifHelper.PaketDokumen paket = paketTerpilih();
+
+        if (paket == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Layanan belum dipilih!",
+                "Peringatan",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         double total = TarifHelper.hitungHarga(paket, jarakRuteKm);
 
+        // 7. Mencari layanan di database
         model.Layanan layanan = null;
+
         for (model.Layanan l : new dao.LayananDao().findAll()) {
-            if (l.getNamaLayanan().equalsIgnoreCase(namaLayananDb(paket))) { layanan = l; break; }
+            if (l.getNamaLayanan().equalsIgnoreCase(namaLayananDb(paket))) {
+                layanan = l;
+                break;
+            }
         }
+
         if (layanan == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Layanan dokumen belum ada di database.");
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Layanan dokumen belum ada di database!");
             return;
         }
 
+        // 8. Menyimpan data pesanan ke draft
         try {
             model.Dokumen d = new model.Dokumen();
+
             d.setLokasiJemput(namaJemput);
             d.setLokasiTujuan(namaTujuan);
             d.setJarakKm(jarakRuteKm);
-            d.setWaktuPenjemputan(new java.sql.Timestamp(System.currentTimeMillis()));
+
+            java.util.Date waktuPilih =
+                (java.util.Date) jSpinner1.getValue();
+
+            d.setWaktuPenjemputan(
+                new java.sql.Timestamp(waktuPilih.getTime())
+            );
+
             d.setCatatan("Pengirim: " + txtPengirim.getText().trim());
             d.setTotalBiaya(total);
             d.setPelangganId(controller.Session.userId);
             d.setLayananId(layanan.getLayananId());
             d.setNamaLayanan(layanan.getNamaLayanan());
-            d.setNamaPenerima(txtTujuan.getText());
-            d.setNoTeleponPenerima(txtTelpPenerima.getText().trim());
-            d.setDetailDokumen(txtDetail.getText());
+
+            d.setNamaPenerima(namaPenerima);
+            d.setNoTeleponPenerima(noTelp);
+            d.setDetailDokumen(txtDetail.getText().trim());
+
             controller.Session.draft = d;
 
-            // data untuk jPanel3 di halaman pembayaran
+            // Data ringkasan untuk halaman pembayaran
             controller.Session.ringkasanJudul = layanan.getNamaLayanan();
-            controller.Session.ringkasanSub = "Pengiriman Dokumen - " + paket.getKelas();
-            controller.Session.ringkasanMenit = TarifHelper.hitungMenit(paket, jarakRuteKm);
+            controller.Session.ringkasanSub =
+                "Pengiriman Dokumen - " + paket.getKelas();
+            controller.Session.ringkasanMenit =
+                TarifHelper.hitungMenit(paket, jarakRuteKm);
+
         } catch (IllegalArgumentException ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(this,
+                ex.getMessage(),
+                "Gagal Membuat Pesanan",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        peta.berhenti(); // lepas port 8765
-        java.awt.EventQueue.invokeLater(() -> new StatusPembayaran(total).setVisible(true));
+        // 9. Beralih ke halaman pembayaran
+        peta.berhenti();
+
+        java.awt.EventQueue.invokeLater(() ->
+            new StatusPembayaran(total).setVisible(true)
+        );
+
         this.dispose();
     }//GEN-LAST:event_btnPembayaranActionPerformed
 
@@ -638,14 +700,15 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
     private javax.swing.JButton btnPeta;
     private javax.swing.JButton btnReset;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -660,23 +723,20 @@ public class PengirimanDokumenForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblJarak;
     private javax.swing.JLabel lblJemput;
-    private javax.swing.JLabel lblKmKilat;
     private javax.swing.JLabel lblKmReguler;
-    private javax.swing.JLabel lblMenitKilat;
     private javax.swing.JLabel lblMenitReguler;
     private javax.swing.JLabel lblStatus;
-    private javax.swing.JLabel lblTarifKilat;
     private javax.swing.JLabel lblTarifReguler;
     private javax.swing.JLabel lblTujuan;
     private javax.swing.JLabel lblWaktu;
-    private javax.swing.JPanel panelKilat;
     private javax.swing.JPanel panelReguler;
     private javax.swing.JPanel pnlPesan;
     private javax.swing.JTextField txtDetail;
+    private javax.swing.JTextField txtPenerima;
     private javax.swing.JTextField txtPengirim;
     private javax.swing.JTextField txtTelpPenerima;
-    private javax.swing.JTextField txtTujuan;
     // End of variables declaration//GEN-END:variables
 }

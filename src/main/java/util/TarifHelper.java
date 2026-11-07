@@ -79,8 +79,8 @@ public class TarifHelper {
         
         public enum PaketDokumen {
     //            nama,            kelas,    tarif/km, tarif min, km/jam, buffer(menit), faktor jarak
-    REGULER("Dokumen Reguler",     "Reguler", 3000,     10000,     25,      30,           1.00),
-    KILAT  ("Dokumen Instant Kilat","Kilat",  5500,     20000,     40,      5,            0.95);
+    REGULER("Dokumen Reguler", "Reguler", 3000, 10000, 25, 30, 1.00),
+    KILAT("Dokumen Hemat", "Hemat", 5500, 20000, 40, 5, 0.95);
 
     private final String nama, kelas;
     private final double tarifPerKm, tarifMinimum, kecepatanKmJam, faktorJarak;

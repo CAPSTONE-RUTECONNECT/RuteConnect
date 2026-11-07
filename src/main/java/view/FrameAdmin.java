@@ -78,13 +78,6 @@ public class FrameAdmin extends javax.swing.JFrame {
             @Override public boolean isCellEditable(int r, int c) { return false; }
         });
         loadDashboard();
-        
-        // Inisialisasi event listener untuk Tarif
-        buttonRefreshTarif.addActionListener(e -> loadTarifData());
-        btnHapusTarif.addActionListener(e -> hapusTarifTerpilih());
-        btnTambahTarif.addActionListener(e -> tambahTarifBaru());
-        btnUpdateTarif.addActionListener(e -> updateTarifTerpilih());
-        txtSearchTarif.addActionListener(e -> loadTarifData());
 
         jTable4.setModel(new DefaultTableModel(
             new Object[][]{},
@@ -1618,6 +1611,7 @@ public class FrameAdmin extends javax.swing.JFrame {
 
         txtCariLaporan.setBackground(new java.awt.Color(242, 243, 255));
         txtCariLaporan.setForeground(new java.awt.Color(0, 0, 0));
+        txtCariLaporan.addActionListener(this::txtCariLaporanActionPerformed);
         jPanel26.add(txtCariLaporan);
         txtCariLaporan.setBounds(50, 10, 180, 30);
 
@@ -1893,28 +1887,82 @@ public class FrameAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Tidak ada data untuk dicetak.");
             return;
         }
+
         JFileChooser fc = new JFileChooser();
-        fc.setSelectedFile(new java.io.File("Laporan_Transaksi_" + java.time.LocalDate.now() + ".pdf"));
-        if (fc.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) return;
+        fc.setDialogTitle("Simpan Laporan Transaksi");
+
+        fc.setSelectedFile(new java.io.File(
+            "Laporan_Transaksi_" + java.time.LocalDate.now() + ".pdf"
+        ));
+
+        if (fc.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
 
         java.io.File f = fc.getSelectedFile();
+
         if (!f.getName().toLowerCase().endsWith(".pdf")) {
-            f = new java.io.File(f.getParentFile(), f.getName() + ".pdf");
+            f = new java.io.File(
+                f.getParentFile(),
+                f.getName() + ".pdf"
+            );
         }
 
         String sub = "Status: " + comboBoxStatus.getSelectedItem()
-                   + "  |  Metode: " + comboBoxMetode.getSelectedItem()
-                   + (txtCariLaporan.getText().isBlank() ? "" : "  |  Pencarian: " + txtCariLaporan.getText().trim())
-                   + "  |  Dicetak: " + java.time.LocalDate.now();
+                + " | Metode: " + comboBoxMetode.getSelectedItem()
+                + (txtCariLaporan.getText().isBlank()
+                    ? ""
+                    : " | Pencarian: " + txtCariLaporan.getText().trim())
+                + " | Dicetak: " + java.time.LocalDate.now();
+
         try {
-            new service.PdfLaporanService().buat(jTable6.getModel(), f, "Laporan Transaksi RuteConnect", sub);
-            JOptionPane.showMessageDialog(this, "PDF berhasil disimpan:\n" + f.getAbsolutePath());
-            if (java.awt.Desktop.isDesktopSupported()) java.awt.Desktop.getDesktop().open(f);
+            // Membuat dan menyimpan PDF
+            new service.PdfLaporanService().buat(
+                jTable6.getModel(),
+                f,
+                "Laporan Transaksi RuteConnect",
+                sub
+            );
+
+            // Pastikan file benar-benar sudah dibuat
+            if (!f.exists() || f.length() == 0) {
+                throw new Exception("File PDF gagal dibuat.");
+            }
+
+            JOptionPane.showMessageDialog(
+                this,
+                "PDF berhasil disimpan!\nLokasi: " + f.getAbsolutePath()
+            );
+
+            // Membuka PDF secara terpisah
+            try {
+                if (java.awt.Desktop.isDesktopSupported()) {
+                    java.awt.Desktop.getDesktop().open(f);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+                JOptionPane.showMessageDialog(
+                    this,
+                    "PDF berhasil disimpan, tetapi gagal dibuka otomatis."
+                );
+            }
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Gagal membuat PDF:\n" + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+
+            JOptionPane.showMessageDialog(
+                this,
+                "Gagal membuat PDF:\n" + ex.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
         }
     }//GEN-LAST:event_btnPdfActionPerformed
+
+    private void txtCariLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariLaporanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariLaporanActionPerformed
 
     /**
      * @param args the command line arguments

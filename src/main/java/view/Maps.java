@@ -22,6 +22,10 @@ public class Maps extends javax.swing.JFrame {
 
     public Maps() {
         initComponents();
+        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
+        javax.swing.JSpinner.DateEditor editor = new javax.swing.JSpinner.DateEditor(jSpinner1, "HH:mm");
+        jSpinner1.setEditor(editor);
+        // -----------------------------------------------------
         getContentPane().setPreferredSize(new java.awt.Dimension(390, 844));
         pack();
         setResizable(false);
@@ -274,6 +278,7 @@ public class Maps extends javax.swing.JFrame {
         lblWaktu = new javax.swing.JLabel();
         lblJarak = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
         jLabel14 = new javax.swing.JLabel();
         panelMotorCom = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -441,16 +446,18 @@ public class Maps extends javax.swing.JFrame {
         btnReset.setText("Reset Lokasi");
         btnReset.addActionListener(this::btnResetActionPerformed);
         jPanel3.add(btnReset);
-        btnReset.setBounds(10, 210, 120, 33);
+        btnReset.setBounds(10, 220, 120, 33);
+        jPanel3.add(jSpinner1);
+        jSpinner1.setBounds(220, 220, 120, 26);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 280, 350, 250);
+        jPanel3.setBounds(10, 280, 350, 270);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Pilih Armada");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(20, 550, 140, 20);
+        jLabel14.setBounds(20, 570, 140, 20);
 
         panelMotorCom.setBackground(new java.awt.Color(242, 243, 255));
         panelMotorCom.setLayout(null);
@@ -484,7 +491,7 @@ public class Maps extends javax.swing.JFrame {
         lblKmMotorCom.setBounds(150, 30, 70, 40);
 
         jPanel2.add(panelMotorCom);
-        panelMotorCom.setBounds(10, 670, 350, 70);
+        panelMotorCom.setBounds(10, 680, 350, 70);
 
         panelMotorBiasa.setBackground(new java.awt.Color(242, 243, 255));
         panelMotorBiasa.setLayout(null);
@@ -518,7 +525,7 @@ public class Maps extends javax.swing.JFrame {
         lblKmMotorBiasa.setBounds(160, 30, 70, 40);
 
         jPanel2.add(panelMotorBiasa);
-        panelMotorBiasa.setBounds(10, 580, 350, 70);
+        panelMotorBiasa.setBounds(10, 600, 350, 70);
 
         panelMobil4.setBackground(new java.awt.Color(242, 243, 255));
         panelMobil4.setLayout(null);
@@ -586,7 +593,7 @@ public class Maps extends javax.swing.JFrame {
         lblKmMobil6.setBounds(160, 30, 70, 40);
 
         jPanel2.add(panelMobil6);
-        panelMobil6.setBounds(10, 850, 350, 70);
+        panelMobil6.setBounds(10, 840, 350, 70);
 
         panelMobil8.setBackground(new java.awt.Color(242, 243, 255));
         panelMobil8.setLayout(null);
@@ -621,7 +628,7 @@ public class Maps extends javax.swing.JFrame {
         lblKmMobil8.setBounds(160, 36, 80, 30);
 
         jPanel2.add(panelMobil8);
-        panelMobil8.setBounds(10, 940, 350, 70);
+        panelMobil8.setBounds(10, 920, 350, 70);
 
         lblStatus.setForeground(new java.awt.Color(0, 0, 0));
         lblStatus.setText("Klik peta untuk memilih lokasi jemput dan tujuan.");
@@ -633,17 +640,18 @@ public class Maps extends javax.swing.JFrame {
         txtCatatan.setForeground(new java.awt.Color(0, 0, 0));
         txtCatatan.addActionListener(this::txtCatatanActionPerformed);
         jPanel2.add(txtCatatan);
-        txtCatatan.setBounds(65, 1056, 280, 40);
+        txtCatatan.setBounds(70, 1040, 280, 50);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(6).png"))); // NOI18N
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(20, 1050, 350, 48);
+        jLabel4.setBounds(20, 1040, 350, 48);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Catatan Untuk Driver (Opsional)");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(40, 1030, 320, 16);
+        jLabel3.setBounds(40, 1020, 320, 16);
 
         btnPembayaran.setBackground(new java.awt.Color(14, 165, 233));
         btnPembayaran.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -651,7 +659,7 @@ public class Maps extends javax.swing.JFrame {
         btnPembayaran.setText("Lanjut Ke Menu Pembayaran →");
         btnPembayaran.addActionListener(this::btnPembayaranActionPerformed);
         jPanel2.add(btnPembayaran);
-        btnPembayaran.setBounds(30, 1120, 330, 50);
+        btnPembayaran.setBounds(30, 1110, 330, 50);
 
         pnlPesan.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 390, 1350));
 
@@ -722,11 +730,13 @@ public class Maps extends javax.swing.JFrame {
         }
 
         try {
+            java.util.Date waktuPilih = (java.util.Date) jSpinner1.getValue();
+            java.sql.Timestamp waktuPenjemputan = new java.sql.Timestamp(waktuPilih.getTime());
             model.Transportasi t = new model.Transportasi();
             t.setLokasiJemput(namaJemput);
             t.setLokasiTujuan(namaTujuan);
             t.setJarakKm(jarakRuteKm);
-            t.setWaktuPenjemputan(new java.sql.Timestamp(System.currentTimeMillis()));
+            t.setWaktuPenjemputan(waktuPenjemputan);
             t.setCatatan(txtCatatan.getText());
             t.setTotalBiaya(total);
             t.setPelangganId(controller.Session.userId);
@@ -813,6 +823,7 @@ public class Maps extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblJarak;
     private javax.swing.JLabel lblJemput;
     private javax.swing.JLabel lblKmMobil4;

@@ -24,4 +24,13 @@ public class Validator {
     public static boolean teleponValid(String t) {
         return t != null && t.trim().matches("^08\\d{8,13}$");
     }
+    public static boolean namaValid(String nama) {
+        if (nama == null) return false;
+
+        nama = nama.trim();
+
+        return nama.length() >= 3
+                && nama.length() <= 50
+                && nama.matches("^[\\p{L}][\\p{L} .'-]*[\\p{L}]$");
+    }
 }

@@ -376,9 +376,9 @@ public class TopUpForm extends javax.swing.JFrame {
         panel500.setBounds(30, 300, 330, 50);
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Atau Masukkan Nominal Sendiri");
+        jLabel11.setText("Atau Masukkan Nominal Sendiri (Minimal Rp 2.000.000)");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(30, 370, 240, 16);
+        jLabel11.setBounds(30, 370, 330, 16);
 
         txtNominal.setBackground(new java.awt.Color(242, 243, 255));
         txtNominal.setForeground(new java.awt.Color(0, 0, 0));
@@ -492,9 +492,9 @@ public class TopUpForm extends javax.swing.JFrame {
         passwordCheckBox.setBounds(30, 840, 230, 20);
 
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setText("<html>Masukkan kata sandi login RuteConnect Anda untuk<br>memvalidasi transaksi pengisian saldo.</html>");
+        jLabel25.setText("<html>Masukkan kata sandi login RuteConnect Anda untuk<br>memvalidasi transaksi pengisian saldo. (Hanya untuk pembayaran E-Wallet dan Virtual Account Bank)</html>");
         jPanel3.add(jLabel25);
-        jLabel25.setBounds(30, 870, 330, 32);
+        jLabel25.setBounds(40, 870, 330, 60);
 
         btnTopUp.setBackground(new java.awt.Color(14, 165, 233));
         btnTopUp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -502,7 +502,7 @@ public class TopUpForm extends javax.swing.JFrame {
         btnTopUp.setText("Top Up Sekarang →");
         btnTopUp.addActionListener(this::btnTopUpActionPerformed);
         jPanel3.add(btnTopUp);
-        btnTopUp.setBounds(30, 920, 330, 50);
+        btnTopUp.setBounds(30, 930, 330, 50);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 390, 1030));
 
@@ -539,47 +539,78 @@ public class TopUpForm extends javax.swing.JFrame {
     private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         try {
-            // 1. Validasi pilihan metode pembayaran (salah satu RadioButton harus dipilih)
-            if (!radioBtnEwallet.isSelected() && !radioBtnBank.isSelected() && !radioBtnMinimarket.isSelected()) {
-                JOptionPane.showMessageDialog(this, "Silakan pilih salah satu metode pembayaran terlebih dahulu!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            // 1. Validasi metode pembayaran
+            if (!radioBtnEwallet.isSelected() 
+                    && !radioBtnBank.isSelected() 
+                    && !radioBtnMinimarket.isSelected()) {
+
+                JOptionPane.showMessageDialog(this,
+                    "Silakan pilih salah satu metode pembayaran terlebih dahulu!",
+                    "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            // 2. Validasi input password tidak boleh kosong
-            String passwordInput = new String(txtPassword.getPassword());
-            if (passwordInput.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Silakan masukkan password verifikasi keamanan Anda!", "Peringatan", JOptionPane.WARNING_MESSAGE);
-                return;
+            // 2. Validasi password hanya jika bukan Minimarket
+            if (!radioBtnMinimarket.isSelected()) {
+
+                String passwordInput = new String(txtPassword.getPassword());
+
+                if (passwordInput.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this,
+                        "Silakan masukkan password verifikasi keamanan Anda!",
+                        "Peringatan", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                // Verifikasi password
+                dao.UserDao userDao = new dao.UserDao();
+                boolean passwordValid = userDao.cekPassword(
+                    controller.Session.userId, passwordInput
+                );
+
+                if (!passwordValid) {
+                    JOptionPane.showMessageDialog(this,
+                        "Password salah! Periksa kembali password Anda.",
+                        "Verifikasi Gagal", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             }
 
+            // 3. Koneksi database
             Connection conn = config.Koneksi.getConnection();
+
             if (conn == null) {
-                JOptionPane.showMessageDialog(this, "Koneksi database gagal!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                    "Koneksi database gagal!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // 3. Verifikasi password user yang sedang login menggunakan UserDao
-            dao.UserDao userDao = new dao.UserDao();
-            boolean passwordValid = userDao.cekPassword(controller.Session.userId, passwordInput);
-            if (!passwordValid) {
-                JOptionPane.showMessageDialog(this, "Password salah! Periksa kembali password Anda.", "Verifikasi Gagal", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // 4. Proses Top Up jika validasi aman
+            // 4. Proses Top Up
             TopUpService service = new TopUpService(conn);
             boolean sukses = service.executeTopUp(txtNominal.getText());
 
             if (sukses) {
-                JOptionPane.showMessageDialog(this, "Top Up Berhasil!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                java.awt.EventQueue.invokeLater(() -> new MenuPelangganForm().setVisible(true));
+                JOptionPane.showMessageDialog(this,
+                    "Top Up Berhasil!",
+                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
+
+                java.awt.EventQueue.invokeLater(() -> 
+                    new MenuPelangganForm().setVisible(true)
+                );
                 this.dispose();
+
             } else {
-                JOptionPane.showMessageDialog(this, "Top Up Gagal diproses. Periksa kembali nominal Anda.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                    "Top Up Gagal diproses. Periksa kembali nominal Anda.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                "Terjadi kesalahan: " + ex.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
         }
     }                                        
 

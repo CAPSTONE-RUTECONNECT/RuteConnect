@@ -452,11 +452,11 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Atau Masukkan Nominal Sendiri"/>
+                    <Property name="text" type="java.lang.String" value="Atau Masukkan Nominal Sendiri (Minimal Rp 2.000.000)"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="30" y="370" width="240" height="-1"/>
+                      <AbsoluteConstraints x="30" y="370" width="330" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -775,11 +775,11 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;Masukkan kata sandi login RuteConnect Anda untuk&lt;br&gt;memvalidasi transaksi pengisian saldo.&lt;/html&gt;"/>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;Masukkan kata sandi login RuteConnect Anda untuk&lt;br&gt;memvalidasi transaksi pengisian saldo. (Hanya untuk pembayaran E-Wallet dan Virtual Account Bank)&lt;/html&gt;"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="30" y="870" width="330" height="-1"/>
+                      <AbsoluteConstraints x="40" y="870" width="330" height="60"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -801,7 +801,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="30" y="920" width="330" height="50"/>
+                      <AbsoluteConstraints x="30" y="930" width="330" height="50"/>
                     </Constraint>
                   </Constraints>
                 </Component>
