@@ -573,7 +573,7 @@ public class StatusPembayaran extends javax.swing.JFrame {
         controller.Session.ringkasanSub = null;
         controller.Session.ringkasanMenit = 0;
 
-        java.awt.EventQueue.invokeLater(() -> new MenuPelangganForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RiwayatStatusPelanggan().setVisible(true));
         this.dispose();
     }//GEN-LAST:event_btnPesanActionPerformed
 

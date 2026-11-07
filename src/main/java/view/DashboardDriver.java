@@ -170,6 +170,23 @@ public class DashboardDriver extends javax.swing.JFrame {
         lblPlat.setText(d.getNoPlatKendaraan());
     }
     
+    private void tampilkanStatus(boolean aktif) {
+    tglStatus.setSelected(aktif);   // setSelected dari kode tidak memicu handler di atas
+    if (aktif) {
+        tglStatus.setText("Online");
+        tglStatus.setBackground(new Color(5, 150, 105));
+        tglStatus.setForeground(Color.WHITE);
+        lblStatus.setText("<html>● Status: ON<br>(Siap Antar)</html>");
+        lblStatus.setForeground(new Color(5, 150, 105));
+    } else {
+        tglStatus.setText("Offline");
+        tglStatus.setBackground(new Color(220, 38, 38));
+        tglStatus.setForeground(Color.WHITE);
+        lblStatus.setText("<html>● Status: OFF<br>(Tidak Siap Antar)</html>");
+        lblStatus.setForeground(new Color(220, 38, 38));
+    }
+}
+    
     private void siapkanKartu() {
         kDokumen = new Kartu("Dokumen", "Motor", "Pesanan Dokumen", btnSatu,
                 jLabel10, jLabel11, jLabel12, jLabel13, jLabel18,
@@ -182,11 +199,15 @@ public class DashboardDriver extends javax.swing.JFrame {
                 jLabel32, jLabel33, jLabel34, jLabel35, btnTolakCar, btnTerimaCar);
         for (Kartu k : new Kartu[]{kDokumen, kRide, kCar}) {
             Dimension kolomKiri = new Dimension(217, 20);
-            for (JLabel l : new JLabel[]{k.ket, k.judul}) {
-                l.setPreferredSize(kolomKiri);
-                l.setMinimumSize(kolomKiri);
-                l.setMaximumSize(kolomKiri);
-            }
+            k.judul.setPreferredSize(kolomKiri);
+            k.judul.setMinimumSize(kolomKiri);
+            k.judul.setMaximumSize(kolomKiri);
+
+            Dimension kolomKet = new Dimension(217, 34);
+            k.ket.setPreferredSize(kolomKet);
+            k.ket.setMinimumSize(kolomKet);
+            k.ket.setMaximumSize(kolomKet);
+            k.ket.setVerticalAlignment(SwingConstants.TOP);
         }
     }
 
@@ -196,6 +217,7 @@ public class DashboardDriver extends javax.swing.JFrame {
         model.Driver d = new dao.DriverDao().findById(driverId);
         String jenisDriver = (d == null || d.getJenisKendaraan() == null) ? "" : d.getJenisKendaraan();
         boolean aktif = d != null && d.isAktif();
+        tampilkanStatus(aktif);
         for (Kartu k : new Kartu[]{kDokumen, kRide, kCar}) {
             isiKartu(k, jenisDriver, aktif);
         }
@@ -227,7 +249,7 @@ public class DashboardDriver extends javax.swing.JFrame {
             k.judul.setText("-");
             k.harga.setText("Rp 0");
             k.metode.setText("-");
-            k.ket.setText(info);
+            k.ket.setText("<html>" + esc(info) + "</html>");
             k.ket.setToolTipText(null);
             k.kiriNilai.setText("-");
             k.kananNilai.setText("-");
@@ -236,7 +258,7 @@ public class DashboardDriver extends javax.swing.JFrame {
             k.judul.setText(pm.getNamaLayanan());
             k.harga.setText(controller.Fmt.rupiah(pm.getTotalBiaya()));
             k.metode.setText(tampilMetode(pm.getMetodePembayaran()));
-            k.ket.setText(pm.getLokasiJemput() + " → " + pm.getLokasiTujuan());
+            k.ket.setText("<html>" + esc(pm.getLokasiJemput() + " → " + pm.getLokasiTujuan()) + "</html>");
             k.ket.setToolTipText(ringkasanPesanan(pm));
             k.kiriNilai.setText(new SimpleDateFormat("HH:mm 'WIB'").format(pm.getWaktuPenjemputan()));
             k.kananNilai.setText((Math.round(pm.getJarakKm() * 10) / 10.0) + " Km");
@@ -401,7 +423,6 @@ public class DashboardDriver extends javax.swing.JFrame {
         lblNamaDriver = new javax.swing.JLabel();
         lblMerkKendaraan = new javax.swing.JLabel();
         lblPlat = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         cardSatu = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -452,6 +473,9 @@ public class DashboardDriver extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         btnSelesai = new javax.swing.JToggleButton();
         btnBatalkan = new javax.swing.JToggleButton();
+        panelStatus = new javax.swing.JPanel();
+        tglStatus = new javax.swing.JToggleButton();
+        lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Driver");
@@ -521,11 +545,6 @@ public class DashboardDriver extends javax.swing.JFrame {
         lblPlat.setText("KT 1234 AB");
         jPanel1.add(lblPlat);
         lblPlat.setBounds(254, 96, 107, 16);
-
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Border.png"))); // NOI18N
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(16, 137, 355, 52);
 
         jPanel6.setLayout(new java.awt.CardLayout());
 
@@ -1015,6 +1034,27 @@ public class DashboardDriver extends javax.swing.JFrame {
         jPanel1.add(panelOrder);
         panelOrder.setBounds(0, 530, 390, 390);
 
+        panelStatus.setBackground(new java.awt.Color(242, 243, 255));
+        panelStatus.setLayout(null);
+
+        tglStatus.setBackground(new java.awt.Color(5, 150, 105));
+        tglStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tglStatus.setForeground(new java.awt.Color(255, 255, 255));
+        tglStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(15).png"))); // NOI18N
+        tglStatus.setText("Online");
+        tglStatus.addActionListener(this::tglStatusActionPerformed);
+        panelStatus.add(tglStatus);
+        tglStatus.setBounds(240, 10, 110, 50);
+
+        lblStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblStatus.setForeground(new java.awt.Color(5, 150, 105));
+        lblStatus.setText("● Status: ON (Siap Antar)");
+        panelStatus.add(lblStatus);
+        lblStatus.setBounds(20, 0, 200, 60);
+
+        jPanel1.add(panelStatus);
+        panelStatus.setBounds(10, 130, 370, 70);
+
         jScrollPane2.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1172,6 +1212,22 @@ public class DashboardDriver extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBatalkanActionPerformed
 
+    private void tglStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglStatusActionPerformed
+        // TODO add your handling code here:
+        boolean mauAktif = tglStatus.isSelected();
+
+        // simpan ke database lewat DAO
+        boolean ok = new dao.DriverDao().updateStatus(driverId, mauAktif ? "Aktif" : "Non-Aktif");
+        if (!ok) {
+            JOptionPane.showMessageDialog(this, "Gagal mengubah status ke database.");
+            tglStatus.setSelected(!mauAktif);   // kembalikan toggle
+            return;
+        }
+
+        tampilkanStatus(mauAktif);
+        muatPesananMasuk();
+    }//GEN-LAST:event_tglStatusActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1245,7 +1301,6 @@ public class DashboardDriver extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1259,7 +1314,10 @@ public class DashboardDriver extends javax.swing.JFrame {
     private javax.swing.JLabel lblMerkKendaraan;
     private javax.swing.JLabel lblNamaDriver;
     private javax.swing.JLabel lblPlat;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JPanel panelOrder;
+    private javax.swing.JPanel panelStatus;
     private javax.swing.JTable tblOrder;
+    private javax.swing.JToggleButton tglStatus;
     // End of variables declaration//GEN-END:variables
 }
