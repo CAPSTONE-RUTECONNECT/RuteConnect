@@ -350,12 +350,6 @@ Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikas
   </tr>
 </table>
 
-  <tr>
-    <td>
-      <img src="" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
 
 ### B. Use Case Diagram
 
@@ -369,7 +363,7 @@ Aktor utama dalam aplikasi RuteConnect terdiri atas:
 
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/diagram%20PA(1)-Page-5.drawio(1).png" width="75%" alt="Struktur Package">
     </td>
   </tr>
 </table>
@@ -393,14 +387,14 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.jpeg" width="75%" alt="Struktur Package">
     </td>
   </tr>
 </table>
 
   <tr>
     <td>
-      <img src="" width="75%" alt="Struktur Package">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-02%20at%2019.38.02.%20(1).jpeg" width="75%" alt="Struktur Package">
     </td>
   </tr>
 </table>
@@ -595,73 +589,67 @@ Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampi
 
 Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
 
-<div align="center">
-
-<img src="docs/screenshots/01-halaman-awal.png" width="85%" alt="Halaman Awal RuteConnect"/>
-
-<em>Gambar 4. Halaman Awal RuteConnect</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### B. Login Pengguna
 
 Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
 
-<div align="center">
-
-<img src="docs/screenshots/02-halaman-login.png" width="85%" alt="Halaman Login"/>
-
-<em>Gambar 5. Halaman Login</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### C. Dashboard Pelanggan
 
 Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
-<div align="center">
-
-<img src="docs/screenshots/03-dashboard-pelanggan.png" width="85%" alt="Dashboard Pelanggan"/>
-
-<em>Gambar 6. Dashboard Pelanggan</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### D. Halaman Pemesanan
 
 Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
 
-<div align="center">
-
-<img src="docs/screenshots/04-halaman-pemesanan.png" width="85%" alt="Halaman Pemesanan"/>
-
-<em>Gambar 7. Halaman Pemesanan</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### E. Dashboard Driver
 
 Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
 
-<div align="center">
-
-<img src="docs/screenshots/05-dashboard-driver.png" width="85%" alt="Dashboard Driver"/>
-
-<em>Gambar 8. Dashboard Driver</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ### F. Dashboard Admin
 
 Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
 
-<div align="center">
-
-<img src="docs/screenshots/06-dashboard-admin.png" width="85%" alt="Dashboard Admin"/>
-
-<em>Gambar 9. Dashboard Admin</em>
-
-</div>
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 ---
 
