@@ -659,10 +659,10 @@ Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampi
 
 Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna masuk dan mengakses fitur yang tersedia.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20202959.png" width="100%" alt="Tampilan Awal RuteConnect"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20202959.png" width="100%" alt="Tampilan Awal RuteConnect" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
@@ -671,10 +671,10 @@ Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama 
 
 Pengguna memasukkan email dan password yang telah terdaftar untuk masuk ke dalam aplikasi dan mengakses fitur sesuai dengan hak akses masing-masing.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.jpeg" width="100%" alt="Halaman Login Pengguna"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.jpeg" width="100%" alt="Halaman Login Pengguna" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
@@ -683,10 +683,10 @@ Pengguna memasukkan email dan password yang telah terdaftar untuk masuk ke dalam
 
 Dashboard Pelanggan merupakan halaman utama yang digunakan pelanggan untuk mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.1.jpeg" width="100%" alt="Dashboard Pelanggan"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.1.jpeg" width="100%" alt="Dashboard Pelanggan" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
@@ -695,18 +695,18 @@ Dashboard Pelanggan merupakan halaman utama yang digunakan pelanggan untuk menga
 
 Halaman pemesanan digunakan pelanggan untuk memilih jenis layanan yang dibutuhkan, yaitu transportasi atau pengiriman dokumen. Pelanggan kemudian mengisi informasi yang diperlukan sesuai dengan layanan yang dipilih untuk membuat pesanan.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.2.jpeg" width="100%" alt="Halaman Pemesanan Transportasi"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.2.jpeg" width="100%" alt="Halaman Pemesanan Transportasi" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.3.jpeg" width="100%" alt="Halaman Pengiriman Dokumen"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.3.jpeg" width="100%" alt="Halaman Pengiriman Dokumen" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
@@ -715,10 +715,10 @@ Halaman pemesanan digunakan pelanggan untuk memilih jenis layanan yang dibutuhka
 
 Dashboard Driver merupakan halaman yang digunakan oleh mitra pengemudi untuk melihat pesanan yang tersedia, memeriksa detail pesanan, menerima atau menolak pesanan, serta memperbarui status pengerjaan.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.5.jpeg" width="100%" alt="Dashboard Driver"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.23.5.jpeg" width="100%" alt="Dashboard Driver" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
@@ -727,10 +727,10 @@ Dashboard Driver merupakan halaman yang digunakan oleh mitra pengemudi untuk mel
 
 Dashboard Admin merupakan halaman pengelolaan sistem yang memberikan akses kepada admin untuk mengelola data pengguna, layanan, dan pesanan, serta memantau informasi transaksi dalam sistem.
 
-<table border="1" bordercolor="black">
+<table border="1" bordercolor="black" align="center">
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.24.6.jpeg" width="100%" alt="Dashboard Admin"/>
+    <td align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/WhatsApp%20Image%202026-11-07%20at%2020.57.24.6.jpeg" width="100%" alt="Dashboard Admin" style="display: block; margin: auto;"/>
     </td>
   </tr>
 </table>
