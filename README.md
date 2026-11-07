@@ -669,15 +669,33 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 
 <br/>
 
-**PROGRAM STUDI SISTEM INFORMASI**  
-**FAKULTAS TEKNIK**  
-**UNIVERSITAS MULAWARMAN**
-
-2026
 
 </div>
 
 ---
+
+
+---
+
+# 📸 10. Dokumentasi Konsultasi
+
+Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti pelaksanaan bimbingan, diskusi, dan evaluasi selama proses pengembangan aplikasi.
+
+<div align="center">
+
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
+
+  <tr>
+    <td>
+      <img src="" width="75%" alt="Struktur Package">
+    </td>
+  </tr>
+</table>
 
 <div align="center">
 
