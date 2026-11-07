@@ -418,88 +418,19 @@ Struktur proyek RuteConnect disusun menggunakan beberapa package yang memiliki t
 <table border="1" bordercolor="black">
   <tr>
     <td>
-      <img src="" width="100%">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20204304.png" width="100%">
     </td>
   </tr>
 </table>
 
-```text
-RuteConnect/
-├── src/
-│   └── main/
-│       └── java/
-│           ├── config/
-│           │   ├── Koneksi.java
-│           │   └── TestKoneksi.java
-│           │
-│           ├── controller/
-│           │   ├── AuthService.java
-│           │   ├── Fmt.java
-│           │   ├── PetaServer.java
-│           │   ├── Session.java
-│           │   ├── TarifController.java
-│           │   ├── TopUpService.java
-│           │   └── UserController.java
-│           │
-│           ├── dao/
-│           │   ├── BaseDao.java
-│           │   ├── CrudDao.java
-│           │   ├── DriverDao.java
-│           │   ├── LayananDao.java
-│           │   ├── PelangganDao.java
-│           │   ├── PesananDao.java
-│           │   ├── TransaksiDao.java
-│           │   └── UserDao.java
-│           │
-│           ├── main/
-│           │   ├── SistemRuteConnect.java
-│           │   ├── gambar/
-│           │   └── resources/
-│           │       └── index.html
-│           │
-│           ├── model/
-│           │   ├── Admin.java
-│           │   ├── Dokumen.java
-│           │   ├── Driver.java
-│           │   ├── Layanan.java
-│           │   ├── Pelanggan.java
-│           │   ├── Pesanan.java
-│           │   ├── TopUp.java
-│           │   ├── Transaksi.java
-│           │   ├── Transportasi.java
-│           │   └── User.java
-│           │
-│           ├── service/
-│           │   ├── AdminService.java
-│           │   ├── Hasil.java
-│           │   ├── LaporanService.java
-│           │   ├── OrderService.java
-│           │   ├── PdfLaporanService.java
-│           │   ├── PesananService.java
-│           │   └── WalletService.java
-│           │
-│           ├── util/
-│           │   ├── TarifHelper.java
-│           │   ├── Tx.java
-│           │   └── Validator.java
-│           │
-│           └── view/
-│               ├── DashboardDriver.java
-│               ├── FrameAdmin.java
-│               ├── FrameMenu.java
-│               ├── Maps.java
-│               ├── MenuPelangganForm.java
-│               ├── PengirimanDokumenForm.java
-│               ├── RegistrasiForm.java
-│               ├── RiwayatSaldo.java
-│               ├── RiwayatStatusPelanggan.java
-│               ├── StatusPembayaran.java
-│               ├── TambahUserForm.java
-│               ├── TopUpForm.java
-│               └── UbahUserForm.java
-│
-├── pom.xml
-└── README.md
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Screenshot%202026-11-07%20204359.png" width="100%">
+    </td>
+  </tr>
+</table>
+
 ```
 
 ### B. Penjelasan Package
