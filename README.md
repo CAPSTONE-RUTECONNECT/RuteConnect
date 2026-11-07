@@ -411,33 +411,92 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 
 ## 📂 6. Struktur Folder/Package
 
-Struktur folder dan package dibuat untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya. Pemisahan ini bertujuan agar kode program lebih terorganisasi, mudah dipahami, dan lebih mudah dikembangkan.
+Struktur proyek RuteConnect disusun menggunakan beberapa package yang memiliki tanggung jawab berbeda. Pemisahan ini membantu menjaga keteraturan kode serta memudahkan proses pengembangan dan pemeliharaan aplikasi.
 
 ### A. Struktur Proyek
 
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="100%">
+    </td>
+  </tr>
+</table>
+
 ```text
 RuteConnect/
-│
 ├── src/
 │   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── ruteconnect/
-│       │           ├── config/
-│       │           ├── model/
-│       │           ├── dao/
-│       │           ├── service/
-│       │           ├── view/
-│       │           └── Main.java
-│       │
-│       └── resources/
-│           └── images/
-│
-├── docs/
-│   ├── images/
-│   ├── flowchart/
-│   ├── diagram/
-│   └── screenshots/
+│       └── java/
+│           ├── config/
+│           │   ├── Koneksi.java
+│           │   └── TestKoneksi.java
+│           │
+│           ├── controller/
+│           │   ├── AuthService.java
+│           │   ├── Fmt.java
+│           │   ├── PetaServer.java
+│           │   ├── Session.java
+│           │   ├── TarifController.java
+│           │   ├── TopUpService.java
+│           │   └── UserController.java
+│           │
+│           ├── dao/
+│           │   ├── BaseDao.java
+│           │   ├── CrudDao.java
+│           │   ├── DriverDao.java
+│           │   ├── LayananDao.java
+│           │   ├── PelangganDao.java
+│           │   ├── PesananDao.java
+│           │   ├── TransaksiDao.java
+│           │   └── UserDao.java
+│           │
+│           ├── main/
+│           │   ├── SistemRuteConnect.java
+│           │   ├── gambar/
+│           │   └── resources/
+│           │       └── index.html
+│           │
+│           ├── model/
+│           │   ├── Admin.java
+│           │   ├── Dokumen.java
+│           │   ├── Driver.java
+│           │   ├── Layanan.java
+│           │   ├── Pelanggan.java
+│           │   ├── Pesanan.java
+│           │   ├── TopUp.java
+│           │   ├── Transaksi.java
+│           │   ├── Transportasi.java
+│           │   └── User.java
+│           │
+│           ├── service/
+│           │   ├── AdminService.java
+│           │   ├── Hasil.java
+│           │   ├── LaporanService.java
+│           │   ├── OrderService.java
+│           │   ├── PdfLaporanService.java
+│           │   ├── PesananService.java
+│           │   └── WalletService.java
+│           │
+│           ├── util/
+│           │   ├── TarifHelper.java
+│           │   ├── Tx.java
+│           │   └── Validator.java
+│           │
+│           └── view/
+│               ├── DashboardDriver.java
+│               ├── FrameAdmin.java
+│               ├── FrameMenu.java
+│               ├── Maps.java
+│               ├── MenuPelangganForm.java
+│               ├── PengirimanDokumenForm.java
+│               ├── RegistrasiForm.java
+│               ├── RiwayatSaldo.java
+│               ├── RiwayatStatusPelanggan.java
+│               ├── StatusPembayaran.java
+│               ├── TambahUserForm.java
+│               ├── TopUpForm.java
+│               └── UbahUserForm.java
 │
 ├── pom.xml
 └── README.md
@@ -447,41 +506,46 @@ RuteConnect/
 
 | Package | Fungsi |
 |---|---|
-| `config` | Mengatur konfigurasi koneksi database. |
-| `model` | Menyimpan class yang merepresentasikan objek dan data sistem. |
-| `dao` | Menangani operasi pengambilan, penyimpanan, perubahan, dan penghapusan data. |
-| `service` | Menangani logika proses bisnis aplikasi. |
-| `view` | Menampilkan antarmuka pengguna menggunakan Java Swing. |
-| `resources` | Menyimpan aset pendukung seperti gambar dan ikon. |
-
-> **Catatan:** Struktur di atas merupakan gambaran pengelompokan package. Pastikan nama folder, package, dan file disesuaikan kembali dengan struktur proyek RuteConnect yang sebenarnya.
+| `config` | Mengatur konfigurasi dan koneksi database. |
+| `controller` | Mengelola proses pengendalian aplikasi, autentikasi, sesi pengguna, dan tarif. |
+| `dao` | Menangani interaksi database melalui operasi CRUD. |
+| `main` | Menyediakan class utama untuk menjalankan aplikasi serta menyimpan aset pendukung. |
+| `model` | Menyimpan class yang merepresentasikan objek dan data dalam sistem. |
+| `service` | Menangani proses bisnis seperti pemesanan, pengelolaan saldo, dan laporan. |
+| `util` | Menyediakan fungsi bantuan dan utilitas pendukung aplikasi. |
+| `view` | Menampilkan antarmuka aplikasi menggunakan Java Swing. |
 
 ---
 
 ## 🧩 7. Penerapan 4 Pilar OOP
 
-Pengembangan RuteConnect menerapkan konsep Object-Oriented Programming (OOP) yang terdiri atas empat pilar utama, yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction.
+Pengembangan RuteConnect menerapkan empat konsep utama Object-Oriented Programming (OOP), yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction. Penerapan konsep tersebut dapat ditemukan pada class yang digunakan untuk mengelola data pengguna dan pesanan dalam aplikasi.
 
 ### 1. Encapsulation (Enkapsulasi)
 
-Encapsulation merupakan konsep membungkus data dan metode dalam sebuah class serta membatasi akses langsung terhadap atribut tertentu.
+Encapsulation merupakan konsep membungkus atribut dan method dalam sebuah class serta membatasi akses langsung terhadap data.
 
-Dalam RuteConnect, konsep ini dapat diterapkan pada class seperti `User`, `Pelanggan`, `Driver`, dan `Pesanan` dengan menggunakan access modifier `private`.
+Pada RuteConnect, konsep ini diterapkan melalui penggunaan access modifier `private` pada atribut class `User`, seperti `userId`, `nama`, `noTelepon`, `email`, `password`, dan `role`.
 
-**Contoh penerapan:**
+**Contoh penerapan pada class User:**
 
 ```java
-public class User {
-    private String idUser;
+public abstract class User {
+    private int userId;
     private String nama;
+    private String noTelepon;
     private String email;
     private String password;
+    private String role;
 
     public String getNama() {
         return nama;
     }
 
     public void setNama(String nama) {
+        if (nama == null || !nama.matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Nama tidak valid");
+        }
         this.nama = nama;
     }
 }
@@ -489,49 +553,51 @@ public class User {
 
 **Penjelasan:**
 
-Atribut dibuat `private` agar tidak dapat diakses secara langsung dari luar class. Pengaksesan dan perubahan data dilakukan melalui method getter dan setter.
+Atribut menggunakan `private` sehingga tidak dapat diakses secara langsung dari luar class. Pengambilan dan perubahan data dilakukan melalui getter dan setter. Pada beberapa setter, sistem juga menerapkan validasi agar data yang dimasukkan sesuai dengan ketentuan.
 
 ### 2. Inheritance (Pewarisan)
 
-Inheritance merupakan konsep pewarisan atribut dan method dari satu class kepada class lainnya.
+Inheritance merupakan konsep pewarisan atribut dan method dari class induk kepada class turunannya.
 
-Dalam RuteConnect, class `Pelanggan`, `Driver`, dan `Admin` dapat mewarisi atribut serta method umum dari class induk `User`.
+Pada RuteConnect, class `User` menjadi class induk bagi `Pelanggan`, `Driver`, dan `Admin`. Selain itu, class `Pesanan` menjadi class induk bagi `Transportasi` dan `Dokumen`.
 
-**Contoh penerapan:**
+**Contoh penerapan pada class Pelanggan:**
 
 ```java
 public class Pelanggan extends User {
-    private String alamat;
+    private String alamatFavorit;
+    private double saldoWallet;
 
-    public String getAlamat() {
-        return alamat;
+    @Override
+    public String getJenisUser() {
+        return "Pelanggan";
     }
 }
 ```
 
 **Penjelasan:**
 
-Class `Pelanggan` mewarisi atribut dan method yang dimiliki oleh class `User`, sehingga tidak perlu mendefinisikan kembali seluruh atribut umum pengguna.
+Class `Pelanggan` mewarisi atribut dan method dari class `User`, sehingga informasi umum pengguna tidak perlu dibuat ulang. Class turunan juga dapat memiliki atribut dan method tambahan sesuai kebutuhan masing-masing.
 
 ### 3. Polymorphism (Polimorfisme)
 
-Polymorphism merupakan konsep yang memungkinkan satu method memiliki perilaku berbeda berdasarkan objek yang menggunakannya.
+Polymorphism merupakan konsep yang memungkinkan method dengan nama yang sama menghasilkan perilaku berbeda berdasarkan objek yang mengimplementasikannya.
+
+Pada RuteConnect, penerapan polymorphism dapat dilihat melalui method `getJenisUser()` pada class `User` yang dioverride oleh `Pelanggan`, `Driver`, dan `Admin`.
 
 **Contoh penerapan:**
 
 ```java
-public class User {
-    public void tampilkanDashboard() {
-        System.out.println("Dashboard Pengguna");
-    }
+public abstract class User {
+    public abstract String getJenisUser();
 }
 ```
 
 ```java
 public class Pelanggan extends User {
     @Override
-    public void tampilkanDashboard() {
-        System.out.println("Dashboard Pelanggan");
+    public String getJenisUser() {
+        return "Pelanggan";
     }
 }
 ```
@@ -539,47 +605,80 @@ public class Pelanggan extends User {
 ```java
 public class Driver extends User {
     @Override
-    public void tampilkanDashboard() {
-        System.out.println("Dashboard Driver");
+    public String getJenisUser() {
+        return "Driver";
+    }
+}
+```
+
+```java
+public class Admin extends User {
+    @Override
+    public String getJenisUser() {
+        return "Admin";
     }
 }
 ```
 
 **Penjelasan:**
 
-Method `tampilkanDashboard()` memiliki nama yang sama, tetapi menghasilkan perilaku berbeda sesuai dengan jenis objek yang menjalankannya.
+Ketiga class turunan memiliki method `getJenisUser()` dengan nama yang sama, tetapi menghasilkan nilai berbeda sesuai jenis objeknya. Hal ini menunjukkan penerapan method overriding sebagai salah satu bentuk polymorphism.
 
 ### 4. Abstraction (Abstraksi)
 
-Abstraction merupakan konsep menyembunyikan detail implementasi dan hanya menampilkan fungsi utama yang diperlukan.
+Abstraction merupakan konsep menyembunyikan detail implementasi dan menampilkan fungsi utama yang harus dimiliki oleh suatu class.
 
-**Contoh penerapan:**
+Pada RuteConnect, konsep ini diterapkan melalui abstract class `User` dan `Pesanan`. Kedua class tersebut memiliki abstract method yang wajib diimplementasikan oleh class turunannya.
+
+**Contoh penerapan pada class Pesanan:**
 
 ```java
-public abstract class Layanan {
-    public abstract void prosesPesanan();
+public abstract class Pesanan {
+    public abstract String getJenisPesanan();
+}
+```
 
-    public void tampilkanInformasi() {
-        System.out.println("Layanan RuteConnect");
+Class `Pesanan` kemudian memiliki dua class turunan, yaitu `Transportasi` dan `Dokumen`.
+
+```java
+public class Transportasi extends Pesanan {
+    @Override
+    public String getJenisPesanan() {
+        return JENIS_TRANSPORTASI;
     }
 }
 ```
 
 ```java
-public class Transportasi extends Layanan {
+public class Dokumen extends Pesanan {
     @Override
-    public void prosesPesanan() {
-        System.out.println("Memproses pesanan transportasi");
+    public String getJenisPesanan() {
+        return JENIS_DOKUMEN;
     }
 }
 ```
 
 **Penjelasan:**
 
-Class `Layanan` menjadi class abstrak yang mendefinisikan method `prosesPesanan()`. Class turunannya kemudian memberikan implementasi sesuai dengan jenis layanan.
+Class `Pesanan` mendefinisikan method abstrak `getJenisPesanan()` tanpa memberikan implementasi langsung. Class `Transportasi` dan `Dokumen` kemudian memberikan implementasi sesuai jenis pesanan masing-masing.
 
-> **Catatan:** Contoh kode di atas merupakan ilustrasi penerapan konsep OOP. Sesuaikan dengan implementasi sebenarnya pada source code RuteConnect agar penjelasan sesuai dengan program yang dikembangkan.
+### Penerapan Interface pada DAO
 
+Selain empat pilar OOP, RuteConnect juga menggunakan interface untuk mengatur operasi pengelolaan data.
+
+Salah satu contohnya adalah `CrudDao<T>` yang mendefinisikan operasi dasar CRUD (*Create, Read, Update, Delete*).
+
+```java
+public interface CrudDao<T> {
+    boolean insert(T obj);
+    boolean update(T obj);
+    boolean delete(int id);
+    T findById(int id);
+    List<T> findAll();
+}
+```
+
+Interface tersebut kemudian diimplementasikan oleh abstract class `BaseDao<T>` untuk menyediakan dasar pengelolaan data pada lapisan DAO.
 ---
 
 ## 🖥️ 8. Cara Penggunaan Program
@@ -590,37 +689,73 @@ Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampi
 
 Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
 
-<!-- Masukkan screenshot halaman awal aplikasi di sini. -->
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="masukkin disini" width="100%">
+    </td>
+  </tr>
+</table>
 
 ### B. Login Pengguna
 
 Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
 
-<!-- Masukkan screenshot halaman login di sini. -->
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="100%">
+    </td>
+  </tr>
+</table>
 
 ### C. Dashboard Pelanggan
 
 Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
-<!-- Masukkan screenshot dashboard pelanggan di sini. -->
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="100%">
+    </td>
+  </tr>
+</table>
 
 ### D. Halaman Pemesanan
 
 Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
 
-<!-- Masukkan screenshot halaman pemesanan di sini. -->
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="100%">
+    </td>
+  </tr>
+</table>
 
 ### E. Dashboard Driver
 
 Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
 
-<!-- Masukkan screenshot dashboard driver di sini. -->
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="100%">
+    </td>
+  </tr>
+</table>
 
 ### F. Dashboard Admin
 
 Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
 
-<!-- Masukkan screenshot dashboard admin di sini. -->
+<table border="1" bordercolor="black">
+  <tr>
+    <td>
+      <img src="" width="100%">
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -633,8 +768,8 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 | No. | Nama | NIM | Peran |
 |:---:|---|:---:|---|
 | 1 | [Nama Anggota 1] | [NIM] | Project Leader |
-| 2 | [Nama Anggota 2] | [NIM] | System Development |
-| 3 | [Nama Anggota 3] | [NIM] | System Development |
+| 2 | [Nama Anggota 2] | [NIM] | Database Design |
+| 3 | [Nama Anggota 3] | [NIM] | Back-End Developer |
 | 4 | [Nama Anggota 4] | [NIM] | System Development |
 | 5 | [Nama Anggota 5] | [NIM] | System Development |
 
