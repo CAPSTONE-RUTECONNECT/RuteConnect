@@ -136,56 +136,101 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 
 ---
 
+
 # 🛠️ 4. Tech Stack
 
-RuteConnect dikembangkan dengan memanfaatkan beberapa teknologi yang mendukung proses pembuatan antarmuka, pengolahan data, pengelolaan database, serta pengembangan aplikasi.
+RuteConnect dikembangkan dengan memanfaatkan berbagai teknologi dan tools pendukung untuk membangun aplikasi desktop, mengelola database, serta membantu proses pengembangan sistem.
 
-## A. Teknologi Utama
+## A. Core Technologies
 
-| Teknologi | Kegunaan |
-|---|---|
-| Java 21 | Bahasa pemrograman utama untuk membangun logika aplikasi. |
-| Java Swing | Membuat antarmuka aplikasi desktop. |
-| MySQL | Menyimpan dan mengelola data aplikasi. |
-| JDBC | Menghubungkan aplikasi Java dengan database MySQL. |
-| Maven | Mengelola dependency dan proses build proyek. |
-| NetBeans IDE | Lingkungan pengembangan aplikasi Java. |
-
-## B. Logo Teknologi dan Tools Pendukung
+Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <div align="center">
 
-### DEVELOPMENT TOOLS
-
-<img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
-&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/mysql/4479A1" height="48" alt="MySQL"/>
-&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Anthropic Claude"/>
-&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/openai/412991" height="48" alt="OpenAI ChatGPT"/>
-
-<br/>
-
-<sub>Laragon • MySQL • Claude • ChatGPT</sub>
-
-<br/><br/>
-
-### SERVICE PLATFORM REFERENCES
-
-<img src="https://cdn.simpleicons.org/gojek/00AA13" height="48" alt="Gojek"/>
-&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/grab/00B14F" height="48" alt="Grab"/>
-
-<br/>
-
-<sub>Gojek • Grab</sub>
+<img src="https://img.shields.io/badge/Java_21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
+<img src="https://img.shields.io/badge/Java_Swing-123B68?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+<img src="https://img.shields.io/badge/JDBC-0B1F3A?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
 
 </div>
 
-> Logo Gojek dan Grab ditampilkan sebagai referensi platform layanan transportasi dan pengiriman yang menjadi inspirasi konsep aplikasi, bukan sebagai teknologi yang digunakan untuk membangun program.
+| Teknologi | Kegunaan |
+|---|---|
+| Java 21 | Bahasa pemrograman utama aplikasi. |
+| Java Swing | Membangun antarmuka aplikasi desktop. |
+| MySQL | Menyimpan dan mengelola data aplikasi. |
+| JDBC | Menghubungkan aplikasi Java dengan database. |
+| Maven | Mengelola dependency dan proses build proyek. |
+| NetBeans IDE | Lingkungan pengembangan aplikasi. |
 
-## C. Referensi Pengembangan README
+## B. Development Environment & AI Tools
+
+Tools yang mendukung proses pengembangan, pengelolaan database, serta membantu proses pengerjaan proyek.
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
+<br/><strong>Laragon</strong>
+<br/><sub>Local Development</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://cdn.simpleicons.org/apache NetBeans" height="48" alt="NetBeans"/>
+<br/><strong>NetBeans</strong>
+<br/><sub>IDE</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Claude"/>
+<br/><strong>Claude</strong>
+<br/><sub>AI Assistant</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/AI-OpenAI-412991?style=flat-square&logo=openai&logoColor=white" height="48" alt="ChatGPT"/>
+<br/><strong>ChatGPT</strong>
+<br/><sub>AI Assistant</sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+## C. Service Platform References
+
+RuteConnect mengadaptasi gambaran konsep layanan transportasi dan pengiriman digital yang juga dikenal pada platform berikut.
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="https://cdn.simpleicons.org/gojek/00AA13" height="55" alt="Gojek"/>
+<br/><strong>GOJEK</strong>
+<br/><sub>Transportation & Delivery</sub>
+</td>
+<td align="center" width="50%">
+<img src="https://cdn.simpleicons.org/grab/00B14F" height="55" alt="Grab"/>
+<br/><strong>GRAB</strong>
+<br/><sub>Transportation & Delivery</sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/RUTECONNECT-Integrated%20Digital%20Services-0B1F3A?style=for-the-badge"/>
+
+<sub>One Platform • Connected Routes • Better Services</sub>
+
+</div>
+
+> **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
+
+## D. Referensi Pengembangan README
 
 Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan dokumentasi README:
 
