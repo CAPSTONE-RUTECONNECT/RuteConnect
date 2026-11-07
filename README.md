@@ -221,6 +221,7 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
+
 ## D. Referensi Pengembangan README
 
 Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan dokumentasi README:
@@ -232,6 +233,7 @@ Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan do
 - [Awesome README](https://github.com/matiassingers/awesome-readme) – Referensi README proyek yang menarik dan informatif.
 
 ---
+
 
 # 🏗️ 5. Perancangan Sistem
 
