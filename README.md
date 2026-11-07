@@ -202,7 +202,7 @@ Berbagai teknologi dan tools digunakan untuk mendukung proses pengembangan aplik
       &nbsp;
       <img src="https://cdn.simpleicons.org/googlechrome/4285F4" height="42" alt="Google Chrome"/>
       &nbsp;
-      <img src="https://cdn.simpleicons.org/microsoftword/2B579A" height="42" alt="Microsoft Word"/>
+      <img src="https://img.icons8.com/color/96/microsoft-word-2019--v2.png" height="42" alt="Microsoft Word"/>
       <br/><br/>
       <strong>GitHub • Google Chrome</strong>
       <br/>
