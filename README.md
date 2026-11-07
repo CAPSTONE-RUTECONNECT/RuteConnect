@@ -244,112 +244,84 @@ Perancangan sistem dilakukan sebagai dasar dalam proses pengembangan RuteConnect
 
 ### A. Flowchart
 
-Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikasi, melakukan login, memilih layanan, hingga proses pemesanan dan transaksi.
+Flowchart menggambarkan alur proses aplikasi RuteConnect, mulai dari pengguna membuka aplikasi, melakukan login atau registrasi, memilih layanan, hingga proses pemesanan, pembayaran, dan pengelolaan data oleh admin.
 
-<table border="1" bordercolor="black">
+<div align="center">
+
+<table>
   <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png" width="75%" alt="Struktur Package">
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Login.drawio.png?raw=true" width="100%" alt="Flowchart Login">
+      <br><sub>Flowchart Login</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png?raw=true" width="100%" alt="Flowchart Registrasi">
+      <br><sub>Flowchart Registrasi</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Menu%20Customer.drawio.png?raw=true" width="100%" alt="Flowchart Menu Customer">
+      <br><sub>Flowchart Menu Customer</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Transportasi.drawio.png?raw=true" width="100%" alt="Flowchart Customer Transportasi">
+      <br><sub>Flowchart Customer – Transportasi</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pengiriman%20Dokumen.drawio.png?raw=true" width="100%" alt="Flowchart Pengiriman Dokumen">
+      <br><sub>Flowchart Customer – Pengiriman Dokumen</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pembayaran.drawio.png?raw=true" width="100%" alt="Flowchart Pembayaran">
+      <br><sub>Flowchart Customer – Pembayaran</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Top%20Up.drawio.png?raw=true" width="100%" alt="Flowchart Top Up">
+      <br><sub>Flowchart Customer – Top Up</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Status%20%26%20Riwayat.drawio.png?raw=true" width="100%" alt="Flowchart Status dan Riwayat">
+      <br><sub>Flowchart Customer – Status & Riwayat</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Driver.drawio.png?raw=true" width="100%" alt="Flowchart Driver">
+      <br><sub>Flowchart Driver</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Admin%20-%20Menu%20Admin.drawio.png?raw=true" width="100%" alt="Flowchart Menu Admin">
+      <br><sub>Flowchart Admin – Menu Admin</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Kelola%20Data.drawio.png?raw=true" width="100%" alt="Flowchart Kelola Data">
+      <br><sub>Flowchart Admin – Kelola Data</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Pesanan.drawio.png?raw=true" width="100%" alt="Flowchart Data Pesanan">
+      <br><sub>Flowchart Admin – Data Pesanan</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Transaksi.drawio.png?raw=true" width="100%" alt="Flowchart Data Transaksi">
+      <br><sub>Flowchart Admin – Data Transaksi</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Laporan.drawio.png?raw=true" width="100%" alt="Flowchart Laporan">
+      <br><sub>Flowchart Admin – Laporan</sub>
     </td>
   </tr>
 </table>
 
-<table border="1" bordercolor="black">
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Registrasi.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-<table border="1" bordercolor="black">
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Menu%20Customer.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-<table border="1" bordercolor="black">
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Transportasi.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-<table border="1" bordercolor="black">
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pengiriman%20Dokumen.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-<table border="1" bordercolor="black">
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Pembayaran.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="http://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Top%20Up.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Customer%20-%20Status%20%26%20Riwayat.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Driver.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi8-Admin%20-%20Menu%20Admin.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Kelola%20Data.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Pesanan.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Data%20Transaksi.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
-  <tr>
-    <td>
-      <img src="https://github.com/Sitinursinta04/PRAKTIKUM_PBO/blob/main/dokum_PA/Flowchart_RuteConnect_Revisi9-Admin%20-%20Laporan.drawio.png" width="75%" alt="Struktur Package">
-    </td>
-  </tr>
-</table>
-
+</div>
 
 ### B. Use Case Diagram
 
