@@ -198,9 +198,11 @@ Berbagai teknologi dan tools digunakan untuk mendukung proses pengembangan aplik
       <strong>Laragon • Apache NetBeans</strong>
     </td>
     <td align="center" valign="middle" width="33%">
-      <img src="https://skillicons.dev/icons?i=github,chrome&theme=light" height="48" alt="GitHub and Google Chrome"/>
+      <img src="https://cdn.simpleicons.org/github/181717" height="42" alt="GitHub"/>
       &nbsp;
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/word/word-original.svg" height="42" alt="Microsoft Word"/>
+      <img src="https://cdn.simpleicons.org/googlechrome/4285F4" height="42" alt="Google Chrome"/>
+      &nbsp;
+      <img src="https://cdn.simpleicons.org/microsoftword/2B579A" height="42" alt="Microsoft Word"/>
       <br/><br/>
       <strong>GitHub • Google Chrome</strong>
       <br/>
