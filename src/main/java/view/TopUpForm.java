@@ -176,7 +176,7 @@ public class TopUpForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -248,12 +248,13 @@ public class TopUpForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(2, 132, 199));
         jPanel2.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(60, 175, 229));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(1).png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setFocusPainted(false);
-        jPanel2.add(jButton1);
-        jButton1.setBounds(10, 10, 30, 30);
+        btnKembali.setBackground(new java.awt.Color(60, 175, 229));
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(1).png"))); // NOI18N
+        btnKembali.setBorder(null);
+        btnKembali.setFocusPainted(false);
+        btnKembali.addActionListener(this::btnKembaliActionPerformed);
+        jPanel2.add(btnKembali);
+        btnKembali.setBounds(10, 10, 30, 30);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect logo kecil.png"))); // NOI18N
@@ -512,6 +513,12 @@ public class TopUpForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> new MenuPelangganForm().setVisible(true));
+        this.dispose();
+    }//GEN-LAST:event_btnKembaliActionPerformed
+
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
@@ -602,8 +609,8 @@ public class TopUpForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnTopUp;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

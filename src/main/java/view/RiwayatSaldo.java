@@ -1,0 +1,331 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package view;
+import java.awt.*;
+import javax.swing.*;
+
+/**
+ *
+ * @author HP
+ */
+public class RiwayatSaldo extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RiwayatSaldo.class.getName());
+
+    /**
+     * Creates new form RiwayatSaldo
+     */
+    public RiwayatSaldo() {
+        initComponents();
+        setLocationRelativeTo(null);
+        
+        jLabel5.setText("Riwayat Saldo");   // sebelumnya "Top Up Saldo"
+        controller.Session.refreshSaldo();
+        lblSaldo.setText(controller.Fmt.rupiah(controller.Session.saldo));
+
+        siapkanDaftar();
+        muatRiwayat();
+    }
+    
+    private JPanel daftar;   // tempat kartu-kartu mutasi
+
+    private void siapkanDaftar() {
+        // dua panel template dari designer diganti kartu hasil generate
+        jPanel3.remove(panelTambah);
+        jPanel3.remove(panelKurang);
+
+        daftar = new JPanel();
+        daftar.setLayout(new BoxLayout(daftar, BoxLayout.Y_AXIS));
+        daftar.setBackground(jPanel3.getBackground());
+        daftar.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 10, 10));
+
+        JScrollPane sp = new JScrollPane(daftar);
+        sp.setBorder(null);
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        sp.getVerticalScrollBar().setUnitIncrement(16);
+        sp.getViewport().setBackground(jPanel3.getBackground());
+
+        int tinggi = jPanel1.getHeight() - 295 - 10;   // sisa tinggi jendela
+        if (tinggi < 200) tinggi = 500;
+        sp.setBounds(0, 45, 390, tinggi);
+
+        jPanel3.add(sp);
+        jPanel3.revalidate();
+        jPanel3.repaint();
+    }
+
+    private void muatRiwayat() {
+        daftar.removeAll();
+        java.util.List<Object[]> data = new dao.TransaksiDao().riwayatSaldo(controller.Session.userId);
+
+        if (data.isEmpty()) {
+            JLabel kosong = new JLabel("Belum ada mutasi saldo");
+            kosong.setForeground(new Color(112, 120, 129));
+            daftar.add(kosong);
+        }
+
+        java.text.SimpleDateFormat fmt = new java.text.SimpleDateFormat(
+                "dd MMM yyyy", java.util.Locale.forLanguageTag("id-ID"));
+        for (Object[] r : data) {
+            String tanggal = (r[3] == null) ? "-" : fmt.format((java.util.Date) r[3]);
+            String metode = "Saldo".equalsIgnoreCase(String.valueOf(r[2])) ? "RutePay" : String.valueOf(r[2]);
+            daftar.add(buatKartu((String) r[0], (String) r[1], metode + " · " + tanggal,
+                    (Double) r[4], (Boolean) r[5]));
+            daftar.add(Box.createVerticalStrut(10));
+        }
+        daftar.revalidate();
+        daftar.repaint();
+    }
+
+    // Satu kartu mutasi. Gaya (font/warna) disalin dari komponen template di designer.
+    private JPanel buatKartu(String judul, String ket, String meta, double jumlah, boolean masuk) {
+        JPanel k = new JPanel(null);
+        k.setBackground(panelKurang.getBackground());
+        Dimension ukuran = new Dimension(340, 90);
+        k.setPreferredSize(ukuran);
+        k.setMinimumSize(ukuran);
+        k.setMaximumSize(ukuran);
+        k.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JLabel lJudul = new JLabel(judul);
+        lJudul.setFont(lblJenisTransaksi.getFont());
+        lJudul.setForeground(lblJenisTransaksi.getForeground());
+        lJudul.setBounds(12, 12, 316, 20);
+
+        JLabel lKet = new JLabel(potong(ket, 26));
+        lKet.setToolTipText(ket);
+        lKet.setFont(lblMetodePembayaran.getFont());
+        lKet.setForeground(lblMetodePembayaran.getForeground());
+        lKet.setBounds(12, 38, 160, 16);
+
+        JLabel lMeta = new JLabel(meta);
+        lMeta.setFont(lblMetodePembayaran.getFont());
+        lMeta.setForeground(lblMetodePembayaran.getForeground());
+        lMeta.setBounds(12, 58, 160, 16);
+
+        JLabel lJumlah = new JLabel((masuk ? "+ " : "- ") + controller.Fmt.rupiah(jumlah));
+        lJumlah.setFont(saldoTambah.getFont());
+        // di designer namanya tertukar: saldoTambah = hijau (+), lblKurang = merah (-)
+        lJumlah.setForeground(masuk ? saldoTambah.getForeground() : lblKurang.getForeground());
+        lJumlah.setHorizontalAlignment(SwingConstants.RIGHT);
+        lJumlah.setBounds(172, 28, 156, 34);
+
+        k.add(lJudul);
+        k.add(lKet);
+        k.add(lMeta);
+        k.add(lJumlah);
+        return k;
+    }
+
+    private String potong(String s, int max) {
+        if (s == null) return "-";
+        return s.length() > max ? s.substring(0, max - 3) + "..." : s;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        panelSaldo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblSaldo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnKembali = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        panelTambah = new javax.swing.JPanel();
+        lblJenisTransaksi2 = new javax.swing.JLabel();
+        lblKurang = new javax.swing.JLabel();
+        lblMetodePembayaran2 = new javax.swing.JLabel();
+        panelKurang = new javax.swing.JPanel();
+        lblJenisTransaksi = new javax.swing.JLabel();
+        saldoTambah = new javax.swing.JLabel();
+        lblMetodePembayaran = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Riwayat Saldo");
+        setPreferredSize(new java.awt.Dimension(390, 844));
+
+        jPanel1.setBackground(new java.awt.Color(14, 165, 233));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelSaldo.setBackground(new java.awt.Color(255, 255, 255));
+        panelSaldo.setLayout(null);
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Saldo Aktif");
+        panelSaldo.add(jLabel1);
+        jLabel1.setBounds(10, 10, 90, 16);
+
+        lblSaldo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblSaldo.setForeground(new java.awt.Color(0, 0, 0));
+        lblSaldo.setText("Rp 0");
+        panelSaldo.add(lblSaldo);
+        lblSaldo.setBounds(10, 40, 290, 70);
+
+        jPanel1.add(panelSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 340, 150));
+
+        jPanel2.setBackground(new java.awt.Color(2, 132, 199));
+        jPanel2.setLayout(null);
+
+        btnKembali.setBackground(new java.awt.Color(60, 175, 229));
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(1).png"))); // NOI18N
+        btnKembali.setBorder(null);
+        btnKembali.setFocusPainted(false);
+        btnKembali.addActionListener(this::btnKembaliActionPerformed);
+        jPanel2.add(btnKembali);
+        btnKembali.setBounds(10, 10, 30, 30);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect logo kecil.png"))); // NOI18N
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(50, 0, 40, 50);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Top Up Saldo");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(90, 0, 91, 50);
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(4).png"))); // NOI18N
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(330, 0, 50, 50);
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 50));
+
+        jPanel3.setBackground(new java.awt.Color(242, 243, 255));
+        jPanel3.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Aktivitas Mutasi");
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(20, 10, 120, 30);
+
+        panelTambah.setBackground(new java.awt.Color(255, 255, 255));
+        panelTambah.setLayout(null);
+
+        lblJenisTransaksi2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblJenisTransaksi2.setForeground(new java.awt.Color(0, 0, 0));
+        lblJenisTransaksi2.setText("Jenis Transaksi");
+        panelTambah.add(lblJenisTransaksi2);
+        lblJenisTransaksi2.setBounds(10, 20, 220, 16);
+
+        lblKurang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblKurang.setForeground(new java.awt.Color(186, 26, 26));
+        lblKurang.setText("- Rp 0");
+        panelTambah.add(lblKurang);
+        lblKurang.setBounds(190, 30, 140, 40);
+
+        lblMetodePembayaran2.setForeground(new java.awt.Color(112, 120, 129));
+        lblMetodePembayaran2.setText("Metode ");
+        panelTambah.add(lblMetodePembayaran2);
+        lblMetodePembayaran2.setBounds(10, 40, 130, 16);
+
+        jPanel3.add(panelTambah);
+        panelTambah.setBounds(20, 170, 340, 110);
+
+        panelKurang.setBackground(new java.awt.Color(255, 255, 255));
+        panelKurang.setLayout(null);
+
+        lblJenisTransaksi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblJenisTransaksi.setForeground(new java.awt.Color(0, 0, 0));
+        lblJenisTransaksi.setText("Jenis Transaksi");
+        panelKurang.add(lblJenisTransaksi);
+        lblJenisTransaksi.setBounds(10, 20, 220, 16);
+
+        saldoTambah.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        saldoTambah.setForeground(new java.awt.Color(5, 150, 105));
+        saldoTambah.setText("+ Rp 0");
+        panelKurang.add(saldoTambah);
+        saldoTambah.setBounds(190, 30, 140, 40);
+
+        lblMetodePembayaran.setForeground(new java.awt.Color(112, 120, 129));
+        lblMetodePembayaran.setText("Metode ");
+        panelKurang.add(lblMetodePembayaran);
+        lblMetodePembayaran.setBounds(10, 40, 130, 16);
+
+        jPanel3.add(panelKurang);
+        panelKurang.setBounds(20, 50, 340, 100);
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 390, 600));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> new MenuPelangganForm().setVisible(true));
+        this.dispose();
+    }//GEN-LAST:event_btnKembaliActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new RiwayatSaldo().setVisible(true));
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKembali;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblJenisTransaksi;
+    private javax.swing.JLabel lblJenisTransaksi2;
+    private javax.swing.JLabel lblKurang;
+    private javax.swing.JLabel lblMetodePembayaran;
+    private javax.swing.JLabel lblMetodePembayaran2;
+    private javax.swing.JLabel lblSaldo;
+    private javax.swing.JPanel panelKurang;
+    private javax.swing.JPanel panelSaldo;
+    private javax.swing.JPanel panelTambah;
+    private javax.swing.JLabel saldoTambah;
+    // End of variables declaration//GEN-END:variables
+}

@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import controller.TarifController;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.Locale;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -68,17 +67,9 @@ public class FrameAdmin extends javax.swing.JFrame {
             new String[]{"ID", "Nama Layanan", "Jenis Kendaraan", "Kelas", "Tarif per Km (Rp)"}) {
             @Override public boolean isCellEditable(int r, int c) { return false; }
         });
-        jTable3.getColumnModel().getColumn(4).setCellRenderer(new DefaultTableCellRenderer() {
-            @Override protected void setValue(Object v) {
-                setText(v instanceof Number
-                    ? "Rp " + NumberFormat.getInstance(new Locale("id", "ID")).format(((Number) v).doubleValue())
-                    : String.valueOf(v));
-                setHorizontalAlignment(RIGHT);
-            }
-        });
+        
         jComboBox2.addActionListener(e -> loadTarifData());
         loadTarifData();
-
         loadUserData();
         
         jTable1.setModel(new DefaultTableModel(
@@ -89,16 +80,12 @@ public class FrameAdmin extends javax.swing.JFrame {
         loadDashboard();
         
         // Inisialisasi event listener untuk Tarif
-        jComboBox2.addActionListener(e -> loadTarifData());
         buttonRefreshTarif.addActionListener(e -> loadTarifData());
         btnHapusTarif.addActionListener(e -> hapusTarifTerpilih());
         btnTambahTarif.addActionListener(e -> tambahTarifBaru());
         btnUpdateTarif.addActionListener(e -> updateTarifTerpilih());
         txtSearchTarif.addActionListener(e -> loadTarifData());
 
-        loadTarifData();
-        loadUserData();
-        
         jTable4.setModel(new DefaultTableModel(
             new Object[][]{},
             new String[]{"ID Pesanan", "Pelanggan", "Driver", "Layanan", "Total Biaya", "Rute Lintasan", "Status"}) {
@@ -114,6 +101,40 @@ public class FrameAdmin extends javax.swing.JFrame {
         });
         loadTransaksiData();
         
+        // tabel laporan, tidak bisa diedit
+        jTable6.setModel(new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"Bulan", "ID Pesanan", "Jenis", "Waktu Transaksi", "Pelanggan", "Metode Pembayaran", "Jumlah Transaksi", "Status"}) {
+            @Override public boolean isCellEditable(int r, int c) { return false; }
+        });
+
+        txtCariLaporan.setEditable(true);   // di kode generated, field ini diset editable(false)
+
+        // default combo = tahun & bulan sekarang (diset SEBELUM listener dipasang)
+        comboBoxTahun.setSelectedItem(String.valueOf(java.time.LocalDate.now().getYear()));
+        comboBoxBulan.setSelectedItem(String.valueOf(java.time.LocalDate.now().getMonthValue()));
+
+        comboBoxTahun.addActionListener(e -> loadLaporanData());
+        comboBoxBulan.addActionListener(e -> loadLaporanData());
+        comboBoxStatus.addActionListener(e -> loadLaporanData());
+        comboBoxMetode.addActionListener(e -> loadLaporanData());
+        txtCariLaporan.addActionListener(e -> loadLaporanData());
+        btnRefreshLaporan.addActionListener(e -> loadLaporanData());
+        loadLaporanData();
+        
+        // ==========================================
+        // PASANG TOOLTIP KE SEMUA TABEL DI SINI
+        // ==========================================
+        // Untuk jTable1, jTable2, jTable4, jTable5, jTable6 (Tabel Biasa)
+        for (javax.swing.JTable t : new javax.swing.JTable[]{jTable1, jTable2, jTable4, jTable5, jTable6}) {
+            aktifkanTooltipSel(t);
+        }
+
+        // Khusus jTable3 (Karena ada format Rupiah khusus di kolom ke-4)
+        aktifkanTooltipSelTarif(jTable3);
+
+        javax.swing.ToolTipManager.sharedInstance().setInitialDelay(300);
+        javax.swing.ToolTipManager.sharedInstance().setDismissDelay(15000);
     }
     
     private void loadDashboard() {
@@ -125,6 +146,46 @@ public class FrameAdmin extends javax.swing.JFrame {
         DefaultTableModel m = (DefaultTableModel) jTable1.getModel();
         m.setRowCount(0);
         for (Object[] r : pd.ringkasanDashboard()) m.addRow(r);
+    }
+    
+    
+    // Method untuk mengaktifkan tooltip di tabel biasa (jTable1, jTable2, jTable4, jTable5, jTable6)
+    private void aktifkanTooltipSel(javax.swing.JTable tabel) {
+        tabel.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(javax.swing.JTable t, Object v,
+                    boolean sel, boolean fokus, int r, int c) {
+                super.getTableCellRendererComponent(t, v, sel, fokus, r, c);
+                setToolTipText(buatTooltip(v));
+                return this;
+            }
+        });
+    }
+
+    // Method khusus untuk jTable3 (supaya format Rupiah & tooltip-nya jalan barengan)
+    private void aktifkanTooltipSelTarif(javax.swing.JTable tabel) {
+        tabel.getColumnModel().getColumn(4).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override 
+            protected void setValue(Object v) {
+                String formatted = v instanceof Number
+                    ? "Rp " + NumberFormat.getInstance(new java.util.Locale("id", "ID")).format(((Number) v).doubleValue())
+                    : String.valueOf(v);
+                setText(formatted);
+                setHorizontalAlignment(RIGHT);
+                setToolTipText(buatTooltip(v)); // Tooltip teks panjang tetap aktif di sini
+            }
+        });
+    }
+
+    // Method pembantu untuk format teks/HTML tooltip
+    private String buatTooltip(Object v) {
+        String teks = (v == null) ? "" : v.toString().trim();
+        if (teks.isEmpty()) return null;
+        if (teks.length() > 40) {
+            String aman = teks.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+            return "<html><body style='width:320px'>" + aman + "</body></html>";
+        }
+        return teks;
     }
     
     private void loadPesananData() {
@@ -152,6 +213,25 @@ public class FrameAdmin extends javax.swing.JFrame {
         DefaultTableModel m = (DefaultTableModel) jTable5.getModel();
         m.setRowCount(0);
         for (Object[] r : transaksiDao.ringkasanTransaksi()) m.addRow(r);
+    }
+    
+    private void loadLaporanData() {
+        int tahun = Integer.parseInt(String.valueOf(comboBoxTahun.getSelectedItem()));
+        int bulan = Integer.parseInt(String.valueOf(comboBoxBulan.getSelectedItem()));
+
+        // kartu mengikuti combo tahun & bulan
+        lblPesananBerhasil.setText(String.valueOf(transaksiDao.hitungPesananBerhasil(tahun, bulan)));
+
+        // tabel memuat semua data, disaring oleh pencarian + status + metode
+        DefaultTableModel m = (DefaultTableModel) jTable6.getModel();
+        m.setRowCount(0);
+        for (Object[] r : transaksiDao.cariLaporan(
+                txtCariLaporan.getText(),
+                String.valueOf(comboBoxStatus.getSelectedItem()),
+                String.valueOf(comboBoxMetode.getSelectedItem()),
+                0, 0)) {          // ganti 0, 0 menjadi tahun, bulan kalau tabel juga mau ikut filter periode
+            m.addRow(r);
+        }
     }
 
         private void setKategoriPesanan(String kategori) {
@@ -200,6 +280,248 @@ public class FrameAdmin extends javax.swing.JFrame {
             // Panggil controller untuk hapus berdasarkan ID
             // misal: tarifController.hapus(...);
             loadTarifData();
+        }
+    }
+    
+    private void setupMenu() {
+        // halaman utama: Dashboard dan Kelola Data berganti, tidak menumpuk lagi
+        cardPanelUtama.removeAll();
+        cardPanelUtama.setLayout(new java.awt.CardLayout());
+        cardPanelUtama.add(cardDashboard, "dashboard");
+        cardPanelUtama.add(cardKelola,    "kelola");
+        cardPanelUtama.add(cardPesanan, "pesanan");
+        cardPanelUtama.add(cardTransaksi, "transaksi");
+        cardPanelUtama.add(cardLaporan, "laporan");
+
+        menuPanels = new javax.swing.JPanel[]{panelDashboard, panelKelolaData, panelData, panelTransaksi, panelLaporan};
+        menuLabels = new javax.swing.JLabel[]{lblDashboard, lblKelola, lblData, lblTransaksi, lblLaporan};
+
+        for (int i = 0; i < menuPanels.length; i++) {
+            final int idx = i;
+            java.awt.event.MouseAdapter klik = new java.awt.event.MouseAdapter() {
+                @Override public void mouseClicked(java.awt.event.MouseEvent e) { pilihMenu(idx); }
+            };
+            menuPanels[i].addMouseListener(klik);
+            menuLabels[i].addMouseListener(klik);   // label menutupi panel, jadi perlu listener juga
+            java.awt.Cursor tangan = java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR);
+            menuPanels[i].setCursor(tangan);
+            menuLabels[i].setCursor(tangan);
+        }
+        pilihMenu(0);   // awalnya Dashboard aktif
+    }
+    
+    private void pilihMenu(int aktif) {
+        for (int i = 0; i < menuPanels.length; i++) {
+            boolean on = (i == aktif);
+            menuPanels[i].setBackground(on ? PUTIH : BIRU);
+            menuLabels[i].setForeground(on ? BIRU : PUTIH);
+        }
+        
+        java.awt.CardLayout cl = (java.awt.CardLayout) cardPanelUtama.getLayout();
+        
+        switch (aktif) {
+        case 0 -> { cl.show(cardPanelUtama, "dashboard"); loadDashboard(); }
+        case 1 -> { cl.show(cardPanelUtama, "kelola"); loadUserData(); loadTarifData(); }
+        case 2 -> { cl.show(cardPanelUtama, "pesanan"); loadPesananData(); }
+        case 3 -> { cl.show(cardPanelUtama, "transaksi"); loadTransaksiData(); }
+        case 4 -> { cl.show(cardPanelUtama, "laporan"); loadLaporanData(); }
+        default -> {} // Opsional: untuk mengantisipasi angka di luar 0-4
+        }
+    }
+    
+    private void loadUserData() {
+        try {
+            String role = String.valueOf(jComboBox1.getSelectedItem());
+            List<Object[]> data = userController.cariUser(txtSearch.getText(), role);
+            DefaultTableModel m = (DefaultTableModel) jTable2.getModel();
+            m.setRowCount(0);
+            for (Object[] r : data) m.addRow(r);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Gagal memuat user:\n" + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void hapusUserTerpilih() {
+        int row = jTable2.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "Pilih user yang mau dihapus dulu.");
+            return;
+        }
+        int id = Integer.parseInt(String.valueOf(jTable2.getValueAt(row, 0)));
+        String nama = String.valueOf(jTable2.getValueAt(row, 1));
+        int ok = JOptionPane.showConfirmDialog(this, "Hapus user \"" + nama + "\"?",
+                "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (ok != JOptionPane.YES_OPTION) return;
+        try {
+            userController.hapusUser(id);
+            loadUserData();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Gagal menghapus (mungkin user ini punya pesanan/transaksi):\n" + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    // Dialog isian tarif. Mengembalikan {nama, jenis, kelas, tarif} atau null kalau dibatalkan.
+    private String[] dialogTarif(String judul, String nama, String jenis, String kelas, String tarif) {
+        JTextField fNama = new JTextField(nama, 20);
+        JComboBox<String> fJenis = new JComboBox<>(new String[]{"Motor", "Mobil"});
+        JComboBox<String> fKelas = new JComboBox<>(new String[]{"Biasa", "Comfort", "Reguler"});
+        JTextField fTarif = new JTextField(tarif, 20);
+        if (jenis != null) fJenis.setSelectedItem(jenis);
+        if (kelas != null) fKelas.setSelectedItem(kelas);
+
+        JPanel p = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
+        p.add(new JLabel("Nama Layanan"));   p.add(fNama);
+        p.add(new JLabel("Jenis Kendaraan")); p.add(fJenis);
+        p.add(new JLabel("Kelas"));          p.add(fKelas);
+        p.add(new JLabel("Tarif per Km (Rp)")); p.add(fTarif);
+
+        while (true) {
+            int ok = JOptionPane.showConfirmDialog(this, p, judul,
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (ok != JOptionPane.OK_OPTION) return null;
+
+            if (fNama.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Nama layanan wajib diisi.");
+                continue;
+            }
+            try {
+                BigDecimal t = new BigDecimal(fTarif.getText().trim());
+                if (t.signum() <= 0) throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Tarif harus angka lebih dari 0 (contoh: 6500).");
+                continue;
+            }
+            return new String[]{fNama.getText().trim(), (String) fJenis.getSelectedItem(),
+                                (String) fKelas.getSelectedItem(), fTarif.getText().trim()};
+        }
+    }
+    
+    // Dialog tambah user (Pelanggan / Driver).
+    // Mengembalikan {role, nama, telp, email, password, ...extra} atau null kalau dibatalkan.
+    // extra Pelanggan = {alamat}; extra Driver = {merk, plat, jenis, "Aktif"}
+    private String[] dialogTambahUser() {
+        JComboBox<String> fRole = new JComboBox<>(new String[]{"Pelanggan", "Driver"});
+        JTextField fNama = new JTextField(20);
+        JTextField fEmail = new JTextField(20);
+        JTextField fTelp = new JTextField(20);
+        JPasswordField fPass = new JPasswordField(20);
+        JCheckBox cekLihat = new JCheckBox("Tampilkan password");
+        final char echoAwal = fPass.getEchoChar();
+        cekLihat.addActionListener(e -> fPass.setEchoChar(cekLihat.isSelected() ? (char) 0 : echoAwal));
+
+        JTextField fAlamat = new JTextField(20);
+        JTextField fMerk = new JTextField(20);
+        JTextField fPlat = new JTextField(20);
+        JComboBox<String> fJenis = new JComboBox<>(new String[]{"Motor", "Mobil"});
+
+        JPanel umum = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
+        umum.add(new JLabel("Tambah sebagai")); umum.add(fRole);
+        umum.add(new JLabel("Nama"));           umum.add(fNama);
+        umum.add(new JLabel("Email"));          umum.add(fEmail);
+        umum.add(new JLabel("No. Telepon"));    umum.add(fTelp);
+        umum.add(new JLabel("Password"));       umum.add(fPass);
+        umum.add(new JLabel(""));               umum.add(cekLihat);
+
+        JPanel khusus = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
+        JPanel p = new JPanel(new java.awt.BorderLayout(0, 8));
+        p.add(umum, java.awt.BorderLayout.NORTH);
+        p.add(khusus, java.awt.BorderLayout.CENTER);
+
+        // isi bagian bawah sesuai role yang dipilih
+        Runnable isiKhusus = () -> {
+            khusus.removeAll();
+            if ("Pelanggan".equals(fRole.getSelectedItem())) {
+                khusus.add(new JLabel("Alamat Rumah"));    khusus.add(fAlamat);
+            } else {
+                khusus.add(new JLabel("Merk Kendaraan"));  khusus.add(fMerk);
+                khusus.add(new JLabel("No. Plat"));        khusus.add(fPlat);
+                khusus.add(new JLabel("Jenis Kendaraan")); khusus.add(fJenis);
+            }
+            khusus.revalidate();
+            khusus.repaint();
+            java.awt.Window w = SwingUtilities.getWindowAncestor(p);
+            if (w != null) w.pack();   // ukuran popup menyesuaikan
+        };
+        fRole.addActionListener(e -> isiKhusus.run());
+        isiKhusus.run();
+
+        while (true) {
+            int ok = JOptionPane.showConfirmDialog(this, p, "Tambah User Baru",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (ok != JOptionPane.OK_OPTION) return null;
+
+            String role = (String) fRole.getSelectedItem();
+            String nama = fNama.getText().trim();
+            String email = fEmail.getText().trim();
+            String telp = fTelp.getText().trim();
+            String pass = new String(fPass.getPassword());
+
+            if (util.Validator.isKosong(nama, email, telp, pass)) {
+                JOptionPane.showMessageDialog(this, "Nama, email, no. telepon, dan password wajib diisi.");
+                continue;
+            }
+            try {
+                // aturan validasi memakai setter di model (sama dengan yang dipakai aplikasi)
+                model.User u = "Driver".equals(role) ? new model.Driver() : new model.Pelanggan();
+                u.setNama(nama);
+                u.setNoTelepon(telp);
+                u.setEmail(email);
+                u.setPassword(pass);
+                if (!util.Validator.teleponValid(telp)) {
+                    throw new IllegalArgumentException("No. telepon harus diawali 08 dan 10-15 digit.");
+                }
+                if (!util.Validator.passwordValid(pass)) {
+                    throw new IllegalArgumentException("Password minimal 8 karakter, harus ada huruf dan angka.");
+                }
+
+                String[] extra;
+                if (u instanceof model.Pelanggan pel) {
+                    if (fAlamat.getText().trim().isEmpty()) {
+                        throw new IllegalArgumentException("Alamat rumah wajib diisi.");
+                    }
+                    pel.setAlamatFavorit(fAlamat.getText());
+                    extra = new String[]{pel.getAlamatFavorit()};
+                } else {
+                    model.Driver drv = (model.Driver) u;
+                    if (fMerk.getText().trim().length() > 50) {
+                        throw new IllegalArgumentException("Merk kendaraan maksimal 50 karakter.");
+                    }
+                    if (fPlat.getText().trim().length() > 15) {
+                        throw new IllegalArgumentException("No. plat maksimal 15 karakter.");
+                    }
+                    drv.setMerkKendaraan(fMerk.getText());
+                    drv.setNoPlatKendaraan(fPlat.getText());
+                    drv.setJenisKendaraan((String) fJenis.getSelectedItem());
+                    extra = new String[]{drv.getMerkKendaraan(), drv.getNoPlatKendaraan(),
+                                         drv.getJenisKendaraan(), "Aktif"};   // status otomatis Aktif
+                }
+
+                // email tidak boleh sudah terdaftar
+                try {
+                    for (Object[] r : userController.cariUser(email, "Semua Role")) {
+                        if (email.equalsIgnoreCase(String.valueOf(r[2]))) {
+                            throw new IllegalArgumentException("Email sudah terdaftar, pakai email lain.");
+                        }
+                    }
+                } catch (SQLException ignore) {
+                    // kalau pengecekan gagal, tambahUser() tetap menolak email ganda
+                }
+
+                String[] hasil = new String[5 + extra.length];
+                hasil[0] = role;
+                hasil[1] = u.getNama();
+                hasil[2] = u.getNoTelepon();
+                hasil[3] = u.getEmail();
+                hasil[4] = u.getPassword();
+                System.arraycopy(extra, 0, hasil, 5, extra.length);
+                return hasil;
+            } catch (IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Data belum valid",
+                        JOptionPane.WARNING_MESSAGE);
+            }
         }
     }
 
@@ -333,13 +655,13 @@ public class FrameAdmin extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
-        txtCariLaporanBulan = new javax.swing.JTextField();
+        txtCariLaporan = new javax.swing.JTextField();
         comboBoxStatus = new javax.swing.JComboBox<>();
         comboBoxMetode = new javax.swing.JComboBox<>();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
-        btnRefreshLaporanBulan = new javax.swing.JButton();
+        btnRefreshLaporan = new javax.swing.JButton();
         btnPdf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1294,11 +1616,10 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel26.add(jLabel45);
         jLabel45.setBounds(10, 0, 30, 40);
 
-        txtCariLaporanBulan.setEditable(false);
-        txtCariLaporanBulan.setBackground(new java.awt.Color(242, 243, 255));
-        txtCariLaporanBulan.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel26.add(txtCariLaporanBulan);
-        txtCariLaporanBulan.setBounds(50, 10, 180, 30);
+        txtCariLaporan.setBackground(new java.awt.Color(242, 243, 255));
+        txtCariLaporan.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel26.add(txtCariLaporan);
+        txtCariLaporan.setBounds(50, 10, 180, 30);
 
         comboBoxStatus.setBackground(new java.awt.Color(255, 255, 255));
         comboBoxStatus.setForeground(new java.awt.Color(0, 0, 0));
@@ -1308,7 +1629,7 @@ public class FrameAdmin extends javax.swing.JFrame {
 
         comboBoxMetode.setBackground(new java.awt.Color(255, 255, 255));
         comboBoxMetode.setForeground(new java.awt.Color(0, 0, 0));
-        comboBoxMetode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Metode", "E-Wallet", "Cash" }));
+        comboBoxMetode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Metode", "RutePay", "E-Wallet", "Cash" }));
         jPanel26.add(comboBoxMetode);
         comboBoxMetode.setBounds(400, 10, 130, 26);
 
@@ -1318,13 +1639,13 @@ public class FrameAdmin extends javax.swing.JFrame {
         jTable6.setForeground(new java.awt.Color(0, 0, 0));
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Bulan", "ID Pesanan", "Waktu Transaksi", "Pelanggan", "Metode Pembayaran", "Jumlah Transaksi", "Status"
+                "Bulan", "ID Pesanan", "Jenis", "Waktu Transaksi", "Pelanggan", "Metode Pembayaran", "Jumlah Transaksi", "Status"
             }
         ));
         jScrollPane5.setViewportView(jTable6);
@@ -1334,15 +1655,16 @@ public class FrameAdmin extends javax.swing.JFrame {
         jPanel26.add(jPanel27);
         jPanel27.setBounds(10, 60, 1030, 420);
 
-        btnRefreshLaporanBulan.setBackground(new java.awt.Color(242, 243, 255));
-        btnRefreshLaporanBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(13).png"))); // NOI18N
-        jPanel26.add(btnRefreshLaporanBulan);
-        btnRefreshLaporanBulan.setBounds(550, 10, 40, 40);
+        btnRefreshLaporan.setBackground(new java.awt.Color(242, 243, 255));
+        btnRefreshLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(13).png"))); // NOI18N
+        jPanel26.add(btnRefreshLaporan);
+        btnRefreshLaporan.setBounds(550, 10, 40, 40);
 
         btnPdf.setBackground(new java.awt.Color(14, 165, 233));
         btnPdf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPdf.setForeground(new java.awt.Color(255, 255, 255));
         btnPdf.setText("Download PDF");
+        btnPdf.addActionListener(this::btnPdfActionPerformed);
         jPanel26.add(btnPdf);
         btnPdf.setBounds(890, 10, 150, 40);
 
@@ -1368,122 +1690,6 @@ public class FrameAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void setupMenu() {
-        // halaman utama: Dashboard dan Kelola Data berganti, tidak menumpuk lagi
-        cardPanelUtama.removeAll();
-        cardPanelUtama.setLayout(new java.awt.CardLayout());
-        cardPanelUtama.add(cardDashboard, "dashboard");
-        cardPanelUtama.add(cardKelola,    "kelola");
-        cardPanelUtama.add(cardPesanan, "pesanan");
-        cardPanelUtama.add(cardTransaksi, "transaksi");
-        cardPanelUtama.add(cardLaporan, "laporan");
-
-        menuPanels = new javax.swing.JPanel[]{panelDashboard, panelKelolaData, panelData, panelTransaksi, panelLaporan};
-        menuLabels = new javax.swing.JLabel[]{lblDashboard, lblKelola, lblData, lblTransaksi, lblLaporan};
-
-        for (int i = 0; i < menuPanels.length; i++) {
-            final int idx = i;
-            java.awt.event.MouseAdapter klik = new java.awt.event.MouseAdapter() {
-                @Override public void mouseClicked(java.awt.event.MouseEvent e) { pilihMenu(idx); }
-            };
-            menuPanels[i].addMouseListener(klik);
-            menuLabels[i].addMouseListener(klik);   // label menutupi panel, jadi perlu listener juga
-            java.awt.Cursor tangan = java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR);
-            menuPanels[i].setCursor(tangan);
-            menuLabels[i].setCursor(tangan);
-        }
-        pilihMenu(0);   // awalnya Dashboard aktif
-    }
-    
-    private void pilihMenu(int aktif) {
-        for (int i = 0; i < menuPanels.length; i++) {
-            boolean on = (i == aktif);
-            menuPanels[i].setBackground(on ? PUTIH : BIRU);
-            menuLabels[i].setForeground(on ? BIRU : PUTIH);
-        }
-        
-        java.awt.CardLayout cl = (java.awt.CardLayout) cardPanelUtama.getLayout();
-        
-        switch (aktif) {
-        case 0 -> { cl.show(cardPanelUtama, "dashboard"); loadDashboard(); }
-        case 1 -> { cl.show(cardPanelUtama, "kelola"); loadUserData(); loadTarifData(); }
-        case 2 -> { cl.show(cardPanelUtama, "pesanan"); loadPesananData(); }
-        case 3 -> { cl.show(cardPanelUtama, "transaksi"); loadTransaksiData(); }
-        case 4 -> cl.show(cardPanelUtama, "laporan");
-        default -> {} // Opsional: untuk mengantisipasi angka di luar 0-4
-        }
-    }
-    
-    private void loadUserData() {
-        try {
-            String role = String.valueOf(jComboBox1.getSelectedItem());
-            List<Object[]> data = userController.cariUser(txtSearch.getText(), role);
-            DefaultTableModel m = (DefaultTableModel) jTable2.getModel();
-            m.setRowCount(0);
-            for (Object[] r : data) m.addRow(r);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Gagal memuat user:\n" + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void hapusUserTerpilih() {
-        int row = jTable2.getSelectedRow();
-        if (row < 0) {
-            JOptionPane.showMessageDialog(this, "Pilih user yang mau dihapus dulu.");
-            return;
-        }
-        int id = Integer.parseInt(String.valueOf(jTable2.getValueAt(row, 0)));
-        String nama = String.valueOf(jTable2.getValueAt(row, 1));
-        int ok = JOptionPane.showConfirmDialog(this, "Hapus user \"" + nama + "\"?",
-                "Konfirmasi", JOptionPane.YES_NO_OPTION);
-        if (ok != JOptionPane.YES_OPTION) return;
-        try {
-            userController.hapusUser(id);
-            loadUserData();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Gagal menghapus (mungkin user ini punya pesanan/transaksi):\n" + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    // Dialog isian tarif. Mengembalikan {nama, jenis, kelas, tarif} atau null kalau dibatalkan.
-    private String[] dialogTarif(String judul, String nama, String jenis, String kelas, String tarif) {
-        JTextField fNama = new JTextField(nama, 20);
-        JComboBox<String> fJenis = new JComboBox<>(new String[]{"Motor", "Mobil"});
-        JComboBox<String> fKelas = new JComboBox<>(new String[]{"Biasa", "Comfort", "Reguler"});
-        JTextField fTarif = new JTextField(tarif, 20);
-        if (jenis != null) fJenis.setSelectedItem(jenis);
-        if (kelas != null) fKelas.setSelectedItem(kelas);
-
-        JPanel p = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
-        p.add(new JLabel("Nama Layanan"));   p.add(fNama);
-        p.add(new JLabel("Jenis Kendaraan")); p.add(fJenis);
-        p.add(new JLabel("Kelas"));          p.add(fKelas);
-        p.add(new JLabel("Tarif per Km (Rp)")); p.add(fTarif);
-
-        while (true) {
-            int ok = JOptionPane.showConfirmDialog(this, p, judul,
-                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-            if (ok != JOptionPane.OK_OPTION) return null;
-
-            if (fNama.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Nama layanan wajib diisi.");
-                continue;
-            }
-            try {
-                BigDecimal t = new BigDecimal(fTarif.getText().trim());
-                if (t.signum() <= 0) throw new NumberFormatException();
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Tarif harus angka lebih dari 0 (contoh: 6500).");
-                continue;
-            }
-            return new String[]{fNama.getText().trim(), (String) fJenis.getSelectedItem(),
-                                (String) fKelas.getSelectedItem(), fTarif.getText().trim()};
-        }
-    }
     
     private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshActionPerformed
         // TODO add your handling code here:
@@ -1559,7 +1765,17 @@ public class FrameAdmin extends javax.swing.JFrame {
 
     private void btnTambahUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahUserActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(() -> new TambahUserForm().setVisible(true));
+        String[] d = dialogTambahUser();
+        if (d == null) return;
+        try {
+            userController.tambahUser(d[1], d[2], d[3], d[4], d[0],
+                    java.util.Arrays.copyOfRange(d, 5, d.length));
+            loadUserData();
+            JOptionPane.showMessageDialog(this, d[0] + " \"" + d[1] + "\" berhasil ditambahkan.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Gagal menambah user:\n" + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnTambahUserActionPerformed
 
     private void btnTambahTarifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahTarifActionPerformed
@@ -1671,6 +1887,35 @@ public class FrameAdmin extends javax.swing.JFrame {
         loadPesananData();
     }//GEN-LAST:event_txtCariPesananActionPerformed
 
+    private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
+        // TODO add your handling code here:
+        if (jTable6.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Tidak ada data untuk dicetak.");
+            return;
+        }
+        JFileChooser fc = new JFileChooser();
+        fc.setSelectedFile(new java.io.File("Laporan_Transaksi_" + java.time.LocalDate.now() + ".pdf"));
+        if (fc.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) return;
+
+        java.io.File f = fc.getSelectedFile();
+        if (!f.getName().toLowerCase().endsWith(".pdf")) {
+            f = new java.io.File(f.getParentFile(), f.getName() + ".pdf");
+        }
+
+        String sub = "Status: " + comboBoxStatus.getSelectedItem()
+                   + "  |  Metode: " + comboBoxMetode.getSelectedItem()
+                   + (txtCariLaporan.getText().isBlank() ? "" : "  |  Pencarian: " + txtCariLaporan.getText().trim())
+                   + "  |  Dicetak: " + java.time.LocalDate.now();
+        try {
+            new service.PdfLaporanService().buat(jTable6.getModel(), f, "Laporan Transaksi RuteConnect", sub);
+            JOptionPane.showMessageDialog(this, "PDF berhasil disimpan:\n" + f.getAbsolutePath());
+            if (java.awt.Desktop.isDesktopSupported()) java.awt.Desktop.getDesktop().open(f);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Gagal membuat PDF:\n" + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPdfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1702,7 +1947,7 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnHapusUser;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPdf;
-    private javax.swing.JButton btnRefreshLaporanBulan;
+    private javax.swing.JButton btnRefreshLaporan;
     private javax.swing.JButton btnRefreshPesanan;
     private javax.swing.JButton btnRuteCar;
     private javax.swing.JButton btnRuteRide;
@@ -1822,7 +2067,7 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel panelKelolaData;
     private javax.swing.JPanel panelLaporan;
     private javax.swing.JPanel panelTransaksi;
-    private javax.swing.JTextField txtCariLaporanBulan;
+    private javax.swing.JTextField txtCariLaporan;
     private javax.swing.JTextField txtCariPesanan;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearchTarif;

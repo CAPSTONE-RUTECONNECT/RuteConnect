@@ -107,4 +107,115 @@ public class TransaksiDao extends BaseDao<Transaksi> {
         }
         return hasil;
     }
+    
+    // Mutasi saldo RutePay milik 1 pelanggan, terbaru di atas
+    // baris: {judul, keterangan, metode, tanggal, jumlah, masuk(true = saldo bertambah)}
+    public List<Object[]> riwayatSaldo(int userId) {
+        List<Object[]> hasil = new java.util.ArrayList<>();
+        String sql = "SELECT t.transaksi_id, t.waktu_transaksi, t.jenis_transaksi, t.metode_pembayaran, "
+                   + "t.jumlah_transaksi, t.pesanan_id, p.status_pesanan, l.nama_layanan "
+                   + "FROM transaksi t "
+                   + "LEFT JOIN pesanan p ON p.pesanan_id = t.pesanan_id "
+                   + "LEFT JOIN layanan l ON l.layanan_id = p.layanan_id "
+                   + "WHERE t.user_id = ? AND t.status_transaksi = 'Berhasil' "
+                   + "AND (t.jenis_transaksi = 'Top Up' OR t.metode_pembayaran = 'Saldo') "
+                   + "ORDER BY t.transaksi_id DESC";
+        try (java.sql.PreparedStatement ps = conn().prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    java.sql.Date tanggal = rs.getDate(2);
+                    String jenis = rs.getString(3);
+                    String metode = rs.getString(4);
+                    double jumlah = rs.getDouble(5);
+                    int idPesanan = rs.getInt(6);
+                    boolean adaPesanan = !rs.wasNull();
+                    String statusPesanan = rs.getString(7);
+                    String layanan = rs.getString(8);
+
+                    if ("Top Up".equalsIgnoreCase(jenis)) {
+                        hasil.add(new Object[]{"Top Up Saldo", "Isi ulang saldo", metode, tanggal, jumlah, true});
+                    } else {
+                        String ket = (layanan != null ? layanan : "Pesanan") + (adaPesanan ? " #" + idPesanan : "");
+                        if ("Dibatalkan".equalsIgnoreCase(statusPesanan)) {
+                            hasil.add(new Object[]{"Refund Pesanan", ket, "RutePay", tanggal, jumlah, true});
+                        }
+                        hasil.add(new Object[]{"Pembayaran Pesanan", ket, "RutePay", tanggal, jumlah, false});
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hasil;
+    }
+
+    // jumlah pesanan yang pembayarannya berhasil pada tahun & bulan tertentu
+    public int hitungPesananBerhasil(int tahun, int bulan) {
+        return (int) scalar("SELECT COUNT(*) FROM transaksi WHERE status_transaksi = 'Berhasil' "
+                + "AND jenis_transaksi = 'Pembayaran Pesanan' "
+                + "AND YEAR(waktu_transaksi) = ? AND MONTH(waktu_transaksi) = ?", tahun, bulan);
+    }
+
+    // baris: {bulan, id pesanan, tanggal, pelanggan, metode, jumlah, status}
+    // status: "Semua Status" / "Berhasil" / "Gagal"
+    // metode: "Semua Metode" / "E-Wallet" / "Cash" (juga menerima "RutePay" & "Tunai")
+    // tahun/bulan = 0 berarti tidak difilter
+    public List<Object[]> cariLaporan(String keyword, String status, String metode, int tahun, int bulan) {
+        List<Object[]> hasil = new java.util.ArrayList<>();
+        String kw = (keyword == null ? "" : keyword.trim());
+        List<Object> p = new java.util.ArrayList<>();
+
+        StringBuilder sql = new StringBuilder(
+            "SELECT t.waktu_transaksi, t.pesanan_id, u.nama, t.metode_pembayaran, "
+            + "t.jumlah_transaksi, t.status_transaksi, IFNULL(p.jenis_pesanan, 'Top Up') "
+            + "FROM transaksi t JOIN user u ON t.user_id = u.user_id "
+            + "LEFT JOIN pesanan p ON t.pesanan_id = p.pesanan_id "
+            + "WHERE (CAST(t.transaksi_id AS CHAR) = ? OR CAST(t.pesanan_id AS CHAR) = ? OR u.nama LIKE ?) ");
+        p.add(kw); p.add(kw); p.add("%" + kw + "%");
+
+        if ("Berhasil".equals(status) || "Gagal".equals(status)) {
+            sql.append("AND t.status_transaksi = ? ");
+            p.add(status);
+        }
+        if ("E-Wallet".equals(metode)) {
+            sql.append("AND t.metode_pembayaran = 'E-Wallet' ");
+        } else if ("Cash".equals(metode) || "Tunai".equals(metode)) {
+            sql.append("AND t.metode_pembayaran = 'Cash' ");
+        } else if ("RutePay".equals(metode) || "Saldo".equals(metode)) {
+            sql.append("AND t.metode_pembayaran = 'Saldo' ");
+        }
+        if (tahun > 0) { sql.append("AND YEAR(t.waktu_transaksi) = ? "); p.add(tahun); }
+        if (bulan > 0) { sql.append("AND MONTH(t.waktu_transaksi) = ? "); p.add(bulan); }
+        sql.append("ORDER BY t.transaksi_id DESC");
+
+        try (java.sql.PreparedStatement ps = conn().prepareStatement(sql.toString())) {
+            for (int i = 0; i < p.size(); i++) ps.setObject(i + 1, p.get(i));
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    java.time.LocalDate d = rs.getDate(1).toLocalDate();
+                    String namaBulan = d.getMonth().getDisplayName(
+                            java.time.format.TextStyle.FULL, new java.util.Locale("id", "ID")) + " " + d.getYear();
+                    int idPesanan = rs.getInt(2);
+                    boolean adaPesanan = !rs.wasNull();
+                    String metodeTampil = rs.getString(4);
+                    if ("Saldo".equalsIgnoreCase(metodeTampil)) metodeTampil = "RutePay";
+                    else if ("Cash".equalsIgnoreCase(metodeTampil)) metodeTampil = "Tunai";
+                    hasil.add(new Object[]{
+                        namaBulan,
+                        adaPesanan ? "#" + idPesanan : "-",
+                        rs.getString(7),          // Jenis: Top Up / Transportasi / Dokumen
+                        rs.getDate(1),
+                        rs.getString(3),
+                        metodeTampil,
+                        controller.Fmt.rupiah(rs.getDouble(5)),
+                        rs.getString(6)
+                    });
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hasil;
+    }
 }
