@@ -174,8 +174,6 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan database, serta membantu penyelesaian permasalahan selama pengerjaan proyek.
 
-### B. Development Environment & AI Tools
-
 <div align="center">
 
 <table>
