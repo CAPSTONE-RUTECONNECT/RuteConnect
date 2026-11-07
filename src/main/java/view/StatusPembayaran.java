@@ -1,0 +1,660 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package view;
+
+/**
+ *
+ * @author HP
+ */
+public class StatusPembayaran extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(StatusPembayaran.class.getName());
+    private double totalPembayaran;
+    
+    public StatusPembayaran() {
+        this(0);
+    }
+
+    /**
+     * Creates new form MenuPelangganForm
+     */
+    public StatusPembayaran(double totalPembayaran) {
+        this.totalPembayaran = totalPembayaran;
+        initComponents();
+        setLocationRelativeTo(null);
+
+        // pakai total dari draft supaya pasti sama dengan yang disimpan ke database
+        if (controller.Session.draft != null) {
+            this.totalPembayaran = controller.Session.draft.getTotalBiaya();
+        }
+        lblTotalPembayaran.setText(controller.Fmt.rupiah(this.totalPembayaran));
+
+        controller.Session.refreshSaldo();
+        lblSisaSaldo.setText("Sisa Saldo: " + controller.Fmt.rupiah(controller.Session.saldo));
+
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+
+        javax.swing.ButtonGroup metodeGroup = new javax.swing.ButtonGroup();
+        metodeGroup.add(radioBtnRutePay);
+        metodeGroup.add(radioBtnEwallet);
+        metodeGroup.add(radioBtnCash);
+
+        setupPaymentPanel(panelRutePay, radioBtnRutePay);
+        setupPaymentPanel(panelEwallet, radioBtnEwallet);
+        setupPaymentPanel(panelCash, radioBtnCash);
+
+        tampilkanRingkasan();                          // isi jPanel3 dari pesanan
+        jButton5.addActionListener(e -> kembali());    // tombol back
+}
+
+    // Fungsi bantuan interaksi panel pembayaran (hover & click)
+    private void setupPaymentPanel(javax.swing.JPanel panel, javax.swing.JRadioButton radioButton) {
+        java.awt.Color normalColor = new java.awt.Color(242, 243, 255);
+        java.awt.Color hoverColor = new java.awt.Color(230, 238, 255);  // Biru muda lembut saat di-hover
+        java.awt.Color selectColor = new java.awt.Color(210, 225, 255); // Biru terang saat dipilih
+
+        panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!radioButton.isSelected()) {
+                    panel.setBackground(hoverColor);
+                }
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if (!radioButton.isSelected()) {
+                    panel.setBackground(normalColor);
+                }
+            }
+
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                radioButton.setSelected(true);
+                updatePaymentSelection();
+            }
+        });
+
+        // Kalau radio button-nya diklik langsung
+        radioButton.addActionListener(e -> updatePaymentSelection());
+    }
+
+    // Fungsi untuk mereset warna dan menyamakan panel yang aktif
+    private void updatePaymentSelection() {
+        java.awt.Color normalColor = new java.awt.Color(242, 243, 255);
+        java.awt.Color selectColor = new java.awt.Color(210, 225, 255);
+
+        panelRutePay.setBackground(normalColor);
+        panelEwallet.setBackground(normalColor);
+        panelCash.setBackground(normalColor);
+
+        if (radioBtnRutePay.isSelected()) {
+            panelRutePay.setBackground(selectColor);
+        } else if (radioBtnEwallet.isSelected()) {
+            panelEwallet.setBackground(selectColor);
+        } else if (radioBtnCash.isSelected()) {
+            panelCash.setBackground(selectColor);
+        }
+    }
+    
+    // Isi jPanel3 sesuai pesanan yang dibuat di Maps / PengirimanDokumenForm
+    private void tampilkanRingkasan() {
+        model.Pesanan p = controller.Session.draft;
+        if (p == null) return;
+
+        String judul = controller.Session.ringkasanJudul != null
+                ? controller.Session.ringkasanJudul : p.getNamaLayanan();
+        String sub = controller.Session.ringkasanSub != null
+                ? controller.Session.ringkasanSub : p.getJenisPesanan();
+
+        jLabel3.setText(judul);
+        jLabel3.setBounds(70, 10, 250, 20);
+        jLabel4.setText(sub);
+        jLabel4.setBounds(70, 30, 250, 20);
+
+        jLabel5.setBounds(30, 10, 270, 16);
+        jLabel6.setBounds(30, 20, 270, 30);
+        jLabel8.setBounds(30, 50, 270, 16);
+        jLabel7.setBounds(30, 60, 270, 30);
+
+        if (p instanceof model.Dokumen dok) {
+            jLabel5.setText("Jemput (Pengirim)");
+            jLabel8.setText("Tujuan (Penerima: " + potong(dok.getNamaPenerima(), 20) + ")");
+        } else {
+            jLabel5.setText("Jemput");
+            jLabel8.setText("Tujuan");
+        }
+        jLabel6.setText(htmlPotong(p.getLokasiJemput(), 70));
+        jLabel6.setToolTipText(p.getLokasiJemput());
+        jLabel7.setText(htmlPotong(p.getLokasiTujuan(), 70));
+        jLabel7.setToolTipText(p.getLokasiTujuan());
+
+        double km = Math.round(p.getJarakKm() * 10) / 10.0;
+        int menit = controller.Session.ringkasanMenit;
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setBounds(170, 170, 162, 16);
+        jLabel12.setText(menit > 0 ? menit + " Menit (" + km + " Km)" : km + " Km");
+    }
+
+    private String potong(String s, int max) {
+        if (s == null) return "-";
+        String t = s.trim();
+        return t.length() > max ? t.substring(0, max - 3) + "..." : t;
+    }
+
+    private String htmlPotong(String s, int max) {
+        return "<html>" + potong(s, max).replace("&", "&amp;").replace("<", "&lt;") + "</html>";
+    }
+
+    // RutePay = saldo wallet (dipotong), E-Wallet & Cash tidak memotong saldo
+    private String metodeTerpilih() {
+        if (radioBtnRutePay.isSelected()) return model.Transaksi.SALDO;
+        if (radioBtnEwallet.isSelected()) return model.Transaksi.E_WALLET;
+        if (radioBtnCash.isSelected())    return model.Transaksi.CASH;
+        return null;
+    }
+
+    private void kembali() {
+        final boolean dokumen = controller.Session.draft instanceof model.Dokumen;
+        java.awt.EventQueue.invokeLater(() -> {
+            if (dokumen) new PengirimanDokumenForm().setVisible(true);
+            else new Maps().setVisible(true);
+        });
+        this.dispose();
+    }
+    
+    private boolean verifikasiPassword() {
+        String password = new String(txtPassword.getPassword());
+        if (password.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Masukkan kata sandi untuk memverifikasi pembayaran.",
+                "Kata Sandi Kosong", javax.swing.JOptionPane.WARNING_MESSAGE);
+            txtPassword.requestFocus();
+            return false;
+        }
+        if (!new dao.UserDao().cekPassword(controller.Session.userId, password)) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Kata sandi salah.", "Verifikasi Gagal",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            txtPassword.setText("");
+            txtPassword.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        panelTopUp = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        panelDokumen = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        panelRutePay = new javax.swing.JPanel();
+        radioBtnRutePay = new javax.swing.JRadioButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lblSisaSaldo = new javax.swing.JLabel();
+        panelEwallet = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        radioBtnEwallet = new javax.swing.JRadioButton();
+        panelCash = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        radioBtnCash = new javax.swing.JRadioButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        jLabel29 = new javax.swing.JLabel();
+        passwordCheckBox = new javax.swing.JCheckBox();
+        btnPesan = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        lblTotalPembayaran = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pembayaran");
+        setResizable(false);
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollPane1.setHorizontalScrollBar(null);
+
+        jPanel1.setBackground(new java.awt.Color(14, 165, 233));
+        jPanel1.setMaximumSize(new java.awt.Dimension(390, 1100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(390, 900));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelTopUp.setBackground(new java.awt.Color(255, 255, 255));
+        panelTopUp.setPreferredSize(new java.awt.Dimension(390, 1100));
+        panelTopUp.setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(242, 243, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(398, 234));
+        jPanel3.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel3.setText("RuteRide/Kilat");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(20, 10, 125, 20);
+
+        jLabel4.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel4.setText("Dokumen & Penumpang Cepat");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(20, 30, 175, 20);
+
+        panelDokumen.setBackground(new java.awt.Color(255, 255, 255));
+        panelDokumen.setLayout(null);
+
+        jLabel5.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel5.setText("Jemput");
+        panelDokumen.add(jLabel5);
+        jLabel5.setBounds(30, 10, 175, 16);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel6.setText("Stasiun MRT Bundaran HI");
+        panelDokumen.add(jLabel6);
+        jLabel6.setBounds(30, 20, 175, 30);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel7.setText("Dokumen & Penumpang Cepat");
+        panelDokumen.add(jLabel7);
+        jLabel7.setBounds(30, 60, 175, 30);
+
+        jLabel8.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel8.setText("Tujuan");
+        panelDokumen.add(jLabel8);
+        jLabel8.setBounds(30, 50, 175, 16);
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(4).png"))); // NOI18N
+        panelDokumen.add(jLabel23);
+        jLabel23.setBounds(10, 20, 40, 50);
+
+        jPanel3.add(panelDokumen);
+        panelDokumen.setBounds(20, 60, 310, 100);
+
+        jLabel9.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel9.setText("Estimasi Sampai:");
+        jPanel3.add(jLabel9);
+        jLabel9.setBounds(20, 170, 120, 16);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 97, 148));
+        jLabel12.setText("18 - 22 Menit (4.2 Km)");
+        jPanel3.add(jLabel12);
+        jLabel12.setBounds(202, 170, 130, 16);
+
+        panelTopUp.add(jPanel3);
+        jPanel3.setBounds(22, 19, 340, 204);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(62, 72, 80));
+        jLabel11.setText("Pilih Metode Pembayaran");
+        panelTopUp.add(jLabel11);
+        jLabel11.setBounds(20, 240, 200, 20);
+
+        jLabel10.setForeground(new java.awt.Color(0, 97, 148));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Bebas Biaya Admin");
+        panelTopUp.add(jLabel10);
+        jLabel10.setBounds(261, 244, 110, 16);
+
+        panelRutePay.setBackground(new java.awt.Color(242, 243, 255));
+        panelRutePay.setLayout(null);
+
+        radioBtnRutePay.addActionListener(this::radioBtnRutePayActionPerformed);
+        panelRutePay.add(radioBtnRutePay);
+        radioBtnRutePay.setBounds(310, 20, 19, 20);
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/RutePay Icon Kecil.png"))); // NOI18N
+        panelRutePay.add(jLabel13);
+        jLabel13.setBounds(10, 10, 50, 50);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("RutePay");
+        panelRutePay.add(jLabel14);
+        jLabel14.setBounds(70, 10, 100, 20);
+
+        lblSisaSaldo.setForeground(new java.awt.Color(63, 72, 80));
+        lblSisaSaldo.setText("Sisa Saldo: Rp");
+        panelRutePay.add(lblSisaSaldo);
+        lblSisaSaldo.setBounds(70, 30, 220, 16);
+
+        panelTopUp.add(panelRutePay);
+        panelRutePay.setBounds(20, 270, 350, 60);
+
+        panelEwallet.setBackground(new java.awt.Color(242, 243, 255));
+        panelEwallet.setLayout(null);
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background+Shadow_1.png"))); // NOI18N
+        panelEwallet.add(jLabel17);
+        jLabel17.setBounds(0, 0, 70, 60);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Dompet Digital (E-Wallet)");
+        panelEwallet.add(jLabel18);
+        jLabel18.setBounds(70, 10, 200, 20);
+
+        jLabel19.setForeground(new java.awt.Color(63, 72, 80));
+        jLabel19.setText("GoPay, OVO, ShopeePay, DANA");
+        panelEwallet.add(jLabel19);
+        jLabel19.setBounds(70, 30, 200, 16);
+
+        radioBtnEwallet.addActionListener(this::radioBtnEwalletActionPerformed);
+        panelEwallet.add(radioBtnEwallet);
+        radioBtnEwallet.setBounds(310, 20, 20, 20);
+
+        panelTopUp.add(panelEwallet);
+        panelEwallet.setBounds(20, 340, 350, 60);
+
+        panelCash.setBackground(new java.awt.Color(242, 243, 255));
+        panelCash.setLayout(null);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background(10).png"))); // NOI18N
+        panelCash.add(jLabel20);
+        jLabel20.setBounds(0, 0, 70, 60);
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setText("Tunai / Cash");
+        panelCash.add(jLabel25);
+        jLabel25.setBounds(70, 10, 100, 16);
+
+        jLabel26.setForeground(new java.awt.Color(63, 72, 80));
+        jLabel26.setText("Bayar langsung saat sampai tujuan");
+        panelCash.add(jLabel26);
+        jLabel26.setBounds(70, 30, 200, 16);
+
+        radioBtnCash.addActionListener(this::radioBtnCashActionPerformed);
+        panelCash.add(radioBtnCash);
+        radioBtnCash.setBounds(310, 20, 19, 20);
+
+        panelTopUp.add(panelCash);
+        panelCash.setBounds(20, 410, 350, 60);
+
+        jPanel6.setBackground(new java.awt.Color(242, 243, 255));
+        jPanel6.setLayout(null);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(11).png"))); // NOI18N
+        jLabel27.setText("Verifikasi Kata Sandi Akun");
+        jPanel6.add(jLabel27);
+        jLabel27.setBounds(20, 20, 230, 20);
+
+        jLabel28.setForeground(new java.awt.Color(63, 72, 80));
+        jLabel28.setText("<html>Masukkan kata sandi login RuteConnect Anda untuk<br>memvalidasi otorisasi pembayaran pesanan ini.</html>");
+        jPanel6.add(jLabel28);
+        jLabel28.setBounds(20, 40, 300, 40);
+
+        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.addActionListener(this::txtPasswordActionPerformed);
+        jPanel6.add(txtPassword);
+        txtPassword.setBounds(60, 100, 260, 40);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(5).png"))); // NOI18N
+        jPanel6.add(jLabel29);
+        jLabel29.setBounds(0, 90, 350, 60);
+
+        passwordCheckBox.setForeground(new java.awt.Color(148, 163, 184));
+        passwordCheckBox.setText("Tampilkan Password");
+        passwordCheckBox.addActionListener(this::passwordCheckBoxActionPerformed);
+        jPanel6.add(passwordCheckBox);
+        passwordCheckBox.setBounds(30, 150, 220, 20);
+
+        panelTopUp.add(jPanel6);
+        jPanel6.setBounds(20, 500, 350, 190);
+
+        btnPesan.setBackground(new java.awt.Color(14, 165, 233));
+        btnPesan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPesan.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesan.setText("Bayar & Pesan Sekarang →");
+        btnPesan.addActionListener(this::btnPesanActionPerformed);
+        panelTopUp.add(btnPesan);
+        btnPesan.setBounds(19, 700, 350, 50);
+
+        jPanel1.add(panelTopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 131, 390, 1100));
+
+        jPanel7.setBackground(new java.awt.Color(2, 132, 199));
+        jPanel7.setLayout(null);
+
+        jButton5.setBackground(new java.awt.Color(60, 175, 229));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Container(1).png"))); // NOI18N
+        jButton5.setBorder(null);
+        jPanel7.add(jButton5);
+        jButton5.setBounds(10, 10, 30, 30);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/logo ruteconnect logo kecil.png"))); // NOI18N
+        jPanel7.add(jLabel1);
+        jLabel1.setBounds(50, 10, 40, 30);
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Pembayaran");
+        jPanel7.add(jLabel21);
+        jLabel21.setBounds(90, 10, 120, 30);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Background (6).png"))); // NOI18N
+        jPanel7.add(jLabel22);
+        jLabel22.setBounds(320, 0, 50, 50);
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 50));
+
+        lblTotalPembayaran.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTotalPembayaran.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalPembayaran.setText("Rp 38.000");
+        jPanel1.add(lblTotalPembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 190, -1));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Total Pembayaran");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 56, 125, 30));
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Overlay+Shadow+OverlayBlur.png"))); // NOI18N
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 80, -1));
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void radioBtnRutePayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnRutePayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBtnRutePayActionPerformed
+
+    private void passwordCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if (passwordCheckBox.isSelected()) {
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('\u2022'); 
+        }
+    }//GEN-LAST:event_passwordCheckBoxActionPerformed
+
+    private void radioBtnEwalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnEwalletActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBtnEwalletActionPerformed
+
+    private void radioBtnCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnCashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBtnCashActionPerformed
+
+    private void btnPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesanActionPerformed
+        // TODO add your handling code here:
+        model.Pesanan draft = controller.Session.draft;
+        if (draft == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Data pesanan tidak ditemukan. Silakan buat pesanan terlebih dahulu.",
+                "Pesanan Kosong", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String metode = metodeTerpilih();
+        if (metode == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Silakan pilih metode pembayaran terlebih dahulu!",
+                "Metode Belum Dipilih", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // ===== BLOK VERIFIKASI PASSWORD (hanya RutePay) =====
+        if (model.Transaksi.SALDO.equals(metode) && !verifikasiPassword()) {
+            return;
+        }
+        // ====================================================
+
+        btnPesan.setEnabled(false);
+        // buatPesanan: kalau metode = Saldo -> saldo dipotong; E-Wallet/Cash -> tidak dipotong
+        service.Hasil hasil = new service.PesananService().buatPesanan(draft, metode);
+
+        controller.Session.refreshSaldo();
+        if (!hasil.isSukses()) {
+            btnPesan.setEnabled(true);
+            lblSisaSaldo.setText("Sisa Saldo: " + controller.Fmt.rupiah(controller.Session.saldo));
+            javax.swing.JOptionPane.showMessageDialog(this,
+                hasil.getPesan(), "Pembayaran Gagal", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String info = hasil.getPesan();
+        if (model.Transaksi.SALDO.equals(metode)) {
+            info += "\nSaldo RutePay terpotong " + controller.Fmt.rupiah(totalPembayaran)
+                  + "\nSisa saldo: " + controller.Fmt.rupiah(controller.Session.saldo);
+        } else if (model.Transaksi.CASH.equals(metode)) {
+            info += "\nBayar tunai langsung ke driver saat sampai tujuan.";
+        }
+        javax.swing.JOptionPane.showMessageDialog(this, info, "Berhasil",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        controller.Session.draft = null;
+        controller.Session.ringkasanJudul = null;
+        controller.Session.ringkasanSub = null;
+        controller.Session.ringkasanMenit = 0;
+
+        java.awt.EventQueue.invokeLater(() -> new RiwayatStatusPelanggan().setVisible(true));
+        this.dispose();
+    }//GEN-LAST:event_btnPesanActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+            if (verifikasiPassword()) {
+            btnPesan.doClick();
+        }
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new StatusPembayaran().setVisible(true));
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPesan;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSisaSaldo;
+    private javax.swing.JLabel lblTotalPembayaran;
+    private javax.swing.JPanel panelCash;
+    private javax.swing.JPanel panelDokumen;
+    private javax.swing.JPanel panelEwallet;
+    private javax.swing.JPanel panelRutePay;
+    private javax.swing.JPanel panelTopUp;
+    private javax.swing.JCheckBox passwordCheckBox;
+    private javax.swing.JRadioButton radioBtnCash;
+    private javax.swing.JRadioButton radioBtnEwallet;
+    private javax.swing.JRadioButton radioBtnRutePay;
+    private javax.swing.JPasswordField txtPassword;
+    // End of variables declaration//GEN-END:variables
+}
