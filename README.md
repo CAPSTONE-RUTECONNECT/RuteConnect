@@ -4,9 +4,12 @@
 
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0B1F3A&height=200&section=header&text=RUTECONNECT&fontSize=55&fontColor=FFFFFF&fontAlignY=40&desc=Connecting%20People,%20Delivering%20Possibilities&descAlignY=65&descSize=17" width="100%" />
+  <!-- RuteConnect Banner -->
+  <img src="docs/images/ruteconnect-banner.png"
+       width="100%"
+       alt="RuteConnect Banner"/>
 
-  <br/>
+  <br/><br/>
 
   <img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
   <img src="https://img.shields.io/badge/Java%20Swing-GUI-0B1F3A?style=for-the-badge" />
