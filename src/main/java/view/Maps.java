@@ -279,6 +279,7 @@ public class Maps extends javax.swing.JFrame {
         lblJarak = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
+        jLabel5 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         panelMotorCom = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -448,10 +449,15 @@ public class Maps extends javax.swing.JFrame {
         jPanel3.add(btnReset);
         btnReset.setBounds(10, 220, 120, 33);
         jPanel3.add(jSpinner1);
-        jSpinner1.setBounds(220, 220, 120, 26);
+        jSpinner1.setBounds(220, 240, 120, 26);
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Pilih Waktu:");
+        jPanel3.add(jLabel5);
+        jLabel5.setBounds(150, 240, 70, 30);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 280, 350, 270);
+        jPanel3.setBounds(10, 280, 350, 290);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
@@ -816,6 +822,7 @@ public class Maps extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
