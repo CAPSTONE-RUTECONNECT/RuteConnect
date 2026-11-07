@@ -657,7 +657,7 @@ Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesa
 ---
 
 
-# 📸 10. Dokumentasi Konsultasi
+## 📸 10. Dokumentasi Konsultasi
 
 Dokumentasi ini berisi foto kegiatan konsultasi proyek RuteConnect sebagai bukti pelaksanaan bimbingan, diskusi, dan evaluasi selama proses pengembangan aplikasi.
 
