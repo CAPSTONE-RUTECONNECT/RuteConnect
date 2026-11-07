@@ -537,73 +537,33 @@ public class TopUpForm extends javax.swing.JFrame {
     private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         try {
-            // 1. Validasi metode pembayaran
-            if (!radioBtnEwallet.isSelected() 
-                    && !radioBtnBank.isSelected() 
-                    && !radioBtnMinimarket.isSelected()) {
+            // 1. Validasi nominal top up
+            String nominalInput = txtNominal.getText().trim();
 
+            if (nominalInput.isEmpty()) {
                 JOptionPane.showMessageDialog(this,
-                    "Silakan pilih salah satu metode pembayaran terlebih dahulu!",
+                    "Silakan masukkan nominal top up terlebih dahulu!",
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            // 2. Validasi password hanya jika bukan Minimarket
-            if (!radioBtnMinimarket.isSelected()) {
+            long nominal;
 
-                String passwordInput = new String(txtPassword.getPassword());
-
-                if (passwordInput.trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(this,
-                        "Silakan masukkan password verifikasi keamanan Anda!",
-                        "Peringatan", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-
-                // Verifikasi password
-                dao.UserDao userDao = new dao.UserDao();
-                boolean passwordValid = userDao.cekPassword(
-                    controller.Session.userId, passwordInput
-                );
-
-                if (!passwordValid) {
-                    JOptionPane.showMessageDialog(this,
-                        "Password salah! Periksa kembali password Anda.",
-                        "Verifikasi Gagal", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-
-            // 3. Koneksi database
-            Connection conn = config.Koneksi.getConnection();
-
-            if (conn == null) {
+            try {
+                nominal = Long.parseLong(nominalInput);
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this,
-                    "Koneksi database gagal!",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Nominal harus berupa angka yang valid!",
+                    "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            // 4. Proses Top Up
-            TopUpService service = new TopUpService(conn);
-            boolean sukses = service.executeTopUp(txtNominal.getText());
-
-            if (sukses) {
+            if (nominal < 10000 || nominal > 2000000) {
                 JOptionPane.showMessageDialog(this,
-                    "Top Up Berhasil!",
-                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
-
-                java.awt.EventQueue.invokeLater(() -> 
-                    new MenuPelangganForm().setVisible(true)
-                );
-                this.dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(this,
-                    "Top Up Gagal diproses. Periksa kembali nominal Anda.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Nominal top up minimal Rp10.000 dan maksimal Rp2.000.000!",
+                    "Peringatan", JOptionPane.WARNING_MESSAGE);
+                return;
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this,

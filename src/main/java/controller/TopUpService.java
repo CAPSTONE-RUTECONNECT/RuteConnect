@@ -22,11 +22,17 @@ public class TopUpService {
             if (strNominal == null || strNominal.trim().isEmpty()) {
                 return false;
             }
+
             BigDecimal nominal = new BigDecimal(strNominal.trim());
-            if (nominal.compareTo(BigDecimal.ZERO) <= 0) {
+
+            // Validasi minimal Rp10.000 dan maksimal Rp2.000.000
+            if (nominal.compareTo(new BigDecimal("10000")) < 0
+                    || nominal.compareTo(new BigDecimal("2000000")) > 0) {
                 return false;
             }
+
             return prosesTopUp(Session.userId, nominal);
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;
