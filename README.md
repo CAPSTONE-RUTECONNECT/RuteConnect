@@ -191,11 +191,14 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 <br/><br/>
 
+
 ### AI DEVELOPMENT ASSISTANTS
 
-<img src="https://cdn.simpleicons.org/anthropic/D97757" height="58" alt="Anthropic"/>
+<div align="center">
+
+<img src="https://cdn.simpleicons.org/anthropic/D97757" height="58" alt="Claude"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://cdn.simpleicons.org/openai/412991" height="58" alt="OpenAI"/>
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg" height="58" alt="ChatGPT"/>
 
 <br/>
 
