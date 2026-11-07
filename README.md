@@ -28,7 +28,7 @@
 
 ---
 
-# 📑 DAFTAR ISI
+## 📑 DAFTAR ISI
 
 | No. | Bagian | Deskripsi |
 |:---:|---|---|
@@ -44,9 +44,9 @@
 
 ---
 
-# 🚀 1. Nama Program
+## 🚀 1. Nama Program
 
-## RuteConnect
+### RuteConnect
 
 **RuteConnect: Sistem Informasi Terintegrasi Pemesanan Transportasi Daring dan Pengiriman Dokumen Berbasis Digital**
 
@@ -63,7 +63,7 @@ Nama RuteConnect berasal dari gabungan kata *Rute* dan *Connect*. Nama ini mengg
 
 ---
 
-# 📖 2. Deskripsi Singkat
+## 📖 2. Deskripsi Singkat
 
 RuteConnect adalah aplikasi sistem informasi berbasis desktop yang dikembangkan untuk memberikan kemudahan dalam melakukan pemesanan layanan transportasi daring dan pengiriman dokumen secara digital.
 
@@ -73,7 +73,7 @@ RuteConnect memiliki tiga jenis hak akses pengguna, yaitu **Pelanggan, Driver, d
 
 Sistem dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Swing serta database MySQL untuk menyimpan dan mengelola data aplikasi.
 
-### 🎯 Tujuan Pengembangan
+#### 🎯 Tujuan Pengembangan
 
 - Mengintegrasikan layanan transportasi dan pengiriman dokumen dalam satu aplikasi.
 - Mempermudah proses pemesanan dan pengelolaan layanan secara digital.
@@ -81,7 +81,7 @@ Sistem dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Sw
 - Membantu pengelolaan data pelanggan, driver, layanan, dan transaksi.
 - Menerapkan konsep Object-Oriented Programming dalam pengembangan aplikasi.
 
-### 🗺️ Gambaran Konsep RuteConnect
+#### 🗺️ Gambaran Konsep RuteConnect
 
 <div align="center">
 
@@ -93,11 +93,11 @@ Sistem dikembangkan menggunakan bahasa pemrograman Java dengan antarmuka Java Sw
 
 ---
 
-# ⚙️ 3. Fitur Utama Program
+## ⚙️ 3. Fitur Utama Program
 
 RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setiap fitur dirancang untuk mendukung proses layanan dan pengelolaan data dalam aplikasi.
 
-## A. Pelanggan
+### A. Pelanggan
 
 | Fitur | Deskripsi |
 |---|---|
@@ -111,7 +111,7 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 | Dompet Digital | Melihat dan melakukan pengisian saldo. |
 | Riwayat Transaksi | Melihat catatan transaksi dan top up. |
 
-## B. Driver
+### B. Driver
 
 | Fitur | Deskripsi |
 |---|---|
@@ -123,7 +123,7 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 | Pembaruan Status | Memperbarui status pengerjaan pesanan. |
 | Riwayat Pesanan | Melihat pesanan yang pernah ditangani. |
 
-## C. Admin
+### C. Admin
 
 | Fitur | Deskripsi |
 |---|---|
@@ -137,11 +137,11 @@ RuteConnect menyediakan fitur yang disesuaikan dengan tiga jenis pengguna. Setia
 ---
 
 
-# 🛠️ 4. Tech Stack
+## 🛠️ 4. Tech Stack
 
 RuteConnect dikembangkan dengan memanfaatkan berbagai teknologi dan tools pendukung untuk membangun aplikasi desktop, mengelola database, serta membantu proses pengembangan sistem.
 
-## A. Core Technologies
+### A. Core Technologies
 
 Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
@@ -164,9 +164,9 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 | Maven | Mengelola dependency dan proses build proyek. |
 | NetBeans IDE | Lingkungan pengembangan aplikasi. |
 
-## B. Development Environment & AI Tools
+### B. Development Environment & AI Tools
 
-### CORE TECHNOLOGIES
+#### CORE TECHNOLOGIES
 
 <div align="center">
 
@@ -178,7 +178,7 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 </div>
 
-### DEVELOPMENT ENVIRONMENT
+#### DEVELOPMENT ENVIRONMENT
 
 <div align="center">
 
@@ -192,7 +192,7 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 </div>
 
-### AI DEVELOPMENT ASSISTANTS
+#### AI DEVELOPMENT ASSISTANTS
 
 <div align="center">
 
@@ -206,7 +206,7 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 </div>
 
-## C. Service Platform References
+### C. Service Platform References
 
 <div align="center">
 
@@ -226,7 +226,7 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude dan ChatGPT merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
-## D. Referensi Pengembangan README
+### D. Referensi Pengembangan README
 
 Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan dokumentasi README:
 
@@ -238,11 +238,11 @@ Beberapa sumber yang dapat digunakan untuk membantu pengembangan tampilan dan do
 
 ---
 
-# 🏗️ 5. Perancangan Sistem
+## 🏗️ 5. Perancangan Sistem
 
 Perancangan sistem dilakukan sebagai dasar dalam proses pengembangan RuteConnect. Tahapan ini bertujuan untuk menggambarkan alur kerja, interaksi pengguna, serta hubungan antar-data yang digunakan dalam aplikasi.
 
-## A. Flowchart
+### A. Flowchart
 
 Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikasi, melakukan login, memilih layanan, hingga proses pemesanan dan transaksi.
 
@@ -254,7 +254,7 @@ Flowchart menggambarkan alur proses aplikasi mulai dari pengguna membuka aplikas
 
 </div>
 
-## B. Use Case Diagram
+### B. Use Case Diagram
 
 Use Case Diagram menggambarkan hubungan antara aktor dengan fitur yang tersedia dalam sistem.
 
@@ -272,7 +272,7 @@ Aktor utama dalam aplikasi RuteConnect terdiri atas:
 
 </div>
 
-## C. Entity Relationship Diagram (ERD)
+### C. Entity Relationship Diagram (ERD)
 
 Entity Relationship Diagram (ERD) digunakan untuk menggambarkan struktur database serta hubungan antar-entitas yang mendukung proses pengelolaan data aplikasi.
 
@@ -299,11 +299,11 @@ Entitas utama dalam perancangan database RuteConnect meliputi:
 
 ---
 
-# 📂 6. Struktur Folder/Package
+## 📂 6. Struktur Folder/Package
 
 Struktur folder dan package dibuat untuk memisahkan komponen aplikasi berdasarkan tanggung jawabnya. Pemisahan ini bertujuan agar kode program lebih terorganisasi, mudah dipahami, dan lebih mudah dikembangkan.
 
-### Struktur Proyek
+#### Struktur Proyek
 
 ```text
 RuteConnect/
@@ -333,7 +333,7 @@ RuteConnect/
 └── README.md
 ```
 
-### Penjelasan Package
+#### Penjelasan Package
 
 | Package | Fungsi |
 |---|---|
@@ -348,11 +348,11 @@ RuteConnect/
 
 ---
 
-# 🧩 7. Penerapan 4 Pilar OOP
+## 🧩 7. Penerapan 4 Pilar OOP
 
 Pengembangan RuteConnect menerapkan konsep Object-Oriented Programming (OOP) yang terdiri atas empat pilar utama, yaitu Encapsulation, Inheritance, Polymorphism, dan Abstraction.
 
-## 1. Encapsulation (Enkapsulasi)
+### 1. Encapsulation (Enkapsulasi)
 
 Encapsulation merupakan konsep membungkus data dan metode dalam sebuah class serta membatasi akses langsung terhadap atribut tertentu.
 
@@ -381,7 +381,7 @@ public class User {
 
 Atribut dibuat `private` agar tidak dapat diakses secara langsung dari luar class. Pengaksesan dan perubahan data dilakukan melalui method getter dan setter.
 
-## 2. Inheritance (Pewarisan)
+### 2. Inheritance (Pewarisan)
 
 Inheritance merupakan konsep pewarisan atribut dan method dari satu class kepada class lainnya.
 
@@ -403,7 +403,7 @@ public class Pelanggan extends User {
 
 Class `Pelanggan` mewarisi atribut dan method yang dimiliki oleh class `User`, sehingga tidak perlu mendefinisikan kembali seluruh atribut umum pengguna.
 
-## 3. Polymorphism (Polimorfisme)
+### 3. Polymorphism (Polimorfisme)
 
 Polymorphism merupakan konsep yang memungkinkan satu method memiliki perilaku berbeda berdasarkan objek yang menggunakannya.
 
@@ -439,7 +439,7 @@ public class Driver extends User {
 
 Method `tampilkanDashboard()` memiliki nama yang sama, tetapi menghasilkan perilaku berbeda sesuai dengan jenis objek yang menjalankannya.
 
-## 4. Abstraction (Abstraksi)
+### 4. Abstraction (Abstraksi)
 
 Abstraction merupakan konsep menyembunyikan detail implementasi dan hanya menampilkan fungsi utama yang diperlukan.
 
@@ -472,11 +472,11 @@ Class `Layanan` menjadi class abstrak yang mendefinisikan method `prosesPesanan(
 
 ---
 
-# 🖥️ 8. Cara Penggunaan Program
+## 🖥️ 8. Cara Penggunaan Program
 
 Bagian ini menjelaskan tahapan penggunaan aplikasi RuteConnect berdasarkan tampilan antarmuka yang tersedia.
 
-## A. Tampilan Awal Aplikasi
+### A. Tampilan Awal Aplikasi
 
 Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama kali dijalankan. Halaman ini menjadi tampilan pembuka sebelum pengguna mengakses fitur yang tersedia.
 
@@ -488,7 +488,7 @@ Halaman awal merupakan tampilan yang muncul ketika aplikasi RuteConnect pertama 
 
 </div>
 
-## B. Login Pengguna
+### B. Login Pengguna
 
 Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitur sesuai dengan hak akses masing-masing.
 
@@ -500,7 +500,7 @@ Pengguna memasukkan email dan password yang telah terdaftar untuk mengakses fitu
 
 </div>
 
-## C. Dashboard Pelanggan
+### C. Dashboard Pelanggan
 
 Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat informasi akun, serta memantau aktivitas pemesanan.
 
@@ -512,7 +512,7 @@ Pelanggan dapat mengakses layanan transportasi dan pengiriman dokumen, melihat i
 
 </div>
 
-## D. Halaman Pemesanan
+### D. Halaman Pemesanan
 
 Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk membuat pesanan.
 
@@ -524,7 +524,7 @@ Pelanggan memilih jenis layanan dan mengisi informasi yang diperlukan untuk memb
 
 </div>
 
-## E. Dashboard Driver
+### E. Dashboard Driver
 
 Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta menerima dan memperbarui status pengerjaan.
 
@@ -536,7 +536,7 @@ Driver dapat melihat pesanan yang tersedia, memeriksa detail pesanan, serta mene
 
 </div>
 
-## F. Dashboard Admin
+### F. Dashboard Admin
 
 Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta informasi transaksi dalam sistem.
 
@@ -550,7 +550,7 @@ Admin memiliki akses untuk mengelola data pengguna, layanan, pesanan, serta info
 
 ---
 
-# 👥 9. Kontributor
+## 👥 9. Kontributor
 
 Proyek RuteConnect dikembangkan secara berkelompok sebagai bagian dari penyelesaian tugas mata kuliah **Pemrograman Berorientasi Objek (PBO)**.
 
