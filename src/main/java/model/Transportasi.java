@@ -35,11 +35,16 @@ public class Transportasi extends Pesanan {
         this.jumlahPenumpang = jumlahPenumpang;
     }
     public void setStatusPenjemputan(String statusPenjemputan) {
-        if (statusPenjemputan == null
-                || !(statusPenjemputan.equalsIgnoreCase("menunggu")
-                || statusPenjemputan.equalsIgnoreCase("sudah dijemput"))) {
-            throw new IllegalArgumentException("Status penjemputan harus menunggu, dalam perjalanan, atau sudah dijemput");
+        if (statusPenjemputan == null) {
+            throw new IllegalArgumentException("Status penjemputan tidak boleh kosong");
         }
-        this.statusPenjemputan = statusPenjemputan.toLowerCase();
+        String[] valid = {"Menunggu", "Dalam Perjalanan", "Dijemput", "Sudah Dijemput", "Selesai"};
+        for (String s : valid) {
+            if (s.equalsIgnoreCase(statusPenjemputan.trim())) {
+                this.statusPenjemputan = s;
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Status penjemputan harus menunggu, dalam perjalanan, sudah dijemput, atau selesai");
     }
 }

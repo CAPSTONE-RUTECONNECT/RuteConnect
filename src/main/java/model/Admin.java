@@ -40,9 +40,16 @@ public class Admin extends User {
         this.tingkatAkses = tingkatAkses.trim();
     }
     public void setBagianDivisi(String bagianDivisi) {
-        if (bagianDivisi == null || !bagianDivisi.trim().matches("[a-zA-Z ]+")) {
-            throw new IllegalArgumentException("Bagian divisi hanya boleh huruf dan spasi");
+        if (bagianDivisi == null || !bagianDivisi.trim().matches("[a-zA-Z &]+")) {
+            throw new IllegalArgumentException("Bagian divisi hanya boleh huruf, spasi, dan &");
         }
-        this.bagianDivisi = bagianDivisi.trim();
+        bagianDivisi = bagianDivisi.trim();
+        if (bagianDivisi.length() < 3) {
+            throw new IllegalArgumentException("Bagian divisi minimal 3 karakter");
+        }
+        if (bagianDivisi.length() > 50) {
+            throw new IllegalArgumentException("Bagian divisi maksimal 50 karakter");
+        }
+        this.bagianDivisi = bagianDivisi;
     }
 }

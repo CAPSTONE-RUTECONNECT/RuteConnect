@@ -57,16 +57,6 @@ public class PesananService {
         return batalkan(p, a);
     }
 
-    public Hasil batalkanOlehDriver(int pesananId, int driverId) {
-        Pesanan p = pesananDao.findById(pesananId);
-        if (p == null || p.getDriverId() == null || p.getDriverId() != driverId)
-            return Hasil.gagal("Pesanan bukan milik driver ini.");
-        String s = p.getStatusPesanan();
-        if (!(Pesanan.DITERIMA.equals(s) || Pesanan.DIPROSES.equals(s) || Pesanan.DALAM_PERJALANAN.equals(s)))
-            return Hasil.gagal("Pesanan tidak dapat dibatalkan pada status " + s);
-        return batalkan(p, "Dibatalkan oleh driver");
-    }
-
     private Hasil batalkan(Pesanan p, String alasan) {
         final boolean refund = isWallet(p.getMetodePembayaran());
         boolean ok = Tx.jalankan(() ->
@@ -105,5 +95,19 @@ public class PesananService {
             return Hasil.gagal("Status tidak bisa diubah lagi.");
         return pesananDao.updateStatus(pesananId, next)
                 ? Hasil.ok("Status pesanan sekarang: " + next) : Hasil.gagal("Gagal mengubah status.");
+    }
+    
+    public Hasil batalkanOlehDriver(int pesananId, int driverId) {
+        return batalkanOlehDriver(pesananId, driverId, "Dibatalkan oleh driver");
+    }
+    //overload
+    public Hasil batalkanOlehDriver(int pesananId, int driverId, String alasan) {
+        Pesanan p = pesananDao.findById(pesananId);
+        if (p == null || p.getDriverId() == null || p.getDriverId() != driverId)
+            return Hasil.gagal("Pesanan bukan milik driver ini.");
+        String s = p.getStatusPesanan();
+        if (!(Pesanan.DITERIMA.equals(s) || Pesanan.DIPROSES.equals(s) || Pesanan.DALAM_PERJALANAN.equals(s)))
+            return Hasil.gagal("Pesanan tidak dapat dibatalkan pada status " + s);
+        return batalkan(p, alasan);
     }
 }

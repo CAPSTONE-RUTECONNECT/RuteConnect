@@ -54,13 +54,19 @@ public class TopUp {
         this.saldoKeluar = saldoKeluar;
     }
     public void setStatusTopUp(String statusTopUp) {
-        if (statusTopUp == null
-                || !(statusTopUp.equalsIgnoreCase("pending")
-                || statusTopUp.equalsIgnoreCase("berhasil")
-                || statusTopUp.equalsIgnoreCase("gagal"))) {
+        if (statusTopUp == null) {
+            throw new IllegalArgumentException("Status top up tidak boleh kosong");
+        }
+        String s = statusTopUp.trim();
+        if (s.equalsIgnoreCase("pending")) {
+            this.statusTopUp = "Pending";
+        } else if (s.equalsIgnoreCase("berhasil")) {
+            this.statusTopUp = "Berhasil";
+        } else if (s.equalsIgnoreCase("gagal")) {
+            this.statusTopUp = "Gagal";
+        } else {
             throw new IllegalArgumentException("Status top up harus pending, berhasil, atau gagal");
         }
-        this.statusTopUp = statusTopUp.toLowerCase();
     }
     public void setUserId(int userId) {
         if (userId <= 0) {

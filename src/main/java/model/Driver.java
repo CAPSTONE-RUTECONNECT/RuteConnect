@@ -56,16 +56,30 @@ public class Driver extends User {
         this.noPlatKendaraan = noPlatKendaraan.trim().toUpperCase();
     }
     public void setJenisKendaraan(String jenisKendaraan) {
-        if (jenisKendaraan == null || !(jenisKendaraan.equalsIgnoreCase("motor") || jenisKendaraan.equalsIgnoreCase("mobil"))) {
+        if (jenisKendaraan == null) {
+            throw new IllegalArgumentException("Jenis kendaraan tidak boleh kosong");
+        }
+        String j = jenisKendaraan.trim();
+        if (j.equalsIgnoreCase("motor")) {
+            this.jenisKendaraan = "Motor";
+        } else if (j.equalsIgnoreCase("mobil")) {
+            this.jenisKendaraan = "Mobil";
+        } else {
             throw new IllegalArgumentException("Jenis kendaraan harus motor atau mobil");
         }
-        this.jenisKendaraan = jenisKendaraan.toLowerCase();
     }
     public void setStatusAktif(String statusAktif) {
-        if (statusAktif == null || !(statusAktif.equalsIgnoreCase("aktif") || statusAktif.equalsIgnoreCase("non-aktif"))) {
+        if (statusAktif == null) {
+            throw new IllegalArgumentException("Status tidak boleh kosong");
+        }
+        String s = statusAktif.trim();
+        if (s.equalsIgnoreCase("aktif")) {
+            this.statusAktif = "Aktif";
+        } else if (s.equalsIgnoreCase("non-aktif")) {
+            this.statusAktif = "Non-Aktif";
+        } else {
             throw new IllegalArgumentException("Status harus aktif atau non-aktif");
         }
-        this.statusAktif = statusAktif.toLowerCase();
     }
     public boolean isAktif() {
         return "Aktif".equalsIgnoreCase(statusAktif);

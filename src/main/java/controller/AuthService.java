@@ -46,16 +46,21 @@ public class AuthService {
         return LoginResult.SALAH;
     }
     
-    public static RegisterResult register(String nama, String email, String telp, String password) {
-        if (Validator.isKosong(nama, email, telp, password)) {
+    public static RegisterResult register(String nama, String email, String noTelepon, String alamat, String password) {
+        // Validasi data kosong termasuk alamat
+        if (nama.isEmpty() || email.isEmpty() || noTelepon.isEmpty() || alamat.isEmpty() || password.isEmpty()) {
             return RegisterResult.DATA_KOSONG;
         }
-        if (!Validator.emailValid(email.trim()) || !Validator.passwordValid(password) || !Validator.teleponValid(telp.trim())) {
+        
+        // Memperbaiki pemanggilan variabel 'noTelepon' agar tidak error cannot find symbol
+        if (!Validator.emailValid(email.trim()) || !Validator.passwordValid(password) || !Validator.teleponValid(noTelepon.trim())) {
             return RegisterResult.FORMAT_SALAH;
         }
+        
         try (Connection c = Koneksi.getConnection()) {
             c.setAutoCommit(false);
             try {
+                // Cek apakah email sudah terdaftar
                 try (PreparedStatement cek = c.prepareStatement(
                         "SELECT 1 FROM user WHERE email = ?")) {
                     cek.setString(1, email.trim());
@@ -64,6 +69,7 @@ public class AuthService {
                         return RegisterResult.EMAIL_TERDAFTAR;
                     }
                 }
+                
                 int newId;
                 try (PreparedStatement mx = c.prepareStatement(
                         "SELECT IFNULL(MAX(user_id), 0) + 1 FROM user FOR UPDATE");
@@ -71,21 +77,28 @@ public class AuthService {
                     rs.next();
                     newId = rs.getInt(1);
                 }
+                
+                // Simpan ke tabel user (pastikan struktur kolom tabel user di database kamu sudah sesuai)
                 try (PreparedStatement ins = c.prepareStatement(
                         "INSERT INTO user(user_id, nama, no_telepon, email, password, role)"
                         + "VALUES (?, ?, ?, ?, ?, 'Pelanggan')")) {
                     ins.setInt(1, newId);
                     ins.setString(2, nama.trim());
-                    ins.setString(3, telp.trim());
+                    ins.setString(3, noTelepon.trim()); // Diperbaiki dari telp ke noTelepon
                     ins.setString(4, email.trim());
                     ins.setString(5, password);
                     ins.executeUpdate();
                 }
+                
+                // Simpan juga alamat dan saldo ke tabel pelanggan
+                // Sesuaikan nama kolom tabel di database (misal: alamat_favorit atau alamat)
                 try (PreparedStatement pel = c.prepareStatement(
-                        "INSERT INTO pelanggan(user_id, saldo_wallet) VALUES (?, 0)")) {
+                        "INSERT INTO pelanggan(user_id, alamat_favorit, saldo_wallet) VALUES (?, ?, 0)")) {
                     pel.setInt(1, newId);
+                    pel.setString(2, alamat.trim());
                     pel.executeUpdate();
                 }
+                
                 c.commit();
                 return RegisterResult.BERHASIL;
             } catch (SQLException e) {

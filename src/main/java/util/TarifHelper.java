@@ -76,6 +76,48 @@ public class TarifHelper {
             return nama;
         }
     }
+        
+        public enum PaketDokumen {
+    //            nama,            kelas,    tarif/km, tarif min, km/jam, buffer(menit), faktor jarak
+    REGULER("Dokumen Reguler",     "Reguler", 3000,     10000,     25,      30,           1.00),
+    KILAT  ("Dokumen Instant Kilat","Kilat",  5500,     20000,     40,      5,            0.95);
+
+    private final String nama, kelas;
+    private final double tarifPerKm, tarifMinimum, kecepatanKmJam, faktorJarak;
+    private final int bufferMenit;
+
+    PaketDokumen(String nama, String kelas, double tarifPerKm, double tarifMinimum,
+                 double kecepatanKmJam, int bufferMenit, double faktorJarak) {
+        this.nama = nama; this.kelas = kelas;
+        this.tarifPerKm = tarifPerKm; this.tarifMinimum = tarifMinimum;
+        this.kecepatanKmJam = kecepatanKmJam; this.bufferMenit = bufferMenit;
+        this.faktorJarak = faktorJarak;
+    }
+    public String getNama() {
+        return nama;
+    }
+    public String getKelas() {
+        return kelas;
+    }
+    public double getTarifPerKm() {
+        return tarifPerKm;
+    }
+    public double getTarifMinimum() {
+        return tarifMinimum;
+    }
+    public double getKecepatanKmJam() {
+        return kecepatanKmJam;
+    }
+    public int getBufferMenit() {
+        return bufferMenit;
+    }
+    public double getFaktorJarak() {
+        return faktorJarak;
+    }
+    @Override public String toString() {
+        return nama;
+    }
+}
 
     //Jarak (km) untuk paket ini, dihitung dari jarak rute peta x faktor paket. Dibulatkan 1 desimal.
     public static double hitungKm(Paket paket, double kmPeta) {
@@ -96,6 +138,24 @@ public class TarifHelper {
         double km = hitungKm(paket, kmPeta);
         if (km < 0) return -1;
         return (int) Math.ceil((km / paket.getKecepatanKmJam()) * 60) + paket.getBufferMenit();
+    }
+    
+    public static double hitungKm(PaketDokumen p, double kmPeta) {
+        if (p == null || kmPeta < 0) return -1;
+        return Math.round(kmPeta * p.getFaktorJarak() * 10) / 10.0;
+    }
+
+    public static double hitungHarga(PaketDokumen p, double kmPeta) {
+        double km = hitungKm(p, kmPeta);
+        if (km < 0) return -1;
+        double harga = Math.max(p.getTarifMinimum(), p.getTarifPerKm() * km);
+        return Math.ceil(harga / 500.0) * 500.0;
+    }
+
+    public static int hitungMenit(PaketDokumen p, double kmPeta) {
+        double km = hitungKm(p, kmPeta);
+        if (km < 0) return -1;
+        return (int) Math.ceil((km / p.getKecepatanKmJam()) * 60) + p.getBufferMenit();
     }
 
     public static boolean dalamBatas(double kmPeta) {

@@ -59,12 +59,17 @@ public class Layanan {
         this.namaLayanan = namaLayanan.trim();
     }
     public void setJenisKendaraan(String jenisKendaraan) {
-        if (jenisKendaraan == null
-                || !(jenisKendaraan.equalsIgnoreCase("motor")
-                || jenisKendaraan.equalsIgnoreCase("mobil"))) {
+        if (jenisKendaraan == null) {
+            throw new IllegalArgumentException("Jenis kendaraan tidak boleh kosong");
+        }
+        String j = jenisKendaraan.trim();
+        if (j.equalsIgnoreCase("motor")) {
+            this.jenisKendaraan = "Motor";
+        } else if (j.equalsIgnoreCase("mobil")) {
+            this.jenisKendaraan = "Mobil";
+        } else {
             throw new IllegalArgumentException("Jenis kendaraan harus motor atau mobil");
         }
-        this.jenisKendaraan = jenisKendaraan.toLowerCase();
     }
     public void setTarifPerKm(double tarifPerKm) {
         if (Double.isNaN(tarifPerKm) || Double.isInfinite(tarifPerKm) || tarifPerKm <= 0) {

@@ -23,6 +23,9 @@ public class Session {
     public static Pesanan draft;
     public static String asal;
     public static String kembaliKe;
+    public static String ringkasanJudul;
+    public static String ringkasanSub;
+    public static int ringkasanMenit;
     public static final Set<Integer> ditolak = new HashSet<>();
 
     public static void set(User u) {
@@ -49,6 +52,9 @@ public class Session {
         draft = null;
         asal = null;
         kembaliKe = null;
+        ringkasanJudul = null;
+        ringkasanSub = null;
+        ringkasanMenit = 0;
         ditolak.clear();
     }
     

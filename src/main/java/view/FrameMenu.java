@@ -275,11 +275,11 @@ public class FrameMenu extends javax.swing.JFrame {
                         this.dispose();
                     }
                     case "driver" -> {
-                        java.awt.EventQueue.invokeLater(() -> new DriverDashboard().setVisible(true));
+                        java.awt.EventQueue.invokeLater(() -> new DashboardDriver().setVisible(true));
                         this.dispose();
                     }
                     case "admin" -> {
-                        java.awt.EventQueue.invokeLater(() -> new FrameAdminKelolaData().setVisible(true));
+                        java.awt.EventQueue.invokeLater(() -> new FrameAdmin().setVisible(true));
                         this.dispose();
                     }
                     default -> {

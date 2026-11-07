@@ -53,7 +53,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
             }
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                java.awt.EventQueue.invokeLater(() -> new PengirimanDokumen().setVisible(true));
+                java.awt.EventQueue.invokeLater(() -> new PengirimanDokumenForm().setVisible(true));
                 dispose();
             }
         });
@@ -86,6 +86,9 @@ public class MenuPelangganForm extends javax.swing.JFrame {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 // TODO: Panggil Form Riwayat di sini
+                java.awt.EventQueue.invokeLater(() -> new RiwayatStatusPelanggan().setVisible(true));
+                dispose();
+                
             }
         });
     }
@@ -132,14 +135,19 @@ public class MenuPelangganForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(242, 243, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(390, 844));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 101, 145));
         jLabel1.setText("RuteConnect");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(34, 30, 78, 16);
 
         lblNama.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNama.setForeground(new java.awt.Color(0, 0, 0));
         lblNama.setText("\"\"");
+        jPanel1.add(lblNama);
+        lblNama.setBounds(34, 58, 320, 25);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -207,6 +215,9 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(10, 130, 360, 149);
+
         panelTransportasi.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -229,7 +240,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         panelTransportasiLayout.setVerticalGroup(
             panelTransportasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,9 +254,14 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.add(panelTransportasi);
+        panelTransportasi.setBounds(20, 370, 168, 120);
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Layanan Kami");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(20, 330, 135, 25);
 
         panelTopUp.setBackground(new java.awt.Color(255, 255, 255));
         panelTopUp.setPreferredSize(new java.awt.Dimension(176, 120));
@@ -284,6 +300,9 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.add(panelTopUp);
+        panelTopUp.setBounds(20, 510, 176, 120);
+
         panelDokumen.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -303,7 +322,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
             .addGroup(panelDokumenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDokumenLayout.setVerticalGroup(
             panelDokumenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,6 +333,9 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1.add(panelDokumen);
+        panelDokumen.setBounds(200, 370, 176, 120);
 
         panelRiwayat.setBackground(new java.awt.Color(255, 255, 255));
         panelRiwayat.setPreferredSize(new java.awt.Dimension(176, 120));
@@ -356,71 +378,19 @@ public class MenuPelangganForm extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        jPanel1.add(panelRiwayat);
+        panelRiwayat.setBounds(200, 510, 176, 120);
+
         btnLogout.setBackground(new java.awt.Color(255, 255, 255));
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(0, 0, 0));
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Icon(10).png"))); // NOI18N
         btnLogout.setText("Keluar");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
+        jPanel1.add(btnLogout);
+        btnLogout.setBounds(260, 30, 87, 27);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(lblNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(184, 184, 184)
-                                .addComponent(btnLogout)
-                                .addGap(205, 205, 205)))
-                        .addGap(33, 33, 33))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelTopUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(panelTransportasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelDokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(panelRiwayat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnLogout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNama)
-                .addGap(46, 46, 46)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelDokumen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelTransportasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelRiwayat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelTopUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(214, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 844));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -433,7 +403,7 @@ public class MenuPelangganForm extends javax.swing.JFrame {
 
     private void riwayatSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_riwayatSaldoActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(() -> new StatusRiwayat().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RiwayatStatusPelanggan().setVisible(true));
         this.dispose();
     }//GEN-LAST:event_riwayatSaldoActionPerformed
 

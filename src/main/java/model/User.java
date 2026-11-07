@@ -56,7 +56,14 @@ public abstract class User {
         if (nama == null || !nama.matches("[a-zA-Z ]+")) {
             throw new IllegalArgumentException("Nama hanya boleh huruf dan spasi");
         }
-        this.nama = nama.trim();
+        nama = nama.trim();
+        if (nama.length() < 3) {
+            throw new IllegalArgumentException("Nama minimal 3 karakter");
+        }
+        if (nama.length() > 100) {
+            throw new IllegalArgumentException("Nama maksimal 100 karakter");
+        }
+        this.nama = nama;
     }
     public void setNoTelepon(String noTelepon) {
         if (noTelepon == null || !noTelepon.matches("\\d{1,13}")) {
@@ -77,9 +84,18 @@ public abstract class User {
         this.password = password;
     }
     public void setRole(String role) {
-        if (role == null || !(role.equalsIgnoreCase("pelanggan") || role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("driver"))) {
+        if (role == null) {
+            throw new IllegalArgumentException("Role tidak boleh kosong");
+        }
+        String r = role.trim();
+        if (r.equalsIgnoreCase("pelanggan")) {
+            this.role = "Pelanggan";
+        } else if (r.equalsIgnoreCase("admin")) {
+            this.role = "Admin";
+        } else if (r.equalsIgnoreCase("driver")) {
+            this.role = "Driver";
+        } else {
             throw new IllegalArgumentException("Role harus pelanggan, admin, atau driver");
         }
-        this.role = role.toLowerCase();
     }
 }

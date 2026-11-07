@@ -157,14 +157,17 @@ public abstract class Pesanan {
         this.waktuPesanan = waktuPesanan;
     }
     public void setStatusPesanan(String statusPesanan) {
-        if (statusPesanan == null
-                || !(statusPesanan.equalsIgnoreCase("menunggu")
-                || statusPesanan.equalsIgnoreCase("diproses")
-                || statusPesanan.equalsIgnoreCase("selesai")
-                || statusPesanan.equalsIgnoreCase("dibatalkan"))) {
-        throw new IllegalArgumentException("Status pesanan harus menunggu, diproses, selesai, atau dibatalkan");
-    }
-    this.statusPesanan = statusPesanan.toLowerCase();
+        if (statusPesanan == null) {
+            throw new IllegalArgumentException("Status pesanan tidak boleh kosong");
+        }
+        String[] valid = {MENUNGGU, DITERIMA, DIPROSES, DALAM_PERJALANAN, SELESAI, DIBATALKAN};
+        for (String s : valid) {
+            if (s.equalsIgnoreCase(statusPesanan.trim())) {
+                this.statusPesanan = s; // format sama dengan konstanta & DB
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Status pesanan harus menunggu, diterima, diproses, dalam perjalanan, selesai, atau dibatalkan");
     }
     public void setAlasanBatal(String alasanBatal) {
         if (alasanBatal != null && alasanBatal.trim().length() > 255) {
@@ -215,11 +218,18 @@ public abstract class Pesanan {
         this.namaDriver = (namaDriver == null) ? null : namaDriver.trim();
     }
     public void setMetodePembayaran(String metodePembayaran) {
-        if (metodePembayaran == null
-                || !(metodePembayaran.equalsIgnoreCase("tunai")
-                || metodePembayaran.equalsIgnoreCase("wallet"))) {
-            throw new IllegalArgumentException("Metode pembayaran harus tunai atau wallet");
+        if (metodePembayaran == null) {
+            throw new IllegalArgumentException("Metode pembayaran tidak boleh kosong");
         }
-        this.metodePembayaran = metodePembayaran.toLowerCase();
+        String m = metodePembayaran.trim();
+        if (m.equalsIgnoreCase("cash")) {
+            this.metodePembayaran = "Cash";
+        } else if (m.equalsIgnoreCase("e-wallet")) {
+            this.metodePembayaran = "E-Wallet";
+        } else if (m.equalsIgnoreCase("saldo")) {
+            this.metodePembayaran = "Saldo";
+        } else {
+            throw new IllegalArgumentException("Metode pembayaran harus Cash, E-Wallet, atau Saldo");
+        }
     }
 }

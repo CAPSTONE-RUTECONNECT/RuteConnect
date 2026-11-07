@@ -313,7 +313,6 @@ public class Maps extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pemesanan Transportasi");
-        setPreferredSize(new java.awt.Dimension(390, 844));
         setResizable(false);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -464,9 +463,9 @@ public class Maps extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Overlay(3).png"))); // NOI18N
-        jLabel19.setText("RuteRide");
+        jLabel19.setText("RuteRide Comfort");
         panelMotorCom.add(jLabel19);
-        jLabel19.setBounds(80, 10, 190, 20);
+        jLabel19.setBounds(80, 10, 240, 20);
 
         lblTarifMotorCom.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTarifMotorCom.setForeground(new java.awt.Color(0, 0, 0));
@@ -498,9 +497,9 @@ public class Maps extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/gambar/Overlay(4).png"))); // NOI18N
-        jLabel23.setText("RuteRide");
+        jLabel23.setText("RuteRide Reguler");
         panelMotorBiasa.add(jLabel23);
-        jLabel23.setBounds(80, 10, 170, 20);
+        jLabel23.setBounds(80, 10, 230, 20);
 
         lblTarifMotorBiasa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTarifMotorBiasa.setForeground(new java.awt.Color(0, 0, 0));
@@ -688,6 +687,7 @@ public class Maps extends javax.swing.JFrame {
 
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         // TODO add your handling code here:
+        peta.berhenti(); // lepas port 8765
         java.awt.EventQueue.invokeLater(() -> new MenuPelangganForm().setVisible(true));
         this.dispose();
     }//GEN-LAST:event_btnKembaliActionPerformed
@@ -695,30 +695,21 @@ public class Maps extends javax.swing.JFrame {
     private void btnPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembayaranActionPerformed
         // TODO add your handling code here:
         if (!ruteSudahDipilih) {
-            javax.swing.JOptionPane.showMessageDialog(
-                this,
+            javax.swing.JOptionPane.showMessageDialog(this,
                 "Silakan tentukan titik jemput dan titik tujuan terlebih dahulu!",
-                "Rute Belum Dipilih",
-                javax.swing.JOptionPane.WARNING_MESSAGE
-            );
+                "Rute Belum Dipilih", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        // Validasi pemilihan armada
         if (selectedArmadaPanel == null) {
-            javax.swing.JOptionPane.showMessageDialog(
-                this,
+            javax.swing.JOptionPane.showMessageDialog(this,
                 "Silakan pilih salah satu armada terlebih dahulu!",
-                "Armada Belum Dipilih",
-                javax.swing.JOptionPane.WARNING_MESSAGE
-            );
+                "Armada Belum Dipilih", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         TarifHelper.Paket paket = paketTerpilih();
         double total = TarifHelper.hitungHarga(paket, jarakRuteKm);
 
-        // cari layanan_id di DB yang cocok dengan paket
         model.Layanan layanan = null;
         for (model.Layanan l : new dao.LayananDao().findAll()) {
             if (l.getNamaLayanan().equalsIgnoreCase(namaLayananDb(paket))) {
@@ -740,13 +731,20 @@ public class Maps extends javax.swing.JFrame {
             t.setTotalBiaya(total);
             t.setPelangganId(controller.Session.userId);
             t.setLayananId(layanan.getLayananId());
+            t.setNamaLayanan(layanan.getNamaLayanan());
             t.setJumlahPenumpang(1);
             controller.Session.draft = t;
-        } catch (IllegalArgumentException ex) {   // setter-setter model-mu melempar ini
+
+            // data untuk jPanel3 di halaman pembayaran
+            controller.Session.ringkasanJudul = layanan.getNamaLayanan();
+            controller.Session.ringkasanSub = "Transportasi " + layanan.getJenisKendaraan();
+            controller.Session.ringkasanMenit = TarifHelper.hitungMenit(paket, jarakRuteKm);
+        } catch (IllegalArgumentException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage());
             return;
         }
 
+        peta.berhenti(); // lepas port 8765
         java.awt.EventQueue.invokeLater(() -> new StatusPembayaran(total).setVisible(true));
         this.dispose();
     }//GEN-LAST:event_btnPembayaranActionPerformed
