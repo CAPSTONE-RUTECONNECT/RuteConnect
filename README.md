@@ -170,9 +170,9 @@ Teknologi utama yang digunakan dalam pengembangan aplikasi RuteConnect.
 | Maven | Mengelola dependency dan proses build proyek. |
 | NetBeans IDE | Lingkungan pengembangan aplikasi. |
 
-### B. Development Environment & AI Tools
+### B. Development Environment & Supporting Tools
 
-Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan database, serta membantu penyelesaian permasalahan selama pengerjaan proyek.
+Berbagai teknologi dan tools digunakan untuk mendukung proses pengembangan aplikasi, pengelolaan database, pengujian program, serta penyusunan dokumentasi proyek RuteConnect.
 
 <div align="center">
 
@@ -180,36 +180,79 @@ Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan databas
   <tr>
     <th>CORE TECHNOLOGIES</th>
     <th>DEVELOPMENT ENVIRONMENT</th>
-    <th>AI DEVELOPMENT ASSISTANTS</th>
+    <th>SUPPORTING TOOLS</th>
   </tr>
   <tr>
-    <td align="center" valign="middle">
-      <img src="https://skillicons.dev/icons?i=java,mysql,maven&theme=light" height="65" alt="Java, MySQL, Maven"/>
+    <td align="center" valign="middle" width="33%">
+      <img src="https://skillicons.dev/icons?i=java,mysql,maven,html&theme=light" height="55" alt="Java, MySQL, Maven, HTML"/>
       <br/><br/>
-      <strong>Java 21 • MySQL • Maven</strong>
+      <strong>Java 21 • MySQL</strong>
+      <br/>
+      <strong>Maven • HTML</strong>
     </td>
-    <td align="center" valign="middle">
-      <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="48" alt="Laragon"/>
+    <td align="center" valign="middle" width="33%">
+      <img src="https://cdn.simpleicons.org/laragon/0E8A70" height="42" alt="Laragon"/>
       &nbsp;
-      <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="48" alt="Apache NetBeans"/>
+      <img src="https://cdn.simpleicons.org/apachenetbeanside/1B6AC6" height="42" alt="Apache NetBeans"/>
       <br/><br/>
-      <strong>Laragon • NetBeans</strong>
+      <strong>Laragon • Apache NetBeans</strong>
     </td>
-    <td align="center" valign="middle">
-      <img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" alt="Claude"/>
+    <td align="center" valign="middle" width="33%">
+      <img src="https://skillicons.dev/icons?i=github,chrome&theme=light" height="48" alt="GitHub and Google Chrome"/>
       &nbsp;
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT-Logo.svg" height="48" alt="ChatGPT"/>
-      &nbsp;
-      <img src="https://cdn.simpleicons.org/googlegemini/8E75B2" height="48" alt="Gemini AI"/>
+      <img src="https://cdn.simpleicons.org/microsoftword/2B579A" height="42" alt="Microsoft Word"/>
       <br/><br/>
-      <strong>Claude • ChatGPT • Gemini AI</strong>
+      <strong>GitHub • Google Chrome</strong>
+      <br/>
+      <strong>Microsoft Word</strong>
     </td>
   </tr>
 </table>
 
 </div>
 
-### C. Service Platform References
+### C. README Design Resources
+
+Beberapa layanan berbasis web dimanfaatkan untuk membantu membuat tampilan README GitHub lebih menarik, informatif, dan terstruktur.
+
+<div align="center">
+
+<table>
+  <tr>
+    <th>CAPSULE RENDER</th>
+    <th>SKILL ICONS</th>
+    <th>SHIELDS.IO</th>
+    <th>SIMPLE ICONS</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/vercel/000000" height="42" alt="Vercel"/>
+      <br/><br/>
+      <strong>Banner README</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://skillicons.dev/icons?i=github&theme=light" height="42" alt="Skill Icons"/>
+      <br/><br/>
+      <strong>Technology Icons</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/shieldsdotio/000000" height="42" alt="Shields.io"/>
+      <br/><br/>
+      <strong>Badges</strong>
+    </td>
+    <td align="center" valign="middle">
+      <img src="https://cdn.simpleicons.org/simpleicons/111111" height="42" alt="Simple Icons"/>
+      <br/><br/>
+      <strong>Brand Icons</strong>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<sub>Design resources: <a href="https://github.com/kyechan99/capsule-render">Capsule Render</a> • <a href="https://skillicons.dev/">Skill Icons</a> • <a href="https://shields.io/">Shields.io</a> • <a href="https://simpleicons.org/">Simple Icons</a></sub>
+
+### D. Service Platform References
 
 <div align="center">
 
@@ -234,7 +277,7 @@ Tools berikut digunakan untuk mendukung proses pengembangan, pengelolaan databas
 
 > **Catatan:** Gojek dan Grab merupakan referensi konsep layanan, bukan integrasi API. Claude, ChatGPT, dan Gemini AI merupakan tools pendukung pengembangan, bukan komponen yang dijalankan di dalam aplikasi.
 
-### D. Referensi Pengembangan README
+### E. Referensi Pengembangan README
 
 Beberapa sumber yang digunakan sebagai referensi untuk membantu penyusunan tampilan dan dokumentasi README:
 
