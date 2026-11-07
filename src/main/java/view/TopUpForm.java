@@ -26,7 +26,7 @@ public class TopUpForm extends javax.swing.JFrame {
         
         getContentPane().removeAll();
         
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16); // Biar smooth scroll-nya
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -100,7 +100,7 @@ public class TopUpForm extends javax.swing.JFrame {
         java.awt.Color normalBg = new java.awt.Color(242, 243, 255);
         java.awt.Color normalFg = new java.awt.Color(0, 0, 0); 
         java.awt.Color hoverColor = new java.awt.Color(230, 238, 255); 
-        java.awt.Color selectBg = new java.awt.Color(2, 132, 199); // #0284C7
+        java.awt.Color selectBg = new java.awt.Color(2, 132, 199);
         java.awt.Color selectFg = java.awt.Color.WHITE; 
 
         panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,14 +110,12 @@ public class TopUpForm extends javax.swing.JFrame {
                     panel.setBackground(hoverColor);
                 }
             }
-
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 if (!txtNominal.getText().equals(nominalValue)) {
                     panel.setBackground(normalBg);
                 }
             }
-
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNominal.setText(nominalValue);
@@ -220,6 +218,7 @@ public class TopUpForm extends javax.swing.JFrame {
         passwordCheckBox = new javax.swing.JCheckBox();
         jLabel25 = new javax.swing.JLabel();
         btnTopUp = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Top Up");
@@ -374,7 +373,7 @@ public class TopUpForm extends javax.swing.JFrame {
         panel500.setBounds(30, 300, 330, 50);
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Atau Masukkan Nominal Sendiri (Maksimal Rp 2.000.000)");
+        jLabel11.setText("Atau Masukkan Nominal Sendiri");
         jPanel3.add(jLabel11);
         jLabel11.setBounds(30, 370, 330, 16);
 
@@ -502,6 +501,13 @@ public class TopUpForm extends javax.swing.JFrame {
         jPanel3.add(btnTopUp);
         btnTopUp.setBounds(30, 930, 330, 50);
 
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel26.setText("(Minimal Rp 10.000, Maksimal Rp 2.000.000)");
+        jPanel3.add(jLabel26);
+        jLabel26.setBounds(80, 440, 280, 16);
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 390, 1030));
 
         jScrollPane1.setViewportView(jPanel1);
@@ -537,7 +543,6 @@ public class TopUpForm extends javax.swing.JFrame {
     private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         try {
-            // 1. Validasi nominal top up
             String nominalInput = txtNominal.getText().trim();
 
             if (nominalInput.isEmpty()) {
@@ -546,7 +551,6 @@ public class TopUpForm extends javax.swing.JFrame {
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
             long nominal;
 
             try {
@@ -557,7 +561,6 @@ public class TopUpForm extends javax.swing.JFrame {
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
             if (nominal < 10000 || nominal > 2000000) {
                 JOptionPane.showMessageDialog(this,
                     "Nominal top up minimal Rp10.000 dan maksimal Rp2.000.000!",
@@ -618,6 +621,7 @@ public class TopUpForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

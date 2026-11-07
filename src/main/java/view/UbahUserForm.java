@@ -198,12 +198,10 @@ public class UbahUserForm extends javax.swing.JFrame {
         }
 
         try {
-            // Sekarang userController sudah dikenali karena sudah dideklarasikan di atas!
-            // Mengirim parameter terakhir null (karena role non-driver tidak punya status aktif driver)
             userController.updateUser(idUser, nama, telp, email, null);
 
             javax.swing.JOptionPane.showMessageDialog(this, "Data user berhasil diubah.");
-            this.dispose(); // Tutup form ubah setelah berhasil simpan
+            this.dispose();
 
         } catch (Exception ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal mengubah data:\n" + ex.getMessage(),
